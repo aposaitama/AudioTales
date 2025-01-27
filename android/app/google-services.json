@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1035941622883",
+    "project_id": "memoryboxflutter",
+    "storage_bucket": "memoryboxflutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035941622883:android:ced51d160f01a91f90f456",
+        "android_client_info": {
+          "package_name": "com.apostolov.memory_box_avada"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADDQC87HcxyCVTqRSLeFHdDgtgc2MFgZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
