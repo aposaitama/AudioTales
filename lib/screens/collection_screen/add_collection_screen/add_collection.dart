@@ -71,7 +71,11 @@ class AddCollection extends StatelessWidget {
             backgroundColor: AppColors.greenColor,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 24.0, left: 15.0, right: 15.0),
+            padding: const EdgeInsets.only(
+              top: 24.0,
+              left: 15.0,
+              right: 15.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -97,7 +101,9 @@ class AddCollection extends StatelessWidget {
                     child: SvgPicture.asset(
                       'assets/icons/Edit_Photo.svg',
                       colorFilter: const ColorFilter.mode(
-                          AppColors.fontColor, BlendMode.srcIn),
+                        AppColors.fontColor,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                 ),
@@ -144,7 +150,9 @@ class AddCollection extends StatelessWidget {
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
-                                  width: 1.0, color: AppColors.fontColor),
+                                width: 1.0,
+                                color: AppColors.fontColor,
+                              ),
                             ),
                           ),
                           child: GestureDetector(

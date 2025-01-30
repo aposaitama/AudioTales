@@ -80,14 +80,16 @@ class ChooseAudioRecords extends StatelessWidget {
                   right: 16.0,
                 ),
                 child: Container(
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      offset: const Offset(0, 5),
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-                  ]),
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        offset: const Offset(0, 5),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
                   child: TextField(
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(
@@ -96,7 +98,10 @@ class ChooseAudioRecords extends StatelessWidget {
                       ),
                       suffixIcon: Padding(
                         padding: const EdgeInsets.only(
-                            right: 15.0, top: 10.0, bottom: 10.0),
+                          right: 15.0,
+                          top: 10.0,
+                          bottom: 10.0,
+                        ),
                         child: SizedBox(
                           width: 30.0,
                           height: 30.0,

@@ -19,9 +19,12 @@ class _AddAudioItemTileState extends State<AddAudioItemTile> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(41),
-            border: Border.all(
-                width: 1.0, color: AppColors.fontColor.withOpacity(0.2))),
+          borderRadius: BorderRadius.circular(41),
+          border: Border.all(
+            width: 1.0,
+            color: AppColors.fontColor.withOpacity(0.2),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
@@ -71,9 +74,11 @@ class _AddAudioItemTileState extends State<AddAudioItemTile> {
               Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: GestureDetector(
-                  onTap: () => setState(() {
-                    isSelected = !isSelected;
-                  }),
+                  onTap: () => setState(
+                    () {
+                      isSelected = !isSelected;
+                    },
+                  ),
                   child: Container(
                     height: 48.0,
                     width: 48.0,

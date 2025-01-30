@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:gap/gap.dart';
-
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
-
-import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/widgets/add_audio_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -129,18 +125,20 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                                color: Colors.black.withOpacity(0.15),
-                                offset: const Offset(0, 10),
-                                blurRadius: 10,
-                                spreadRadius: 1.0)
+                              color: Colors.black.withOpacity(0.15),
+                              offset: const Offset(0, 10),
+                              blurRadius: 10,
+                              spreadRadius: 1.0,
+                            )
                           ],
                           color: Colors.white.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(14),
                           image: const DecorationImage(
-                              image: AssetImage(
-                                'assets/icons/TestImage.png',
-                              ),
-                              fit: BoxFit.cover),
+                            image: AssetImage(
+                              'assets/icons/TestImage.png',
+                            ),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ],
@@ -173,9 +171,11 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
             ),
             GestureDetector(
               onTap: () {
-                setState(() {
-                  isExpanded = !isExpanded; // Переключаем состояние
-                });
+                setState(
+                  () {
+                    isExpanded = !isExpanded;
+                  },
+                );
               },
               child: Text(
                 isExpanded ? 'Скрыть' : 'Подробнее',

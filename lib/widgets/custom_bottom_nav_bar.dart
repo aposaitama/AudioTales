@@ -3,12 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_event.dart';
+import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_event.dart';
+
+import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
+
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const CustomBottomNavBar({super.key, required this.scaffoldKey});
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -46,6 +52,17 @@ String _getRouteFromIndex(int currentIndex) {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  bool isBottomSheetOpen = false;
+
+  void _closeBottomSheet() {
+    if (isBottomSheetOpen) {
+      Navigator.pop(context);
+      setState(() {
+        isBottomSheetOpen = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NavigationCubit, NavigationState>(
@@ -55,6 +72,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         return BottomNavigationBar(
           currentIndex: state.currentIndex,
           onTap: (index) {
+            _closeBottomSheet();
+
             context.read<NavigationCubit>().navigateTo(index);
 
             switch (index) {
@@ -65,9 +84,22 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 context.go('/collection');
                 break;
               case 2:
-                context.read<RecordBloc>().add(StartRecordingEvent());
-
-                context.go('/record');
+                context
+                    .read<RecordStatusBloc>()
+                    .add(const RecordingRecordStatusEvent());
+                showBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return const RecordScreen();
+                    });
+                setState(() {
+                  isBottomSheetOpen = true;
+                  print(isBottomSheetOpen);
+                });
+                // widget.scaffoldKey.currentState?.showBottomSheet(
+                //   (context) => const RecordScreen(),
+                // );
+                // context.go('/record');
 
                 break;
               case 3:

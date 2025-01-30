@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_event.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_state.dart';
+import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_event.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
 import 'package:memory_box_avada/screens/record_screen/widgets/audio_wave.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -22,7 +24,7 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
   Widget build(BuildContext context) {
     return BlocBuilder<RecordBloc, RecordState>(
       builder: (context, state) {
-        if (state is RecordingInProgress) {
+        if (state.status == RecordStatus.inProgress) {
           decibelValues.add(state.decibels);
           final elemCount =
               ((MediaQuery.of(context).size.width - 15) / 4.3).round();
@@ -48,14 +50,22 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                   ),
                   child: Column(
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(right: 30.0),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(top: 7.5),
-                              child: Text('Отменить'),
+                              padding: const EdgeInsets.only(top: 7.5),
+                              child: GestureDetector(
+                                  onTap: () => {
+                                        context.read<RecordStatusBloc>().add(
+                                            const ListeningRecordStatusEvent()),
+                                        context
+                                            .read<RecordBloc>()
+                                            .add(RecordEvent.stopRecording())
+                                      },
+                                  child: const Text('Готово')),
                             )
                           ],
                         ),
@@ -79,7 +89,7 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                               painter: SoundWavePainter(
                                   decibelValues: decibelValues),
                             ),
-                            if (state is RecordingInProgress) ...[
+                            if (state.status == RecordStatus.inProgress) ...[
                               Padding(
                                 padding: const EdgeInsets.only(right: 30.0),
                                 child: Text(
@@ -95,28 +105,53 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                               padding: const EdgeInsets.only(right: 30.0),
                               child: Column(
                                 children: [
-                                  GestureDetector(
-                                    onTap: () => context
-                                        .read<RecordBloc>()
-                                        .add(StopRecordingEvent()),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/Pause.svg',
-                                      height: 80.0,
-                                      width: 80.0,
-                                      colorFilter: const ColorFilter.mode(
-                                          AppColors.orangeColor,
-                                          BlendMode.srcIn),
+                                  if (state.status ==
+                                      RecordStatus.inProgress) ...[
+                                    GestureDetector(
+                                      onTap: () => context
+                                          .read<RecordBloc>()
+                                          .add(const PauseRecordingEvent()),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/Pause.svg',
+                                        height: 80.0,
+                                        width: 80.0,
+                                        colorFilter: const ColorFilter.mode(
+                                            AppColors.orangeColor,
+                                            BlendMode.srcIn),
+                                      ),
                                     ),
-                                  ),
-                                  // SvgPicture.asset(
-                                  //     'assets/icons/Play.svg',
-                                  //     height: 80.0,
-                                  //     width: 80.0,
-                                  //     colorFilter:
-                                  //         const ColorFilter.mode(
-                                  //             AppColors.orangeColor,
-                                  //             BlendMode.srcIn),
-                                  //   ),
+                                  ],
+                                  if (state.status == RecordStatus.initial ||
+                                      state.status == RecordStatus.stopped) ...[
+                                    GestureDetector(
+                                      onTap: () => context
+                                          .read<RecordBloc>()
+                                          .add(const StartRecordingEvent()),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/Play.svg',
+                                        height: 80.0,
+                                        width: 80.0,
+                                        colorFilter: const ColorFilter.mode(
+                                            AppColors.orangeColor,
+                                            BlendMode.srcIn),
+                                      ),
+                                    ),
+                                  ],
+                                  if (state.status == RecordStatus.paused) ...[
+                                    GestureDetector(
+                                      onTap: () => context
+                                          .read<RecordBloc>()
+                                          .add(const ResumeRecordingEvent()),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/Play.svg',
+                                        height: 80.0,
+                                        width: 80.0,
+                                        colorFilter: const ColorFilter.mode(
+                                            AppColors.orangeColor,
+                                            BlendMode.srcIn),
+                                      ),
+                                    ),
+                                  ],
                                   Container(
                                     width: 4.0,
                                     height: 25.0,

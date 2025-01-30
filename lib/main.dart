@@ -3,7 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory_box_avada/navigation/app_navigation.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +13,9 @@ void main() async {
 
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (_) => NavigationCubit()),
-    BlocProvider(create: (_) => RecordBloc())
+    BlocProvider(create: (_) => RecordBloc()),
+    BlocProvider(create: (_) => ListenRecordBloc()),
+    BlocProvider(create: (_) => RecordStatusBloc())
   ], child: const MyApp()));
 }
 

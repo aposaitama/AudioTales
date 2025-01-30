@@ -29,7 +29,9 @@ class RootScreen extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: const CustomBottomNavBar(),
+          child: CustomBottomNavBar(
+            scaffoldKey: scaffoldKey,
+          ),
         ),
       ),
     );

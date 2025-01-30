@@ -71,8 +71,7 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: '/record',
-                  builder: (context, state) =>
-                      RecordScreen(scaffoldKey: scaffoldKey),
+                  builder: (context, state) => RecordScreen(),
                 ),
               ],
             ),
