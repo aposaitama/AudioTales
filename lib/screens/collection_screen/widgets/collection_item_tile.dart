@@ -27,7 +27,7 @@ class CollectionItemTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: ((MediaQuery.of(context).size.width - 35) / 2) / 2,
+              width: ((MediaQuery.of(context).size.width - 70) / 2) / 2,
               child: Text(
                 collection.title,
                 style: AppTextStyles.appBarSubTextHeavy,
@@ -41,7 +41,8 @@ class CollectionItemTile extends StatelessWidget {
                   '${collection.audiosList.length} аудио',
                   style: AppTextStyles.subtitleWhite,
                 ),
-                Text(
+                const Text(
+                  overflow: TextOverflow.clip,
                   '2:30 часа',
                   style: AppTextStyles.subtitleWhite,
                 )

@@ -104,7 +104,10 @@ class CollectionScreen extends StatelessWidget {
                       itemCount: state.collectionList.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                            onTap: () => context.go('/collection/info'),
+                            onTap: () => context.go(
+                                  '/collection/info',
+                                  extra: state.collectionList[index],
+                                ),
                             child: CollectionItemTile(
                               collection: state.collectionList[index],
                             ));

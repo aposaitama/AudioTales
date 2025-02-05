@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/audio_records_screen.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_code.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_num.dart';
@@ -54,8 +55,10 @@ class AppRouter {
                     ),
                     GoRoute(
                         path: '/info',
-                        builder: (context, state) =>
-                            const InfoCollectionScreen(),
+                        builder: (context, state) {
+                          final collection = state.extra as CollectionModel;
+                          return InfoCollectionScreen(collection: collection);
+                        },
                         routes: [
                           GoRoute(
                             path: '/choose',

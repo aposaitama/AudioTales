@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class InfoCollectionScreen extends StatefulWidget {
-  const InfoCollectionScreen({super.key});
+  final CollectionModel collection;
+  const InfoCollectionScreen({super.key, required this.collection});
 
   @override
   State<InfoCollectionScreen> createState() => _InfoCollectionScreenState();
@@ -112,8 +114,8 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Сказка о малыше Кокки',
+                      Text(
+                        widget.collection.title,
                         style: AppTextStyles.whiteBodyBold,
                       ),
                       const SizedBox(
@@ -133,11 +135,16 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                           ],
                           color: Colors.white.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(14),
-                          image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/icons/TestImage.png',
-                            ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(14),
+                          child: Image.network(
+                            widget.collection.imageUrl,
+                            width: double.infinity,
+                            height: double.infinity,
                             fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Icon(Icons.broken_image, size: 50),
                           ),
                         ),
                       ),
@@ -156,10 +163,11 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                 constraints: BoxConstraints(
                   maxHeight: isExpanded ? double.infinity : 90.0,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Text(
-                    'Сказка о маленьком принце. Он родился в старой деревне и задавался всего-лишь одним вопросом - “Кто я такой?”. Он познакомился со старенькой бабушкой, которая рассказала ему легенду о малыше Кокки Паттене.  Когда ему исполнилось 10 лет, он поехал в город. Его давняя мечта увидеть принца Алифея исполнилась. Хоть малышь и не подозревал, что он сам является потерянным принцем, он так сильно хотел им быть. И это история рассказывает о потерянном принце. ',
+                    textAlign: TextAlign.left,
+                    widget.collection.collectionDescription,
                     overflow: TextOverflow.fade,
                     softWrap: true,
                   ),
@@ -199,16 +207,16 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 20,
+                itemCount: widget.collection.audiosList.length,
                 itemBuilder: (context, int index) {
-                  return const Column(
+                  return Column(
                     children: [
                       AudioItemTile(
                         color: AppColors.greenColor,
-                        title: 'Малышь Кокки 1',
+                        title: widget.collection.audiosList[index].title,
                         duration: '30 минут',
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10.0,
                       ),
                     ],
