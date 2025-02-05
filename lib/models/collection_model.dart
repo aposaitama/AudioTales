@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
 
 part 'collection_model.freezed.dart';
 part 'collection_model.g.dart';
@@ -7,7 +8,7 @@ part 'collection_model.g.dart';
 class CollectionModel with _$CollectionModel {
   const factory CollectionModel({
     required String title,
-    required List audiosUrl,
+    required List<AudioRecordsModel> audiosList,
     required String imageUrl,
     required String collectionDescription,
   }) = _CollectionModel;

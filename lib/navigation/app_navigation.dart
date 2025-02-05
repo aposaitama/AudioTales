@@ -21,7 +21,7 @@ class AppRouter {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
       // initialLocation: '/home',
-      initialLocation: '/collection/add',
+      initialLocation: '/collection',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(

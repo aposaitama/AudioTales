@@ -17,7 +17,7 @@ class AddCollection extends StatelessWidget {
   AddCollection({super.key});
 
   final TextEditingController title = TextEditingController(text: 'Название');
-  final TextEditingController descriptionCollection = TextEditingController();
+  final TextEditingController collectionDescription = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,11 @@ class AddCollection extends StatelessWidget {
           ),
           actions: [
             GestureDetector(
-              onTap: () => context.pop(),
+              onTap: () {
+                context.pop();
+                context.read<CollectionBloc>().add(CreateCollectionBlocEvent(
+                    title.text, collectionDescription.text));
+              },
               child: const Padding(
                 padding: EdgeInsets.only(right: 10.0, top: 15.0),
                 child: Text(
@@ -90,8 +94,7 @@ class AddCollection extends StatelessWidget {
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize:
-                        MainAxisSize.min, // Shrink-wrap the column's height
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       TextField(
                         controller: title,
@@ -155,11 +158,12 @@ class AddCollection extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const TextField(
+                        child: TextField(
+                          controller: collectionDescription,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           textAlign: TextAlign.start,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintStyle: AppTextStyles.body,
                             contentPadding: EdgeInsets.symmetric(
                               horizontal: 20.0,
@@ -183,16 +187,19 @@ class AddCollection extends StatelessWidget {
                           )
                         ],
                       ),
-                      state.collectionList.isNotEmpty
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      state.audiosList.isNotEmpty
                           ? ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.collectionList.length,
+                              itemCount: state.audiosList.length,
                               itemBuilder: (context, int index) {
                                 return Column(
                                   children: [
                                     AudioItemTile(
-                                      title: state.collectionList[index].title,
+                                      title: state.audiosList[index].title,
                                       duration: '30 минут',
                                     ),
                                     const SizedBox(
@@ -220,6 +227,9 @@ class AddCollection extends StatelessWidget {
                             ),
                           ),
                         ),
+                      ),
+                      const SizedBox(
+                        height: 20.0,
                       ),
                     ],
                   ),

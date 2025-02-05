@@ -18,6 +18,14 @@ class AppTextStyles {
     letterSpacing: 1,
     fontFamily: 'TTNorms',
   );
+  static const TextStyle appBarSubTextHeavy = TextStyle(
+    color: Colors.white,
+    fontSize: 16.0,
+    fontWeight: FontWeight.w700,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
   static const TextStyle body = TextStyle(
     color: AppColors.fontColor,
     fontSize: 24.0,
@@ -48,6 +56,14 @@ class AppTextStyles {
     color: AppColors.fontColor,
     fontSize: 14.0,
     fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+  static const TextStyle subtitleWhite = TextStyle(
+    color: Colors.white,
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
     height: 1.0,
     letterSpacing: 1,
     fontFamily: 'TTNorms',

@@ -22,6 +22,31 @@ class FirestoreService {
     }
   }
 
+  Future<void> saveUserCollection(
+    String title,
+    String collectionDescription,
+    List<AudioRecordsModel> audiosList,
+    String imageUrl,
+  ) async {
+    try {
+      List<Map<String, dynamic>> serializedAudiosList =
+          audiosList.map((audio) => audio.toJson()).toList();
+      await _firestore
+          .collection('users')
+          .doc('h0xeD3p0jwqRcLqOGp0U')
+          .collection('collections')
+          .add({
+        'title': title,
+        'collectionDescription': collectionDescription,
+        'audiosList': serializedAudiosList,
+        'imageUrl': imageUrl
+      });
+      print('Аудіо успішно збережено в Firestore!');
+    } catch (e) {
+      print('Помилка при збереженні аудіо: $e');
+    }
+  }
+
   Future<List<AudioRecordsModel>> getUserAudios() async {
     try {
       QuerySnapshot querySnapshot = await _firestore

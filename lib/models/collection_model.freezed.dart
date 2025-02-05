@@ -21,7 +21,7 @@ CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CollectionModel {
   String get title => throw _privateConstructorUsedError;
-  List<dynamic> get audiosUrl => throw _privateConstructorUsedError;
+  List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get collectionDescription => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ abstract class $CollectionModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      List<dynamic> audiosUrl,
+      List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription});
 }
@@ -64,7 +64,7 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
   @override
   $Res call({
     Object? title = null,
-    Object? audiosUrl = null,
+    Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
   }) {
@@ -73,10 +73,10 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      audiosUrl: null == audiosUrl
-          ? _value.audiosUrl
-          : audiosUrl // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      audiosList: null == audiosList
+          ? _value.audiosList
+          : audiosList // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      List<dynamic> audiosUrl,
+      List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription});
 }
@@ -118,7 +118,7 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? audiosUrl = null,
+    Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
   }) {
@@ -127,10 +127,10 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      audiosUrl: null == audiosUrl
-          ? _value._audiosUrl
-          : audiosUrl // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      audiosList: null == audiosList
+          ? _value._audiosList
+          : audiosList // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -148,22 +148,22 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
 class _$CollectionModelImpl implements _CollectionModel {
   const _$CollectionModelImpl(
       {required this.title,
-      required final List<dynamic> audiosUrl,
+      required final List<AudioRecordsModel> audiosList,
       required this.imageUrl,
       required this.collectionDescription})
-      : _audiosUrl = audiosUrl;
+      : _audiosList = audiosList;
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionModelImplFromJson(json);
 
   @override
   final String title;
-  final List<dynamic> _audiosUrl;
+  final List<AudioRecordsModel> _audiosList;
   @override
-  List<dynamic> get audiosUrl {
-    if (_audiosUrl is EqualUnmodifiableListView) return _audiosUrl;
+  List<AudioRecordsModel> get audiosList {
+    if (_audiosList is EqualUnmodifiableListView) return _audiosList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_audiosUrl);
+    return EqualUnmodifiableListView(_audiosList);
   }
 
   @override
@@ -173,7 +173,7 @@ class _$CollectionModelImpl implements _CollectionModel {
 
   @override
   String toString() {
-    return 'CollectionModel(title: $title, audiosUrl: $audiosUrl, imageUrl: $imageUrl, collectionDescription: $collectionDescription)';
+    return 'CollectionModel(title: $title, audiosList: $audiosList, imageUrl: $imageUrl, collectionDescription: $collectionDescription)';
   }
 
   @override
@@ -183,7 +183,7 @@ class _$CollectionModelImpl implements _CollectionModel {
             other is _$CollectionModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
-                .equals(other._audiosUrl, _audiosUrl) &&
+                .equals(other._audiosList, _audiosList) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.collectionDescription, collectionDescription) ||
@@ -195,7 +195,7 @@ class _$CollectionModelImpl implements _CollectionModel {
   int get hashCode => Object.hash(
       runtimeType,
       title,
-      const DeepCollectionEquality().hash(_audiosUrl),
+      const DeepCollectionEquality().hash(_audiosList),
       imageUrl,
       collectionDescription);
 
@@ -219,7 +219,7 @@ class _$CollectionModelImpl implements _CollectionModel {
 abstract class _CollectionModel implements CollectionModel {
   const factory _CollectionModel(
       {required final String title,
-      required final List<dynamic> audiosUrl,
+      required final List<AudioRecordsModel> audiosList,
       required final String imageUrl,
       required final String collectionDescription}) = _$CollectionModelImpl;
 
@@ -229,7 +229,7 @@ abstract class _CollectionModel implements CollectionModel {
   @override
   String get title;
   @override
-  List<dynamic> get audiosUrl;
+  List<AudioRecordsModel> get audiosList;
   @override
   String get imageUrl;
   @override

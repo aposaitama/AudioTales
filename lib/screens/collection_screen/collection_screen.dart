@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -10,7 +14,7 @@ class CollectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double tileHeight = 186.0;
+    const double tileHeight = 240.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -73,29 +77,43 @@ class CollectionScreen extends StatelessWidget {
           const CustomProfileTopClipPath(
             backgroundColor: AppColors.greenColor,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 40.0),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final double tileWidth = constraints.maxWidth / 2 - 24.0;
-
-                return GridView.builder(
-                  padding: const EdgeInsets.all(16.0),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16.0,
-                    crossAxisSpacing: 16.0,
-                    childAspectRatio: tileWidth / tileHeight,
-                  ),
-                  itemCount: 20,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () => context.go('/collection/info'),
-                        child: const CollectionItemTile());
-                  },
+          BlocBuilder<CollectionBloc, CollectionBlocState>(
+            builder: (context, state) {
+              if (state.status == CollectionBlocStatus.loading) {
+                context
+                    .read<CollectionBloc>()
+                    .add(const CollectionBlocEvent.loaded([]));
+                return const Center(
+                  child: CircularProgressIndicator(),
                 );
-              },
-            ),
+              }
+              return Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final double tileWidth = constraints.maxWidth / 2 - 24.0;
+
+                    return GridView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16.0,
+                        crossAxisSpacing: 16.0,
+                        childAspectRatio: tileWidth / tileHeight,
+                      ),
+                      itemCount: state.collectionList.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                            onTap: () => context.go('/collection/info'),
+                            child: CollectionItemTile(
+                              collection: state.collectionList[index],
+                            ));
+                      },
+                    );
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),

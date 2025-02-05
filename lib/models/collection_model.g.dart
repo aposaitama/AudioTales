@@ -10,7 +10,9 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectionModelImpl(
       title: json['title'] as String,
-      audiosUrl: json['audiosUrl'] as List<dynamic>,
+      audiosList: (json['audiosList'] as List<dynamic>)
+          .map((e) => AudioRecordsModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       imageUrl: json['imageUrl'] as String,
       collectionDescription: json['collectionDescription'] as String,
     );
@@ -19,7 +21,7 @@ Map<String, dynamic> _$$CollectionModelImplToJson(
         _$CollectionModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'audiosUrl': instance.audiosUrl,
+      'audiosList': instance.audiosList,
       'imageUrl': instance.imageUrl,
       'collectionDescription': instance.collectionDescription,
     };
