@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ListenRecordState {
   Duration get duration => throw _privateConstructorUsedError;
+  Duration get position => throw _privateConstructorUsedError;
   ListenStatus get status => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +34,11 @@ abstract class $ListenRecordStateCopyWith<$Res> {
           ListenRecordState value, $Res Function(ListenRecordState) then) =
       _$ListenRecordStateCopyWithImpl<$Res, ListenRecordState>;
   @useResult
-  $Res call({Duration duration, ListenStatus status});
+  $Res call(
+      {Duration duration,
+      Duration position,
+      ListenStatus status,
+      String title});
 }
 
 /// @nodoc
@@ -51,17 +57,27 @@ class _$ListenRecordStateCopyWithImpl<$Res, $Val extends ListenRecordState>
   @override
   $Res call({
     Object? duration = null,
+    Object? position = null,
     Object? status = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Duration,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ListenStatus,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -74,7 +90,11 @@ abstract class _$$ListenRecordStateImplCopyWith<$Res>
       __$$ListenRecordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Duration duration, ListenStatus status});
+  $Res call(
+      {Duration duration,
+      Duration position,
+      ListenStatus status,
+      String title});
 }
 
 /// @nodoc
@@ -91,17 +111,27 @@ class __$$ListenRecordStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? duration = null,
+    Object? position = null,
     Object? status = null,
+    Object? title = null,
   }) {
     return _then(_$ListenRecordStateImpl(
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Duration,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ListenStatus,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,18 +140,27 @@ class __$$ListenRecordStateImplCopyWithImpl<$Res>
 
 class _$ListenRecordStateImpl implements _ListenRecordState {
   const _$ListenRecordStateImpl(
-      {this.duration = Duration.zero, this.status = ListenStatus.initial});
+      {this.duration = Duration.zero,
+      this.position = Duration.zero,
+      this.status = ListenStatus.initial,
+      this.title = 'Аудиозапись'});
 
   @override
   @JsonKey()
   final Duration duration;
   @override
   @JsonKey()
+  final Duration position;
+  @override
+  @JsonKey()
   final ListenStatus status;
+  @override
+  @JsonKey()
+  final String title;
 
   @override
   String toString() {
-    return 'ListenRecordState(duration: $duration, status: $status)';
+    return 'ListenRecordState(duration: $duration, position: $position, status: $status, title: $title)';
   }
 
   @override
@@ -131,11 +170,15 @@ class _$ListenRecordStateImpl implements _ListenRecordState {
             other is _$ListenRecordStateImpl &&
             (identical(other.duration, duration) ||
                 other.duration == duration) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.position, position) ||
+                other.position == position) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, duration, status);
+  int get hashCode =>
+      Object.hash(runtimeType, duration, position, status, title);
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -150,12 +193,18 @@ class _$ListenRecordStateImpl implements _ListenRecordState {
 abstract class _ListenRecordState implements ListenRecordState {
   const factory _ListenRecordState(
       {final Duration duration,
-      final ListenStatus status}) = _$ListenRecordStateImpl;
+      final Duration position,
+      final ListenStatus status,
+      final String title}) = _$ListenRecordStateImpl;
 
   @override
   Duration get duration;
   @override
+  Duration get position;
+  @override
   ListenStatus get status;
+  @override
+  String get title;
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.

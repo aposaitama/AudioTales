@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
@@ -61,9 +63,11 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                   onTap: () => {
                                         context.read<RecordStatusBloc>().add(
                                             const ListeningRecordStatusEvent()),
-                                        context
-                                            .read<RecordBloc>()
-                                            .add(RecordEvent.stopRecording())
+                                        // context
+                                        //     .read<ListenRecordBloc>()
+                                        //     .add(const InitialPlayingEvent()),
+                                        context.read<RecordBloc>().add(
+                                            const RecordEvent.stopRecording())
                                       },
                                   child: const Text('Готово')),
                             )

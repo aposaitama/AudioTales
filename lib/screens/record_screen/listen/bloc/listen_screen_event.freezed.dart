@@ -18,43 +18,51 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ListenRecordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -63,10 +71,12 @@ mixin _$ListenRecordEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -75,10 +85,12 @@ mixin _$ListenRecordEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -87,6 +99,7 @@ mixin _$ListenRecordEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -111,6 +124,161 @@ class _$ListenRecordEventCopyWithImpl<$Res, $Val extends ListenRecordEvent>
 
   /// Create a copy of ListenRecordEvent
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$InitialPlayingEventImplCopyWith<$Res> {
+  factory _$$InitialPlayingEventImplCopyWith(_$InitialPlayingEventImpl value,
+          $Res Function(_$InitialPlayingEventImpl) then) =
+      __$$InitialPlayingEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialPlayingEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$InitialPlayingEventImpl>
+    implements _$$InitialPlayingEventImplCopyWith<$Res> {
+  __$$InitialPlayingEventImplCopyWithImpl(_$InitialPlayingEventImpl _value,
+      $Res Function(_$InitialPlayingEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$InitialPlayingEventImpl implements InitialPlayingEvent {
+  const _$InitialPlayingEventImpl();
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.initialEv()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitialPlayingEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
+    required TResult Function() add15,
+    required TResult Function() minus15,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return initialEv();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? add15,
+    TResult? Function()? minus15,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return initialEv?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? add15,
+    TResult Function()? minus15,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (initialEv != null) {
+      return initialEv();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(Add15Event value) add15,
+    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return initialEv(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(Add15Event value)? add15,
+    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return initialEv?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(Add15Event value)? add15,
+    TResult Function(Minus15Event value)? minus15,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (initialEv != null) {
+      return initialEv(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitialPlayingEvent implements ListenRecordEvent {
+  const factory InitialPlayingEvent() = _$InitialPlayingEventImpl;
 }
 
 /// @nodoc
@@ -183,14 +351,17 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return start(currentPosition);
   }
@@ -198,14 +369,16 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return start?.call(currentPosition);
   }
@@ -213,14 +386,16 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -232,6 +407,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -240,6 +416,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return start(this);
   }
@@ -247,6 +424,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -255,6 +433,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return start?.call(this);
   }
@@ -262,6 +441,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -270,6 +450,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (start != null) {
@@ -297,6 +478,8 @@ abstract class _$$UpdateCircleEventImplCopyWith<$Res> {
   factory _$$UpdateCircleEventImplCopyWith(_$UpdateCircleEventImpl value,
           $Res Function(_$UpdateCircleEventImpl) then) =
       __$$UpdateCircleEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Duration duration, Duration position});
 }
 
 /// @nodoc
@@ -309,72 +492,115 @@ class __$$UpdateCircleEventImplCopyWithImpl<$Res>
 
   /// Create a copy of ListenRecordEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? duration = null,
+    Object? position = null,
+  }) {
+    return _then(_$UpdateCircleEventImpl(
+      null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UpdateCircleEventImpl implements UpdateCircleEvent {
-  const _$UpdateCircleEventImpl();
+  const _$UpdateCircleEventImpl(this.duration, this.position);
+
+  @override
+  final Duration duration;
+  @override
+  final Duration position;
 
   @override
   String toString() {
-    return 'ListenRecordEvent.updateCircle()';
+    return 'ListenRecordEvent.updateCircle(duration: $duration, position: $position)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateCircleEventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCircleEventImpl &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.position, position) ||
+                other.position == position));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, duration, position);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCircleEventImplCopyWith<_$UpdateCircleEventImpl> get copyWith =>
+      __$$UpdateCircleEventImplCopyWithImpl<_$UpdateCircleEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
-    return updateCircle();
+    return updateCircle(duration, position);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
-    return updateCircle?.call();
+    return updateCircle?.call(duration, position);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (updateCircle != null) {
-      return updateCircle();
+      return updateCircle(duration, position);
     }
     return orElse();
   }
@@ -382,6 +608,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -390,6 +617,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return updateCircle(this);
   }
@@ -397,6 +625,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -405,6 +634,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return updateCircle?.call(this);
   }
@@ -412,6 +642,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -420,6 +651,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (updateCircle != null) {
@@ -430,7 +662,18 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
 }
 
 abstract class UpdateCircleEvent implements ListenRecordEvent {
-  const factory UpdateCircleEvent() = _$UpdateCircleEventImpl;
+  const factory UpdateCircleEvent(
+          final Duration duration, final Duration position) =
+      _$UpdateCircleEventImpl;
+
+  Duration get duration;
+  Duration get position;
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateCircleEventImplCopyWith<_$UpdateCircleEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -474,14 +717,17 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return add15();
   }
@@ -489,14 +735,16 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return add15?.call();
   }
@@ -504,14 +752,16 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (add15 != null) {
@@ -523,6 +773,7 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -531,6 +782,7 @@ class _$Add15EventImpl implements Add15Event {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return add15(this);
   }
@@ -538,6 +790,7 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -546,6 +799,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return add15?.call(this);
   }
@@ -553,6 +807,7 @@ class _$Add15EventImpl implements Add15Event {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -561,6 +816,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (add15 != null) {
@@ -615,14 +871,17 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return minus15();
   }
@@ -630,14 +889,16 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return minus15?.call();
   }
@@ -645,14 +906,16 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (minus15 != null) {
@@ -664,6 +927,7 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -672,6 +936,7 @@ class _$Minus15EventImpl implements Minus15Event {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return minus15(this);
   }
@@ -679,6 +944,7 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -687,6 +953,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return minus15?.call(this);
   }
@@ -694,6 +961,7 @@ class _$Minus15EventImpl implements Minus15Event {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -702,6 +970,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (minus15 != null) {
@@ -756,14 +1025,17 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return pause();
   }
@@ -771,14 +1043,16 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return pause?.call();
   }
@@ -786,14 +1060,16 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -805,6 +1081,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -813,6 +1090,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return pause(this);
   }
@@ -820,6 +1098,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -828,6 +1107,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return pause?.call(this);
   }
@@ -835,6 +1115,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -843,6 +1124,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -897,14 +1179,17 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return resume();
   }
@@ -912,14 +1197,16 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return resume?.call();
   }
@@ -927,14 +1214,16 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (resume != null) {
@@ -946,6 +1235,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -954,6 +1244,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return resume(this);
   }
@@ -961,6 +1252,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -969,6 +1261,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return resume?.call(this);
   }
@@ -976,6 +1269,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -984,6 +1278,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (resume != null) {
@@ -1038,14 +1333,17 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return stop();
   }
@@ -1053,14 +1351,16 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return stop?.call();
   }
@@ -1068,14 +1368,16 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (stop != null) {
@@ -1087,6 +1389,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -1095,6 +1398,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return stop(this);
   }
@@ -1102,6 +1406,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -1110,6 +1415,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return stop?.call(this);
   }
@@ -1117,6 +1423,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -1125,6 +1432,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (stop != null) {
@@ -1179,14 +1487,17 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function() updateCircle,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
+    required TResult Function(String title) addTitle,
   }) {
     return close();
   }
@@ -1194,14 +1505,16 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function()? updateCircle,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
   }) {
     return close?.call();
   }
@@ -1209,14 +1522,16 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function()? updateCircle,
+    TResult Function(Duration duration, Duration position)? updateCircle,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
     TResult Function()? close,
+    TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -1228,6 +1543,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
     required TResult Function(Add15Event value) add15,
@@ -1236,6 +1552,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
     return close(this);
   }
@@ -1243,6 +1560,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
     TResult? Function(Add15Event value)? add15,
@@ -1251,6 +1569,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
     return close?.call(this);
   }
@@ -1258,6 +1577,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
     TResult Function(Add15Event value)? add15,
@@ -1266,6 +1586,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
     TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -1277,4 +1598,195 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
 
 abstract class ClosePlayingEvent implements ListenRecordEvent {
   const factory ClosePlayingEvent() = _$ClosePlayingEventImpl;
+}
+
+/// @nodoc
+abstract class _$$AddRecordNameEventImplCopyWith<$Res> {
+  factory _$$AddRecordNameEventImplCopyWith(_$AddRecordNameEventImpl value,
+          $Res Function(_$AddRecordNameEventImpl) then) =
+      __$$AddRecordNameEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title});
+}
+
+/// @nodoc
+class __$$AddRecordNameEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$AddRecordNameEventImpl>
+    implements _$$AddRecordNameEventImplCopyWith<$Res> {
+  __$$AddRecordNameEventImplCopyWithImpl(_$AddRecordNameEventImpl _value,
+      $Res Function(_$AddRecordNameEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+  }) {
+    return _then(_$AddRecordNameEventImpl(
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddRecordNameEventImpl implements AddRecordNameEvent {
+  const _$AddRecordNameEventImpl(this.title);
+
+  @override
+  final String title;
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.addTitle(title: $title)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddRecordNameEventImpl &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddRecordNameEventImplCopyWith<_$AddRecordNameEventImpl> get copyWith =>
+      __$$AddRecordNameEventImplCopyWithImpl<_$AddRecordNameEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
+    required TResult Function() add15,
+    required TResult Function() minus15,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return addTitle(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? add15,
+    TResult? Function()? minus15,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return addTitle?.call(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? add15,
+    TResult Function()? minus15,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (addTitle != null) {
+      return addTitle(title);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(Add15Event value) add15,
+    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return addTitle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(Add15Event value)? add15,
+    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return addTitle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(Add15Event value)? add15,
+    TResult Function(Minus15Event value)? minus15,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (addTitle != null) {
+      return addTitle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddRecordNameEvent implements ListenRecordEvent {
+  const factory AddRecordNameEvent(final String title) =
+      _$AddRecordNameEventImpl;
+
+  String get title;
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AddRecordNameEventImplCopyWith<_$AddRecordNameEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

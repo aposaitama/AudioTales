@@ -72,7 +72,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         return BottomNavigationBar(
           currentIndex: state.currentIndex,
           onTap: (index) {
-            _closeBottomSheet();
+            // _closeBottomSheet();
 
             context.read<NavigationCubit>().navigateTo(index);
 

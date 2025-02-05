@@ -8,6 +8,8 @@ enum ListenStatus { initial, inProgress, pause, resume, stop, close }
 class ListenRecordState with _$ListenRecordState {
   const factory ListenRecordState({
     @Default(Duration.zero) Duration duration,
+    @Default(Duration.zero) Duration position,
     @Default(ListenStatus.initial) ListenStatus status,
+    @Default('Аудиозапись') String title,
   }) = _ListenRecordState;
 }

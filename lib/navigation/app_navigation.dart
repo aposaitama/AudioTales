@@ -20,7 +20,8 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/home',
+      // initialLocation: '/home',
+      initialLocation: '/collection/add',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
@@ -43,12 +44,11 @@ class AppRouter {
                   routes: [
                     GoRoute(
                       path: '/add',
-                      builder: (context, state) => const AddCollection(),
+                      builder: (context, state) => AddCollection(),
                       routes: [
                         GoRoute(
                           path: '/choose',
-                          builder: (context, state) =>
-                              const ChooseAudioRecords(),
+                          builder: (context, state) => ChooseAudioRecords(),
                         )
                       ],
                     ),

@@ -162,10 +162,10 @@ class _ChooseSeveralScreenState extends State<ChooseSeveralScreen> {
                 itemBuilder: (context, int index) {
                   return const Column(
                     children: [
-                      AddAudioItemTile(
-                        title: 'Малышь Кокки 1',
-                        duration: '30 минут',
-                      ),
+                      // AddAudioItemTile(
+                      //   title: 'Малышь Кокки 1',
+                      //   duration: '30 минут',
+                      // ),
                       SizedBox(
                         height: 10.0,
                       ),

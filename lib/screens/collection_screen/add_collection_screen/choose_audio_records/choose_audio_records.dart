@@ -1,16 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/widgets/add_audio_item_tile.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class ChooseAudioRecords extends StatelessWidget {
-  const ChooseAudioRecords({super.key});
+class ChooseAudioRecords extends StatefulWidget {
+  ChooseAudioRecords({super.key});
 
   @override
+  State<ChooseAudioRecords> createState() => _ChooseAudioRecordsState();
+  final List<AudioRecordsModel> selectedRecords = [];
+}
+
+class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
+  @override
   Widget build(BuildContext context) {
+    void _toggleSelection(AudioRecordsModel record, bool isSelected) {
+      setState(() {
+        if (isSelected) {
+          widget.selectedRecords.add(record);
+          print(widget.selectedRecords);
+        } else {
+          widget.selectedRecords.removeWhere((r) => r.title == record.title);
+        }
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -54,7 +77,12 @@ class ChooseAudioRecords extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: () => context.pop(),
+            onTap: () {
+              context.pop();
+              context
+                  .read<CollectionBloc>()
+                  .add(ChooseAudiosBlocEvent(widget.selectedRecords));
+            },
             child: const Padding(
               padding: EdgeInsets.only(right: 10.0, top: 15.0),
               child: Text(
@@ -131,28 +159,35 @@ class ChooseAudioRecords extends StatelessWidget {
           const SizedBox(
             height: 11.0,
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-              ),
-              child: ListView.builder(
-                itemCount: 20,
-                itemBuilder: (context, int index) {
-                  return const Column(
-                    children: [
-                      AddAudioItemTile(
-                        title: 'Малышь Кокки 1',
-                        duration: '30 минут',
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
+          BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
+            builder: (context, state) {
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                  ),
+                  child: ListView.builder(
+                    itemCount: state.audioList.length,
+                    itemBuilder: (context, int index) {
+                      return Column(
+                        children: [
+                          AddAudioItemTile(
+                            audio: state.audioList[index],
+                            isSelected: widget.selectedRecords
+                                .contains(state.audioList[index]),
+                            onSelected: (isSelected) => _toggleSelection(
+                                state.audioList[index], isSelected),
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
           )
         ],
       ),

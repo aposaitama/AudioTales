@@ -42,6 +42,7 @@ dependencies:
   go_router: ^14.6.3
   mask_text_input_formatter: ^2.9.0
   bloc:
+  path:
   flutter_bloc: ^8.1.6
   equatable: ^2.0.7
   gap: ^3.0.1
@@ -51,7 +52,10 @@ dependencies:
   permission_handler: ^11.3.1
   path_provider: ^2.1.5
   freezed_annotation: ^2.4.4
-  
+  get_it: ^8.0.3
+  shared_preferences: ^2.5.1
+  cloud_firestore: ^5.6.2
+  image_picker: ^1.1.2
   
 
 dev_dependencies:
@@ -64,6 +68,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  json_serializable: ^6.9.0
   build_runner: ^2.4.13
   freezed: ^2.5.7
 

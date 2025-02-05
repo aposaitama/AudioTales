@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -228,23 +230,29 @@ class HomeScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              Expanded(
-                                child: ListView.builder(
-                                  itemCount: 20,
-                                  itemBuilder: (context, int index) {
-                                    return const Column(
-                                      children: [
-                                        AudioItemTile(
-                                          title: 'Малышь Кокки 1',
-                                          duration: '30 минут',
-                                        ),
-                                        SizedBox(
-                                          height: 10.0,
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
+                              BlocBuilder<AudioRecordsScreenBloc,
+                                  AudioRecordsScreenState>(
+                                builder: (context, state) {
+                                  return Expanded(
+                                    child: ListView.builder(
+                                      itemCount: state.audioList.length,
+                                      itemBuilder: (context, int index) {
+                                        return Column(
+                                          children: [
+                                            AudioItemTile(
+                                              title:
+                                                  state.audioList[index].title,
+                                              duration: '30 минут',
+                                            ),
+                                            SizedBox(
+                                              height: 10.0,
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
                               )
                               // const SizedBox(
                               //   height: 54.0,
