@@ -199,6 +199,7 @@ class AddCollection extends StatelessWidget {
                                 return Column(
                                   children: [
                                     AudioItemTile(
+                                      audio: state.audiosList[index],
                                       title: state.audiosList[index].title,
                                       duration: '30 минут',
                                     ),

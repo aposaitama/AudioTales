@@ -5,6 +5,7 @@ part 'mini_player_bloc_state.freezed.dart';
 
 enum MiniPlayerStatus {
   playing,
+  paused,
   closed,
 }
 
@@ -14,5 +15,6 @@ class MiniPlayerBlocState with _$MiniPlayerBlocState {
     @Default([]) List<AudioRecordsModel> audioRecordsList,
     @Default(MiniPlayerStatus.closed) MiniPlayerStatus status,
     @Default(Duration.zero) Duration position,
+    @Default(0) int currentPlayingIndex,
   }) = _MiniPlayerBlocState;
 }

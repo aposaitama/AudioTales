@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/choose_audio_records.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class AudioItemTile extends StatelessWidget {
   final String title;
   final String duration;
   final Color? color;
+  final AudioRecordsModel audio;
 
   const AudioItemTile(
-      {super.key, required this.title, required this.duration, this.color});
+      {super.key,
+      required this.title,
+      required this.duration,
+      this.color,
+      required this.audio});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +34,15 @@ class AudioItemTile extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(
-                    'assets/icons/Play.svg',
-                    colorFilter: ColorFilter.mode(
-                        color ?? AppColors.blueColor, BlendMode.srcIn),
+                  GestureDetector(
+                    onTap: () => context
+                        .read<MiniPlayerBloc>()
+                        .add(MiniPlayerBlocEvent.open([audio])),
+                    child: SvgPicture.asset(
+                      'assets/icons/Play.svg',
+                      colorFilter: ColorFilter.mode(
+                          color ?? AppColors.blueColor, BlendMode.srcIn),
+                    ),
                   ),
                   const SizedBox(
                     width: 23.0,

@@ -156,6 +156,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                       return Column(
                         children: [
                           AudioItemTile(
+                            audio: audio,
                             title: audio.title,
                             duration: '30 минут',
                           ),

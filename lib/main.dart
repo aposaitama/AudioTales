@@ -10,6 +10,7 @@ import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -25,6 +26,7 @@ void main() async {
         BlocProvider(create: (_) => RecordStatusBloc()),
         BlocProvider(create: (_) => AudioRecordsScreenBloc()),
         BlocProvider(create: (_) => CollectionBloc()),
+        BlocProvider(create: (_) => MiniPlayerBloc()),
       ],
       child: const MyApp(),
     ),

@@ -240,6 +240,7 @@ class HomeScreen extends StatelessWidget {
                                         return Column(
                                           children: [
                                             AudioItemTile(
+                                              audio: state.audioList[index],
                                               title:
                                                   state.audioList[index].title,
                                               duration: '30 минут',

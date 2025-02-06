@@ -212,6 +212,7 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                   return Column(
                     children: [
                       AudioItemTile(
+                        audio: widget.collection.audiosList[index],
                         color: AppColors.greenColor,
                         title: widget.collection.audiosList[index].title,
                         duration: '30 минут',
