@@ -22,6 +22,7 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function() close,
     required TResult Function() pause,
     required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function()? close,
     TResult? Function()? pause,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function()? close,
     TResult Function()? pause,
     TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -172,6 +178,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function() close,
     required TResult Function() pause,
     required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
   }) {
     return open(audioRecordsList);
   }
@@ -183,6 +190,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function()? close,
     TResult? Function()? pause,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
   }) {
     return open?.call(audioRecordsList);
   }
@@ -194,6 +202,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function()? close,
     TResult Function()? pause,
     TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
     required TResult orElse(),
   }) {
     if (open != null) {
@@ -209,6 +218,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
   }) {
     return open(this);
   }
@@ -220,6 +230,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
   }) {
     return open?.call(this);
   }
@@ -231,6 +242,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     required TResult orElse(),
   }) {
     if (open != null) {
@@ -300,6 +312,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function() close,
     required TResult Function() pause,
     required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
   }) {
     return close();
   }
@@ -311,6 +324,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function()? close,
     TResult? Function()? pause,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
   }) {
     return close?.call();
   }
@@ -322,6 +336,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function()? close,
     TResult Function()? pause,
     TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -337,6 +352,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
   }) {
     return close(this);
   }
@@ -348,6 +364,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
   }) {
     return close?.call(this);
   }
@@ -359,6 +376,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -418,6 +436,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function() close,
     required TResult Function() pause,
     required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
   }) {
     return pause();
   }
@@ -429,6 +448,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function()? close,
     TResult? Function()? pause,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
   }) {
     return pause?.call();
   }
@@ -440,6 +460,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function()? close,
     TResult Function()? pause,
     TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -455,6 +476,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
   }) {
     return pause(this);
   }
@@ -466,6 +488,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
   }) {
     return pause?.call(this);
   }
@@ -477,6 +500,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -567,6 +591,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function() close,
     required TResult Function() pause,
     required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
   }) {
     return updateLine(position);
   }
@@ -578,6 +603,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function()? close,
     TResult? Function()? pause,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
   }) {
     return updateLine?.call(position);
   }
@@ -589,6 +615,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function()? close,
     TResult Function()? pause,
     TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
     required TResult orElse(),
   }) {
     if (updateLine != null) {
@@ -604,6 +631,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
   }) {
     return updateLine(this);
   }
@@ -615,6 +643,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
   }) {
     return updateLine?.call(this);
   }
@@ -626,6 +655,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     required TResult orElse(),
   }) {
     if (updateLine != null) {
@@ -646,4 +676,131 @@ abstract class UpdateLineMiniPlayerEvent implements MiniPlayerBlocEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateLineMiniPlayerEventImplCopyWith<_$UpdateLineMiniPlayerEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NextTrackMiniPlayerEventImplCopyWith<$Res> {
+  factory _$$NextTrackMiniPlayerEventImplCopyWith(
+          _$NextTrackMiniPlayerEventImpl value,
+          $Res Function(_$NextTrackMiniPlayerEventImpl) then) =
+      __$$NextTrackMiniPlayerEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextTrackMiniPlayerEventImplCopyWithImpl<$Res>
+    extends _$MiniPlayerBlocEventCopyWithImpl<$Res,
+        _$NextTrackMiniPlayerEventImpl>
+    implements _$$NextTrackMiniPlayerEventImplCopyWith<$Res> {
+  __$$NextTrackMiniPlayerEventImplCopyWithImpl(
+      _$NextTrackMiniPlayerEventImpl _value,
+      $Res Function(_$NextTrackMiniPlayerEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
+  const _$NextTrackMiniPlayerEventImpl();
+
+  @override
+  String toString() {
+    return 'MiniPlayerBlocEvent.nextTrack()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NextTrackMiniPlayerEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
+    required TResult Function() close,
+    required TResult Function() pause,
+    required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
+  }) {
+    return nextTrack();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult? Function()? close,
+    TResult? Function()? pause,
+    TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
+  }) {
+    return nextTrack?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult Function()? close,
+    TResult Function()? pause,
+    TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
+    required TResult orElse(),
+  }) {
+    if (nextTrack != null) {
+      return nextTrack();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenMiniPlayerEvent value) open,
+    required TResult Function(CloseMiniPlayerEvent value) close,
+    required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+  }) {
+    return nextTrack(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OpenMiniPlayerEvent value)? open,
+    TResult? Function(CloseMiniPlayerEvent value)? close,
+    TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+  }) {
+    return nextTrack?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenMiniPlayerEvent value)? open,
+    TResult Function(CloseMiniPlayerEvent value)? close,
+    TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    required TResult orElse(),
+  }) {
+    if (nextTrack != null) {
+      return nextTrack(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NextTrackMiniPlayerEvent implements MiniPlayerBlocEvent {
+  const factory NextTrackMiniPlayerEvent() = _$NextTrackMiniPlayerEventImpl;
 }

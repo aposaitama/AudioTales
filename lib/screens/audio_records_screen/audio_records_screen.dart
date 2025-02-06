@@ -9,6 +9,8 @@ import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_records.dart';
 
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class AudioRecordsScreen extends StatefulWidget {
@@ -135,7 +137,12 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             )
                           ],
                         ),
-                        const RunAllRecords()
+                        GestureDetector(
+                            onTap: () {
+                              context.read<MiniPlayerBloc>().add(
+                                  MiniPlayerBlocEvent.open(state.audioList));
+                            },
+                            child: const RunAllRecords())
                       ],
                     ),
                   )

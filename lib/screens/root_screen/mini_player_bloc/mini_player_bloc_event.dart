@@ -11,4 +11,5 @@ class MiniPlayerBlocEvent with _$MiniPlayerBlocEvent {
   const factory MiniPlayerBlocEvent.pause() = PauseMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.updateLine(Duration position) =
       UpdateLineMiniPlayerEvent;
+  const factory MiniPlayerBlocEvent.nextTrack() = NextTrackMiniPlayerEvent;
 }

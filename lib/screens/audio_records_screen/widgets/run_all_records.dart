@@ -59,7 +59,6 @@ class _RunAllRecordsState extends State<RunAllRecords> {
                   onTap: () {
                     setState(() {
                       repeatAll = !repeatAll;
-                      print(repeatAll);
                     });
                   },
                   child: SvgPicture.asset(
