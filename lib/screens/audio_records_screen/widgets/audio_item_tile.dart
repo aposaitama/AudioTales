@@ -37,7 +37,7 @@ class AudioItemTile extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: AppColors.fontColor,
                           fontSize: 14.0,
                           fontWeight: FontWeight.w500,
@@ -45,7 +45,7 @@ class AudioItemTile extends StatelessWidget {
                           fontFamily: 'TTNorms',
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4.0,
                       ),
                       Text(
