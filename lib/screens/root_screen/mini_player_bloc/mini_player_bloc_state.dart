@@ -16,5 +16,6 @@ class MiniPlayerBlocState with _$MiniPlayerBlocState {
     @Default(MiniPlayerStatus.closed) MiniPlayerStatus status,
     @Default(Duration.zero) Duration position,
     @Default(0) int currentPlayingIndex,
+    @Default(false) bool isPlayingAll,
   }) = _MiniPlayerBlocState;
 }

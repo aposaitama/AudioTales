@@ -21,6 +21,7 @@ mixin _$MiniPlayerBlocState {
   MiniPlayerStatus get status => throw _privateConstructorUsedError;
   Duration get position => throw _privateConstructorUsedError;
   int get currentPlayingIndex => throw _privateConstructorUsedError;
+  bool get isPlayingAll => throw _privateConstructorUsedError;
 
   /// Create a copy of MiniPlayerBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +40,8 @@ abstract class $MiniPlayerBlocStateCopyWith<$Res> {
       {List<AudioRecordsModel> audioRecordsList,
       MiniPlayerStatus status,
       Duration position,
-      int currentPlayingIndex});
+      int currentPlayingIndex,
+      bool isPlayingAll});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$MiniPlayerBlocStateCopyWithImpl<$Res, $Val extends MiniPlayerBlocState>
     Object? status = null,
     Object? position = null,
     Object? currentPlayingIndex = null,
+    Object? isPlayingAll = null,
   }) {
     return _then(_value.copyWith(
       audioRecordsList: null == audioRecordsList
@@ -79,6 +82,10 @@ class _$MiniPlayerBlocStateCopyWithImpl<$Res, $Val extends MiniPlayerBlocState>
           ? _value.currentPlayingIndex
           : currentPlayingIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isPlayingAll: null == isPlayingAll
+          ? _value.isPlayingAll
+          : isPlayingAll // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$MiniPlayerBlocStateImplCopyWith<$Res>
       {List<AudioRecordsModel> audioRecordsList,
       MiniPlayerStatus status,
       Duration position,
-      int currentPlayingIndex});
+      int currentPlayingIndex,
+      bool isPlayingAll});
 }
 
 /// @nodoc
@@ -115,6 +123,7 @@ class __$$MiniPlayerBlocStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? position = null,
     Object? currentPlayingIndex = null,
+    Object? isPlayingAll = null,
   }) {
     return _then(_$MiniPlayerBlocStateImpl(
       audioRecordsList: null == audioRecordsList
@@ -133,6 +142,10 @@ class __$$MiniPlayerBlocStateImplCopyWithImpl<$Res>
           ? _value.currentPlayingIndex
           : currentPlayingIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isPlayingAll: null == isPlayingAll
+          ? _value.isPlayingAll
+          : isPlayingAll // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -144,7 +157,8 @@ class _$MiniPlayerBlocStateImpl implements _MiniPlayerBlocState {
       {final List<AudioRecordsModel> audioRecordsList = const [],
       this.status = MiniPlayerStatus.closed,
       this.position = Duration.zero,
-      this.currentPlayingIndex = 0})
+      this.currentPlayingIndex = 0,
+      this.isPlayingAll = false})
       : _audioRecordsList = audioRecordsList;
 
   final List<AudioRecordsModel> _audioRecordsList;
@@ -166,10 +180,13 @@ class _$MiniPlayerBlocStateImpl implements _MiniPlayerBlocState {
   @override
   @JsonKey()
   final int currentPlayingIndex;
+  @override
+  @JsonKey()
+  final bool isPlayingAll;
 
   @override
   String toString() {
-    return 'MiniPlayerBlocState(audioRecordsList: $audioRecordsList, status: $status, position: $position, currentPlayingIndex: $currentPlayingIndex)';
+    return 'MiniPlayerBlocState(audioRecordsList: $audioRecordsList, status: $status, position: $position, currentPlayingIndex: $currentPlayingIndex, isPlayingAll: $isPlayingAll)';
   }
 
   @override
@@ -183,7 +200,9 @@ class _$MiniPlayerBlocStateImpl implements _MiniPlayerBlocState {
             (identical(other.position, position) ||
                 other.position == position) &&
             (identical(other.currentPlayingIndex, currentPlayingIndex) ||
-                other.currentPlayingIndex == currentPlayingIndex));
+                other.currentPlayingIndex == currentPlayingIndex) &&
+            (identical(other.isPlayingAll, isPlayingAll) ||
+                other.isPlayingAll == isPlayingAll));
   }
 
   @override
@@ -192,7 +211,8 @@ class _$MiniPlayerBlocStateImpl implements _MiniPlayerBlocState {
       const DeepCollectionEquality().hash(_audioRecordsList),
       status,
       position,
-      currentPlayingIndex);
+      currentPlayingIndex,
+      isPlayingAll);
 
   /// Create a copy of MiniPlayerBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -209,7 +229,8 @@ abstract class _MiniPlayerBlocState implements MiniPlayerBlocState {
       {final List<AudioRecordsModel> audioRecordsList,
       final MiniPlayerStatus status,
       final Duration position,
-      final int currentPlayingIndex}) = _$MiniPlayerBlocStateImpl;
+      final int currentPlayingIndex,
+      final bool isPlayingAll}) = _$MiniPlayerBlocStateImpl;
 
   @override
   List<AudioRecordsModel> get audioRecordsList;
@@ -219,6 +240,8 @@ abstract class _MiniPlayerBlocState implements MiniPlayerBlocState {
   Duration get position;
   @override
   int get currentPlayingIndex;
+  @override
+  bool get isPlayingAll;
 
   /// Create a copy of MiniPlayerBlocState
   /// with the given fields replaced by the non-null parameter values.

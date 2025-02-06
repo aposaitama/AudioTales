@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
@@ -11,6 +12,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_re
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class AudioRecordsScreen extends StatefulWidget {
@@ -87,6 +89,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
       ),
       body: BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
         builder: (context, state) {
+          List<AudioRecordsModel> audioList = state.audioList;
           if (state.status == AudioRecordsScreenStatus.loading) {
             context
                 .read<AudioRecordsScreenBloc>()
@@ -137,12 +140,31 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             )
                           ],
                         ),
-                        GestureDetector(
-                            onTap: () {
-                              context.read<MiniPlayerBloc>().add(
-                                  MiniPlayerBlocEvent.open(state.audioList));
-                            },
-                            child: const RunAllRecords())
+                        BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
+                          builder: (context, state) {
+                            return GestureDetector(
+                                onTap: () {
+                                  context.read<MiniPlayerBloc>().add(
+                                      MiniPlayerBlocEvent.playAll(
+                                          !state.isPlayingAll));
+                                  if (!state.isPlayingAll) {
+                                    context.read<MiniPlayerBloc>().add(
+                                        MiniPlayerBlocEvent.open(audioList));
+                                  } else {
+                                    context
+                                        .read<MiniPlayerBloc>()
+                                        .add(const MiniPlayerBlocEvent.close());
+                                  }
+
+                                  // if (!state.isPlayingAll) {
+                                  //   context
+                                  //       .read<MiniPlayerBloc>()
+                                  //       .add(MiniPlayerBlocEvent.close());
+                                  // }
+                                },
+                                child: const RunAllRecords());
+                          },
+                        )
                       ],
                     ),
                   )

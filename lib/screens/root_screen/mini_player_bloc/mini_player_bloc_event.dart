@@ -9,7 +9,10 @@ class MiniPlayerBlocEvent with _$MiniPlayerBlocEvent {
       List<AudioRecordsModel> audioRecordsList) = OpenMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.close() = CloseMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.pause() = PauseMiniPlayerEvent;
+  const factory MiniPlayerBlocEvent.resume() = ResumeMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.updateLine(Duration position) =
       UpdateLineMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.nextTrack() = NextTrackMiniPlayerEvent;
+  const factory MiniPlayerBlocEvent.playAll(bool isPlayAll) =
+      PlayAllTrackMiniPlayerEvent;
 }

@@ -21,8 +21,10 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,8 +32,10 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,8 +43,10 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,8 +55,10 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,8 +66,10 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,8 +77,10 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,8 +189,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) {
     return open(audioRecordsList);
   }
@@ -189,8 +203,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) {
     return open?.call(audioRecordsList);
   }
@@ -201,8 +217,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) {
     if (open != null) {
@@ -217,8 +235,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
     return open(this);
   }
@@ -229,8 +249,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
     return open?.call(this);
   }
@@ -241,8 +263,10 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) {
     if (open != null) {
@@ -311,8 +335,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) {
     return close();
   }
@@ -323,8 +349,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) {
     return close?.call();
   }
@@ -335,8 +363,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -351,8 +381,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
     return close(this);
   }
@@ -363,8 +395,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
     return close?.call(this);
   }
@@ -375,8 +409,10 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) {
     if (close != null) {
@@ -435,8 +471,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) {
     return pause();
   }
@@ -447,8 +485,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) {
     return pause?.call();
   }
@@ -459,8 +499,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -475,8 +517,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
     return pause(this);
   }
@@ -487,8 +531,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
     return pause?.call(this);
   }
@@ -499,8 +545,10 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) {
     if (pause != null) {
@@ -512,6 +560,143 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
 
 abstract class PauseMiniPlayerEvent implements MiniPlayerBlocEvent {
   const factory PauseMiniPlayerEvent() = _$PauseMiniPlayerEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ResumeMiniPlayerEventImplCopyWith<$Res> {
+  factory _$$ResumeMiniPlayerEventImplCopyWith(
+          _$ResumeMiniPlayerEventImpl value,
+          $Res Function(_$ResumeMiniPlayerEventImpl) then) =
+      __$$ResumeMiniPlayerEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ResumeMiniPlayerEventImplCopyWithImpl<$Res>
+    extends _$MiniPlayerBlocEventCopyWithImpl<$Res, _$ResumeMiniPlayerEventImpl>
+    implements _$$ResumeMiniPlayerEventImplCopyWith<$Res> {
+  __$$ResumeMiniPlayerEventImplCopyWithImpl(_$ResumeMiniPlayerEventImpl _value,
+      $Res Function(_$ResumeMiniPlayerEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
+  const _$ResumeMiniPlayerEventImpl();
+
+  @override
+  String toString() {
+    return 'MiniPlayerBlocEvent.resume()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResumeMiniPlayerEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
+    required TResult Function() close,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
+  }) {
+    return resume();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult? Function()? close,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
+  }) {
+    return resume?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult Function()? close,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenMiniPlayerEvent value) open,
+    required TResult Function(CloseMiniPlayerEvent value) close,
+    required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
+    required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
+  }) {
+    return resume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OpenMiniPlayerEvent value)? open,
+    TResult? Function(CloseMiniPlayerEvent value)? close,
+    TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
+    TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+  }) {
+    return resume?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenMiniPlayerEvent value)? open,
+    TResult Function(CloseMiniPlayerEvent value)? close,
+    TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
+    TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+    required TResult orElse(),
+  }) {
+    if (resume != null) {
+      return resume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ResumeMiniPlayerEvent implements MiniPlayerBlocEvent {
+  const factory ResumeMiniPlayerEvent() = _$ResumeMiniPlayerEventImpl;
 }
 
 /// @nodoc
@@ -590,8 +775,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) {
     return updateLine(position);
   }
@@ -602,8 +789,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) {
     return updateLine?.call(position);
   }
@@ -614,8 +803,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) {
     if (updateLine != null) {
@@ -630,8 +821,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
     return updateLine(this);
   }
@@ -642,8 +835,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
     return updateLine?.call(this);
   }
@@ -654,8 +849,10 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) {
     if (updateLine != null) {
@@ -726,8 +923,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
     required TResult Function() close,
     required TResult Function() pause,
+    required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
     required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
   }) {
     return nextTrack();
   }
@@ -738,8 +937,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult? Function()? close,
     TResult? Function()? pause,
+    TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
     TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
   }) {
     return nextTrack?.call();
   }
@@ -750,8 +951,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
     TResult Function()? close,
     TResult Function()? pause,
+    TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
     TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
   }) {
     if (nextTrack != null) {
@@ -766,8 +969,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     required TResult Function(OpenMiniPlayerEvent value) open,
     required TResult Function(CloseMiniPlayerEvent value) close,
     required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
     return nextTrack(this);
   }
@@ -778,8 +983,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult? Function(OpenMiniPlayerEvent value)? open,
     TResult? Function(CloseMiniPlayerEvent value)? close,
     TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
     return nextTrack?.call(this);
   }
@@ -790,8 +997,10 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult Function(OpenMiniPlayerEvent value)? open,
     TResult Function(CloseMiniPlayerEvent value)? close,
     TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
   }) {
     if (nextTrack != null) {
@@ -803,4 +1012,180 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
 
 abstract class NextTrackMiniPlayerEvent implements MiniPlayerBlocEvent {
   const factory NextTrackMiniPlayerEvent() = _$NextTrackMiniPlayerEventImpl;
+}
+
+/// @nodoc
+abstract class _$$PlayAllTrackMiniPlayerEventImplCopyWith<$Res> {
+  factory _$$PlayAllTrackMiniPlayerEventImplCopyWith(
+          _$PlayAllTrackMiniPlayerEventImpl value,
+          $Res Function(_$PlayAllTrackMiniPlayerEventImpl) then) =
+      __$$PlayAllTrackMiniPlayerEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isPlayAll});
+}
+
+/// @nodoc
+class __$$PlayAllTrackMiniPlayerEventImplCopyWithImpl<$Res>
+    extends _$MiniPlayerBlocEventCopyWithImpl<$Res,
+        _$PlayAllTrackMiniPlayerEventImpl>
+    implements _$$PlayAllTrackMiniPlayerEventImplCopyWith<$Res> {
+  __$$PlayAllTrackMiniPlayerEventImplCopyWithImpl(
+      _$PlayAllTrackMiniPlayerEventImpl _value,
+      $Res Function(_$PlayAllTrackMiniPlayerEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isPlayAll = null,
+  }) {
+    return _then(_$PlayAllTrackMiniPlayerEventImpl(
+      null == isPlayAll
+          ? _value.isPlayAll
+          : isPlayAll // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
+  const _$PlayAllTrackMiniPlayerEventImpl(this.isPlayAll);
+
+  @override
+  final bool isPlayAll;
+
+  @override
+  String toString() {
+    return 'MiniPlayerBlocEvent.playAll(isPlayAll: $isPlayAll)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PlayAllTrackMiniPlayerEventImpl &&
+            (identical(other.isPlayAll, isPlayAll) ||
+                other.isPlayAll == isPlayAll));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isPlayAll);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PlayAllTrackMiniPlayerEventImplCopyWith<_$PlayAllTrackMiniPlayerEventImpl>
+      get copyWith => __$$PlayAllTrackMiniPlayerEventImplCopyWithImpl<
+          _$PlayAllTrackMiniPlayerEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
+    required TResult Function() close,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function(Duration position) updateLine,
+    required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
+  }) {
+    return playAll(isPlayAll);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult? Function()? close,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function(Duration position)? updateLine,
+    TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
+  }) {
+    return playAll?.call(isPlayAll);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult Function()? close,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function(Duration position)? updateLine,
+    TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
+    required TResult orElse(),
+  }) {
+    if (playAll != null) {
+      return playAll(isPlayAll);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenMiniPlayerEvent value) open,
+    required TResult Function(CloseMiniPlayerEvent value) close,
+    required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
+    required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
+  }) {
+    return playAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OpenMiniPlayerEvent value)? open,
+    TResult? Function(CloseMiniPlayerEvent value)? close,
+    TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
+    TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+  }) {
+    return playAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenMiniPlayerEvent value)? open,
+    TResult Function(CloseMiniPlayerEvent value)? close,
+    TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
+    TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+    required TResult orElse(),
+  }) {
+    if (playAll != null) {
+      return playAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PlayAllTrackMiniPlayerEvent implements MiniPlayerBlocEvent {
+  const factory PlayAllTrackMiniPlayerEvent(final bool isPlayAll) =
+      _$PlayAllTrackMiniPlayerEventImpl;
+
+  bool get isPlayAll;
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PlayAllTrackMiniPlayerEventImplCopyWith<_$PlayAllTrackMiniPlayerEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

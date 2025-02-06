@@ -50,7 +50,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                               : GestureDetector(
                                   onTap: () => context
                                       .read<MiniPlayerBloc>()
-                                      .add(const PauseMiniPlayerEvent()),
+                                      .add(const ResumeMiniPlayerEvent()),
                                   child: SvgPicture.asset(
                                     'assets/icons/Play.svg',
                                     colorFilter: const ColorFilter.mode(
@@ -58,11 +58,12 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   ),
                                 ),
                         ),
-                        const Column(
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Малішь коки 1',
+                              state.audioRecordsList[state.currentPlayingIndex]
+                                  .title,
                               style: AppTextStyles.subtitleWhite,
                             )
                           ],
