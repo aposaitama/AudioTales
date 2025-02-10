@@ -36,6 +36,12 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
           add(const NextTrackMiniPlayerEvent());
         },
       );
+      _player.setSubscriptionDuration(const Duration(milliseconds: 100));
+      _player.onProgress!.listen((event) {
+        if (state.status == MiniPlayerStatus.playing) {
+          add(MiniPlayerBlocEvent.updateLine(event.position));
+        }
+      });
     } catch (e) {
       print(e);
     }
@@ -99,5 +105,7 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   }
 
   Future<void> _updateLine(UpdateLineMiniPlayerEvent event,
-      Emitter<MiniPlayerBlocState> emit) async {}
+      Emitter<MiniPlayerBlocState> emit) async {
+    emit(state.copyWith(position: event.position));
+  }
 }

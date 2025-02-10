@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class AudioItemTile extends StatelessWidget {
   final String title;
@@ -90,7 +94,7 @@ class AudioItemTile extends StatelessWidget {
                         ),
                         const SizedBox(height: 4.0),
                         Text(
-                          duration,
+                          audio.duration,
                           style: TextStyle(
                             color: AppColors.fontColor.withOpacity(0.5),
                             fontSize: 14.0,
@@ -105,9 +109,55 @@ class AudioItemTile extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 9.0),
-                  child: SvgPicture.asset('assets/icons/SmalDots.svg'),
-                ),
+                    padding: const EdgeInsets.only(right: 9.0),
+                    child: PopupMenuButton<String>(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                      ),
+                      color: Colors.white,
+                      offset: const Offset(-10, 45),
+                      icon: SvgPicture.asset('assets/icons/SmalDots.svg'),
+                      onSelected: (value) {
+                        if (value == 'edit') {
+                        } else if (value == 'delete') {
+                          context.read<AudioRecordsScreenBloc>().add(
+                                DeleteAudioRecordsScreenStateEvent(audio.title),
+                              );
+                        } else if (value == 'choose') {
+                          context.go('/collection/info/choose');
+                        }
+                      },
+                      itemBuilder: (context) => [
+                        const PopupMenuItem(
+                          value: 'edit',
+                          child: Text(
+                            'Переименовать',
+                            style: AppTextStyles.subtitleTall,
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'choose',
+                          child: Text(
+                            'Добавить в подборку',
+                            style: AppTextStyles.subtitleTall,
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'delete',
+                          child: Text(
+                            'Удалить',
+                            style: AppTextStyles.subtitleTall,
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'share',
+                          child: Text(
+                            'Поделиться',
+                            style: AppTextStyles.subtitleTall,
+                          ),
+                        ),
+                      ],
+                    )),
               ],
             ),
           ),

@@ -8,33 +8,34 @@ import 'package:path/path.dart';
 class StorageService {
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  Future<List<AudioRecordsModel>> getAudioRecords() async {
-    try {
-      // Отримуємо список всіх файлів з папки 'recordings'
-      final ListResult result = await _storage.ref('recordings').listAll();
+  // Future<List<AudioRecordsModel>> getAudioRecords() async {
+  //   try {
+  //     // Отримуємо список всіх файлів з папки 'recordings'
+  //     final ListResult result = await _storage.ref('recordings').listAll();
 
-      // Перетворюємо список файлів на список моделей AudioRecordsModel
-      List<AudioRecordsModel> audioRecords =
-          await Future.wait(result.items.map((Reference ref) async {
-        // Отримуємо URL для кожного файлу
-        String audioUrl = await ref.getDownloadURL();
+  //     // Перетворюємо список файлів на список моделей AudioRecordsModel
+  //     List<AudioRecordsModel> audioRecords =
+  //         await Future.wait(result.items.map((Reference ref) async {
+  //       // Отримуємо URL для кожного файлу
+  //       String audioUrl = await ref.getDownloadURL();
 
-        // Можемо використовувати ім'я файлу як текст
-        String text = ref.name;
+  //       // Можемо використовувати ім'я файлу як текст
+  //       String text = ref.name;
 
-        return AudioRecordsModel(
-          title: text,
-          url: audioUrl,
-        );
-      }));
+  //       return AudioRecordsModel(
+  //         title: text,
+  //         url: audioUrl,
+  //         duration:
+  //       );
+  //     }));
 
-      return audioRecords;
-    } catch (e) {
-      // Якщо сталася помилка, виводимо її і повертаємо порожній список
-      print('Error getting audio records: $e');
-      return [];
-    }
-  }
+  //     return audioRecords;
+  //   } catch (e) {
+  //     // Якщо сталася помилка, виводимо її і повертаємо порожній список
+  //     print('Error getting audio records: $e');
+  //     return [];
+  //   }
+  // }
 
   Future<String> uploadFile(String filePath, String title) async {
     try {

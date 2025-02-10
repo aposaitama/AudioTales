@@ -6,7 +6,8 @@ class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final uid = 'h0xeD3p0jwqRcLqOGp0U';
 
-  Future<void> saveUserAudio(String title, String downloadUrl) async {
+  Future<void> saveUserAudio(
+      String title, String downloadUrl, String duration) async {
     try {
       await _firestore
           .collection('users')
@@ -15,6 +16,7 @@ class FirestoreService {
           .add({
         'title': title,
         'url': downloadUrl,
+        'duration': duration,
       });
       print('Аудіо успішно збережено в Firestore!');
     } catch (e) {
@@ -44,6 +46,47 @@ class FirestoreService {
       print('Аудіо успішно збережено в Firestore!');
     } catch (e) {
       print('Помилка при збереженні аудіо: $e');
+    }
+  }
+
+  Future<void> deleteAudio(String audioTitle) async {
+    try {
+      QuerySnapshot audioSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .where('title', isEqualTo: audioTitle)
+          .get();
+
+      if (audioSnapshot.docs.isNotEmpty) {
+        for (var doc in audioSnapshot.docs) {
+          // Переміщаємо аудіо в колекцію deletedAudios
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('deletedAudios')
+              .add({
+            'title': doc['title'],
+            'url': doc['url'],
+            'duration': doc['duration'],
+            'deletedAt': Timestamp.now(), // час видалення
+          });
+
+          // Видаляємо аудіо з поточної колекції
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('audios')
+              .doc(doc.id)
+              .delete();
+
+          print('Аудіо успішно видалено і переміщено в deletedAudios!');
+        }
+      } else {
+        print('Аудіо з назвою $audioTitle не знайдено');
+      }
+    } catch (e) {
+      print('Помилка при видаленні аудіо: $e');
     }
   }
 

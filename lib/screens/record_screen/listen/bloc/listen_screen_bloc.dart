@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
@@ -126,21 +127,18 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   Future<void> _close(
       ClosePlayingEvent event, Emitter<ListenRecordState> emit) async {
     await _player.closePlayer();
+    var cancel = BotToast.showLoading();
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/record.aac';
-
-    //url file in future.
     String fileUrl =
         await _firebaseStorageService.uploadFile(filePath, state.title);
-
-    print(fileUrl);
-    print(state.title);
-    await _firebaseFirestoreService.saveUserAudio(state.title, fileUrl);
+    await _firebaseFirestoreService.saveUserAudio(
+        state.title, fileUrl, state.duration.toString());
 
     final file = File(filePath);
     if (await file.exists()) {
       await file.delete();
-      print('Файл успішно видалено з локального сховища.');
+      cancel();
     }
     emit(state.copyWith(
         status: ListenStatus.close,

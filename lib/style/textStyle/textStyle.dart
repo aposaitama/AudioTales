@@ -60,10 +60,18 @@ class AppTextStyles {
     letterSpacing: 1,
     fontFamily: 'TTNorms',
   );
+  static const TextStyle subtitleTall = TextStyle(
+    color: AppColors.fontColor,
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
   static const TextStyle subtitleWhite = TextStyle(
     color: Colors.white,
     fontSize: 14.0,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w500,
     height: 1.0,
     letterSpacing: 1,
     fontFamily: 'TTNorms',
@@ -71,6 +79,14 @@ class AppTextStyles {
   static const TextStyle subtitleRed = TextStyle(
     color: AppColors.redColor,
     fontSize: 14.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+  static const TextStyle timeTextWhite = TextStyle(
+    color: Colors.white,
+    fontSize: 10.0,
     fontWeight: FontWeight.w500,
     height: 1.0,
     letterSpacing: 1,

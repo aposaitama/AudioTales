@@ -11,6 +11,7 @@ _$AudioRecordsModelImpl _$$AudioRecordsModelImplFromJson(
     _$AudioRecordsModelImpl(
       title: json['title'] as String,
       url: json['url'] as String,
+      duration: json['duration'] as String,
     );
 
 Map<String, dynamic> _$$AudioRecordsModelImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$AudioRecordsModelImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'url': instance.url,
+      'duration': instance.duration,
     };

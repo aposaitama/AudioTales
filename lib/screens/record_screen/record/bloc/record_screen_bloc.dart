@@ -30,7 +30,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
       await _recorder!.openRecorder();
       _isRecorderOpen = true;
     } else if (!_isRecorderOpen) {
-      return; // мікрофон не надано або Recorder вже відкритий
+      return;
     }
 
     try {

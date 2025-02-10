@@ -103,7 +103,6 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
               Stack(
                 children: [
                   const CustomProfileTopClipPath(
-                    minusHeigth: 60,
                     backgroundColor: AppColors.blueColor,
                   ),
                   Padding(

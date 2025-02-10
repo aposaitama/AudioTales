@@ -9,4 +9,7 @@ class AudioRecordsScreenStateEvent with _$AudioRecordsScreenStateEvent {
       LoadingAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.loaded(
       List<AudioRecordsModel> audioList) = LoadedAudioRecordsScreenStateEvent;
+
+  const factory AudioRecordsScreenStateEvent.deleteAudio(String title) =
+      DeleteAudioRecordsScreenStateEvent;
 }
