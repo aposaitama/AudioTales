@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
@@ -202,6 +204,24 @@ class AddCollection extends StatelessWidget {
                                       audio: state.audiosList[index],
                                       title: state.audiosList[index].title,
                                       duration: '30 минут',
+                                      onRename: () {
+                                        print("Переименовать натиснуто");
+                                      },
+                                      onDelete: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              DeleteAudioRecordsScreenStateEvent(
+                                                  state
+                                                      .audiosList[index].title),
+                                            );
+                                      },
+                                      onChoose: () {
+                                        context.go('/collection/info/choose');
+                                      },
+                                      onShare: () {
+                                        print("Поделиться натиснуто");
+                                      },
                                     ),
                                     const SizedBox(
                                       height: 10.0,

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
@@ -244,6 +245,28 @@ class HomeScreen extends StatelessWidget {
                                               title:
                                                   state.audioList[index].title,
                                               duration: '30 минут',
+                                              onRename: () {
+                                                print(
+                                                    "Переименовать натиснуто");
+                                              },
+                                              onDelete: () {
+                                                context
+                                                    .read<
+                                                        AudioRecordsScreenBloc>()
+                                                    .add(
+                                                      DeleteAudioRecordsScreenStateEvent(
+                                                        state.audioList[index]
+                                                            .title,
+                                                      ),
+                                                    );
+                                              },
+                                              onChoose: () {
+                                                context.go(
+                                                    '/collection/info/choose');
+                                              },
+                                              onShare: () {
+                                                print("Поделиться натиснуто");
+                                              },
                                             ),
                                             SizedBox(
                                               height: 10.0,

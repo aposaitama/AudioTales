@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
@@ -187,6 +188,21 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             audio: audio,
                             title: audio.title,
                             duration: '30 минут',
+                            onRename: () {
+                              print("Переименовать натиснуто");
+                            },
+                            onDelete: () {
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    DeleteAudioRecordsScreenStateEvent(
+                                        audio.title),
+                                  );
+                            },
+                            onChoose: () {
+                              context.go('/collection/info/choose');
+                            },
+                            onShare: () {
+                              print("Поделиться натиснуто");
+                            },
                           ),
                           const SizedBox(
                             height: 10.0,

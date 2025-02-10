@@ -60,7 +60,6 @@ class FirestoreService {
 
       if (audioSnapshot.docs.isNotEmpty) {
         for (var doc in audioSnapshot.docs) {
-          // Переміщаємо аудіо в колекцію deletedAudios
           await _firestore
               .collection('users')
               .doc(uid)
@@ -69,10 +68,9 @@ class FirestoreService {
             'title': doc['title'],
             'url': doc['url'],
             'duration': doc['duration'],
-            'deletedAt': Timestamp.now(), // час видалення
+            'deletedAt': Timestamp.now(),
           });
 
-          // Видаляємо аудіо з поточної колекції
           await _firestore
               .collection('users')
               .doc(uid)
@@ -87,6 +85,44 @@ class FirestoreService {
       }
     } catch (e) {
       print('Помилка при видаленні аудіо: $e');
+    }
+  }
+
+  Future<void> deleteAudioFromCollection(
+      String collectionTitle, String audioTitle) async {
+    try {
+      // Отримуємо колекції користувача з Firestore
+      QuerySnapshot collectionSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('collections')
+          .where('title', isEqualTo: collectionTitle)
+          .get();
+
+      if (collectionSnapshot.docs.isNotEmpty) {
+        for (var collectionDoc in collectionSnapshot.docs) {
+          // Оновлюємо список аудіозаписів, видаляючи потрібний аудіозапис
+          List<dynamic> audiosList = collectionDoc['audiosList'];
+          audiosList.removeWhere((audio) => audio['title'] == audioTitle);
+
+          // Оновлюємо документ колекції в Firestore
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('collections')
+              .doc(collectionDoc.id)
+              .update({
+            'audiosList': audiosList,
+          });
+
+          print(
+              'Аудіозапис $audioTitle успішно видалений з колекції $collectionTitle!');
+        }
+      } else {
+        print('Колекція з назвою $collectionTitle не знайдена');
+      }
+    } catch (e) {
+      print('Помилка при видаленні аудіозапису з колекції: $e');
     }
   }
 

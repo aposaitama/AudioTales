@@ -54,12 +54,36 @@ String _getRouteFromIndex(int currentIndex) {
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   bool isBottomSheetOpen = false;
 
-  void _closeBottomSheet() {
-    if (isBottomSheetOpen) {
-      Navigator.pop(context);
-      setState(() {
-        isBottomSheetOpen = false;
-      });
+  void _onTap(index) {
+    context.read<NavigationCubit>().navigateTo(index);
+
+    switch (index) {
+      case 0:
+        context.go('/home');
+        break;
+      case 1:
+        context.go('/collection');
+        break;
+      case 2:
+        context
+            .read<RecordStatusBloc>()
+            .add(const RecordingRecordStatusEvent());
+        showBottomSheet(
+            context: context,
+            builder: (context) {
+              return const RecordScreen();
+            });
+        setState(() {
+          isBottomSheetOpen = true;
+        });
+
+        break;
+      case 3:
+        context.go('/audio_records');
+        break;
+      case 4:
+        context.go('/profile');
+        break;
     }
   }
 
@@ -71,45 +95,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
         return BottomNavigationBar(
           currentIndex: state.currentIndex,
-          onTap: (index) {
-            // _closeBottomSheet();
-
-            context.read<NavigationCubit>().navigateTo(index);
-
-            switch (index) {
-              case 0:
-                context.go('/home');
-                break;
-              case 1:
-                context.go('/collection');
-                break;
-              case 2:
-                context
-                    .read<RecordStatusBloc>()
-                    .add(const RecordingRecordStatusEvent());
-                showBottomSheet(
-                    context: context,
-                    builder: (context) {
-                      return const RecordScreen();
-                    });
-                setState(() {
-                  isBottomSheetOpen = true;
-                  print(isBottomSheetOpen);
-                });
-                // widget.scaffoldKey.currentState?.showBottomSheet(
-                //   (context) => const RecordScreen(),
-                // );
-                // context.go('/record');
-
-                break;
-              case 3:
-                context.go('/audio_records');
-                break;
-              case 4:
-                context.go('/profile');
-                break;
-            }
-          },
+          onTap: _onTap,
           selectedItemColor: AppColors.purpleColor,
           unselectedItemColor: AppColors.fontColor,
           selectedLabelStyle: const TextStyle(

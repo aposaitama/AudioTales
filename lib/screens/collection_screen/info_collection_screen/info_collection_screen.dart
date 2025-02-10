@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -216,6 +219,16 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                         color: AppColors.greenColor,
                         title: widget.collection.audiosList[index].title,
                         duration: '30 минут',
+                        onRename: () {
+                          print("Переименовать натиснуто");
+                        },
+                        onDelete: () {},
+                        onChoose: () {
+                          context.go('/collection/info/choose');
+                        },
+                        onShare: () {
+                          print("Поделиться натиснуто");
+                        },
                       ),
                       const SizedBox(
                         height: 10.0,

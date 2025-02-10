@@ -6,11 +6,9 @@ import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
-import 'package:memory_box_avada/sources/storage_service.dart';
 
 class AudioRecordsScreenBloc
     extends Bloc<AudioRecordsScreenStateEvent, AudioRecordsScreenState> {
-  final StorageService _firebaseStorageService = locator<StorageService>();
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
   StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
