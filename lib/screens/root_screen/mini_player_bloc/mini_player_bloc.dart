@@ -1,10 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:flutter_sound/public/flutter_sound_player.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_state.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/screens/root_screen/widgets/mini_player.dart';
 
 class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   final FlutterSoundPlayer _player = FlutterSoundPlayer();

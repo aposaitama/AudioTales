@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -80,19 +82,16 @@ class CollectionScreen extends StatelessWidget {
           BlocBuilder<CollectionBloc, CollectionBlocState>(
             builder: (context, state) {
               if (state.status == CollectionBlocStatus.loading) {
-                context
-                    .read<CollectionBloc>()
-                    .add(const CollectionBlocEvent.loaded([]));
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (state.collectionList.isEmpty) {
+                return const Center(child: Text('Нет подборок'));
               }
               return Padding(
                 padding: const EdgeInsets.only(top: 40.0),
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     final double tileWidth = constraints.maxWidth / 2 - 24.0;
-
                     return GridView.builder(
                       padding: const EdgeInsets.all(16.0),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -104,13 +103,18 @@ class CollectionScreen extends StatelessWidget {
                       itemCount: state.collectionList.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
-                            onTap: () => context.go(
-                                  '/collection/info',
-                                  extra: state.collectionList[index],
-                                ),
-                            child: CollectionItemTile(
-                              collection: state.collectionList[index],
-                            ));
+                          onTap: () {
+                            context.go('/collection/info');
+                            context.read<InfoCollectionBloc>().add(
+                                  LoadingInfoCollectionBlocEvent(
+                                    state.collectionList[index],
+                                  ),
+                                );
+                          },
+                          child: CollectionItemTile(
+                            collection: state.collectionList[index],
+                          ),
+                        );
                       },
                     );
                   },

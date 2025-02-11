@@ -5,11 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_records.dart';
-
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
@@ -25,11 +23,6 @@ class AudioRecordsScreen extends StatefulWidget {
 }
 
 class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,26 +136,28 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                         BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
                           builder: (context, state) {
                             return GestureDetector(
-                                onTap: () {
+                              onTap: () {
+                                context.read<MiniPlayerBloc>().add(
+                                    MiniPlayerBlocEvent.playAll(
+                                        !state.isPlayingAll));
+                                if (!state.isPlayingAll) {
                                   context.read<MiniPlayerBloc>().add(
-                                      MiniPlayerBlocEvent.playAll(
-                                          !state.isPlayingAll));
-                                  if (!state.isPlayingAll) {
-                                    context.read<MiniPlayerBloc>().add(
-                                        MiniPlayerBlocEvent.open(audioList));
-                                  } else {
-                                    context
-                                        .read<MiniPlayerBloc>()
-                                        .add(const MiniPlayerBlocEvent.close());
-                                  }
+                                        MiniPlayerBlocEvent.open(audioList),
+                                      );
+                                } else {
+                                  context.read<MiniPlayerBloc>().add(
+                                        const MiniPlayerBlocEvent.close(),
+                                      );
+                                }
 
-                                  // if (!state.isPlayingAll) {
-                                  //   context
-                                  //       .read<MiniPlayerBloc>()
-                                  //       .add(MiniPlayerBlocEvent.close());
-                                  // }
-                                },
-                                child: const RunAllRecords());
+                                // if (!state.isPlayingAll) {
+                                //   context
+                                //       .read<MiniPlayerBloc>()
+                                //       .add(MiniPlayerBlocEvent.close());
+                                // }
+                              },
+                              child: const RunAllRecords(),
+                            );
                           },
                         )
                       ],

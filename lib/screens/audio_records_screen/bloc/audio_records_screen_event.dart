@@ -12,4 +12,7 @@ class AudioRecordsScreenStateEvent with _$AudioRecordsScreenStateEvent {
 
   const factory AudioRecordsScreenStateEvent.deleteAudio(String title) =
       DeleteAudioRecordsScreenStateEvent;
+  const factory AudioRecordsScreenStateEvent.deleteAudioFromCollection(
+          String collectionTitle, String audioTitle) =
+      DeleteAudioFromCollectionRecordsScreenStateEvent;
 }

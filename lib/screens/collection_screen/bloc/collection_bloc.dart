@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
@@ -47,8 +48,17 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
 
   Future<void> _createCollection(CreateCollectionBlocEvent event,
       Emitter<CollectionBlocState> emit) async {
+    var cancel = BotToast.showLoading();
     await _firebaseFirestoreService.saveUserCollection(event.title,
         event.collectionDescription, state.audiosList, state.imageUrl);
+    cancel();
+    emit(
+      state.copyWith(
+        audiosList: [],
+        imagePath: '',
+        imageUrl: '',
+      ),
+    );
   }
 
   Future<void> _uploadImage(

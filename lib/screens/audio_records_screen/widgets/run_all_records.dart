@@ -24,19 +24,20 @@ class _RunAllRecordsState extends State<RunAllRecords> {
               width: 200,
               height: 46,
               decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      offset: const Offset(0, 5),
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(41),
-                  //onTap color Color(0xFFAAB6E2)
-                  color: isPlayingAll
-                      ? const Color(0xFFAAB6E2)
-                      : const Color(0xFF788CCD)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    offset: const Offset(0, 5),
+                    blurRadius: 10,
+                    spreadRadius: 1,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(41),
+                //onTap color Color(0xFFAAB6E2)
+                color: isPlayingAll
+                    ? const Color(0xFFAAB6E2)
+                    : const Color(0xFF788CCD),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -53,7 +54,9 @@ class _RunAllRecordsState extends State<RunAllRecords> {
               width: 155,
               height: 46,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(41), color: Colors.white),
+                borderRadius: BorderRadius.circular(41),
+                color: Colors.white,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

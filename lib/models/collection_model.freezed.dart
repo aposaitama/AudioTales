@@ -20,6 +20,7 @@ CollectionModel _$CollectionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CollectionModel {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $CollectionModelCopyWith<$Res> {
       _$CollectionModelCopyWithImpl<$Res, CollectionModel>;
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription});
@@ -63,12 +65,17 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -98,7 +105,8 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription});
@@ -117,12 +125,17 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
   }) {
     return _then(_$CollectionModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -147,7 +160,8 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionModelImpl implements _CollectionModel {
   const _$CollectionModelImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required final List<AudioRecordsModel> audiosList,
       required this.imageUrl,
       required this.collectionDescription})
@@ -156,6 +170,8 @@ class _$CollectionModelImpl implements _CollectionModel {
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionModelImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   final List<AudioRecordsModel> _audiosList;
@@ -173,7 +189,7 @@ class _$CollectionModelImpl implements _CollectionModel {
 
   @override
   String toString() {
-    return 'CollectionModel(title: $title, audiosList: $audiosList, imageUrl: $imageUrl, collectionDescription: $collectionDescription)';
+    return 'CollectionModel(id: $id, title: $title, audiosList: $audiosList, imageUrl: $imageUrl, collectionDescription: $collectionDescription)';
   }
 
   @override
@@ -181,6 +197,7 @@ class _$CollectionModelImpl implements _CollectionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
                 .equals(other._audiosList, _audiosList) &&
@@ -194,6 +211,7 @@ class _$CollectionModelImpl implements _CollectionModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       title,
       const DeepCollectionEquality().hash(_audiosList),
       imageUrl,
@@ -218,7 +236,8 @@ class _$CollectionModelImpl implements _CollectionModel {
 
 abstract class _CollectionModel implements CollectionModel {
   const factory _CollectionModel(
-      {required final String title,
+      {required final String id,
+      required final String title,
       required final List<AudioRecordsModel> audiosList,
       required final String imageUrl,
       required final String collectionDescription}) = _$CollectionModelImpl;
@@ -226,6 +245,8 @@ abstract class _CollectionModel implements CollectionModel {
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
       _$CollectionModelImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override

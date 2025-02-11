@@ -8,6 +8,7 @@ import 'package:memory_box_avada/navigation/app_navigation.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
@@ -28,6 +29,7 @@ void main() async {
         BlocProvider(create: (_) => AudioRecordsScreenBloc()),
         BlocProvider(create: (_) => CollectionBloc()),
         BlocProvider(create: (_) => MiniPlayerBloc()),
+        BlocProvider(create: (_) => InfoCollectionBloc()),
       ],
       child: const MyApp(),
     ),

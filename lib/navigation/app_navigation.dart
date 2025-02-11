@@ -56,8 +56,7 @@ class AppRouter {
                     GoRoute(
                         path: '/info',
                         builder: (context, state) {
-                          final collection = state.extra as CollectionModel;
-                          return InfoCollectionScreen(collection: collection);
+                          return const InfoCollectionScreen();
                         },
                         routes: [
                           GoRoute(
@@ -74,7 +73,7 @@ class AppRouter {
               routes: [
                 GoRoute(
                   path: '/record',
-                  builder: (context, state) => RecordScreen(),
+                  builder: (context, state) => const RecordScreen(),
                 ),
               ],
             ),
@@ -90,16 +89,17 @@ class AppRouter {
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    path: '/profile',
-                    builder: (context, state) =>
-                        ProfileScreen(scaffoldKey: scaffoldKey),
-                    routes: [
-                      GoRoute(
-                        path: 'edit',
-                        builder: (context, state) =>
-                            EditProfileScreen(scaffoldKey: scaffoldKey),
-                      ),
-                    ]),
+                  path: '/profile',
+                  builder: (context, state) =>
+                      ProfileScreen(scaffoldKey: scaffoldKey),
+                  routes: [
+                    GoRoute(
+                      path: 'edit',
+                      builder: (context, state) =>
+                          EditProfileScreen(scaffoldKey: scaffoldKey),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],

@@ -21,6 +21,8 @@ mixin _$AudioRecordsScreenStateEvent {
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
     required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
     TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
     TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +51,9 @@ mixin _$AudioRecordsScreenStateEvent {
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +61,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +70,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,6 +150,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
     required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
   }) {
     return loading();
   }
@@ -147,6 +162,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
     TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
   }) {
     return loading?.call();
   }
@@ -157,6 +174,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
     TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -173,6 +192,9 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
   }) {
     return loading(this);
   }
@@ -183,6 +205,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
   }) {
     return loading?.call(this);
   }
@@ -193,6 +217,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -294,6 +320,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
     required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
   }) {
     return loaded(audioList);
   }
@@ -304,6 +332,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
     TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
   }) {
     return loaded?.call(audioList);
   }
@@ -314,6 +344,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
     TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -330,6 +362,9 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
   }) {
     return loaded(this);
   }
@@ -340,6 +375,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
   }) {
     return loaded?.call(this);
   }
@@ -350,6 +387,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -452,6 +491,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
     required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
   }) {
     return deleteAudio(title);
   }
@@ -462,6 +503,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
     TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
   }) {
     return deleteAudio?.call(title);
   }
@@ -472,6 +515,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
     TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -488,6 +533,9 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
   }) {
     return deleteAudio(this);
   }
@@ -498,6 +546,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
   }) {
     return deleteAudio?.call(this);
   }
@@ -508,6 +558,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -529,5 +581,195 @@ abstract class DeleteAudioRecordsScreenStateEvent
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteAudioRecordsScreenStateEventImplCopyWith<
           _$DeleteAudioRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith<
+    $Res> {
+  factory _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith(
+          _$DeleteAudioFromCollectionRecordsScreenStateEventImpl value,
+          $Res Function(_$DeleteAudioFromCollectionRecordsScreenStateEventImpl)
+              then) =
+      __$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWithImpl<
+          $Res>;
+  @useResult
+  $Res call({String collectionTitle, String audioTitle});
+}
+
+/// @nodoc
+class __$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$DeleteAudioFromCollectionRecordsScreenStateEventImpl>
+    implements
+        _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWithImpl(
+      _$DeleteAudioFromCollectionRecordsScreenStateEventImpl _value,
+      $Res Function(_$DeleteAudioFromCollectionRecordsScreenStateEventImpl)
+          _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? collectionTitle = null,
+    Object? audioTitle = null,
+  }) {
+    return _then(_$DeleteAudioFromCollectionRecordsScreenStateEventImpl(
+      null == collectionTitle
+          ? _value.collectionTitle
+          : collectionTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == audioTitle
+          ? _value.audioTitle
+          : audioTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
+    implements DeleteAudioFromCollectionRecordsScreenStateEvent {
+  const _$DeleteAudioFromCollectionRecordsScreenStateEventImpl(
+      this.collectionTitle, this.audioTitle);
+
+  @override
+  final String collectionTitle;
+  @override
+  final String audioTitle;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.deleteAudioFromCollection(collectionTitle: $collectionTitle, audioTitle: $audioTitle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAudioFromCollectionRecordsScreenStateEventImpl &&
+            (identical(other.collectionTitle, collectionTitle) ||
+                other.collectionTitle == collectionTitle) &&
+            (identical(other.audioTitle, audioTitle) ||
+                other.audioTitle == audioTitle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, collectionTitle, audioTitle);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith<
+          _$DeleteAudioFromCollectionRecordsScreenStateEventImpl>
+      get copyWith =>
+          __$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWithImpl<
+                  _$DeleteAudioFromCollectionRecordsScreenStateEventImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+  }) {
+    return deleteAudioFromCollection(collectionTitle, audioTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+  }) {
+    return deleteAudioFromCollection?.call(collectionTitle, audioTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    required TResult orElse(),
+  }) {
+    if (deleteAudioFromCollection != null) {
+      return deleteAudioFromCollection(collectionTitle, audioTitle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+  }) {
+    return deleteAudioFromCollection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+  }) {
+    return deleteAudioFromCollection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    required TResult orElse(),
+  }) {
+    if (deleteAudioFromCollection != null) {
+      return deleteAudioFromCollection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAudioFromCollectionRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory DeleteAudioFromCollectionRecordsScreenStateEvent(
+          final String collectionTitle, final String audioTitle) =
+      _$DeleteAudioFromCollectionRecordsScreenStateEventImpl;
+
+  String get collectionTitle;
+  String get audioTitle;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith<
+          _$DeleteAudioFromCollectionRecordsScreenStateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

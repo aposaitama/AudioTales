@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/widgets/circle_painter.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
@@ -25,15 +24,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
     int minutes = int.parse(components[1]);
     int seconds = int.parse(secondsAndMilliseconds[0]);
 
-    // Отримуємо тільки мілісекунди
     int milliseconds = (int.parse(secondsAndMilliseconds[1]) ~/ 1000);
-
-    print('Duration is ${Duration(
-      hours: hours,
-      minutes: minutes,
-      seconds: seconds,
-      milliseconds: milliseconds,
-    )}');
 
     return Duration(
       hours: hours,
@@ -47,10 +38,6 @@ class _MiniPlayerState extends State<MiniPlayer> {
   Widget build(BuildContext context) {
     return BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
       builder: (context, state) {
-        // final Duration parsedDuration = parseDuration(
-        //     state.audioRecordsList[state.currentPlayingIndex].duration);
-        // print(state.position.toString());
-        // print(state.audioRecordsList[state.currentPlayingIndex].duration);
         return state.status == MiniPlayerStatus.playing ||
                 state.status == MiniPlayerStatus.paused
             ? Padding(
@@ -82,7 +69,9 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   child: SvgPicture.asset(
                                     'assets/icons/Pause.svg',
                                     colorFilter: const ColorFilter.mode(
-                                        Colors.white, BlendMode.srcIn),
+                                      Colors.white,
+                                      BlendMode.srcIn,
+                                    ),
                                   ),
                                 )
                               : GestureDetector(
@@ -92,7 +81,9 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   child: SvgPicture.asset(
                                     'assets/icons/Play.svg',
                                     colorFilter: const ColorFilter.mode(
-                                        Colors.white, BlendMode.srcIn),
+                                      Colors.white,
+                                      BlendMode.srcIn,
+                                    ),
                                   ),
                                 ),
                         ),
@@ -116,10 +107,12 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   6,
                                 ),
                                 painter: LinePainter(
-                                  parseDuration(state
-                                      .audioRecordsList[
-                                          state.currentPlayingIndex]
-                                      .duration),
+                                  parseDuration(
+                                    state
+                                        .audioRecordsList[
+                                            state.currentPlayingIndex]
+                                        .duration,
+                                  ),
                                   state.position,
                                 ),
                               ),

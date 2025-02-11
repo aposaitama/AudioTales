@@ -44,7 +44,9 @@ class _AddAudioItemTileState extends State<AddAudioItemTile> {
                   SvgPicture.asset(
                     'assets/icons/Play.svg',
                     colorFilter: const ColorFilter.mode(
-                        AppColors.greenColor, BlendMode.srcIn),
+                      AppColors.greenColor,
+                      BlendMode.srcIn,
+                    ),
                   ),
                   const SizedBox(width: 23.0),
                   Column(

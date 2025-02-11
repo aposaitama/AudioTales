@@ -9,6 +9,7 @@ part of 'collection_model.dart';
 _$CollectionModelImpl _$$CollectionModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectionModelImpl(
+      id: json['id'] as String,
       title: json['title'] as String,
       audiosList: (json['audiosList'] as List<dynamic>)
           .map((e) => AudioRecordsModel.fromJson(e as Map<String, dynamic>))
@@ -20,6 +21,7 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
 Map<String, dynamic> _$$CollectionModelImplToJson(
         _$CollectionModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'audiosList': instance.audiosList,
       'imageUrl': instance.imageUrl,

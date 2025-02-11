@@ -173,10 +173,13 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                         children: [
                           AddAudioItemTile(
                             audio: state.audioList[index],
-                            isSelected: widget.selectedRecords
-                                .contains(state.audioList[index]),
+                            isSelected: widget.selectedRecords.contains(
+                              state.audioList[index],
+                            ),
                             onSelected: (isSelected) => _toggleSelection(
-                                state.audioList[index], isSelected),
+                              state.audioList[index],
+                              isSelected,
+                            ),
                           ),
                           const SizedBox(
                             height: 10.0,

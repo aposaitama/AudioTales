@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:uuid/uuid.dart';
 
 class FirestoreService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  Uuid uuid = const Uuid();
   final uid = 'h0xeD3p0jwqRcLqOGp0U';
 
   Future<void> saveUserAudio(
@@ -18,10 +20,7 @@ class FirestoreService {
         'url': downloadUrl,
         'duration': duration,
       });
-      print('Аудіо успішно збережено в Firestore!');
-    } catch (e) {
-      print('Помилка при збереженні аудіо: $e');
-    }
+    } catch (e) {}
   }
 
   Future<void> saveUserCollection(
@@ -38,15 +37,13 @@ class FirestoreService {
           .doc('h0xeD3p0jwqRcLqOGp0U')
           .collection('collections')
           .add({
+        'id': uuid.v1(),
         'title': title,
         'collectionDescription': collectionDescription,
         'audiosList': serializedAudiosList,
         'imageUrl': imageUrl
       });
-      print('Аудіо успішно збережено в Firestore!');
-    } catch (e) {
-      print('Помилка при збереженні аудіо: $e');
-    }
+    } catch (e) {}
   }
 
   Future<void> deleteAudio(String audioTitle) async {
@@ -77,21 +74,14 @@ class FirestoreService {
               .collection('audios')
               .doc(doc.id)
               .delete();
-
-          print('Аудіо успішно видалено і переміщено в deletedAudios!');
         }
-      } else {
-        print('Аудіо з назвою $audioTitle не знайдено');
-      }
-    } catch (e) {
-      print('Помилка при видаленні аудіо: $e');
-    }
+      } else {}
+    } catch (e) {}
   }
 
   Future<void> deleteAudioFromCollection(
       String collectionTitle, String audioTitle) async {
     try {
-      // Отримуємо колекції користувача з Firestore
       QuerySnapshot collectionSnapshot = await _firestore
           .collection('users')
           .doc(uid)
@@ -101,11 +91,9 @@ class FirestoreService {
 
       if (collectionSnapshot.docs.isNotEmpty) {
         for (var collectionDoc in collectionSnapshot.docs) {
-          // Оновлюємо список аудіозаписів, видаляючи потрібний аудіозапис
           List<dynamic> audiosList = collectionDoc['audiosList'];
           audiosList.removeWhere((audio) => audio['title'] == audioTitle);
 
-          // Оновлюємо документ колекції в Firestore
           await _firestore
               .collection('users')
               .doc(uid)
@@ -114,16 +102,9 @@ class FirestoreService {
               .update({
             'audiosList': audiosList,
           });
-
-          print(
-              'Аудіозапис $audioTitle успішно видалений з колекції $collectionTitle!');
         }
-      } else {
-        print('Колекція з назвою $collectionTitle не знайдена');
-      }
-    } catch (e) {
-      print('Помилка при видаленні аудіозапису з колекції: $e');
-    }
+      } else {}
+    } catch (e) {}
   }
 
   Future<List<AudioRecordsModel>> getUserAudios() async {
@@ -139,12 +120,12 @@ class FirestoreService {
               AudioRecordsModel.fromJson(doc.data() as Map<String, dynamic>))
           .toList();
     } catch (e) {
-      print('Помилка при отриманні аудіозаписів: $e');
       return [];
     }
   }
 
   Stream<List<AudioRecordsModel>> getUserAudiosStream() {
+    print(uuid.v1());
     return _firestore
         .collection('users')
         .doc(uid)
@@ -172,5 +153,29 @@ class FirestoreService {
               )
               .toList(),
         );
+  }
+
+  Stream<List<AudioRecordsModel>> getUserCollectionStreamByTitle(
+      String collectionTitle) {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('collections')
+        .where('title', isEqualTo: collectionTitle)
+        .snapshots()
+        .map(
+      (snapshot) {
+        if (snapshot.docs.isEmpty) {
+          return [];
+        }
+
+        QueryDocumentSnapshot<Map<String, dynamic>> collectionDoc =
+            snapshot.docs.first;
+        List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
+        return audiosList
+            .map((audio) => AudioRecordsModel.fromJson(audio))
+            .toList();
+      },
+    );
   }
 }

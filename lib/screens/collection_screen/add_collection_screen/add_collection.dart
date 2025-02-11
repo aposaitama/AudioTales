@@ -204,9 +204,7 @@ class AddCollection extends StatelessWidget {
                                       audio: state.audiosList[index],
                                       title: state.audiosList[index].title,
                                       duration: '30 минут',
-                                      onRename: () {
-                                        print("Переименовать натиснуто");
-                                      },
+                                      onRename: () {},
                                       onDelete: () {
                                         context
                                             .read<AudioRecordsScreenBloc>()
@@ -219,9 +217,7 @@ class AddCollection extends StatelessWidget {
                                       onChoose: () {
                                         context.go('/collection/info/choose');
                                       },
-                                      onShare: () {
-                                        print("Поделиться натиснуто");
-                                      },
+                                      onShare: () {},
                                     ),
                                     const SizedBox(
                                       height: 10.0,
