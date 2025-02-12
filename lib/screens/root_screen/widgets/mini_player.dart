@@ -41,7 +41,11 @@ class _MiniPlayerState extends State<MiniPlayer> {
         return state.status == MiniPlayerStatus.playing ||
                 state.status == MiniPlayerStatus.paused
             ? Padding(
-                padding: const EdgeInsets.only(bottom: 3),
+                padding: const EdgeInsets.only(
+                  bottom: 10.0,
+                  left: 10.0,
+                  right: 10.0,
+                ),
                 child: Container(
                   height: 75,
                   decoration: BoxDecoration(

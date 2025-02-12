@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/navigation/app_navigation.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/widgets/drawer_elements_row.dart';
 
@@ -57,36 +59,49 @@ class CustomDrawer extends StatelessWidget {
                         icon: SvgPicture.asset(
                           'assets/icons/Home.svg',
                         ),
+                        onTap: () {
+                          context.go('/home');
+                        },
                       ),
                       DrawerElementsRow(
                         title: 'Профиль',
                         icon: SvgPicture.asset(
                           'assets/icons/Profile.svg',
                         ),
+                        onTap: () {},
                       ),
                       DrawerElementsRow(
                         title: 'Подборки',
                         icon: SvgPicture.asset(
                           'assets/icons/Category.svg',
                         ),
+                        onTap: () {
+                          context.go('/collection');
+                          context.pop();
+                        },
                       ),
                       DrawerElementsRow(
                         title: 'Все аудиофайлы',
                         icon: SvgPicture.asset(
                           'assets/icons/Paper.svg',
                         ),
+                        onTap: () {
+                          context.go('/audio_records');
+                        },
                       ),
                       DrawerElementsRow(
                         title: 'Поиск',
                         icon: SvgPicture.asset(
                           'assets/icons/Search.svg',
                         ),
+                        onTap: () {},
                       ),
                       DrawerElementsRow(
                         title: 'Недавно удаленные',
                         icon: SvgPicture.asset(
                           'assets/icons/Delete.svg',
                         ),
+                        onTap: () {},
                       ),
                     ],
                   ),
@@ -95,12 +110,14 @@ class CustomDrawer extends StatelessWidget {
                     icon: SvgPicture.asset(
                       'assets/icons/Paper.svg',
                     ),
+                    onTap: () {},
                   ),
                   DrawerElementsRow(
                     title: 'Написать в поддержку ',
                     icon: SvgPicture.asset(
                       'assets/icons/Edit.svg',
                     ),
+                    onTap: () {},
                   ),
                 ],
               ),

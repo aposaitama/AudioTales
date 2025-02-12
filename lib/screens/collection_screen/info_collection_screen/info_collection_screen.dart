@@ -15,7 +15,11 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/actionButton.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/run_all_collection_audios.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
+import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -37,9 +41,27 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     final state = context.read<InfoCollectionBloc>().state;
-    titleController = TextEditingController(text: state.collectionModel.title);
+    titleController = TextEditingController(
+      text: state.collectionModel.title,
+    );
     descriptionController = TextEditingController(
-        text: state.collectionModel.collectionDescription);
+      text: state.collectionModel.collectionDescription,
+    );
+  }
+
+  String formatDate(String creationTime) {
+    final dateTime = DateTime.parse(creationTime);
+    return '${dateTime.day.toString().padLeft(
+              2,
+              '0',
+            )}.'
+        '${dateTime.month.toString().padLeft(
+              2,
+              '0',
+            )}.'
+        '${dateTime.year.toString().substring(
+              2,
+            )}';
   }
 
   @override
@@ -51,7 +73,9 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
         leadingWidth: 75.0,
         leading: Builder(
           builder: (context) => Padding(
-            padding: const EdgeInsets.only(left: 15.0),
+            padding: const EdgeInsets.only(
+              left: 15.0,
+            ),
             child: Align(
               alignment: Alignment.topLeft,
               child: Container(
@@ -59,7 +83,9 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                 width: 60.0,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(
+                    15,
+                  ),
                 ),
                 child: IconButton(
                   iconSize: 36.0,
@@ -86,14 +112,16 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                   offset: const Offset(-10, 45),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
-                      Radius.circular(20.0),
+                      Radius.circular(
+                        20.0,
+                      ),
                     ),
                   ),
                   onSelected: (value) {
                     if (value == 'edit') {
-                      context
-                          .read<InfoCollectionBloc>()
-                          .add(const EditInfoCollectionBlocEvent());
+                      context.read<InfoCollectionBloc>().add(
+                            const EditInfoCollectionBlocEvent(),
+                          );
                     } else if (value == 'delete') {
                       showDialog(
                           context: context,
@@ -157,13 +185,15 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                       context.go('/collection/info/choose');
                     } else if (value == 'save') {
                       context.read<InfoCollectionBloc>().add(
-                            SaveInfoCollectionBlocEvent(titleController.text,
-                                descriptionController.text),
+                            SaveInfoCollectionBlocEvent(
+                              titleController.text,
+                              descriptionController.text,
+                            ),
                           );
                     } else if (value == 'close') {
-                      context
-                          .read<InfoCollectionBloc>()
-                          .add(const CloseInfoCollectionBlocEvent());
+                      context.read<InfoCollectionBloc>().add(
+                            const CloseInfoCollectionBlocEvent(),
+                          );
                       context.pop();
                     }
                   },
@@ -171,29 +201,41 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                       ? [
                           const PopupMenuItem(
                             value: 'save',
-                            child: Text('Сохранить'),
+                            child: Text(
+                              'Сохранить',
+                            ),
                           ),
                           const PopupMenuItem(
                             value: 'close',
-                            child: Text('Отменить'),
+                            child: Text(
+                              'Отменить',
+                            ),
                           ),
                         ]
                       : [
                           const PopupMenuItem(
                             value: 'edit',
-                            child: Text('Редактировать'),
+                            child: Text(
+                              'Редактировать',
+                            ),
                           ),
                           const PopupMenuItem(
                             value: 'choose',
-                            child: Text('Выбрать несколько'),
+                            child: Text(
+                              'Выбрать несколько',
+                            ),
                           ),
                           const PopupMenuItem(
                             value: 'delete',
-                            child: Text('Удалить подборку'),
+                            child: Text(
+                              'Удалить подборку',
+                            ),
                           ),
                           const PopupMenuItem(
                             value: 'share',
-                            child: Text('Поделиться'),
+                            child: Text(
+                              'Поделиться',
+                            ),
                           ),
                         ],
                 ),
@@ -204,6 +246,7 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
       ),
       body: BlocBuilder<InfoCollectionBloc, InfoCollectionBlocState>(
         builder: (context, state) {
+          final audioList = state.collectionModel.audiosList;
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -256,17 +299,119 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(14),
                                 child: (state.imagePath.isEmpty)
-                                    ? CachedNetworkImage(
-                                        imageUrl:
-                                            state.collectionModel.imageUrl,
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                        errorWidget: (context, error,
-                                                stackTrace) =>
-                                            const Icon(Icons.broken_image,
-                                                size: 50),
-                                      )
+                                    ? Stack(children: [
+                                        CachedNetworkImage(
+                                          imageUrl:
+                                              state.collectionModel.imageUrl,
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                          errorWidget:
+                                              (context, error, stackTrace) =>
+                                                  const Icon(
+                                            Icons.broken_image,
+                                            size: 50,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 19.0,
+                                            horizontal: 27.0,
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                formatDate(
+                                                  state.collectionModel
+                                                      .creationTime,
+                                                ),
+                                                style:
+                                                    AppTextStyles.subtitleWhite,
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        '${state.collectionModel.audiosList.length.toString()} аудио',
+                                                        style: AppTextStyles
+                                                            .subtitleWhite,
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 4.0,
+                                                      ),
+                                                      const Text(
+                                                        '2:30 часа',
+                                                        style: AppTextStyles
+                                                            .subtitleWhite,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    children: [
+                                                      BlocBuilder<
+                                                          MiniPlayerBloc,
+                                                          MiniPlayerBlocState>(
+                                                        builder:
+                                                            (context, state) {
+                                                          return GestureDetector(
+                                                            onTap: () {
+                                                              context
+                                                                  .read<
+                                                                      MiniPlayerBloc>()
+                                                                  .add(
+                                                                    MiniPlayerBlocEvent
+                                                                        .playAll(
+                                                                      !state
+                                                                          .isPlayingAll,
+                                                                    ),
+                                                                  );
+                                                              if (!state
+                                                                  .isPlayingAll) {
+                                                                context
+                                                                    .read<
+                                                                        MiniPlayerBloc>()
+                                                                    .add(
+                                                                      MiniPlayerBlocEvent
+                                                                          .open(
+                                                                        audioList,
+                                                                      ),
+                                                                    );
+                                                              } else {
+                                                                context
+                                                                    .read<
+                                                                        MiniPlayerBloc>()
+                                                                    .add(
+                                                                      const MiniPlayerBlocEvent
+                                                                          .close(),
+                                                                    );
+                                                              }
+                                                            },
+                                                            child:
+                                                                const RunAllCollectionAudios(),
+                                                          );
+                                                        },
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ])
                                     : Image.file(
                                         File(state.imagePath),
                                         width: double.infinity,
@@ -274,19 +419,23 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                         fit: BoxFit.cover,
                                         errorBuilder:
                                             (context, error, stackTrace) =>
-                                                const Icon(Icons.broken_image,
-                                                    size: 50),
+                                                const Icon(
+                                          Icons.broken_image,
+                                          size: 50,
+                                        ),
                                       ),
                               ),
                               if (state.editingMode)
                                 Center(
                                   child: GestureDetector(
-                                    onTap: () => context
-                                        .read<InfoCollectionBloc>()
-                                        .add(const InfoCollectionBlocEvent
-                                            .chooseImage()),
+                                    onTap: () =>
+                                        context.read<InfoCollectionBloc>().add(
+                                              const InfoCollectionBlocEvent
+                                                  .chooseImage(),
+                                            ),
                                     child: SvgPicture.asset(
-                                        'assets/icons/Edit_Photo.svg'),
+                                      'assets/icons/Edit_Photo.svg',
+                                    ),
                                   ),
                                 )
                             ]),
@@ -378,9 +527,10 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                             onDelete: () {
                               context.read<AudioRecordsScreenBloc>().add(
                                     DeleteAudioFromCollectionRecordsScreenStateEvent(
-                                        state.collectionModel.title,
-                                        state.collectionModel.audiosList[index]
-                                            .title),
+                                      state.collectionModel.title,
+                                      state.collectionModel.audiosList[index]
+                                          .title,
+                                    ),
                                   );
                             },
                             onChoose: () {
