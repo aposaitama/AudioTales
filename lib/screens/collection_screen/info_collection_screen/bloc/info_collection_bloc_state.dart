@@ -16,11 +16,13 @@ class InfoCollectionBlocState with _$InfoCollectionBlocState {
   const factory InfoCollectionBlocState({
     @Default([]) List<AudioRecordsModel> audioList,
     @Default(CollectionModel(
-        id: '',
-        title: '',
-        audiosList: [],
-        imageUrl: '',
-        collectionDescription: ''))
+      id: '',
+      title: '',
+      audiosList: [],
+      imageUrl: '',
+      collectionDescription: '',
+      creationTime: '',
+    ))
     CollectionModel collectionModel,
     @Default(false) bool editingMode,
     @Default('') String imagePath,

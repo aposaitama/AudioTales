@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,7 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/actionButton.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -92,13 +94,76 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                           .read<InfoCollectionBloc>()
                           .add(const EditInfoCollectionBlocEvent());
                     } else if (value == 'delete') {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                content: const Padding(
+                                  padding: EdgeInsets.only(top: 50.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Подтверждаете удаление?',
+                                        style: AppTextStyles.titleRed,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
+                                      SizedBox(
+                                        height: 24.0,
+                                      ),
+                                      Text(
+                                        textAlign: TextAlign.center,
+                                        'Ваш файл перенесется в папку “Недавно удаленные”.Через 15 дней он исчезнет.',
+                                        style: AppTextStyles.subtitleTall,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () async {
+                                          context.pop();
+                                          context
+                                              .read<InfoCollectionBloc>()
+                                              .add(
+                                                const DeleteInfoCollectionBlocEvent(),
+                                              );
+                                          context.go('/collection');
+                                        },
+                                        child: const Dialogbutton(
+                                          text: 'Да',
+                                          backgroundColor:
+                                              AppColors.purpleColor,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 10.0,
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => context.pop(),
+                                        child: const Dialogbutton(
+                                          text: 'Нет',
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ));
                     } else if (value == 'choose') {
                       context.go('/collection/info/choose');
                     } else if (value == 'save') {
+                      context.read<InfoCollectionBloc>().add(
+                            SaveInfoCollectionBlocEvent(titleController.text,
+                                descriptionController.text),
+                          );
                     } else if (value == 'close') {
                       context
                           .read<InfoCollectionBloc>()
                           .add(const CloseInfoCollectionBlocEvent());
+                      context.pop();
                     }
                   },
                   itemBuilder: (context) => state.editingMode
@@ -138,14 +203,6 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
       ),
       body: BlocBuilder<InfoCollectionBloc, InfoCollectionBlocState>(
         builder: (context, state) {
-          if (state.status == InfoCollectionState.loading) {
-            context
-                .read<InfoCollectionBloc>()
-                .add(const InfoCollectionBlocEvent.loaded([]));
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -303,14 +360,15 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                   child: ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: state.audioList.length,
+                    itemCount: state.collectionModel.audiosList.length,
                     itemBuilder: (context, int index) {
                       return Column(
                         children: [
                           AudioItemTile(
-                            audio: state.audioList[index],
+                            audio: state.collectionModel.audiosList[index],
                             color: AppColors.greenColor,
-                            title: state.audioList[index].title,
+                            title:
+                                state.collectionModel.audiosList[index].title,
                             duration: '30 минут',
                             onRename: () {
                               print("Переименовать натиснуто");
@@ -319,7 +377,8 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                               context.read<AudioRecordsScreenBloc>().add(
                                     DeleteAudioFromCollectionRecordsScreenStateEvent(
                                         state.collectionModel.title,
-                                        state.audioList[index].title),
+                                        state.collectionModel.audiosList[index]
+                                            .title),
                                   );
                             },
                             onChoose: () {

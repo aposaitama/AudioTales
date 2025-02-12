@@ -43,6 +43,15 @@ class AppTextStyles {
     fontFamily: 'TTNorms',
   );
 
+  static const TextStyle titleRed = TextStyle(
+    color: AppColors.redColor,
+    fontSize: 18.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+
   static const TextStyle whiteTitle = TextStyle(
     color: Colors.white,
     fontSize: 16.0,

@@ -25,6 +25,7 @@ mixin _$CollectionModel {
   List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get collectionDescription => throw _privateConstructorUsedError;
+  String get creationTime => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,8 @@ abstract class $CollectionModelCopyWith<$Res> {
       String title,
       List<AudioRecordsModel> audiosList,
       String imageUrl,
-      String collectionDescription});
+      String collectionDescription,
+      String creationTime});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
+    Object? creationTime = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -92,6 +95,10 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
           ? _value.collectionDescription
           : collectionDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      creationTime: null == creationTime
+          ? _value.creationTime
+          : creationTime // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
       String title,
       List<AudioRecordsModel> audiosList,
       String imageUrl,
-      String collectionDescription});
+      String collectionDescription,
+      String creationTime});
 }
 
 /// @nodoc
@@ -130,6 +138,7 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
+    Object? creationTime = null,
   }) {
     return _then(_$CollectionModelImpl(
       id: null == id
@@ -152,6 +161,10 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
           ? _value.collectionDescription
           : collectionDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      creationTime: null == creationTime
+          ? _value.creationTime
+          : creationTime // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -164,7 +177,8 @@ class _$CollectionModelImpl implements _CollectionModel {
       required this.title,
       required final List<AudioRecordsModel> audiosList,
       required this.imageUrl,
-      required this.collectionDescription})
+      required this.collectionDescription,
+      required this.creationTime})
       : _audiosList = audiosList;
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -186,10 +200,12 @@ class _$CollectionModelImpl implements _CollectionModel {
   final String imageUrl;
   @override
   final String collectionDescription;
+  @override
+  final String creationTime;
 
   @override
   String toString() {
-    return 'CollectionModel(id: $id, title: $title, audiosList: $audiosList, imageUrl: $imageUrl, collectionDescription: $collectionDescription)';
+    return 'CollectionModel(id: $id, title: $title, audiosList: $audiosList, imageUrl: $imageUrl, collectionDescription: $collectionDescription, creationTime: $creationTime)';
   }
 
   @override
@@ -204,7 +220,9 @@ class _$CollectionModelImpl implements _CollectionModel {
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.collectionDescription, collectionDescription) ||
-                other.collectionDescription == collectionDescription));
+                other.collectionDescription == collectionDescription) &&
+            (identical(other.creationTime, creationTime) ||
+                other.creationTime == creationTime));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -215,7 +233,8 @@ class _$CollectionModelImpl implements _CollectionModel {
       title,
       const DeepCollectionEquality().hash(_audiosList),
       imageUrl,
-      collectionDescription);
+      collectionDescription,
+      creationTime);
 
   /// Create a copy of CollectionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -240,7 +259,8 @@ abstract class _CollectionModel implements CollectionModel {
       required final String title,
       required final List<AudioRecordsModel> audiosList,
       required final String imageUrl,
-      required final String collectionDescription}) = _$CollectionModelImpl;
+      required final String collectionDescription,
+      required final String creationTime}) = _$CollectionModelImpl;
 
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
       _$CollectionModelImpl.fromJson;
@@ -255,6 +275,8 @@ abstract class _CollectionModel implements CollectionModel {
   String get imageUrl;
   @override
   String get collectionDescription;
+  @override
+  String get creationTime;
 
   /// Create a copy of CollectionModel
   /// with the given fields replaced by the non-null parameter values.

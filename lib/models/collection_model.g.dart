@@ -16,6 +16,7 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
           .toList(),
       imageUrl: json['imageUrl'] as String,
       collectionDescription: json['collectionDescription'] as String,
+      creationTime: json['creationTime'] as String,
     );
 
 Map<String, dynamic> _$$CollectionModelImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$CollectionModelImplToJson(
       'audiosList': instance.audiosList,
       'imageUrl': instance.imageUrl,
       'collectionDescription': instance.collectionDescription,
+      'creationTime': instance.creationTime,
     };

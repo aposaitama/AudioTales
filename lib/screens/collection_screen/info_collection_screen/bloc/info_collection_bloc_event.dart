@@ -9,10 +9,13 @@ class InfoCollectionBlocEvent with _$InfoCollectionBlocEvent {
   const factory InfoCollectionBlocEvent.loading(CollectionModel collection) =
       LoadingInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.loaded(
-      List<AudioRecordsModel> audioList) = LoadedInfoCollectionBlocEvent;
+      CollectionModel collectionModel) = LoadedInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.edit() = EditInfoCollectionBlocEvent;
-  const factory InfoCollectionBlocEvent.save() = SaveInfoCollectionBlocEvent;
+  const factory InfoCollectionBlocEvent.save(String title, String description) =
+      SaveInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.chooseImage() =
       ChooseImageInfoCollectionBlocEvent;
+  const factory InfoCollectionBlocEvent.delete() =
+      DeleteInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.close() = CloseInfoCollectionBlocEvent;
 }

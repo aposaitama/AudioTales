@@ -13,6 +13,7 @@ class CollectionModel with _$CollectionModel {
     required List<AudioRecordsModel> audiosList,
     required String imageUrl,
     required String collectionDescription,
+    required String creationTime,
   }) = _CollectionModel;
 
   factory CollectionModel.fromJson(Map<String, dynamic> json) =>

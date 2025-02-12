@@ -19,30 +19,33 @@ mixin _$InfoCollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) =>
@@ -55,6 +58,7 @@ mixin _$InfoCollectionBlocEvent {
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +69,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +80,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) =>
@@ -191,10 +197,11 @@ class _$LoadingInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
     return loading(collection);
@@ -204,10 +211,11 @@ class _$LoadingInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
     return loading?.call(collection);
@@ -217,10 +225,11 @@ class _$LoadingInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
@@ -239,6 +248,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return loading(this);
@@ -252,6 +262,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return loading?.call(this);
@@ -265,6 +276,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {
@@ -297,7 +309,9 @@ abstract class _$$LoadedInfoCollectionBlocEventImplCopyWith<$Res> {
           $Res Function(_$LoadedInfoCollectionBlocEventImpl) then) =
       __$$LoadedInfoCollectionBlocEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<AudioRecordsModel> audioList});
+  $Res call({CollectionModel collectionModel});
+
+  $CollectionModelCopyWith<$Res> get collectionModel;
 }
 
 /// @nodoc
@@ -315,14 +329,24 @@ class __$$LoadedInfoCollectionBlocEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? audioList = null,
+    Object? collectionModel = null,
   }) {
     return _then(_$LoadedInfoCollectionBlocEventImpl(
-      null == audioList
-          ? _value._audioList
-          : audioList // ignore: cast_nullable_to_non_nullable
-              as List<AudioRecordsModel>,
+      null == collectionModel
+          ? _value.collectionModel
+          : collectionModel // ignore: cast_nullable_to_non_nullable
+              as CollectionModel,
     ));
+  }
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CollectionModelCopyWith<$Res> get collectionModel {
+    return $CollectionModelCopyWith<$Res>(_value.collectionModel, (value) {
+      return _then(_value.copyWith(collectionModel: value));
+    });
   }
 }
 
@@ -330,21 +354,14 @@ class __$$LoadedInfoCollectionBlocEventImplCopyWithImpl<$Res>
 
 class _$LoadedInfoCollectionBlocEventImpl
     implements LoadedInfoCollectionBlocEvent {
-  const _$LoadedInfoCollectionBlocEventImpl(
-      final List<AudioRecordsModel> audioList)
-      : _audioList = audioList;
+  const _$LoadedInfoCollectionBlocEventImpl(this.collectionModel);
 
-  final List<AudioRecordsModel> _audioList;
   @override
-  List<AudioRecordsModel> get audioList {
-    if (_audioList is EqualUnmodifiableListView) return _audioList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_audioList);
-  }
+  final CollectionModel collectionModel;
 
   @override
   String toString() {
-    return 'InfoCollectionBlocEvent.loaded(audioList: $audioList)';
+    return 'InfoCollectionBlocEvent.loaded(collectionModel: $collectionModel)';
   }
 
   @override
@@ -352,13 +369,12 @@ class _$LoadedInfoCollectionBlocEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedInfoCollectionBlocEventImpl &&
-            const DeepCollectionEquality()
-                .equals(other._audioList, _audioList));
+            (identical(other.collectionModel, collectionModel) ||
+                other.collectionModel == collectionModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_audioList));
+  int get hashCode => Object.hash(runtimeType, collectionModel);
 
   /// Create a copy of InfoCollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -374,41 +390,44 @@ class _$LoadedInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
-    return loaded(audioList);
+    return loaded(collectionModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
-    return loaded?.call(audioList);
+    return loaded?.call(collectionModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(audioList);
+      return loaded(collectionModel);
     }
     return orElse();
   }
@@ -422,6 +441,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return loaded(this);
@@ -435,6 +455,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return loaded?.call(this);
@@ -448,6 +469,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {
@@ -461,10 +483,10 @@ class _$LoadedInfoCollectionBlocEventImpl
 abstract class LoadedInfoCollectionBlocEvent
     implements InfoCollectionBlocEvent {
   const factory LoadedInfoCollectionBlocEvent(
-          final List<AudioRecordsModel> audioList) =
+          final CollectionModel collectionModel) =
       _$LoadedInfoCollectionBlocEventImpl;
 
-  List<AudioRecordsModel> get audioList;
+  CollectionModel get collectionModel;
 
   /// Create a copy of InfoCollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -520,10 +542,11 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
     return edit();
@@ -533,10 +556,11 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
     return edit?.call();
@@ -546,10 +570,11 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
@@ -568,6 +593,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return edit(this);
@@ -581,6 +607,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return edit?.call(this);
@@ -594,6 +621,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {
@@ -615,6 +643,8 @@ abstract class _$$SaveInfoCollectionBlocEventImplCopyWith<$Res> {
           _$SaveInfoCollectionBlocEventImpl value,
           $Res Function(_$SaveInfoCollectionBlocEventImpl) then) =
       __$$SaveInfoCollectionBlocEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title, String description});
 }
 
 /// @nodoc
@@ -629,67 +659,104 @@ class __$$SaveInfoCollectionBlocEventImplCopyWithImpl<$Res>
 
   /// Create a copy of InfoCollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? description = null,
+  }) {
+    return _then(_$SaveInfoCollectionBlocEventImpl(
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
-  const _$SaveInfoCollectionBlocEventImpl();
+  const _$SaveInfoCollectionBlocEventImpl(this.title, this.description);
+
+  @override
+  final String title;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'InfoCollectionBlocEvent.save()';
+    return 'InfoCollectionBlocEvent.save(title: $title, description: $description)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SaveInfoCollectionBlocEventImpl);
+            other is _$SaveInfoCollectionBlocEventImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, title, description);
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveInfoCollectionBlocEventImplCopyWith<_$SaveInfoCollectionBlocEventImpl>
+      get copyWith => __$$SaveInfoCollectionBlocEventImplCopyWithImpl<
+          _$SaveInfoCollectionBlocEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
-    return save();
+    return save(title, description);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
-    return save?.call();
+    return save?.call(title, description);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
     if (save != null) {
-      return save();
+      return save(title, description);
     }
     return orElse();
   }
@@ -703,6 +770,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return save(this);
@@ -716,6 +784,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return save?.call(this);
@@ -729,6 +798,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {
@@ -740,8 +810,18 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
 }
 
 abstract class SaveInfoCollectionBlocEvent implements InfoCollectionBlocEvent {
-  const factory SaveInfoCollectionBlocEvent() =
+  const factory SaveInfoCollectionBlocEvent(
+          final String title, final String description) =
       _$SaveInfoCollectionBlocEventImpl;
+
+  String get title;
+  String get description;
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SaveInfoCollectionBlocEventImplCopyWith<_$SaveInfoCollectionBlocEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -791,10 +871,11 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
     return chooseImage();
@@ -804,10 +885,11 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
     return chooseImage?.call();
@@ -817,10 +899,11 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
@@ -839,6 +922,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return chooseImage(this);
@@ -852,6 +936,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return chooseImage?.call(this);
@@ -865,6 +950,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {
@@ -879,6 +965,149 @@ abstract class ChooseImageInfoCollectionBlocEvent
     implements InfoCollectionBlocEvent {
   const factory ChooseImageInfoCollectionBlocEvent() =
       _$ChooseImageInfoCollectionBlocEventImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteInfoCollectionBlocEventImplCopyWith<$Res> {
+  factory _$$DeleteInfoCollectionBlocEventImplCopyWith(
+          _$DeleteInfoCollectionBlocEventImpl value,
+          $Res Function(_$DeleteInfoCollectionBlocEventImpl) then) =
+      __$$DeleteInfoCollectionBlocEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteInfoCollectionBlocEventImplCopyWithImpl<$Res>
+    extends _$InfoCollectionBlocEventCopyWithImpl<$Res,
+        _$DeleteInfoCollectionBlocEventImpl>
+    implements _$$DeleteInfoCollectionBlocEventImplCopyWith<$Res> {
+  __$$DeleteInfoCollectionBlocEventImplCopyWithImpl(
+      _$DeleteInfoCollectionBlocEventImpl _value,
+      $Res Function(_$DeleteInfoCollectionBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteInfoCollectionBlocEventImpl
+    implements DeleteInfoCollectionBlocEvent {
+  const _$DeleteInfoCollectionBlocEventImpl();
+
+  @override
+  String toString() {
+    return 'InfoCollectionBlocEvent.delete()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteInfoCollectionBlocEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(CollectionModel collectionModel) loaded,
+    required TResult Function() edit,
+    required TResult Function(String title, String description) save,
+    required TResult Function() chooseImage,
+    required TResult Function() delete,
+    required TResult Function() close,
+  }) {
+    return delete();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(CollectionModel collectionModel)? loaded,
+    TResult? Function()? edit,
+    TResult? Function(String title, String description)? save,
+    TResult? Function()? chooseImage,
+    TResult? Function()? delete,
+    TResult? Function()? close,
+  }) {
+    return delete?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CollectionModel collection)? loading,
+    TResult Function(CollectionModel collectionModel)? loaded,
+    TResult Function()? edit,
+    TResult Function(String title, String description)? save,
+    TResult Function()? chooseImage,
+    TResult Function()? delete,
+    TResult Function()? close,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
+    required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
+    required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(SaveInfoCollectionBlocEvent value) save,
+    required TResult Function(ChooseImageInfoCollectionBlocEvent value)
+        chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
+    required TResult Function(CloseInfoCollectionBlocEvent value) close,
+  }) {
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
+    TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
+    TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(SaveInfoCollectionBlocEvent value)? save,
+    TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
+    TResult? Function(CloseInfoCollectionBlocEvent value)? close,
+  }) {
+    return delete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
+    TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
+    TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(SaveInfoCollectionBlocEvent value)? save,
+    TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
+    TResult Function(CloseInfoCollectionBlocEvent value)? close,
+    required TResult orElse(),
+  }) {
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteInfoCollectionBlocEvent
+    implements InfoCollectionBlocEvent {
+  const factory DeleteInfoCollectionBlocEvent() =
+      _$DeleteInfoCollectionBlocEventImpl;
 }
 
 /// @nodoc
@@ -928,10 +1157,11 @@ class _$CloseInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(CollectionModel collection) loading,
-    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
-    required TResult Function() save,
+    required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
+    required TResult Function() delete,
     required TResult Function() close,
   }) {
     return close();
@@ -941,10 +1171,11 @@ class _$CloseInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
-    TResult? Function()? save,
+    TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
+    TResult? Function()? delete,
     TResult? Function()? close,
   }) {
     return close?.call();
@@ -954,10 +1185,11 @@ class _$CloseInfoCollectionBlocEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(CollectionModel collection)? loading,
-    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
-    TResult Function()? save,
+    TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
+    TResult Function()? delete,
     TResult Function()? close,
     required TResult orElse(),
   }) {
@@ -976,6 +1208,7 @@ class _$CloseInfoCollectionBlocEventImpl
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
     required TResult Function(CloseInfoCollectionBlocEvent value) close,
   }) {
     return close(this);
@@ -989,6 +1222,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult? Function(CloseInfoCollectionBlocEvent value)? close,
   }) {
     return close?.call(this);
@@ -1002,6 +1236,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
     TResult Function(CloseInfoCollectionBlocEvent value)? close,
     required TResult orElse(),
   }) {

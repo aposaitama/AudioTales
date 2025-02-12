@@ -41,9 +41,53 @@ class FirestoreService {
         'title': title,
         'collectionDescription': collectionDescription,
         'audiosList': serializedAudiosList,
-        'imageUrl': imageUrl
+        'imageUrl': imageUrl,
+        'creationTime': DateTime.now().toString()
       });
     } catch (e) {}
+  }
+
+  Future<void> updateCollectionById({
+    required String collectionId,
+    required String newTitle,
+    required String newDescription,
+    required String newImageUrl,
+  }) async {
+    try {
+      // Отримуємо колекції за полем 'id'
+      QuerySnapshot collectionSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('collections')
+          .where('id', isEqualTo: collectionId)
+          .get();
+
+      if (collectionSnapshot.docs.isNotEmpty) {
+        var collectionDoc = collectionSnapshot.docs.first;
+
+        Map<String, dynamic> updatedData = {};
+
+        updatedData['title'] = newTitle;
+        updatedData['collectionDescription'] = newDescription;
+
+        if (newImageUrl.isNotEmpty) {
+          updatedData['imageUrl'] = newImageUrl;
+        }
+
+        await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('collections')
+            .doc(collectionDoc.id)
+            .update(updatedData);
+
+        print('Collection updated successfully!');
+      } else {
+        print('Collection not found!');
+      }
+    } catch (e) {
+      print('Error updating collection: $e');
+    }
   }
 
   Future<void> deleteAudio(String audioTitle) async {
@@ -77,6 +121,23 @@ class FirestoreService {
         }
       } else {}
     } catch (e) {}
+  }
+
+  Future<void> deleteCollection(String id) async {
+    try {
+      QuerySnapshot audioSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('collections')
+          .where('id', isEqualTo: id)
+          .get();
+
+      for (var doc in audioSnapshot.docs) {
+        await doc.reference.delete();
+      }
+    } catch (e) {
+      print('Ошибка при удалении: $e');
+    }
   }
 
   Future<void> deleteAudioFromCollection(
@@ -155,7 +216,7 @@ class FirestoreService {
         );
   }
 
-  Stream<List<AudioRecordsModel>> getUserCollectionStreamByTitle(
+  Stream<CollectionModel> getUserCollectionStreamByTitle(
       String collectionTitle) {
     return _firestore
         .collection('users')
@@ -163,19 +224,22 @@ class FirestoreService {
         .collection('collections')
         .where('title', isEqualTo: collectionTitle)
         .snapshots()
-        .map(
-      (snapshot) {
-        if (snapshot.docs.isEmpty) {
-          return [];
-        }
+        .map((snapshot) {
+      if (snapshot.docs.isEmpty) {
+        return CollectionModel(
+          id: '',
+          title: '',
+          collectionDescription: '',
+          audiosList: [],
+          imageUrl: '',
+          creationTime: '',
+        );
+      }
 
-        QueryDocumentSnapshot<Map<String, dynamic>> collectionDoc =
-            snapshot.docs.first;
-        List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
-        return audiosList
-            .map((audio) => AudioRecordsModel.fromJson(audio))
-            .toList();
-      },
-    );
+      QueryDocumentSnapshot<Map<String, dynamic>> collectionDoc =
+          snapshot.docs.first;
+
+      return CollectionModel.fromJson(collectionDoc.data());
+    });
   }
 }

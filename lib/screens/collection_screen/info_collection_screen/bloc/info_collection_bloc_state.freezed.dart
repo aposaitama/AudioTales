@@ -178,7 +178,8 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
           title: '',
           audiosList: [],
           imageUrl: '',
-          collectionDescription: ''),
+          collectionDescription: '',
+          creationTime: ''),
       this.editingMode = false,
       this.imagePath = '',
       this.status = InfoCollectionState.loading})
