@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -255,15 +256,16 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(14),
                                 child: (state.imagePath.isEmpty)
-                                    ? Image.network(
-                                        state.collectionModel.imageUrl,
+                                    ? CachedNetworkImage(
+                                        imageUrl:
+                                            state.collectionModel.imageUrl,
                                         width: double.infinity,
                                         height: double.infinity,
                                         fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                const Icon(Icons.broken_image,
-                                                    size: 50),
+                                        errorWidget: (context, error,
+                                                stackTrace) =>
+                                            const Icon(Icons.broken_image,
+                                                size: 50),
                                       )
                                     : Image.file(
                                         File(state.imagePath),

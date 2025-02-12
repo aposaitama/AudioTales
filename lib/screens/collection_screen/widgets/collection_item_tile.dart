@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -11,12 +12,12 @@ class CollectionItemTile extends StatelessWidget {
     return Stack(alignment: AlignmentDirectional.bottomCenter, children: [
       ClipRRect(
         borderRadius: BorderRadius.circular(14),
-        child: Image.network(
-          collection.imageUrl,
+        child: CachedNetworkImage(
+          imageUrl: collection.imageUrl,
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) =>
+          errorWidget: (context, error, stackTrace) =>
               const Icon(Icons.broken_image, size: 50),
         ),
       ),
