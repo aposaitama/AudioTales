@@ -94,7 +94,9 @@ class CustomDrawer extends StatelessWidget {
                         icon: SvgPicture.asset(
                           'assets/icons/Search.svg',
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          context.go('/search');
+                        },
                       ),
                       DrawerElementsRow(
                         title: 'Недавно удаленные',

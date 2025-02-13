@@ -15,6 +15,7 @@ import 'package:memory_box_avada/screens/profile_screen/edit_profile_screen/edit
 import 'package:memory_box_avada/screens/profile_screen/profile_screen.dart';
 import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
 import 'package:memory_box_avada/screens/root_screen/root_screen.dart';
+import 'package:memory_box_avada/screens/search_screen/search_screen.dart';
 import 'package:memory_box_avada/screens/welcome_screen/welcome_screen_new_user.dart';
 
 class AppRouter {
@@ -22,7 +23,7 @@ class AppRouter {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
       // initialLocation: '/home',
-      initialLocation: '/collection',
+      initialLocation: '/search',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
@@ -83,6 +84,15 @@ class AppRouter {
                   path: '/audio_records',
                   builder: (context, state) =>
                       AudioRecordsScreen(scaffoldKey: scaffoldKey),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/search',
+                  builder: (context, state) =>
+                      SearchScreen(scaffoldKey: scaffoldKey),
                 ),
               ],
             ),
