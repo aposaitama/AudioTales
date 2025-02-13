@@ -58,11 +58,7 @@ class SearchField extends StatelessWidget {
                     onPressed: onTapSearch),
               ),
             ),
-            onChanged: onChanged
-            // (query) {
-            //   context.read<SearchBloc>().add(SearchAudioRecordsEvent(query));
-            // },
-            ),
+            onChanged: onChanged),
       ),
     );
   }

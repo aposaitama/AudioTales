@@ -9,6 +9,7 @@ import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_t
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc.dart';
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_event.dart';
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_state.dart';
+import 'package:memory_box_avada/screens/search_screen/widget/hint_container.dart';
 import 'package:memory_box_avada/screens/search_screen/widget/search_field.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
@@ -92,7 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     children: [
                       const CustomProfileTopClipPath(
                         backgroundColor: AppColors.blueColor,
-                        minusHeigth: 65,
+                        minusHeigth: 70,
                       ),
                       Focus(
                         onFocusChange: (hasFocus) {
@@ -163,51 +164,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 ],
               ),
               if (_showContainer)
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 105, right: 20.0, left: 20.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          offset: const Offset(0, 5),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(45.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: state.filteredAudiosList.length,
-                                itemBuilder: (context, int index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      _searchController.text =
-                                          state.filteredAudiosList[index].title;
-                                      context.read<SearchBloc>().add(
-                                            SearchAudioRecordsEvent(
-                                                _searchController.text),
-                                          );
-                                      FocusScope.of(context).unfocus();
-                                    },
-                                    child: Text(
-                                        state.filteredAudiosList[index].title),
-                                  );
-                                }),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                HintContainer(
+                  onTap: (int index) {
+                    debugPrint('Tapped index: $index');
+                    _searchController.text =
+                        state.filteredAudiosList[index].title;
+                    context.read<SearchBloc>().add(
+                          SearchAudioRecordsEvent(_searchController.text),
+                        );
+                    FocusScope.of(context).unfocus();
+                  },
                 )
             ]);
           },

@@ -60,6 +60,14 @@ class AppTextStyles {
     letterSpacing: 1,
     fontFamily: 'TTNorms',
   );
+  static const TextStyle blackTitle = TextStyle(
+    color: Color.fromRGBO(58, 58, 85, 1.0),
+    fontSize: 16.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
 
   static const TextStyle subtitle = TextStyle(
     color: AppColors.fontColor,
