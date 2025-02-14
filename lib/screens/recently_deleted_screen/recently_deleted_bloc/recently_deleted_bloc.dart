@@ -18,12 +18,18 @@ class RecentlyDeletedBloc
     on<LoadingRecentlyDeletedBlocEvent>(_loading);
     on<LoadedRecentlyDeletedBlocEvent>(_loaded);
     on<DeleteAudioRecentlyDeletedBlocEvent>(_deleteAudio);
+    on<DeleteAllAudioRecentlyDeletedBlocEvent>(_deleteAll);
     on<ChooseMenuStatusAudioRecentlyDeletedBlocEvent>(_chooseMenuStatus);
     on<AddSelectedAudioRecentlyDeletedBlocEvent>(_addSelectedAudio);
+    on<RecentlyDeletedProgressStatusEvent>(_progressStatus);
     on<ChooseAndDeleteAudioRecentlyDeletedBlocEvent>(
-        _deleteSeveralSelectedAudio);
+      _deleteSeveralSelectedAudio,
+    );
     on<ChooseAndRestoreAudioRecentlyDeletedBlocEvent>(
-        _restoreSeveralSelectedAuido);
+      _restoreSeveralSelectedAuido,
+    );
+
+    on<RestoreAudioRecentlyDeletedBlocEvent>(_restoreAll);
     _subscribeToDeletedAudiosStream();
   }
 
@@ -53,6 +59,17 @@ class RecentlyDeletedBloc
         audioList: event.audioList,
         groupedAudio: groupedAudio,
         status: RecentlyDeletedStatus.loaded,
+      ),
+    );
+  }
+
+  Future<void> _progressStatus(
+    RecentlyDeletedProgressStatusEvent event,
+    Emitter<RecentlyDeletedBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        progressStatus: event.progressStatus,
       ),
     );
   }
@@ -112,16 +129,73 @@ class RecentlyDeletedBloc
     );
   }
 
+  Future<void> _restoreAll(
+    RestoreAudioRecentlyDeletedBlocEvent event,
+    Emitter<RecentlyDeletedBlocState> emit,
+  ) async {
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.inProgress,
+      ),
+      emit,
+    );
+
+    await _firebaseFirestoreService
+        .restoreSeveralAudiosFromDeletedCollection(state.audioList);
+
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.initial,
+      ),
+      emit,
+    );
+  }
+
+  Future<void> _deleteAll(
+    DeleteAllAudioRecentlyDeletedBlocEvent event,
+    Emitter<RecentlyDeletedBlocState> emit,
+  ) async {
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.inProgress,
+      ),
+      emit,
+    );
+    await _firebaseFirestoreService
+        .deleteSeveralAudiosFromDeletedCollection(state.audioList);
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.initial,
+      ),
+      emit,
+    );
+  }
+
   Future<void> _deleteSeveralSelectedAudio(
     ChooseAndDeleteAudioRecentlyDeletedBlocEvent event,
     Emitter<RecentlyDeletedBlocState> emit,
   ) async {
-    await _firebaseFirestoreService
-        .deleteSeveralAudiosFromDeletedCollection(state.selectedAudioList);
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.inProgress,
+      ),
+      emit,
+    );
 
+    await _firebaseFirestoreService.deleteSeveralAudiosFromDeletedCollection(
+      state.selectedAudioList,
+    );
+
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.initial,
+      ),
+      emit,
+    );
     emit(
       state.copyWith(
         selectedAudioList: [],
+        menuStatus: RecentlyDeletedMenuStatus.initial,
       ),
     );
   }
@@ -130,12 +204,27 @@ class RecentlyDeletedBloc
     ChooseAndRestoreAudioRecentlyDeletedBlocEvent event,
     Emitter<RecentlyDeletedBlocState> emit,
   ) async {
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.inProgress,
+      ),
+      emit,
+    );
+
     await _firebaseFirestoreService
         .restoreSeveralAudiosFromDeletedCollection(state.selectedAudioList);
+
+    await _progressStatus(
+      const RecentlyDeletedProgressStatusEvent(
+        RecentlyDeletedProgressStatus.initial,
+      ),
+      emit,
+    );
 
     emit(
       state.copyWith(
         selectedAudioList: [],
+        menuStatus: RecentlyDeletedMenuStatus.initial,
       ),
     );
   }

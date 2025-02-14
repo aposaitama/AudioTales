@@ -23,6 +23,8 @@ mixin _$RecentlyDeletedBlocState {
   Map<dynamic, dynamic> get groupedAudio => throw _privateConstructorUsedError;
   RecentlyDeletedMenuStatus get menuStatus =>
       throw _privateConstructorUsedError;
+  RecentlyDeletedProgressStatus get progressStatus =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of RecentlyDeletedBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -42,7 +44,8 @@ abstract class $RecentlyDeletedBlocStateCopyWith<$Res> {
       List<DeletedRecordsModel> selectedAudioList,
       RecentlyDeletedStatus status,
       Map<dynamic, dynamic> groupedAudio,
-      RecentlyDeletedMenuStatus menuStatus});
+      RecentlyDeletedMenuStatus menuStatus,
+      RecentlyDeletedProgressStatus progressStatus});
 }
 
 /// @nodoc
@@ -66,6 +69,7 @@ class _$RecentlyDeletedBlocStateCopyWithImpl<$Res,
     Object? status = null,
     Object? groupedAudio = null,
     Object? menuStatus = null,
+    Object? progressStatus = null,
   }) {
     return _then(_value.copyWith(
       audioList: null == audioList
@@ -88,6 +92,10 @@ class _$RecentlyDeletedBlocStateCopyWithImpl<$Res,
           ? _value.menuStatus
           : menuStatus // ignore: cast_nullable_to_non_nullable
               as RecentlyDeletedMenuStatus,
+      progressStatus: null == progressStatus
+          ? _value.progressStatus
+          : progressStatus // ignore: cast_nullable_to_non_nullable
+              as RecentlyDeletedProgressStatus,
     ) as $Val);
   }
 }
@@ -106,7 +114,8 @@ abstract class _$$RecentlyDeletedBlocStateImplCopyWith<$Res>
       List<DeletedRecordsModel> selectedAudioList,
       RecentlyDeletedStatus status,
       Map<dynamic, dynamic> groupedAudio,
-      RecentlyDeletedMenuStatus menuStatus});
+      RecentlyDeletedMenuStatus menuStatus,
+      RecentlyDeletedProgressStatus progressStatus});
 }
 
 /// @nodoc
@@ -129,6 +138,7 @@ class __$$RecentlyDeletedBlocStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? groupedAudio = null,
     Object? menuStatus = null,
+    Object? progressStatus = null,
   }) {
     return _then(_$RecentlyDeletedBlocStateImpl(
       audioList: null == audioList
@@ -151,6 +161,10 @@ class __$$RecentlyDeletedBlocStateImplCopyWithImpl<$Res>
           ? _value.menuStatus
           : menuStatus // ignore: cast_nullable_to_non_nullable
               as RecentlyDeletedMenuStatus,
+      progressStatus: null == progressStatus
+          ? _value.progressStatus
+          : progressStatus // ignore: cast_nullable_to_non_nullable
+              as RecentlyDeletedProgressStatus,
     ));
   }
 }
@@ -163,7 +177,8 @@ class _$RecentlyDeletedBlocStateImpl implements _RecentlyDeletedBlocState {
       final List<DeletedRecordsModel> selectedAudioList = const [],
       this.status = RecentlyDeletedStatus.loading,
       final Map<dynamic, dynamic> groupedAudio = const {},
-      this.menuStatus = RecentlyDeletedMenuStatus.initial})
+      this.menuStatus = RecentlyDeletedMenuStatus.initial,
+      this.progressStatus = RecentlyDeletedProgressStatus.initial})
       : _audioList = audioList,
         _selectedAudioList = selectedAudioList,
         _groupedAudio = groupedAudio;
@@ -202,10 +217,13 @@ class _$RecentlyDeletedBlocStateImpl implements _RecentlyDeletedBlocState {
   @override
   @JsonKey()
   final RecentlyDeletedMenuStatus menuStatus;
+  @override
+  @JsonKey()
+  final RecentlyDeletedProgressStatus progressStatus;
 
   @override
   String toString() {
-    return 'RecentlyDeletedBlocState(audioList: $audioList, selectedAudioList: $selectedAudioList, status: $status, groupedAudio: $groupedAudio, menuStatus: $menuStatus)';
+    return 'RecentlyDeletedBlocState(audioList: $audioList, selectedAudioList: $selectedAudioList, status: $status, groupedAudio: $groupedAudio, menuStatus: $menuStatus, progressStatus: $progressStatus)';
   }
 
   @override
@@ -221,7 +239,9 @@ class _$RecentlyDeletedBlocStateImpl implements _RecentlyDeletedBlocState {
             const DeepCollectionEquality()
                 .equals(other._groupedAudio, _groupedAudio) &&
             (identical(other.menuStatus, menuStatus) ||
-                other.menuStatus == menuStatus));
+                other.menuStatus == menuStatus) &&
+            (identical(other.progressStatus, progressStatus) ||
+                other.progressStatus == progressStatus));
   }
 
   @override
@@ -231,7 +251,8 @@ class _$RecentlyDeletedBlocStateImpl implements _RecentlyDeletedBlocState {
       const DeepCollectionEquality().hash(_selectedAudioList),
       status,
       const DeepCollectionEquality().hash(_groupedAudio),
-      menuStatus);
+      menuStatus,
+      progressStatus);
 
   /// Create a copy of RecentlyDeletedBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +270,8 @@ abstract class _RecentlyDeletedBlocState implements RecentlyDeletedBlocState {
           final List<DeletedRecordsModel> selectedAudioList,
           final RecentlyDeletedStatus status,
           final Map<dynamic, dynamic> groupedAudio,
-          final RecentlyDeletedMenuStatus menuStatus}) =
+          final RecentlyDeletedMenuStatus menuStatus,
+          final RecentlyDeletedProgressStatus progressStatus}) =
       _$RecentlyDeletedBlocStateImpl;
 
   @override
@@ -262,6 +284,8 @@ abstract class _RecentlyDeletedBlocState implements RecentlyDeletedBlocState {
   Map<dynamic, dynamic> get groupedAudio;
   @override
   RecentlyDeletedMenuStatus get menuStatus;
+  @override
+  RecentlyDeletedProgressStatus get progressStatus;
 
   /// Create a copy of RecentlyDeletedBlocState
   /// with the given fields replaced by the non-null parameter values.

@@ -28,6 +28,8 @@ mixin _$RecentlyDeletedBlocEvent {
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,8 @@ mixin _$RecentlyDeletedBlocEvent {
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +58,8 @@ mixin _$RecentlyDeletedBlocEvent {
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +84,8 @@ mixin _$RecentlyDeletedBlocEvent {
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +104,7 @@ mixin _$RecentlyDeletedBlocEvent {
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -114,6 +123,7 @@ mixin _$RecentlyDeletedBlocEvent {
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -197,6 +207,8 @@ class _$LoadingRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return loading();
   }
@@ -213,6 +225,8 @@ class _$LoadingRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return loading?.call();
   }
@@ -229,6 +243,8 @@ class _$LoadingRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -259,6 +275,8 @@ class _$LoadingRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return loading(this);
   }
@@ -280,6 +298,7 @@ class _$LoadingRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return loading?.call(this);
   }
@@ -301,6 +320,7 @@ class _$LoadingRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -409,6 +429,8 @@ class _$LoadedRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return loaded(audioList);
   }
@@ -425,6 +447,8 @@ class _$LoadedRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return loaded?.call(audioList);
   }
@@ -441,6 +465,8 @@ class _$LoadedRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -471,6 +497,8 @@ class _$LoadedRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return loaded(this);
   }
@@ -492,6 +520,7 @@ class _$LoadedRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return loaded?.call(this);
   }
@@ -513,6 +542,7 @@ class _$LoadedRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -622,6 +652,8 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return deleteAudio(title);
   }
@@ -638,6 +670,8 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return deleteAudio?.call(title);
   }
@@ -654,6 +688,8 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -684,6 +720,8 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return deleteAudio(this);
   }
@@ -705,6 +743,7 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return deleteAudio?.call(this);
   }
@@ -726,6 +765,7 @@ class _$DeleteAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -847,6 +887,8 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return addSelectedAudio(audio);
   }
@@ -863,6 +905,8 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return addSelectedAudio?.call(audio);
   }
@@ -879,6 +923,8 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (addSelectedAudio != null) {
@@ -909,6 +955,8 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return addSelectedAudio(this);
   }
@@ -930,6 +978,7 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return addSelectedAudio?.call(this);
   }
@@ -951,6 +1000,7 @@ class _$AddSelectedAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (addSelectedAudio != null) {
@@ -1066,6 +1116,8 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return chooseMenuStatus(menuStatus);
   }
@@ -1082,6 +1134,8 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return chooseMenuStatus?.call(menuStatus);
   }
@@ -1098,6 +1152,8 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (chooseMenuStatus != null) {
@@ -1128,6 +1184,8 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return chooseMenuStatus(this);
   }
@@ -1149,6 +1207,7 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return chooseMenuStatus?.call(this);
   }
@@ -1170,6 +1229,7 @@ class _$ChooseMenuStatusAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (chooseMenuStatus != null) {
@@ -1254,6 +1314,8 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return chooseAndRestore();
   }
@@ -1270,6 +1332,8 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return chooseAndRestore?.call();
   }
@@ -1286,6 +1350,8 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (chooseAndRestore != null) {
@@ -1316,6 +1382,8 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return chooseAndRestore(this);
   }
@@ -1337,6 +1405,7 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return chooseAndRestore?.call(this);
   }
@@ -1358,6 +1427,7 @@ class _$ChooseAndRestoreAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (chooseAndRestore != null) {
@@ -1432,6 +1502,8 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return chooseAndDelete();
   }
@@ -1448,6 +1520,8 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return chooseAndDelete?.call();
   }
@@ -1464,6 +1538,8 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (chooseAndDelete != null) {
@@ -1494,6 +1570,8 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return chooseAndDelete(this);
   }
@@ -1515,6 +1593,7 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return chooseAndDelete?.call(this);
   }
@@ -1536,6 +1615,7 @@ class _$ChooseAndDeleteAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (chooseAndDelete != null) {
@@ -1607,6 +1687,8 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return deleteAllAudio();
   }
@@ -1623,6 +1705,8 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return deleteAllAudio?.call();
   }
@@ -1639,6 +1723,8 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (deleteAllAudio != null) {
@@ -1669,6 +1755,8 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return deleteAllAudio(this);
   }
@@ -1690,6 +1778,7 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return deleteAllAudio?.call(this);
   }
@@ -1711,6 +1800,7 @@ class _$DeleteAllAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (deleteAllAudio != null) {
@@ -1782,6 +1872,8 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
     required TResult Function() chooseAndDelete,
     required TResult Function() deleteAllAudio,
     required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
   }) {
     return restoreAll();
   }
@@ -1798,6 +1890,8 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
     TResult? Function()? chooseAndDelete,
     TResult? Function()? deleteAllAudio,
     TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
   }) {
     return restoreAll?.call();
   }
@@ -1814,6 +1908,8 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
     TResult Function()? chooseAndDelete,
     TResult Function()? deleteAllAudio,
     TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
     required TResult orElse(),
   }) {
     if (restoreAll != null) {
@@ -1844,6 +1940,8 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
         deleteAllAudio,
     required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
         restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
   }) {
     return restoreAll(this);
   }
@@ -1865,6 +1963,7 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
     TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
   }) {
     return restoreAll?.call(this);
   }
@@ -1886,6 +1985,7 @@ class _$RestoreAudioRecentlyDeletedBlocEventImpl
     TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
         deleteAllAudio,
     TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
     required TResult orElse(),
   }) {
     if (restoreAll != null) {
@@ -1899,4 +1999,228 @@ abstract class RestoreAudioRecentlyDeletedBlocEvent
     implements RecentlyDeletedBlocEvent {
   const factory RestoreAudioRecentlyDeletedBlocEvent() =
       _$RestoreAudioRecentlyDeletedBlocEventImpl;
+}
+
+/// @nodoc
+abstract class _$$RecentlyDeletedProgressStatusEventImplCopyWith<$Res> {
+  factory _$$RecentlyDeletedProgressStatusEventImplCopyWith(
+          _$RecentlyDeletedProgressStatusEventImpl value,
+          $Res Function(_$RecentlyDeletedProgressStatusEventImpl) then) =
+      __$$RecentlyDeletedProgressStatusEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RecentlyDeletedProgressStatus progressStatus});
+}
+
+/// @nodoc
+class __$$RecentlyDeletedProgressStatusEventImplCopyWithImpl<$Res>
+    extends _$RecentlyDeletedBlocEventCopyWithImpl<$Res,
+        _$RecentlyDeletedProgressStatusEventImpl>
+    implements _$$RecentlyDeletedProgressStatusEventImplCopyWith<$Res> {
+  __$$RecentlyDeletedProgressStatusEventImplCopyWithImpl(
+      _$RecentlyDeletedProgressStatusEventImpl _value,
+      $Res Function(_$RecentlyDeletedProgressStatusEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RecentlyDeletedBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? progressStatus = null,
+  }) {
+    return _then(_$RecentlyDeletedProgressStatusEventImpl(
+      null == progressStatus
+          ? _value.progressStatus
+          : progressStatus // ignore: cast_nullable_to_non_nullable
+              as RecentlyDeletedProgressStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RecentlyDeletedProgressStatusEventImpl
+    implements RecentlyDeletedProgressStatusEvent {
+  const _$RecentlyDeletedProgressStatusEventImpl(this.progressStatus);
+
+  @override
+  final RecentlyDeletedProgressStatus progressStatus;
+
+  @override
+  String toString() {
+    return 'RecentlyDeletedBlocEvent.progressStatus(progressStatus: $progressStatus)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RecentlyDeletedProgressStatusEventImpl &&
+            (identical(other.progressStatus, progressStatus) ||
+                other.progressStatus == progressStatus));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, progressStatus);
+
+  /// Create a copy of RecentlyDeletedBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RecentlyDeletedProgressStatusEventImplCopyWith<
+          _$RecentlyDeletedProgressStatusEventImpl>
+      get copyWith => __$$RecentlyDeletedProgressStatusEventImplCopyWithImpl<
+          _$RecentlyDeletedProgressStatusEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<DeletedRecordsModel> audioList) loaded,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(DeletedRecordsModel audio) addSelectedAudio,
+    required TResult Function(RecentlyDeletedMenuStatus menuStatus)
+        chooseMenuStatus,
+    required TResult Function() chooseAndRestore,
+    required TResult Function() chooseAndDelete,
+    required TResult Function() deleteAllAudio,
+    required TResult Function() restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatus progressStatus)
+        progressStatus,
+  }) {
+    return progressStatus(this.progressStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<DeletedRecordsModel> audioList)? loaded,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(DeletedRecordsModel audio)? addSelectedAudio,
+    TResult? Function(RecentlyDeletedMenuStatus menuStatus)? chooseMenuStatus,
+    TResult? Function()? chooseAndRestore,
+    TResult? Function()? chooseAndDelete,
+    TResult? Function()? deleteAllAudio,
+    TResult? Function()? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
+  }) {
+    return progressStatus?.call(this.progressStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<DeletedRecordsModel> audioList)? loaded,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(DeletedRecordsModel audio)? addSelectedAudio,
+    TResult Function(RecentlyDeletedMenuStatus menuStatus)? chooseMenuStatus,
+    TResult Function()? chooseAndRestore,
+    TResult Function()? chooseAndDelete,
+    TResult Function()? deleteAllAudio,
+    TResult Function()? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatus progressStatus)?
+        progressStatus,
+    required TResult orElse(),
+  }) {
+    if (progressStatus != null) {
+      return progressStatus(this.progressStatus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingRecentlyDeletedBlocEvent value) loading,
+    required TResult Function(LoadedRecentlyDeletedBlocEvent value) loaded,
+    required TResult Function(DeleteAudioRecentlyDeletedBlocEvent value)
+        deleteAudio,
+    required TResult Function(AddSelectedAudioRecentlyDeletedBlocEvent value)
+        addSelectedAudio,
+    required TResult Function(
+            ChooseMenuStatusAudioRecentlyDeletedBlocEvent value)
+        chooseMenuStatus,
+    required TResult Function(
+            ChooseAndRestoreAudioRecentlyDeletedBlocEvent value)
+        chooseAndRestore,
+    required TResult Function(
+            ChooseAndDeleteAudioRecentlyDeletedBlocEvent value)
+        chooseAndDelete,
+    required TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)
+        deleteAllAudio,
+    required TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)
+        restoreAll,
+    required TResult Function(RecentlyDeletedProgressStatusEvent value)
+        progressStatus,
+  }) {
+    return progressStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingRecentlyDeletedBlocEvent value)? loading,
+    TResult? Function(LoadedRecentlyDeletedBlocEvent value)? loaded,
+    TResult? Function(DeleteAudioRecentlyDeletedBlocEvent value)? deleteAudio,
+    TResult? Function(AddSelectedAudioRecentlyDeletedBlocEvent value)?
+        addSelectedAudio,
+    TResult? Function(ChooseMenuStatusAudioRecentlyDeletedBlocEvent value)?
+        chooseMenuStatus,
+    TResult? Function(ChooseAndRestoreAudioRecentlyDeletedBlocEvent value)?
+        chooseAndRestore,
+    TResult? Function(ChooseAndDeleteAudioRecentlyDeletedBlocEvent value)?
+        chooseAndDelete,
+    TResult? Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
+        deleteAllAudio,
+    TResult? Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult? Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
+  }) {
+    return progressStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingRecentlyDeletedBlocEvent value)? loading,
+    TResult Function(LoadedRecentlyDeletedBlocEvent value)? loaded,
+    TResult Function(DeleteAudioRecentlyDeletedBlocEvent value)? deleteAudio,
+    TResult Function(AddSelectedAudioRecentlyDeletedBlocEvent value)?
+        addSelectedAudio,
+    TResult Function(ChooseMenuStatusAudioRecentlyDeletedBlocEvent value)?
+        chooseMenuStatus,
+    TResult Function(ChooseAndRestoreAudioRecentlyDeletedBlocEvent value)?
+        chooseAndRestore,
+    TResult Function(ChooseAndDeleteAudioRecentlyDeletedBlocEvent value)?
+        chooseAndDelete,
+    TResult Function(DeleteAllAudioRecentlyDeletedBlocEvent value)?
+        deleteAllAudio,
+    TResult Function(RestoreAudioRecentlyDeletedBlocEvent value)? restoreAll,
+    TResult Function(RecentlyDeletedProgressStatusEvent value)? progressStatus,
+    required TResult orElse(),
+  }) {
+    if (progressStatus != null) {
+      return progressStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RecentlyDeletedProgressStatusEvent
+    implements RecentlyDeletedBlocEvent {
+  const factory RecentlyDeletedProgressStatusEvent(
+          final RecentlyDeletedProgressStatus progressStatus) =
+      _$RecentlyDeletedProgressStatusEventImpl;
+
+  RecentlyDeletedProgressStatus get progressStatus;
+
+  /// Create a copy of RecentlyDeletedBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RecentlyDeletedProgressStatusEventImplCopyWith<
+          _$RecentlyDeletedProgressStatusEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

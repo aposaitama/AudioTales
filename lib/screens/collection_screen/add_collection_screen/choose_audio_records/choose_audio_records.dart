@@ -23,7 +23,7 @@ class ChooseAudioRecords extends StatefulWidget {
 class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
   @override
   Widget build(BuildContext context) {
-    void _toggleSelection(AudioRecordsModel record, bool isSelected) {
+    void toggleSelection(AudioRecordsModel record, bool isSelected) {
       setState(() {
         if (isSelected) {
           widget.selectedRecords.add(record);
@@ -176,7 +176,7 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                             isSelected: widget.selectedRecords.contains(
                               state.audioList[index],
                             ),
-                            onSelected: (isSelected) => _toggleSelection(
+                            onSelected: (isSelected) => toggleSelection(
                               state.audioList[index],
                               isSelected,
                             ),

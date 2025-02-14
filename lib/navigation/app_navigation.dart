@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/audio_records_screen.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_code.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_num.dart';
@@ -23,8 +22,7 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      // initialLocation: '/home',
-      initialLocation: '/deleted',
+      initialLocation: '/home',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(

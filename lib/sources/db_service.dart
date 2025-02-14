@@ -335,7 +335,7 @@ class FirestoreService {
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) {
-        return CollectionModel(
+        return const CollectionModel(
           id: '',
           title: '',
           collectionDescription: '',

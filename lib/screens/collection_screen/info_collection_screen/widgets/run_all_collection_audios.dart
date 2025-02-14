@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/style/colors/colors.dart';
 
 class RunAllCollectionAudios extends StatefulWidget {
   const RunAllCollectionAudios({super.key});
@@ -23,7 +22,7 @@ class _RunAllCollectionAudiosState extends State<RunAllCollectionAudios> {
           height: 46,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(41),
-              color: Color.fromRGBO(246, 246, 246, 0.16),),
+              color: const Color.fromRGBO(246, 246, 246, 0.16),),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

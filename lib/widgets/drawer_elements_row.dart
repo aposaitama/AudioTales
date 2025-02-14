@@ -38,7 +38,7 @@ class DrawerElementsRow extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15.0,
           ),
         ],

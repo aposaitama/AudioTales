@@ -1,19 +1,16 @@
 import 'dart:io';
 
-import 'package:bot_toast/bot_toast.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/actionButton.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/run_all_collection_audios.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
@@ -370,7 +367,7 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                                               MiniPlayerBloc,
                                                               MiniPlayerBlocState>(
                                                             builder: (context,
-                                                                state) {
+                                                                state,) {
                                                               return GestureDetector(
                                                                 onTap: () {
                                                                   context

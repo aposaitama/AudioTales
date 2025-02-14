@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
-import 'package:uuid/uuid.dart';
 
 part 'collection_model.freezed.dart';
 part 'collection_model.g.dart';

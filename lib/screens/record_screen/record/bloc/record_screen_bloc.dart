@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class RecordBloc extends Bloc<RecordEvent, RecordState> {
-  final FlutterSoundRecorder? _recorder = FlutterSoundRecorder();
+  final FlutterSoundRecorder _recorder = FlutterSoundRecorder();
   bool _isRecorderOpen = false;
 
   RecordBloc() : super(const RecordState(status: RecordStatus.initial)) {
@@ -27,14 +27,14 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     PermissionStatus status = await Permission.microphone.request();
 
     if (status.isGranted && !_isRecorderOpen) {
-      await _recorder!.openRecorder();
+      await _recorder.openRecorder();
       _isRecorderOpen = true;
     } else if (!_isRecorderOpen) {
       return;
     }
 
     try {
-      await _recorder!.startRecorder(toFile: filePath);
+      await _recorder.startRecorder(toFile: filePath);
       _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
 
       _recorder.onProgress?.listen(
@@ -61,7 +61,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
   Future<void> _resumeRecording(
       ResumeRecordingEvent event, Emitter<RecordState> emit,) async {
-    await _recorder!.resumeRecorder();
+    await _recorder.resumeRecorder();
     _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
 
     _recorder.onProgress?.listen(
@@ -93,7 +93,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     PauseRecordingEvent event,
     Emitter<RecordState> emit,
   ) async {
-    if (_recorder!.isRecording) {
+    if (_recorder.isRecording) {
       try {
         await _recorder.pauseRecorder();
         print("Recording paused");
@@ -111,7 +111,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     StopRecordingEvent event,
     Emitter<RecordState> emit,
   ) async {
-    if (_recorder!.isRecording) {
+    if (_recorder.isRecording) {
       try {
         await _recorder.stopRecorder();
         print("Recording stopped");
@@ -130,7 +130,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   @override
   Future<void> close() async {
     try {
-      await _recorder!.closeRecorder();
+      await _recorder.closeRecorder();
       _isRecorderOpen = false;
     } catch (e) {
       print("Failed to close recorder: $e");

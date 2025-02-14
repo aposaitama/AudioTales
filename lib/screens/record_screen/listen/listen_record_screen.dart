@@ -60,7 +60,7 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                   width: 30.0,
                                 ),
                                 SvgPicture.asset(
-                                    'assets/icons/DeleteRecord.svg'),
+                                    'assets/icons/DeleteRecord.svg',),
                               ],
                             ),
                             Padding(
@@ -139,7 +139,7 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     SvgPicture.asset(
-                                        'assets/icons/Minus15.svg'),
+                                        'assets/icons/Minus15.svg',),
                                     const SizedBox(
                                       width: 60.0,
                                     ),
@@ -149,7 +149,7 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                         onTap: () async {
                                           context.read<ListenRecordBloc>().add(
                                                 const StartPlayingEvent(
-                                                    Duration()),
+                                                    Duration(),),
                                               );
                                         },
                                         child: SvgPicture.asset(

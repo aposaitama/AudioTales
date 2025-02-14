@@ -12,8 +12,11 @@ enum RecentlyDeletedStatus {
 enum RecentlyDeletedMenuStatus {
   initial,
   chooseSeveral,
-  deleteAll,
-  restoreAll,
+}
+
+enum RecentlyDeletedProgressStatus {
+  inProgress,
+  initial,
 }
 
 @freezed
@@ -25,5 +28,7 @@ class RecentlyDeletedBlocState with _$RecentlyDeletedBlocState {
     @Default({}) Map groupedAudio,
     @Default(RecentlyDeletedMenuStatus.initial)
     RecentlyDeletedMenuStatus menuStatus,
+    @Default(RecentlyDeletedProgressStatus.initial)
+    RecentlyDeletedProgressStatus progressStatus,
   }) = _RecentlyDeletedBlocState;
 }

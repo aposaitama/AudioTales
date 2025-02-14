@@ -27,4 +27,7 @@ class RecentlyDeletedBlocEvent with _$RecentlyDeletedBlocEvent {
       DeleteAllAudioRecentlyDeletedBlocEvent;
   const factory RecentlyDeletedBlocEvent.restoreAll() =
       RestoreAudioRecentlyDeletedBlocEvent;
+  const factory RecentlyDeletedBlocEvent.progressStatus(
+    RecentlyDeletedProgressStatus progressStatus,
+  ) = RecentlyDeletedProgressStatusEvent;
 }

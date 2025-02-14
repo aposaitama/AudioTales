@@ -20,8 +20,9 @@ class _RecordScreenState extends State<RecordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 600,
+    final height = MediaQuery.of(context).size.height;
+    return SizedBox(
+      height: height / 1.4,
       child: Stack(
         children: [
           Padding(
@@ -31,7 +32,6 @@ class _RecordScreenState extends State<RecordScreen> {
             ),
             child: BlocBuilder<RecordStatusBloc, RecordStatusState>(
               builder: (context, state) {
-                print(state);
                 if (state.status == RecordCommonStatus.record) {
                   return const RecordScreenRecordAction();
                 } else if (state.status == RecordCommonStatus.listen) {
