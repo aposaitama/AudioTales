@@ -124,63 +124,61 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                           );
                     } else if (value == 'delete') {
                       showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                                content: const Padding(
-                                  padding: EdgeInsets.only(top: 50.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Подтверждаете удаление?',
-                                        style: AppTextStyles.titleRed,
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                      ),
-                                      SizedBox(
-                                        height: 24.0,
-                                      ),
-                                      Text(
-                                        textAlign: TextAlign.center,
-                                        'Ваш файл перенесется в папку “Недавно удаленные”.Через 15 дней он исчезнет.',
-                                        style: AppTextStyles.subtitleTall,
-                                      )
-                                    ],
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          content: const Padding(
+                            padding: EdgeInsets.only(top: 50.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Подтверждаете удаление?',
+                                  style: AppTextStyles.titleRed,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                                SizedBox(
+                                  height: 24.0,
+                                ),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  'Ваш файл перенесется в папку “Недавно удаленные”.Через 15 дней он исчезнет.',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () async {
+                                    context.pop();
+                                    context.read<InfoCollectionBloc>().add(
+                                          const DeleteInfoCollectionBlocEvent(),
+                                        );
+                                    context.go('/collection');
+                                  },
+                                  child: const Dialogbutton(
+                                    text: 'Да',
+                                    backgroundColor: AppColors.purpleColor,
                                   ),
                                 ),
-                                actions: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () async {
-                                          context.pop();
-                                          context
-                                              .read<InfoCollectionBloc>()
-                                              .add(
-                                                const DeleteInfoCollectionBlocEvent(),
-                                              );
-                                          context.go('/collection');
-                                        },
-                                        child: const Dialogbutton(
-                                          text: 'Да',
-                                          backgroundColor:
-                                              AppColors.purpleColor,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10.0,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () => context.pop(),
-                                        child: const Dialogbutton(
-                                          text: 'Нет',
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ));
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                GestureDetector(
+                                  onTap: () => context.pop(),
+                                  child: const Dialogbutton(
+                                    text: 'Нет',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
                     } else if (value == 'choose') {
                       context.go('/collection/info/choose');
                     } else if (value == 'save') {
@@ -290,159 +288,169 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                   offset: const Offset(0, 10),
                                   blurRadius: 10,
                                   spreadRadius: 1.0,
-                                )
+                                ),
                               ],
                               color: Colors.white.withOpacity(0.9),
                               borderRadius: BorderRadius.circular(14),
                             ),
-                            child: Stack(children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(14),
-                                child: (state.imagePath.isEmpty)
-                                    ? Stack(children: [
-                                        CachedNetworkImage(
-                                          imageUrl:
-                                              state.collectionModel.imageUrl,
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(14),
+                                  child: (state.imagePath.isEmpty)
+                                      ? Stack(
+                                          children: [
+                                            CachedNetworkImage(
+                                              imageUrl: state
+                                                  .collectionModel.imageUrl,
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              fit: BoxFit.cover,
+                                              errorWidget: (
+                                                context,
+                                                error,
+                                                stackTrace,
+                                              ) =>
+                                                  const Icon(
+                                                Icons.broken_image,
+                                                size: 50,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 19.0,
+                                                horizontal: 27.0,
+                                              ),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    formatDate(
+                                                      state.collectionModel
+                                                          .creationTime,
+                                                    ),
+                                                    style: AppTextStyles
+                                                        .subtitleWhite,
+                                                  ),
+                                                  Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            '${state.collectionModel.audiosList.length.toString()} аудио',
+                                                            style: AppTextStyles
+                                                                .subtitleWhite,
+                                                          ),
+                                                          const SizedBox(
+                                                            height: 4.0,
+                                                          ),
+                                                          const Text(
+                                                            '2:30 часа',
+                                                            style: AppTextStyles
+                                                                .subtitleWhite,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          BlocBuilder<
+                                                              MiniPlayerBloc,
+                                                              MiniPlayerBlocState>(
+                                                            builder: (context,
+                                                                state) {
+                                                              return GestureDetector(
+                                                                onTap: () {
+                                                                  context
+                                                                      .read<
+                                                                          MiniPlayerBloc>()
+                                                                      .add(
+                                                                        MiniPlayerBlocEvent
+                                                                            .playAll(
+                                                                          !state
+                                                                              .isPlayingAll,
+                                                                        ),
+                                                                      );
+                                                                  if (!state
+                                                                      .isPlayingAll) {
+                                                                    context
+                                                                        .read<
+                                                                            MiniPlayerBloc>()
+                                                                        .add(
+                                                                          MiniPlayerBlocEvent
+                                                                              .open(
+                                                                            audioList,
+                                                                          ),
+                                                                        );
+                                                                  } else {
+                                                                    context
+                                                                        .read<
+                                                                            MiniPlayerBloc>()
+                                                                        .add(
+                                                                          const MiniPlayerBlocEvent
+                                                                              .close(),
+                                                                        );
+                                                                  }
+                                                                },
+                                                                child:
+                                                                    const RunAllCollectionAudios(),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Image.file(
+                                          File(state.imagePath),
                                           width: double.infinity,
                                           height: double.infinity,
                                           fit: BoxFit.cover,
-                                          errorWidget:
+                                          errorBuilder:
                                               (context, error, stackTrace) =>
                                                   const Icon(
                                             Icons.broken_image,
                                             size: 50,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 19.0,
-                                            horizontal: 27.0,
+                                ),
+                                if (state.editingMode)
+                                  Center(
+                                    child: GestureDetector(
+                                      onTap: () => context
+                                          .read<InfoCollectionBloc>()
+                                          .add(
+                                            const InfoCollectionBlocEvent
+                                                .chooseImage(),
                                           ),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                formatDate(
-                                                  state.collectionModel
-                                                      .creationTime,
-                                                ),
-                                                style:
-                                                    AppTextStyles.subtitleWhite,
-                                              ),
-                                              Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        '${state.collectionModel.audiosList.length.toString()} аудио',
-                                                        style: AppTextStyles
-                                                            .subtitleWhite,
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 4.0,
-                                                      ),
-                                                      const Text(
-                                                        '2:30 часа',
-                                                        style: AppTextStyles
-                                                            .subtitleWhite,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Column(
-                                                    children: [
-                                                      BlocBuilder<
-                                                          MiniPlayerBloc,
-                                                          MiniPlayerBlocState>(
-                                                        builder:
-                                                            (context, state) {
-                                                          return GestureDetector(
-                                                            onTap: () {
-                                                              context
-                                                                  .read<
-                                                                      MiniPlayerBloc>()
-                                                                  .add(
-                                                                    MiniPlayerBlocEvent
-                                                                        .playAll(
-                                                                      !state
-                                                                          .isPlayingAll,
-                                                                    ),
-                                                                  );
-                                                              if (!state
-                                                                  .isPlayingAll) {
-                                                                context
-                                                                    .read<
-                                                                        MiniPlayerBloc>()
-                                                                    .add(
-                                                                      MiniPlayerBlocEvent
-                                                                          .open(
-                                                                        audioList,
-                                                                      ),
-                                                                    );
-                                                              } else {
-                                                                context
-                                                                    .read<
-                                                                        MiniPlayerBloc>()
-                                                                    .add(
-                                                                      const MiniPlayerBlocEvent
-                                                                          .close(),
-                                                                    );
-                                                              }
-                                                            },
-                                                            child:
-                                                                const RunAllCollectionAudios(),
-                                                          );
-                                                        },
-                                                      ),
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ])
-                                    : Image.file(
-                                        File(state.imagePath),
-                                        width: double.infinity,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) =>
-                                                const Icon(
-                                          Icons.broken_image,
-                                          size: 50,
-                                        ),
+                                      child: SvgPicture.asset(
+                                        'assets/icons/Edit_Photo.svg',
                                       ),
-                              ),
-                              if (state.editingMode)
-                                Center(
-                                  child: GestureDetector(
-                                    onTap: () =>
-                                        context.read<InfoCollectionBloc>().add(
-                                              const InfoCollectionBlocEvent
-                                                  .chooseImage(),
-                                            ),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/Edit_Photo.svg',
                                     ),
                                   ),
-                                )
-                            ]),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
                 const SizedBox(

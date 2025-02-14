@@ -130,7 +130,7 @@ class _ChooseSeveralScreenState extends State<ChooseSeveralScreen> {
                               offset: const Offset(0, 10),
                               blurRadius: 10,
                               spreadRadius: 1.0,
-                            )
+                            ),
                           ],
                           color: Colors.white.withOpacity(0.9),
                           borderRadius: BorderRadius.circular(14),
@@ -144,7 +144,7 @@ class _ChooseSeveralScreenState extends State<ChooseSeveralScreen> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             const SizedBox(

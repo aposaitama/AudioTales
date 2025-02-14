@@ -78,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(
@@ -150,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
                             fontFamily: 'TTNorms',
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const Padding(
@@ -165,14 +165,14 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'Удалить аккаунт',
                           style: AppTextStyles.subtitleRed,
-                        )
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

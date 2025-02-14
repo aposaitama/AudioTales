@@ -69,7 +69,7 @@ class AddCollection extends StatelessWidget {
               onTap: () {
                 context.pop();
                 context.read<CollectionBloc>().add(CreateCollectionBlocEvent(
-                    title.text, collectionDescription.text));
+                    title.text, collectionDescription.text,),);
               },
               child: const Padding(
                 padding: EdgeInsets.only(right: 10.0, top: 15.0),
@@ -78,7 +78,7 @@ class AddCollection extends StatelessWidget {
                   style: AppTextStyles.whiteTitle,
                 ),
               ),
-            )
+            ),
           ],
         ),
         body: BlocBuilder<CollectionBloc, CollectionBlocState>(
@@ -123,7 +123,7 @@ class AddCollection extends StatelessWidget {
                                   color: Colors.black.withOpacity(0.15),
                                   offset: const Offset(0, 10),
                                   blurRadius: 10,
-                                  spreadRadius: 1.0)
+                                  spreadRadius: 1.0,),
                             ],
                             color: Colors.white.withOpacity(0.9),
                             borderRadius: BorderRadius.circular(14),
@@ -186,7 +186,7 @@ class AddCollection extends StatelessWidget {
                               'Готово',
                               style: AppTextStyles.subtitle,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       const SizedBox(
@@ -211,7 +211,7 @@ class AddCollection extends StatelessWidget {
                                             .add(
                                               DeleteAudioRecordsScreenStateEvent(
                                                   state
-                                                      .audiosList[index].title),
+                                                      .audiosList[index].title,),
                                             );
                                       },
                                       onChoose: () {
@@ -254,6 +254,6 @@ class AddCollection extends StatelessWidget {
               ],
             );
           },
-        ));
+        ),);
   }
 }

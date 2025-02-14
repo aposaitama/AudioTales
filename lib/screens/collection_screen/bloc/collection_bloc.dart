@@ -35,22 +35,22 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   }
 
   Future<void> _loading(LoadingCollectionBlocEvent event,
-      Emitter<CollectionBlocState> emit) async {
+      Emitter<CollectionBlocState> emit,) async {
     emit(state.copyWith(status: CollectionBlocStatus.loading));
   }
 
   Future<void> _loaded(LoadedCollectionBlocEvent event,
-      Emitter<CollectionBlocState> emit) async {
+      Emitter<CollectionBlocState> emit,) async {
     emit(state.copyWith(
         status: CollectionBlocStatus.loaded,
-        collectionList: event.collectionList));
+        collectionList: event.collectionList,),);
   }
 
   Future<void> _createCollection(CreateCollectionBlocEvent event,
-      Emitter<CollectionBlocState> emit) async {
+      Emitter<CollectionBlocState> emit,) async {
     var cancel = BotToast.showLoading();
     await _firebaseFirestoreService.saveUserCollection(event.title,
-        event.collectionDescription, state.audiosList, state.imageUrl);
+        event.collectionDescription, state.audiosList, state.imageUrl,);
     cancel();
     emit(
       state.copyWith(
@@ -62,7 +62,7 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   }
 
   Future<void> _uploadImage(
-      UploadImageBlocEvent event, Emitter<CollectionBlocState> emit) async {
+      UploadImageBlocEvent event, Emitter<CollectionBlocState> emit,) async {
     final XFile? pickedFile =
         await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile == null) return;
@@ -73,7 +73,7 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   }
 
   Future<void> _chooseAudios(
-      ChooseAudiosBlocEvent event, Emitter<CollectionBlocState> emit) async {
+      ChooseAudiosBlocEvent event, Emitter<CollectionBlocState> emit,) async {
     emit(state.copyWith(audiosList: event.audiosList));
   }
 }

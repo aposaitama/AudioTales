@@ -51,7 +51,7 @@ class CollectionPopupMenu extends StatelessWidget {
             context.read<InfoCollectionBloc>().add(SaveInfoCollectionBlocEvent(
                   context.read<TextEditingController>().text,
                   context.read<TextEditingController>().text,
-                ));
+                ),);
           } else if (value == 'close') {
             context
                 .read<InfoCollectionBloc>()

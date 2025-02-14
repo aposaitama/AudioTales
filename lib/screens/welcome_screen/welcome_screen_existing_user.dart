@@ -108,7 +108,7 @@ class _WelcomeScreenExistingUserState extends State<WelcomeScreenExistingUser> {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

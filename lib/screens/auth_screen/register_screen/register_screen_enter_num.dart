@@ -97,11 +97,11 @@ class RegisterScreenEnterNum extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

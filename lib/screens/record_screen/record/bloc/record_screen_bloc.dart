@@ -60,7 +60,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   }
 
   Future<void> _resumeRecording(
-      ResumeRecordingEvent event, Emitter<RecordState> emit) async {
+      ResumeRecordingEvent event, Emitter<RecordState> emit,) async {
     await _recorder!.resumeRecorder();
     _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
 

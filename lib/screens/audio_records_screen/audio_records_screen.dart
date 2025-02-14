@@ -78,7 +78,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
             child: SvgPicture.asset(
               'assets/icons/Dots.svg',
             ),
-          )
+          ),
         ],
       ),
       body: BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
@@ -130,7 +130,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                                 height: 1.0,
                                 fontFamily: 'TTNorms',
                               ),
-                            )
+                            ),
                           ],
                         ),
                         BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
@@ -138,8 +138,10 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             return GestureDetector(
                               onTap: () {
                                 context.read<MiniPlayerBloc>().add(
-                                    MiniPlayerBlocEvent.playAll(
-                                        !state.isPlayingAll));
+                                      MiniPlayerBlocEvent.playAll(
+                                        !state.isPlayingAll,
+                                      ),
+                                    );
                                 if (!state.isPlayingAll) {
                                   context.read<MiniPlayerBloc>().add(
                                         MiniPlayerBlocEvent.open(audioList),
@@ -159,10 +161,10 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                               child: const RunAllRecords(),
                             );
                           },
-                        )
+                        ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(
@@ -189,7 +191,8 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             onDelete: () {
                               context.read<AudioRecordsScreenBloc>().add(
                                     DeleteAudioRecordsScreenStateEvent(
-                                        audio.title),
+                                      audio.title,
+                                    ),
                                   );
                             },
                             onChoose: () {
@@ -207,7 +210,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                     },
                   ),
                 ),
-              )
+              ),
             ],
           );
         },

@@ -81,7 +81,7 @@ class _SearchScreenState extends State<SearchScreen> {
               child: SvgPicture.asset(
                 'assets/icons/Dots.svg',
               ),
-            )
+            ),
           ],
         ),
         body: BlocBuilder<SearchBloc, SearchBlocState>(
@@ -98,34 +98,37 @@ class _SearchScreenState extends State<SearchScreen> {
                       Focus(
                         onFocusChange: (hasFocus) {
                           if (hasFocus) {
-                            setState(() {
-                              _showContainer = hasFocus;
-                            });
+                            setState(
+                              () {
+                                _showContainer = hasFocus;
+                              },
+                            );
                           } else if (!hasFocus) {
-                            setState(() {
-                              _showContainer = hasFocus;
-                            });
+                            setState(
+                              () {
+                                _showContainer = hasFocus;
+                              },
+                            );
                           }
                         },
                         child: SearchField(
                           controller: _searchController,
                           onChanged: (query) {
-                            context
-                                .read<SearchBloc>()
-                                .add(SearchAudioRecordsEvent(query));
+                            context.read<SearchBloc>().add(
+                                  SearchAudioRecordsEvent(query),
+                                );
                           },
                           onTapSearch: () {
                             FocusScope.of(context).unfocus();
                           },
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                      ),
+                          horizontal: 16.0, vertical: 10.0,),
                       child: ListView.builder(
                         itemCount: state.filteredAudiosList.length,
                         itemBuilder: (context, int index) {
@@ -142,7 +145,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 onDelete: () {
                                   context.read<AudioRecordsScreenBloc>().add(
                                         DeleteAudioRecordsScreenStateEvent(
-                                            audio.title),
+                                            audio.title,),
                                       );
                                 },
                                 onChoose: () {
@@ -160,7 +163,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               if (_showContainer)
@@ -174,8 +177,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         );
                     FocusScope.of(context).unfocus();
                   },
-                )
-            ]);
+                ),
+            ],);
           },
         ),
       ),

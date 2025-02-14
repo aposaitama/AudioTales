@@ -61,9 +61,9 @@ class CustomTopClipper extends CustomClipper<Path> {
     Path path = Path();
     path.moveTo(0, height);
     path.quadraticBezierTo(
-        size.width / 3, maxHeight, size.width - size.width / 3, maxHeight);
+        size.width / 3, maxHeight, size.width - size.width / 3, maxHeight,);
     path.quadraticBezierTo(
-        size.width - 50, maxHeight, size.width, maxHeight - 20);
+        size.width - 50, maxHeight, size.width, maxHeight - 20,);
     path.lineTo(width, 0);
     path.lineTo(0, 0);
     path.close();

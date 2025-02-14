@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
@@ -60,17 +58,20 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                             Padding(
                               padding: const EdgeInsets.only(top: 7.5),
                               child: GestureDetector(
-                                  onTap: () => {
-                                        context.read<RecordStatusBloc>().add(
-                                            const ListeningRecordStatusEvent()),
-                                        // context
-                                        //     .read<ListenRecordBloc>()
-                                        //     .add(const InitialPlayingEvent()),
-                                        context.read<RecordBloc>().add(
-                                            const RecordEvent.stopRecording())
-                                      },
-                                  child: const Text('Готово')),
-                            )
+                                onTap: () => {
+                                  context.read<RecordStatusBloc>().add(
+                                        const ListeningRecordStatusEvent(),
+                                      ),
+                                  // context
+                                  //     .read<ListenRecordBloc>()
+                                  //     .add(const InitialPlayingEvent()),
+                                  context.read<RecordBloc>().add(
+                                        const RecordEvent.stopRecording(),
+                                      ),
+                                },
+                                child: const Text('Готово'),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -91,7 +92,8 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                             CustomPaint(
                               size: const Size(double.infinity, 200),
                               painter: SoundWavePainter(
-                                  decibelValues: decibelValues),
+                                decibelValues: decibelValues,
+                              ),
                             ),
                             if (state.status == RecordStatus.inProgress) ...[
                               Padding(
@@ -103,7 +105,7 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                       .first
                                       .padLeft(8, "0"),
                                 ),
-                              )
+                              ),
                             ],
                             Padding(
                               padding: const EdgeInsets.only(right: 30.0),
@@ -120,8 +122,9 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                         height: 80.0,
                                         width: 80.0,
                                         colorFilter: const ColorFilter.mode(
-                                            AppColors.orangeColor,
-                                            BlendMode.srcIn),
+                                          AppColors.orangeColor,
+                                          BlendMode.srcIn,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -136,8 +139,9 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                         height: 80.0,
                                         width: 80.0,
                                         colorFilter: const ColorFilter.mode(
-                                            AppColors.orangeColor,
-                                            BlendMode.srcIn),
+                                          AppColors.orangeColor,
+                                          BlendMode.srcIn,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -151,8 +155,9 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                         height: 80.0,
                                         width: 80.0,
                                         colorFilter: const ColorFilter.mode(
-                                            AppColors.orangeColor,
-                                            BlendMode.srcIn),
+                                          AppColors.orangeColor,
+                                          BlendMode.srcIn,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -160,11 +165,12 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                     width: 4.0,
                                     height: 25.0,
                                     decoration: const BoxDecoration(
-                                        color: AppColors.orangeColor),
-                                  )
+                                      color: AppColors.orangeColor,
+                                    ),
+                                  ),
                                 ],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),

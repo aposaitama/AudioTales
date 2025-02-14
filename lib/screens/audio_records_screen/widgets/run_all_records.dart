@@ -46,7 +46,7 @@ class _RunAllRecordsState extends State<RunAllRecords> {
                     child: SvgPicture.asset(
                       'assets/icons/Repeat.svg',
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -68,7 +68,7 @@ class _RunAllRecordsState extends State<RunAllRecords> {
                           ? 'assets/icons/Pause.svg'
                           : 'assets/icons/Play.svg',
                       colorFilter: const ColorFilter.mode(
-                          AppColors.purpleColor, BlendMode.srcIn),
+                          AppColors.purpleColor, BlendMode.srcIn,),
                     ),
                   ),
                   Padding(
@@ -82,7 +82,7 @@ class _RunAllRecordsState extends State<RunAllRecords> {
                         fontFamily: 'TTNorms',
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

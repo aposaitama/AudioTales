@@ -23,7 +23,7 @@ class _RunAllCollectionAudiosState extends State<RunAllCollectionAudios> {
           height: 46,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(41),
-              color: Color.fromRGBO(246, 246, 246, 0.16)),
+              color: Color.fromRGBO(246, 246, 246, 0.16),),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,7 +49,7 @@ class _RunAllCollectionAudiosState extends State<RunAllCollectionAudios> {
                     fontFamily: 'TTNorms',
                   ),
                 ),
-              )
+              ),
             ],
           ),
         );

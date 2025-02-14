@@ -13,6 +13,7 @@ import 'package:memory_box_avada/screens/collection_screen/collection_screen.dar
 import 'package:memory_box_avada/screens/home_screen/home_screen.dart';
 import 'package:memory_box_avada/screens/profile_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:memory_box_avada/screens/profile_screen/profile_screen.dart';
+import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_screen.dart';
 import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
 import 'package:memory_box_avada/screens/root_screen/root_screen.dart';
 import 'package:memory_box_avada/screens/search_screen/search_screen.dart';
@@ -23,19 +24,22 @@ class AppRouter {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
       // initialLocation: '/home',
-      initialLocation: '/search',
+      initialLocation: '/deleted',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
-              navigationShell: navigationShell, scaffoldKey: scaffoldKey),
+            navigationShell: navigationShell,
+            scaffoldKey: scaffoldKey,
+          ),
           branches: [
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                    path: '/home',
-                    builder: (context, state) {
-                      return HomeScreen(scaffoldKey: scaffoldKey);
-                    }),
+                  path: '/home',
+                  builder: (context, state) {
+                    return HomeScreen(scaffoldKey: scaffoldKey);
+                  },
+                ),
               ],
             ),
             StatefulShellBranch(
@@ -51,21 +55,22 @@ class AppRouter {
                         GoRoute(
                           path: '/choose',
                           builder: (context, state) => ChooseAudioRecords(),
-                        )
+                        ),
                       ],
                     ),
                     GoRoute(
-                        path: '/info',
-                        builder: (context, state) {
-                          return const InfoCollectionScreen();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: '/choose',
-                            builder: (context, state) =>
-                                const ChooseSeveralScreen(),
-                          )
-                        ])
+                      path: '/info',
+                      builder: (context, state) {
+                        return const InfoCollectionScreen();
+                      },
+                      routes: [
+                        GoRoute(
+                          path: '/choose',
+                          builder: (context, state) =>
+                              const ChooseSeveralScreen(),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ],
@@ -93,6 +98,15 @@ class AppRouter {
                   path: '/search',
                   builder: (context, state) =>
                       SearchScreen(scaffoldKey: scaffoldKey),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/deleted',
+                  builder: (context, state) =>
+                      RecentlyDeletedScreen(scaffoldKey: scaffoldKey),
                 ),
               ],
             ),

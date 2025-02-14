@@ -79,7 +79,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(
@@ -139,13 +139,13 @@ class EditProfileScreen extends StatelessWidget {
                           'Сохранить',
                           style: AppTextStyles.subtitle,
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -18,7 +18,7 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   }
 
   Future<void> _openPlayer(
-      OpenMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit) async {
+      OpenMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit,) async {
     if (!_isPlayerInitialized) {
       await _player.openPlayer();
       _isPlayerInitialized = true;
@@ -46,33 +46,33 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
 
     emit(state.copyWith(
         status: MiniPlayerStatus.playing,
-        audioRecordsList: event.audioRecordsList));
+        audioRecordsList: event.audioRecordsList,),);
   }
 
   Future<void> _closePlayer(
-      CloseMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit) async {
+      CloseMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit,) async {
     await _player.closePlayer();
     _isPlayerInitialized = false;
     emit(state.copyWith(
         status: MiniPlayerStatus.closed,
         currentPlayingIndex: 0,
-        isPlayingAll: false));
+        isPlayingAll: false,),);
   }
 
   Future<void> _pausePlayer(
-      PauseMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit) async {
+      PauseMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit,) async {
     await _player.pausePlayer();
     emit(state.copyWith(status: MiniPlayerStatus.paused));
   }
 
   Future<void> _resumePlayer(
-      ResumeMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit) async {
+      ResumeMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit,) async {
     await _player.resumePlayer();
     emit(state.copyWith(status: MiniPlayerStatus.playing));
   }
 
   Future<void> _nextTrack(
-      NextTrackMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit) async {
+      NextTrackMiniPlayerEvent event, Emitter<MiniPlayerBlocState> emit,) async {
     final nextIndex = state.currentPlayingIndex + 1;
     if (nextIndex < state.audioRecordsList.length) {
       final nextTrack = state.audioRecordsList[nextIndex];
@@ -98,12 +98,12 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   }
 
   Future<void> _playAll(PlayAllTrackMiniPlayerEvent event,
-      Emitter<MiniPlayerBlocState> emit) async {
+      Emitter<MiniPlayerBlocState> emit,) async {
     emit(state.copyWith(isPlayingAll: event.isPlayAll));
   }
 
   Future<void> _updateLine(UpdateLineMiniPlayerEvent event,
-      Emitter<MiniPlayerBlocState> emit) async {
+      Emitter<MiniPlayerBlocState> emit,) async {
     emit(state.copyWith(position: event.position));
   }
 }

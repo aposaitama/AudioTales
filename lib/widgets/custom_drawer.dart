@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/navigation/app_navigation.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/widgets/drawer_elements_row.dart';
 
@@ -40,7 +39,7 @@ class CustomDrawer extends StatelessWidget {
                     letterSpacing: 2,
                     fontFamily: 'TTNorms',
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -103,7 +102,9 @@ class CustomDrawer extends StatelessWidget {
                         icon: SvgPicture.asset(
                           'assets/icons/Delete.svg',
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          context.go('/deleted');
+                        },
                       ),
                     ],
                   ),
@@ -124,7 +125,7 @@ class CustomDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

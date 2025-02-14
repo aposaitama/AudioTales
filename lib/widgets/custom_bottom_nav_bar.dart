@@ -5,8 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
-import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_event.dart';
 
 import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
 
@@ -69,13 +67,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             .read<RecordStatusBloc>()
             .add(const RecordingRecordStatusEvent());
         showBottomSheet(
-            context: context,
-            builder: (context) {
-              return const RecordScreen();
-            });
-        setState(() {
-          isBottomSheetOpen = true;
-        });
+          context: context,
+          builder: (context) {
+            return const RecordScreen();
+          },
+        );
+        setState(
+          () {
+            isBottomSheetOpen = true;
+          },
+        );
 
         break;
       case 3:
@@ -117,7 +118,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               activeIcon: SvgPicture.asset(
                 'assets/icons/Home.svg',
                 colorFilter: const ColorFilter.mode(
-                    AppColors.purpleColor, BlendMode.srcIn),
+                  AppColors.purpleColor,
+                  BlendMode.srcIn,
+                ),
               ),
               label: 'Главная',
             ),
@@ -126,7 +129,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               activeIcon: SvgPicture.asset(
                 'assets/icons/Category.svg',
                 colorFilter: const ColorFilter.mode(
-                    AppColors.purpleColor, BlendMode.srcIn),
+                  AppColors.purpleColor,
+                  BlendMode.srcIn,
+                ),
               ),
               label: 'Подборки',
             ),
@@ -135,7 +140,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               activeIcon: SvgPicture.asset(
                 'assets/icons/Record.svg',
                 colorFilter: const ColorFilter.mode(
-                    AppColors.orangeColor, BlendMode.srcIn),
+                  AppColors.orangeColor,
+                  BlendMode.srcIn,
+                ),
               ),
               label: currentRoute == '/record' ? '' : 'Запись',
             ),

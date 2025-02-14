@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:bot_toast/bot_toast.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
@@ -30,19 +29,27 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   }
 
   Future<void> _addTitle(
-      AddRecordNameEvent event, Emitter<ListenRecordState> emit) async {
+    AddRecordNameEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     emit(state.copyWith(title: event.title));
   }
 
   Future<void> _initial(
-      InitialPlayingEvent event, Emitter<ListenRecordState> emit) async {
-    emit(state.copyWith(
-      status: ListenStatus.initial,
-    ));
+    InitialPlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: ListenStatus.initial,
+      ),
+    );
   }
 
   Future<void> _startPlaying(
-      StartPlayingEvent event, Emitter<ListenRecordState> emit) async {
+    StartPlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     final directory = await getApplicationDocumentsDirectory();
     final filePath = '${directory.path}/record.aac';
     if (!_isPlayerInitialized) {
@@ -76,12 +83,16 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   }
 
   void _seekToPosition(
-      UpdateCircleEvent event, Emitter<ListenRecordState> emit) async {
+    UpdateCircleEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     emit(state.copyWith(duration: event.duration, position: event.position));
   }
 
   Future<void> _pausePlaying(
-      PausePlayingEvent event, Emitter<ListenRecordState> emit) async {
+    PausePlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     try {
       await _player.pausePlayer();
       emit(state.copyWith(status: ListenStatus.pause));
@@ -89,7 +100,9 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   }
 
   Future<void> _resumePlaying(
-      ResumePlayingEvent event, Emitter<ListenRecordState> emit) async {
+    ResumePlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     await _player.resumePlayer();
     emit(state.copyWith(status: ListenStatus.resume));
   }
@@ -117,7 +130,9 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   // }
 
   Future<void> _stopPlaying(
-      StopPlayingEvent event, Emitter<ListenRecordState> emit) async {
+    StopPlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     try {
       await _player.stopPlayer();
       emit(state.copyWith(status: ListenStatus.stop));
@@ -125,7 +140,9 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   }
 
   Future<void> _close(
-      ClosePlayingEvent event, Emitter<ListenRecordState> emit) async {
+    ClosePlayingEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
     await _player.closePlayer();
     var cancel = BotToast.showLoading();
     final directory = await getApplicationDocumentsDirectory();
@@ -133,16 +150,22 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     String fileUrl =
         await _firebaseStorageService.uploadFile(filePath, state.title);
     await _firebaseFirestoreService.saveUserAudio(
-        state.title, fileUrl, state.duration.toString());
+      state.title,
+      fileUrl,
+      state.duration.toString(),
+    );
 
     final file = File(filePath);
     if (await file.exists()) {
       await file.delete();
       cancel();
     }
-    emit(state.copyWith(
+    emit(
+      state.copyWith(
         status: ListenStatus.close,
         duration: Duration.zero,
-        position: Duration.zero));
+        position: Duration.zero,
+      ),
+    );
   }
 }

@@ -54,8 +54,8 @@ class _MiniPlayerState extends State<MiniPlayer> {
                         end: Alignment.topRight,
                         colors: [
                           AppColors.purpleColor,
-                          Color.fromRGBO(111, 106, 164, 1)
-                        ]),
+                          Color.fromRGBO(111, 106, 164, 1),
+                        ],),
                     borderRadius: BorderRadius.circular(41),
                   ),
                   child: Padding(
@@ -136,7 +136,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                     style: AppTextStyles.timeTextWhite,
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -147,7 +147,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                   .read<MiniPlayerBloc>()
                                   .add(const MiniPlayerBlocEvent.close()),
                               child: SvgPicture.asset(
-                                  'assets/icons/FluentArrow.svg')),
+                                  'assets/icons/FluentArrow.svg',),),
                         ),
                       ],
                     ),

@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 );
                               },
-                            )
+                            ),
                           ],
                         ),
                         const SizedBox(
@@ -151,9 +151,9 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                )
+                                ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                         const SizedBox(
@@ -188,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                               top: 24.0,
                               // bottom: 105.0,
                               left: 17.0,
-                              right: 17.0),
+                              right: 17.0,),
                           child: Column(
                             children: [
                               Row(
@@ -225,7 +225,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                  )
+                                  ),
                                 ],
                               ),
                               const SizedBox(
@@ -247,7 +247,7 @@ class HomeScreen extends StatelessWidget {
                                               duration: '30 минут',
                                               onRename: () {
                                                 print(
-                                                    "Переименовать натиснуто");
+                                                    "Переименовать натиснуто",);
                                               },
                                               onDelete: () {
                                                 context
@@ -262,7 +262,7 @@ class HomeScreen extends StatelessWidget {
                                               },
                                               onChoose: () {
                                                 context.go(
-                                                    '/collection/info/choose');
+                                                    '/collection/info/choose',);
                                               },
                                               onShare: () {
                                                 print("Поделиться натиснуто");
@@ -277,7 +277,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                   );
                                 },
-                              )
+                              ),
                               // const SizedBox(
                               //   height: 54.0,
                               // ),
@@ -307,6 +307,6 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        ),);
   }
 }

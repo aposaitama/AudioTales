@@ -29,27 +29,32 @@ class HintContainer extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 45.0, left: 45.0, right: 45.0, bottom: 15.0),
+                top: 45.0,
+                left: 45.0,
+                right: 45.0,
+                bottom: 15.0,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Flexible(
                     child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: state.filteredAudiosList.length,
-                        itemBuilder: (context, int index) {
-                          return GestureDetector(
-                            onTap: () => onTap.call(index),
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 30.0),
-                              child: Text(
-                                state.filteredAudiosList[index].title,
-                                style: AppTextStyles.blackTitle,
-                              ),
+                      shrinkWrap: true,
+                      itemCount: state.filteredAudiosList.length,
+                      itemBuilder: (context, int index) {
+                        return GestureDetector(
+                          onTap: () => onTap.call(index),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 30.0),
+                            child: Text(
+                              state.filteredAudiosList[index].title,
+                              style: AppTextStyles.blackTitle,
                             ),
-                          );
-                        }),
-                  )
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

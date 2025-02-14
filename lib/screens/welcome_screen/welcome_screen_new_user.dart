@@ -59,7 +59,7 @@ class WelcomeScreenNewUser extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

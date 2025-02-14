@@ -9,7 +9,7 @@ class InfoCollectionBlocEvent with _$InfoCollectionBlocEvent {
   const factory InfoCollectionBlocEvent.loading(CollectionModel collection) =
       LoadingInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.loaded(
-      CollectionModel collectionModel) = LoadedInfoCollectionBlocEvent;
+      CollectionModel collectionModel,) = LoadedInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.edit() = EditInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.save(String title, String description) =
       SaveInfoCollectionBlocEvent;

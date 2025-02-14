@@ -5,7 +5,7 @@ class OrangeGestureDetector extends StatelessWidget {
   final String text;
   final void Function() onTap;
   const OrangeGestureDetector(
-      {super.key, required this.text, required this.onTap});
+      {super.key, required this.text, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class OrangeGestureDetector extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: AppColors.orangeColor,
-            borderRadius: BorderRadius.circular(30)),
+            borderRadius: BorderRadius.circular(30),),
         height: 60,
         child: Center(
           child: Text(

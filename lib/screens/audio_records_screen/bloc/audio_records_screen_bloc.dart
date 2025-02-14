@@ -17,7 +17,7 @@ class AudioRecordsScreenBloc
     on<LoadedAudioRecordsScreenStateEvent>(_loaded);
     on<DeleteAudioRecordsScreenStateEvent>(_deleteAuido);
     on<DeleteAudioFromCollectionRecordsScreenStateEvent>(
-        _deleteAudioFromCollection);
+        _deleteAudioFromCollection,);
     _subscribeToAudioStream();
   }
 
@@ -42,7 +42,7 @@ class AudioRecordsScreenBloc
   ) async {
     // final audioList = await _firebaseFirestoreService.getUserAudios();
     emit(state.copyWith(
-        status: AudioRecordsScreenStatus.loaded, audioList: event.audioList));
+        status: AudioRecordsScreenStatus.loaded, audioList: event.audioList,),);
   }
 
   Future<void> _deleteAuido(
@@ -57,7 +57,7 @@ class AudioRecordsScreenBloc
     Emitter<AudioRecordsScreenState> emit,
   ) async {
     await _firebaseFirestoreService.deleteAudioFromCollection(
-        event.collectionTitle, event.audioTitle);
+        event.collectionTitle, event.audioTitle,);
   }
 
   @override

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
-import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
@@ -71,7 +70,7 @@ class CollectionScreen extends StatelessWidget {
             child: SvgPicture.asset(
               'assets/icons/Dots.svg',
             ),
-          )
+          ),
         ],
       ),
       body: Stack(

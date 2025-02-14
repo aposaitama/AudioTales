@@ -18,4 +18,15 @@ class CollectionModel with _$CollectionModel {
 
   factory CollectionModel.fromJson(Map<String, dynamic> json) =>
       _$CollectionModelFromJson(json);
+
+  factory CollectionModel.empty() {
+    return CollectionModel(
+      id: '',
+      title: '',
+      audiosList: [],
+      imageUrl: '',
+      collectionDescription: '',
+      creationTime: DateTime.now().toIso8601String(),
+    );
+  }
 }

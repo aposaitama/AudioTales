@@ -8,11 +8,11 @@ class AudioRecordsScreenStateEvent with _$AudioRecordsScreenStateEvent {
   const factory AudioRecordsScreenStateEvent.loading() =
       LoadingAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.loaded(
-      List<AudioRecordsModel> audioList) = LoadedAudioRecordsScreenStateEvent;
+      List<AudioRecordsModel> audioList,) = LoadedAudioRecordsScreenStateEvent;
 
   const factory AudioRecordsScreenStateEvent.deleteAudio(String title) =
       DeleteAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.deleteAudioFromCollection(
-          String collectionTitle, String audioTitle) =
+          String collectionTitle, String audioTitle,) =
       DeleteAudioFromCollectionRecordsScreenStateEvent;
 }

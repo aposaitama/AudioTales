@@ -71,11 +71,11 @@ class _RegisterScreenWelcomeState extends State<RegisterScreenWelcome> {
                   const SizedBox(
                     height: 51.0,
                   ),
-                  SvgPicture.asset('assets/icons/Heart.svg')
+                  SvgPicture.asset('assets/icons/Heart.svg'),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

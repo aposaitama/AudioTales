@@ -97,11 +97,11 @@ class RegisterScreenEnterCode extends StatelessWidget {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

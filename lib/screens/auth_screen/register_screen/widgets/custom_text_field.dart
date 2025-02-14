@@ -6,7 +6,7 @@ class CustomTextField extends StatelessWidget {
   final MaskTextInputFormatter maskFormatted;
   final TextEditingController? controller;
   const CustomTextField(
-      {super.key, required this.maskFormatted, this.controller});
+      {super.key, required this.maskFormatted, this.controller,});
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,6 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        ),);
   }
 }

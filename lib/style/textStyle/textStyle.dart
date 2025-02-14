@@ -69,6 +69,24 @@ class AppTextStyles {
     fontFamily: 'TTNorms',
   );
 
+  static const TextStyle blacksubTitle = TextStyle(
+    color: Color.fromRGBO(58, 58, 85, 0.5),
+    fontSize: 14.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+
+  static const TextStyle navBarDelete = TextStyle(
+    color: Color.fromRGBO(58, 58, 85, 0.8),
+    fontSize: 10.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+
   static const TextStyle subtitle = TextStyle(
     color: AppColors.fontColor,
     fontSize: 14.0,

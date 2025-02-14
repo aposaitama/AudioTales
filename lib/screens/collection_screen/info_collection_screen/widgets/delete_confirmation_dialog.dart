@@ -54,7 +54,7 @@ class DeleteConfirmationDialog extends StatelessWidget {
               child: const Dialogbutton(text: 'Нет'),
             ),
           ],
-        )
+        ),
       ],
     );
   }

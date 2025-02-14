@@ -11,7 +11,7 @@ class DrawerElementsRow extends StatelessWidget {
       {super.key,
       required this.title,
       required this.icon,
-      required this.onTap});
+      required this.onTap,});
 
   @override
   Widget build(BuildContext context) {

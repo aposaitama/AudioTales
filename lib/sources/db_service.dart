@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/models/deleted_records_model.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreService {
@@ -9,7 +10,10 @@ class FirestoreService {
   final uid = 'h0xeD3p0jwqRcLqOGp0U';
 
   Future<void> saveUserAudio(
-      String title, String downloadUrl, String duration) async {
+    String title,
+    String downloadUrl,
+    String duration,
+  ) async {
     try {
       await _firestore
           .collection('users')
@@ -42,7 +46,7 @@ class FirestoreService {
         'collectionDescription': collectionDescription,
         'audiosList': serializedAudiosList,
         'imageUrl': imageUrl,
-        'creationTime': DateTime.now().toString()
+        'creationTime': DateTime.now().toString(),
       });
     } catch (e) {}
   }
@@ -123,6 +127,91 @@ class FirestoreService {
     } catch (e) {}
   }
 
+  Future<void> deleteAudioFromDeletedCollection(String audioTitle) async {
+    try {
+      QuerySnapshot audioSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('deletedAudios')
+          .where('title', isEqualTo: audioTitle)
+          .get();
+
+      if (audioSnapshot.docs.isNotEmpty) {
+        for (var doc in audioSnapshot.docs) {
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('deletedAudios')
+              .doc(doc.id)
+              .delete();
+        }
+      } else {}
+    } catch (e) {}
+  }
+
+  Future<void> deleteSeveralAudiosFromDeletedCollection(
+    List<DeletedRecordsModel> records,
+  ) async {
+    try {
+      for (DeletedRecordsModel record in records) {
+        QuerySnapshot audioSnapshot = await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('deletedAudios')
+            .where('title', isEqualTo: record.title)
+            .get();
+
+        for (var doc in audioSnapshot.docs) {
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('deletedAudios')
+              .doc(doc.id)
+              .delete();
+        }
+      }
+    } catch (e) {
+      print('Помилка під час видалення аудіо: $e');
+    }
+  }
+
+  Future<void> restoreSeveralAudiosFromDeletedCollection(
+    List<DeletedRecordsModel> records,
+  ) async {
+    try {
+      for (DeletedRecordsModel record in records) {
+        QuerySnapshot audioSnapshot = await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('deletedAudios')
+            .where('title', isEqualTo: record.title)
+            .get();
+
+        for (var doc in audioSnapshot.docs) {
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('audios')
+              .add({
+            'title': doc['title'],
+            'url': doc['url'],
+            'duration': doc['duration'],
+          });
+        }
+        for (var doc in audioSnapshot.docs) {
+          await _firestore
+              .collection('users')
+              .doc(uid)
+              .collection('deletedAudios')
+              .doc(doc.id)
+              .delete();
+        }
+      }
+    } catch (e) {
+      print('Помилка під час видалення аудіо: $e');
+    }
+  }
+
   Future<void> deleteCollection(String id) async {
     try {
       QuerySnapshot audioSnapshot = await _firestore
@@ -141,7 +230,9 @@ class FirestoreService {
   }
 
   Future<void> deleteAudioFromCollection(
-      String collectionTitle, String audioTitle) async {
+    String collectionTitle,
+    String audioTitle,
+  ) async {
     try {
       QuerySnapshot collectionSnapshot = await _firestore
           .collection('users')
@@ -177,8 +268,10 @@ class FirestoreService {
           .get();
 
       return querySnapshot.docs
-          .map((doc) =>
-              AudioRecordsModel.fromJson(doc.data() as Map<String, dynamic>))
+          .map(
+            (doc) =>
+                AudioRecordsModel.fromJson(doc.data() as Map<String, dynamic>),
+          )
           .toList();
     } catch (e) {
       return [];
@@ -201,6 +294,21 @@ class FirestoreService {
         );
   }
 
+  Stream<List<DeletedRecordsModel>> getUserDeletedAudiosStream() {
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('deletedAudios')
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map(
+                (doc) => DeletedRecordsModel.fromJson(doc.data()),
+              )
+              .toList(),
+        );
+  }
+
   Stream<List<CollectionModel>> getUserCollectionStream() {
     return _firestore
         .collection('users')
@@ -217,7 +325,8 @@ class FirestoreService {
   }
 
   Stream<CollectionModel> getUserCollectionStreamByTitle(
-      String collectionTitle) {
+    String collectionTitle,
+  ) {
     return _firestore
         .collection('users')
         .doc(uid)

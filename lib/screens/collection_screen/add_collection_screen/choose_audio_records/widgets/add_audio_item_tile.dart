@@ -90,7 +90,7 @@ class _AddAudioItemTileState extends State<AddAudioItemTile> {
                       ? SvgPicture.asset('assets/icons/Check_Box_Done.svg')
                       : const SizedBox(),
                 ),
-              )
+              ),
             ],
           ),
         ),

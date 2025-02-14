@@ -46,12 +46,12 @@ class CollectionItemTile extends StatelessWidget {
                   overflow: TextOverflow.clip,
                   '2:30 часа',
                   style: AppTextStyles.subtitleWhite,
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
-      )
-    ]);
+      ),
+    ],);
   }
 }

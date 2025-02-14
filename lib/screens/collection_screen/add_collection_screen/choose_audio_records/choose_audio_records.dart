@@ -90,7 +90,7 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                 style: AppTextStyles.whiteTitle,
               ),
             ),
-          )
+          ),
         ],
       ),
       body: Column(
@@ -142,7 +142,7 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none),
+                          borderSide: BorderSide.none,),
                       hintText: 'Поиск',
                       hintStyle: TextStyle(
                         color: AppColors.fontColor.withOpacity(0.3),
@@ -153,7 +153,7 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(
@@ -191,7 +191,7 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );
