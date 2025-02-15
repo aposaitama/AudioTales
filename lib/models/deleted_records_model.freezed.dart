@@ -20,6 +20,7 @@ DeletedRecordsModel _$DeletedRecordsModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DeletedRecordsModel {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $DeletedRecordsModelCopyWith<$Res> {
       _$DeletedRecordsModelCopyWithImpl<$Res, DeletedRecordsModel>;
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String url,
       String duration,
       @TimestampConverter() DateTime deletedAt});
@@ -64,12 +66,17 @@ class _$DeletedRecordsModelCopyWithImpl<$Res, $Val extends DeletedRecordsModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? url = null,
     Object? duration = null,
     Object? deletedAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -99,7 +106,8 @@ abstract class _$$DeletedRecordsModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String url,
       String duration,
       @TimestampConverter() DateTime deletedAt});
@@ -118,12 +126,17 @@ class __$$DeletedRecordsModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? url = null,
     Object? duration = null,
     Object? deletedAt = null,
   }) {
     return _then(_$DeletedRecordsModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -148,7 +161,8 @@ class __$$DeletedRecordsModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
   const _$DeletedRecordsModelImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.url,
       required this.duration,
       @TimestampConverter() required this.deletedAt});
@@ -156,6 +170,8 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
   factory _$DeletedRecordsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DeletedRecordsModelImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   @override
@@ -168,7 +184,7 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
 
   @override
   String toString() {
-    return 'DeletedRecordsModel(title: $title, url: $url, duration: $duration, deletedAt: $deletedAt)';
+    return 'DeletedRecordsModel(id: $id, title: $title, url: $url, duration: $duration, deletedAt: $deletedAt)';
   }
 
   @override
@@ -176,6 +192,7 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeletedRecordsModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.duration, duration) ||
@@ -186,7 +203,8 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, url, duration, deletedAt);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, url, duration, deletedAt);
 
   /// Create a copy of DeletedRecordsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -207,7 +225,8 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
 
 abstract class _DeletedRecordsModel implements DeletedRecordsModel {
   const factory _DeletedRecordsModel(
-          {required final String title,
+          {required final String id,
+          required final String title,
           required final String url,
           required final String duration,
           @TimestampConverter() required final DateTime deletedAt}) =
@@ -216,6 +235,8 @@ abstract class _DeletedRecordsModel implements DeletedRecordsModel {
   factory _DeletedRecordsModel.fromJson(Map<String, dynamic> json) =
       _$DeletedRecordsModelImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override

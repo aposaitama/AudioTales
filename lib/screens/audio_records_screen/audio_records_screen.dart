@@ -151,12 +151,6 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                                         const MiniPlayerBlocEvent.close(),
                                       );
                                 }
-
-                                // if (!state.isPlayingAll) {
-                                //   context
-                                //       .read<MiniPlayerBloc>()
-                                //       .add(MiniPlayerBlocEvent.close());
-                                // }
                               },
                               child: const RunAllRecords(),
                             );
@@ -186,7 +180,14 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                             title: audio.title,
                             duration: '30 минут',
                             onRename: () {
-                              print("Переименовать натиснуто");
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    const ChangePopupAudioRecordsScreenStateEvent(
+                                      AudioPopupStatus.editing,
+                                    ),
+                                  );
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    EditAudioRecordsScreenStateEvent(audio.id),
+                                  );
                             },
                             onDelete: () {
                               context.read<AudioRecordsScreenBloc>().add(
@@ -199,7 +200,28 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                               context.go('/collection/info/choose');
                             },
                             onShare: () {
-                              print("Поделиться натиснуто");
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    ShareAudioRecordsScreenStateEvent(
+                                      audio,
+                                    ),
+                                  );
+                            },
+                            onSave: (controller) {
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    SaveAudioRecordsScreenStateEvent(
+                                      controller.text,
+                                    ),
+                                  );
+                            },
+                            onCancel: () {
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    const ChangePopupAudioRecordsScreenStateEvent(
+                                      AudioPopupStatus.initial,
+                                    ),
+                                  );
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    const CancelEditingAudioRecordsScreenStateEvent(),
+                                  );
                             },
                           ),
                           const SizedBox(

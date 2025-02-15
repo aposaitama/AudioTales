@@ -1,180 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
+import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class ChooseSeveralScreen extends StatefulWidget {
+class ChooseSeveralScreen extends StatelessWidget {
   const ChooseSeveralScreen({super.key});
 
   @override
-  State<ChooseSeveralScreen> createState() => _ChooseSeveralScreenState();
-}
-
-class _ChooseSeveralScreenState extends State<ChooseSeveralScreen> {
-  String popUpMode = '';
-
-  @override
   Widget build(BuildContext context) {
+    const double tileHeight = 240.0;
+
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Подборки',
+          style: AppTextStyles.appBarTextOpacity,
+        ),
         toolbarHeight: 65,
         backgroundColor: AppColors.greenColor,
-        leadingWidth: 75.0,
         leading: Builder(
-          builder: (context) => Padding(
-            padding: const EdgeInsets.only(left: 15.0),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                height: 60.0,
-                width: 60.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: IconButton(
-                  iconSize: 36.0,
-                  icon: SvgPicture.asset(
-                    'assets/icons/Arrow_Left_Circle.svg',
-                    height: 36.0,
-                    width: 36.0,
-                  ),
-                  onPressed: () => context.pop(),
+          builder: (context) => Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  'assets/icons/Add.svg',
+                  height: 24.0,
+                  width: 24.0,
                 ),
               ),
+              onPressed: () => context.go('/collection/add'),
             ),
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: PopupMenuButton<String>(
-              icon: SvgPicture.asset(
-                'assets/icons/Dots.svg',
+            padding: const EdgeInsets.only(right: 8.0),
+            child: GestureDetector(
+              child: const Text(
+                'Добавить',
+                style: AppTextStyles.whiteTitle,
               ),
-              offset: const Offset(-10, 45),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20.0),
-                ),
-              ),
-              onSelected: (value) {
-                if (value == 'edit') {
-                  setState(
-                    () {
-                      popUpMode = 'edit';
-                    },
-                  );
-                } else if (value == 'delete') {}
-              },
-              itemBuilder: (context) => [
-                const PopupMenuItem(
-                  value: 'cancel',
-                  child: Text('Отменить выбор'),
-                ),
-                const PopupMenuItem(
-                  value: 'add_to_collection',
-                  child: Text('Добавить в подборку'),
-                ),
-                const PopupMenuItem(
-                  value: 'share',
-                  child: Text('Поделиться'),
-                ),
-                const PopupMenuItem(
-                  value: 'download',
-                  child: Text('Скачать все'),
-                ),
-                const PopupMenuItem(
-                  value: 'delete',
-                  child: Text('Удалить все'),
-                ),
-              ],
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                const CustomProfileTopClipPath(
-                  backgroundColor: AppColors.greenColor,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 30.0,
-                    left: 16.0,
-                    right: 16.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Сказка о малыше Кокки',
-                        style: AppTextStyles.whiteBodyBold,
+      body: Stack(
+        children: [
+          const CustomProfileTopClipPath(
+            backgroundColor: AppColors.greenColor,
+          ),
+          BlocBuilder<CollectionBloc, CollectionBlocState>(
+            builder: (context, state) {
+              if (state.status == CollectionBlocStatus.loading) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (state.collectionList.isEmpty) {
+                return const Center(child: Text('Нет подборок'));
+              }
+              return Padding(
+                padding: const EdgeInsets.only(top: 40.0),
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final double tileWidth = constraints.maxWidth / 2 - 24.0;
+                    return GridView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 16.0,
+                        crossAxisSpacing: 16.0,
+                        childAspectRatio: tileWidth / tileHeight,
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Container(
-                        height: 240.0,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.15),
-                              offset: const Offset(0, 10),
-                              blurRadius: 10,
-                              spreadRadius: 1.0,
-                            ),
-                          ],
-                          color: Colors.white.withOpacity(0.9),
-                          borderRadius: BorderRadius.circular(14),
-                          image: const DecorationImage(
-                            image: AssetImage(
-                              'assets/icons/TestImage.png',
-                            ),
-                            fit: BoxFit.cover,
+                      itemCount: state.collectionList.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.go('/collection/info');
+                            context.read<InfoCollectionBloc>().add(
+                                  LoadingInfoCollectionBlocEvent(
+                                    state.collectionList[index],
+                                  ),
+                                );
+                          },
+                          child: CollectionItemTile(
+                            collection: state.collectionList[index],
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
+                        );
+                      },
+                    );
+                  },
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-              ),
-              child: ListView.builder(
-                shrinkWrap:
-                    true, // Чтобы ListView работал внутри SingleChildScrollView
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: 20,
-                itemBuilder: (context, int index) {
-                  return const Column(
-                    children: [
-                      // AddAudioItemTile(
-                      //   title: 'Малышь Кокки 1',
-                      //   duration: '30 минут',
-                      // ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

@@ -9,6 +9,7 @@ part of 'deleted_records_model.dart';
 _$DeletedRecordsModelImpl _$$DeletedRecordsModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DeletedRecordsModelImpl(
+      id: json['id'] as String,
       title: json['title'] as String,
       url: json['url'] as String,
       duration: json['duration'] as String,
@@ -19,6 +20,7 @@ _$DeletedRecordsModelImpl _$$DeletedRecordsModelImplFromJson(
 Map<String, dynamic> _$$DeletedRecordsModelImplToJson(
         _$DeletedRecordsModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'url': instance.url,
       'duration': instance.duration,

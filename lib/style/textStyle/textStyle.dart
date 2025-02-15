@@ -10,6 +10,14 @@ class AppTextStyles {
     letterSpacing: 3,
     fontFamily: 'TTNorms',
   );
+  static const TextStyle appBarTextOpacity = TextStyle(
+    color: Color.fromRGBO(255, 255, 255, 0.5),
+    fontSize: 36.0,
+    fontWeight: FontWeight.w700,
+    height: 1.5,
+    letterSpacing: 3,
+    fontFamily: 'TTNorms',
+  );
   static const TextStyle appBarSubText = TextStyle(
     color: Colors.white,
     fontSize: 16.0,
@@ -42,6 +50,14 @@ class AppTextStyles {
     letterSpacing: 1,
     fontFamily: 'TTNorms',
   );
+  static const TextStyle whiteBodyTile = TextStyle(
+    color: Colors.white,
+    fontSize: 20.0,
+    fontWeight: FontWeight.w400,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
 
   static const TextStyle titleRed = TextStyle(
     color: AppColors.redColor,
@@ -53,6 +69,17 @@ class AppTextStyles {
   );
 
   static const TextStyle whiteTitle = TextStyle(
+    color: Colors.white,
+    fontSize: 16.0,
+    fontWeight: FontWeight.w500,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+
+  static const TextStyle whiteTitleUnderline = TextStyle(
+    decoration: TextDecoration.underline,
+    decorationColor: Colors.white,
     color: Colors.white,
     fontSize: 16.0,
     fontWeight: FontWeight.w500,

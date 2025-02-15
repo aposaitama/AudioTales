@@ -20,27 +20,42 @@ mixin _$AudioRecordsScreenStateEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
     required TResult Function(String title) deleteAudio,
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
     TResult? Function(String title)? deleteAudio,
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
     TResult Function(String title)? deleteAudio,
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,29 +64,50 @@ mixin _$AudioRecordsScreenStateEvent {
     required TResult Function(LoadingAudioRecordsScreenStateEvent value)
         loading,
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
     required TResult Function(
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -149,9 +185,14 @@ class _$LoadingAudioRecordsScreenStateEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
     required TResult Function(String title) deleteAudio,
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
   }) {
     return loading();
   }
@@ -161,9 +202,14 @@ class _$LoadingAudioRecordsScreenStateEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
     TResult? Function(String title)? deleteAudio,
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
   }) {
     return loading?.call();
   }
@@ -173,9 +219,14 @@ class _$LoadingAudioRecordsScreenStateEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
     TResult Function(String title)? deleteAudio,
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -190,11 +241,18 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     required TResult Function(LoadingAudioRecordsScreenStateEvent value)
         loading,
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
     required TResult Function(
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
   }) {
     return loading(this);
   }
@@ -204,9 +262,16 @@ class _$LoadingAudioRecordsScreenStateEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
   }) {
     return loading?.call(this);
   }
@@ -216,9 +281,16 @@ class _$LoadingAudioRecordsScreenStateEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -319,9 +391,14 @@ class _$LoadedAudioRecordsScreenStateEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
     required TResult Function(String title) deleteAudio,
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
   }) {
     return loaded(audioList);
   }
@@ -331,9 +408,14 @@ class _$LoadedAudioRecordsScreenStateEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
     TResult? Function(String title)? deleteAudio,
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
   }) {
     return loaded?.call(audioList);
   }
@@ -343,9 +425,14 @@ class _$LoadedAudioRecordsScreenStateEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
     TResult Function(String title)? deleteAudio,
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -360,11 +447,18 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     required TResult Function(LoadingAudioRecordsScreenStateEvent value)
         loading,
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
     required TResult Function(
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
   }) {
     return loaded(this);
   }
@@ -374,9 +468,16 @@ class _$LoadedAudioRecordsScreenStateEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
   }) {
     return loaded?.call(this);
   }
@@ -386,9 +487,16 @@ class _$LoadedAudioRecordsScreenStateEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -411,6 +519,226 @@ abstract class LoadedAudioRecordsScreenStateEvent
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedAudioRecordsScreenStateEventImplCopyWith<
           _$LoadedAudioRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShareAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$ShareAudioRecordsScreenStateEventImplCopyWith(
+          _$ShareAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$ShareAudioRecordsScreenStateEventImpl) then) =
+      __$$ShareAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioRecordsModel audioElem});
+
+  $AudioRecordsModelCopyWith<$Res> get audioElem;
+}
+
+/// @nodoc
+class __$$ShareAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$ShareAudioRecordsScreenStateEventImpl>
+    implements _$$ShareAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$ShareAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$ShareAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$ShareAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? audioElem = null,
+  }) {
+    return _then(_$ShareAudioRecordsScreenStateEventImpl(
+      null == audioElem
+          ? _value.audioElem
+          : audioElem // ignore: cast_nullable_to_non_nullable
+              as AudioRecordsModel,
+    ));
+  }
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AudioRecordsModelCopyWith<$Res> get audioElem {
+    return $AudioRecordsModelCopyWith<$Res>(_value.audioElem, (value) {
+      return _then(_value.copyWith(audioElem: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ShareAudioRecordsScreenStateEventImpl
+    implements ShareAudioRecordsScreenStateEvent {
+  const _$ShareAudioRecordsScreenStateEventImpl(this.audioElem);
+
+  @override
+  final AudioRecordsModel audioElem;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.share(audioElem: $audioElem)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShareAudioRecordsScreenStateEventImpl &&
+            (identical(other.audioElem, audioElem) ||
+                other.audioElem == audioElem));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, audioElem);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShareAudioRecordsScreenStateEventImplCopyWith<
+          _$ShareAudioRecordsScreenStateEventImpl>
+      get copyWith => __$$ShareAudioRecordsScreenStateEventImplCopyWithImpl<
+          _$ShareAudioRecordsScreenStateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+  }) {
+    return share(audioElem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+  }) {
+    return share?.call(audioElem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (share != null) {
+      return share(audioElem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+  }) {
+    return share(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+  }) {
+    return share?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (share != null) {
+      return share(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShareAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory ShareAudioRecordsScreenStateEvent(
+          final AudioRecordsModel audioElem) =
+      _$ShareAudioRecordsScreenStateEventImpl;
+
+  AudioRecordsModel get audioElem;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShareAudioRecordsScreenStateEventImplCopyWith<
+          _$ShareAudioRecordsScreenStateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -490,9 +818,14 @@ class _$DeleteAudioRecordsScreenStateEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
     required TResult Function(String title) deleteAudio,
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
   }) {
     return deleteAudio(title);
   }
@@ -502,9 +835,14 @@ class _$DeleteAudioRecordsScreenStateEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
     TResult? Function(String title)? deleteAudio,
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
   }) {
     return deleteAudio?.call(title);
   }
@@ -514,9 +852,14 @@ class _$DeleteAudioRecordsScreenStateEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
     TResult Function(String title)? deleteAudio,
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -531,11 +874,18 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     required TResult Function(LoadingAudioRecordsScreenStateEvent value)
         loading,
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
     required TResult Function(
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
   }) {
     return deleteAudio(this);
   }
@@ -545,9 +895,16 @@ class _$DeleteAudioRecordsScreenStateEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
   }) {
     return deleteAudio?.call(this);
   }
@@ -557,9 +914,16 @@ class _$DeleteAudioRecordsScreenStateEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -678,9 +1042,14 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
     required TResult Function(String title) deleteAudio,
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
   }) {
     return deleteAudioFromCollection(collectionTitle, audioTitle);
   }
@@ -690,9 +1059,14 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
     TResult? Function(String title)? deleteAudio,
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
   }) {
     return deleteAudioFromCollection?.call(collectionTitle, audioTitle);
   }
@@ -702,9 +1076,14 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
     TResult Function(String title)? deleteAudio,
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     required TResult orElse(),
   }) {
     if (deleteAudioFromCollection != null) {
@@ -719,11 +1098,18 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     required TResult Function(LoadingAudioRecordsScreenStateEvent value)
         loading,
     required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
     required TResult Function(DeleteAudioRecordsScreenStateEvent value)
         deleteAudio,
     required TResult Function(
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
   }) {
     return deleteAudioFromCollection(this);
   }
@@ -733,9 +1119,16 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
   }) {
     return deleteAudioFromCollection?.call(this);
   }
@@ -745,9 +1138,16 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
     TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
     TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
     required TResult orElse(),
   }) {
     if (deleteAudioFromCollection != null) {
@@ -771,5 +1171,796 @@ abstract class DeleteAudioFromCollectionRecordsScreenStateEvent
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteAudioFromCollectionRecordsScreenStateEventImplCopyWith<
           _$DeleteAudioFromCollectionRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$SaveAudioRecordsScreenStateEventImplCopyWith(
+          _$SaveAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$SaveAudioRecordsScreenStateEventImpl) then) =
+      __$$SaveAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String newTitle});
+}
+
+/// @nodoc
+class __$$SaveAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$SaveAudioRecordsScreenStateEventImpl>
+    implements _$$SaveAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$SaveAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$SaveAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$SaveAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newTitle = null,
+  }) {
+    return _then(_$SaveAudioRecordsScreenStateEventImpl(
+      null == newTitle
+          ? _value.newTitle
+          : newTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveAudioRecordsScreenStateEventImpl
+    implements SaveAudioRecordsScreenStateEvent {
+  const _$SaveAudioRecordsScreenStateEventImpl(this.newTitle);
+
+  @override
+  final String newTitle;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.saveAudio(newTitle: $newTitle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveAudioRecordsScreenStateEventImpl &&
+            (identical(other.newTitle, newTitle) ||
+                other.newTitle == newTitle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newTitle);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveAudioRecordsScreenStateEventImplCopyWith<
+          _$SaveAudioRecordsScreenStateEventImpl>
+      get copyWith => __$$SaveAudioRecordsScreenStateEventImplCopyWithImpl<
+          _$SaveAudioRecordsScreenStateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+  }) {
+    return saveAudio(newTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+  }) {
+    return saveAudio?.call(newTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (saveAudio != null) {
+      return saveAudio(newTitle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+  }) {
+    return saveAudio(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+  }) {
+    return saveAudio?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (saveAudio != null) {
+      return saveAudio(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SaveAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory SaveAudioRecordsScreenStateEvent(final String newTitle) =
+      _$SaveAudioRecordsScreenStateEventImpl;
+
+  String get newTitle;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SaveAudioRecordsScreenStateEventImplCopyWith<
+          _$SaveAudioRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$EditAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$EditAudioRecordsScreenStateEventImplCopyWith(
+          _$EditAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$EditAudioRecordsScreenStateEventImpl) then) =
+      __$$EditAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String audioId});
+}
+
+/// @nodoc
+class __$$EditAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$EditAudioRecordsScreenStateEventImpl>
+    implements _$$EditAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$EditAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$EditAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$EditAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? audioId = null,
+  }) {
+    return _then(_$EditAudioRecordsScreenStateEventImpl(
+      null == audioId
+          ? _value.audioId
+          : audioId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$EditAudioRecordsScreenStateEventImpl
+    implements EditAudioRecordsScreenStateEvent {
+  const _$EditAudioRecordsScreenStateEventImpl(this.audioId);
+
+  @override
+  final String audioId;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.editAudio(audioId: $audioId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EditAudioRecordsScreenStateEventImpl &&
+            (identical(other.audioId, audioId) || other.audioId == audioId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, audioId);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditAudioRecordsScreenStateEventImplCopyWith<
+          _$EditAudioRecordsScreenStateEventImpl>
+      get copyWith => __$$EditAudioRecordsScreenStateEventImplCopyWithImpl<
+          _$EditAudioRecordsScreenStateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+  }) {
+    return editAudio(audioId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+  }) {
+    return editAudio?.call(audioId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (editAudio != null) {
+      return editAudio(audioId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+  }) {
+    return editAudio(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+  }) {
+    return editAudio?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (editAudio != null) {
+      return editAudio(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EditAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory EditAudioRecordsScreenStateEvent(final String audioId) =
+      _$EditAudioRecordsScreenStateEventImpl;
+
+  String get audioId;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$EditAudioRecordsScreenStateEventImplCopyWith<
+          _$EditAudioRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CancelEditingAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$CancelEditingAudioRecordsScreenStateEventImplCopyWith(
+          _$CancelEditingAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$CancelEditingAudioRecordsScreenStateEventImpl) then) =
+      __$$CancelEditingAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CancelEditingAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$CancelEditingAudioRecordsScreenStateEventImpl>
+    implements _$$CancelEditingAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$CancelEditingAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$CancelEditingAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$CancelEditingAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CancelEditingAudioRecordsScreenStateEventImpl
+    implements CancelEditingAudioRecordsScreenStateEvent {
+  const _$CancelEditingAudioRecordsScreenStateEventImpl();
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.cancelEditing()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CancelEditingAudioRecordsScreenStateEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+  }) {
+    return cancelEditing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+  }) {
+    return cancelEditing?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (cancelEditing != null) {
+      return cancelEditing();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+  }) {
+    return cancelEditing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+  }) {
+    return cancelEditing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (cancelEditing != null) {
+      return cancelEditing(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CancelEditingAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory CancelEditingAudioRecordsScreenStateEvent() =
+      _$CancelEditingAudioRecordsScreenStateEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith(
+          _$ChangePopupAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$ChangePopupAudioRecordsScreenStateEventImpl) then) =
+      __$$ChangePopupAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioPopupStatus popupStatus});
+}
+
+/// @nodoc
+class __$$ChangePopupAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$ChangePopupAudioRecordsScreenStateEventImpl>
+    implements _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$ChangePopupAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$ChangePopupAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$ChangePopupAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? popupStatus = null,
+  }) {
+    return _then(_$ChangePopupAudioRecordsScreenStateEventImpl(
+      null == popupStatus
+          ? _value.popupStatus
+          : popupStatus // ignore: cast_nullable_to_non_nullable
+              as AudioPopupStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangePopupAudioRecordsScreenStateEventImpl
+    implements ChangePopupAudioRecordsScreenStateEvent {
+  const _$ChangePopupAudioRecordsScreenStateEventImpl(this.popupStatus);
+
+  @override
+  final AudioPopupStatus popupStatus;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.changePopupMode(popupStatus: $popupStatus)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangePopupAudioRecordsScreenStateEventImpl &&
+            (identical(other.popupStatus, popupStatus) ||
+                other.popupStatus == popupStatus));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, popupStatus);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith<
+          _$ChangePopupAudioRecordsScreenStateEventImpl>
+      get copyWith =>
+          __$$ChangePopupAudioRecordsScreenStateEventImplCopyWithImpl<
+              _$ChangePopupAudioRecordsScreenStateEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+  }) {
+    return changePopupMode(popupStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+  }) {
+    return changePopupMode?.call(popupStatus);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (changePopupMode != null) {
+      return changePopupMode(popupStatus);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+  }) {
+    return changePopupMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+  }) {
+    return changePopupMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    required TResult orElse(),
+  }) {
+    if (changePopupMode != null) {
+      return changePopupMode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangePopupAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory ChangePopupAudioRecordsScreenStateEvent(
+          final AudioPopupStatus popupStatus) =
+      _$ChangePopupAudioRecordsScreenStateEventImpl;
+
+  AudioPopupStatus get popupStatus;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith<
+          _$ChangePopupAudioRecordsScreenStateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

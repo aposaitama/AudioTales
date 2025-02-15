@@ -20,6 +20,7 @@ class FirestoreService {
           .doc('h0xeD3p0jwqRcLqOGp0U')
           .collection('audios')
           .add({
+        'id': uuid.v1(),
         'title': title,
         'url': downloadUrl,
         'duration': duration,
@@ -58,7 +59,6 @@ class FirestoreService {
     required String newImageUrl,
   }) async {
     try {
-      // Отримуємо колекції за полем 'id'
       QuerySnapshot collectionSnapshot = await _firestore
           .collection('users')
           .doc(uid)
@@ -94,6 +94,41 @@ class FirestoreService {
     }
   }
 
+  Future<void> updateAudioTitleById({
+    required String audioId,
+    required String newTitle,
+  }) async {
+    try {
+      QuerySnapshot collectionSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .where('id', isEqualTo: audioId)
+          .get();
+
+      if (collectionSnapshot.docs.isNotEmpty) {
+        var audioDoc = collectionSnapshot.docs.first;
+
+        Map<String, dynamic> updatedData = {};
+
+        updatedData['title'] = newTitle;
+
+        await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('audios')
+            .doc(audioDoc.id)
+            .update(updatedData);
+
+        print('Collection updated successfully!');
+      } else {
+        print('Collection not found!');
+      }
+    } catch (e) {
+      print('Error updating collection: $e');
+    }
+  }
+
   Future<void> deleteAudio(String audioTitle) async {
     try {
       QuerySnapshot audioSnapshot = await _firestore
@@ -110,6 +145,7 @@ class FirestoreService {
               .doc(uid)
               .collection('deletedAudios')
               .add({
+            'id': doc['id'],
             'title': doc['title'],
             'url': doc['url'],
             'duration': doc['duration'],
@@ -193,6 +229,7 @@ class FirestoreService {
               .doc(uid)
               .collection('audios')
               .add({
+            'id': doc['id'],
             'title': doc['title'],
             'url': doc['url'],
             'duration': doc['duration'],
@@ -331,7 +368,7 @@ class FirestoreService {
         .collection('users')
         .doc(uid)
         .collection('collections')
-        .where('title', isEqualTo: collectionTitle)
+        .where('id', isEqualTo: collectionTitle)
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) {

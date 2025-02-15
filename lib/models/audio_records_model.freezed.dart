@@ -23,6 +23,7 @@ mixin _$AudioRecordsModel {
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   /// Serializes this AudioRecordsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +41,7 @@ abstract class $AudioRecordsModelCopyWith<$Res> {
           AudioRecordsModel value, $Res Function(AudioRecordsModel) then) =
       _$AudioRecordsModelCopyWithImpl<$Res, AudioRecordsModel>;
   @useResult
-  $Res call({String title, String url, String duration});
+  $Res call({String title, String url, String duration, String id});
 }
 
 /// @nodoc
@@ -61,6 +62,7 @@ class _$AudioRecordsModelCopyWithImpl<$Res, $Val extends AudioRecordsModel>
     Object? title = null,
     Object? url = null,
     Object? duration = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -75,6 +77,10 @@ class _$AudioRecordsModelCopyWithImpl<$Res, $Val extends AudioRecordsModel>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -87,7 +93,7 @@ abstract class _$$AudioRecordsModelImplCopyWith<$Res>
       __$$AudioRecordsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String url, String duration});
+  $Res call({String title, String url, String duration, String id});
 }
 
 /// @nodoc
@@ -106,6 +112,7 @@ class __$$AudioRecordsModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? url = null,
     Object? duration = null,
+    Object? id = null,
   }) {
     return _then(_$AudioRecordsModelImpl(
       title: null == title
@@ -120,6 +127,10 @@ class __$$AudioRecordsModelImplCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -128,7 +139,10 @@ class __$$AudioRecordsModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AudioRecordsModelImpl implements _AudioRecordsModel {
   const _$AudioRecordsModelImpl(
-      {required this.title, required this.url, required this.duration});
+      {required this.title,
+      required this.url,
+      required this.duration,
+      required this.id});
 
   factory _$AudioRecordsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioRecordsModelImplFromJson(json);
@@ -139,10 +153,12 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
   final String url;
   @override
   final String duration;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'AudioRecordsModel(title: $title, url: $url, duration: $duration)';
+    return 'AudioRecordsModel(title: $title, url: $url, duration: $duration, id: $id)';
   }
 
   @override
@@ -153,12 +169,13 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.duration, duration) ||
-                other.duration == duration));
+                other.duration == duration) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, url, duration);
+  int get hashCode => Object.hash(runtimeType, title, url, duration, id);
 
   /// Create a copy of AudioRecordsModel
   /// with the given fields replaced by the non-null parameter values.
@@ -181,7 +198,8 @@ abstract class _AudioRecordsModel implements AudioRecordsModel {
   const factory _AudioRecordsModel(
       {required final String title,
       required final String url,
-      required final String duration}) = _$AudioRecordsModelImpl;
+      required final String duration,
+      required final String id}) = _$AudioRecordsModelImpl;
 
   factory _AudioRecordsModel.fromJson(Map<String, dynamic> json) =
       _$AudioRecordsModelImpl.fromJson;
@@ -192,6 +210,8 @@ abstract class _AudioRecordsModel implements AudioRecordsModel {
   String get url;
   @override
   String get duration;
+  @override
+  String get id;
 
   /// Create a copy of AudioRecordsModel
   /// with the given fields replaced by the non-null parameter values.

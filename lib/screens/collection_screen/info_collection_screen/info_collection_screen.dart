@@ -13,6 +13,7 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/run_all_collection_audios.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
@@ -102,138 +103,167 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
             builder: (context, state) {
               return Padding(
                 padding: const EdgeInsets.only(right: 15.0),
-                child: PopupMenuButton<String>(
-                  icon: SvgPicture.asset(
-                    'assets/icons/Dots.svg',
-                  ),
-                  offset: const Offset(-10, 45),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        20.0,
+                child: PopupMenuButton(
+                    icon: SvgPicture.asset(
+                      'assets/icons/Dots.svg',
+                    ),
+                    offset: const Offset(-10, 45),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          20.0,
+                        ),
                       ),
                     ),
-                  ),
-                  onSelected: (value) {
-                    if (value == 'edit') {
-                      context.read<InfoCollectionBloc>().add(
-                            const EditInfoCollectionBlocEvent(),
-                          );
-                    } else if (value == 'delete') {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          content: const Padding(
-                            padding: EdgeInsets.only(top: 50.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'Подтверждаете удаление?',
-                                  style: AppTextStyles.titleRed,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                                SizedBox(
-                                  height: 24.0,
-                                ),
-                                Text(
-                                  textAlign: TextAlign.center,
-                                  'Ваш файл перенесется в папку “Недавно удаленные”.Через 15 дней он исчезнет.',
-                                  style: AppTextStyles.subtitleTall,
-                                ),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                GestureDetector(
-                                  onTap: () async {
-                                    context.pop();
-                                    context.read<InfoCollectionBloc>().add(
-                                          const DeleteInfoCollectionBlocEvent(),
-                                        );
-                                    context.go('/collection');
-                                  },
-                                  child: const Dialogbutton(
-                                    text: 'Да',
-                                    backgroundColor: AppColors.purpleColor,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10.0,
-                                ),
-                                GestureDetector(
-                                  onTap: () => context.pop(),
-                                  child: const Dialogbutton(
-                                    text: 'Нет',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    } else if (value == 'choose') {
-                      context.go('/collection/info/choose');
-                    } else if (value == 'save') {
-                      context.read<InfoCollectionBloc>().add(
-                            SaveInfoCollectionBlocEvent(
-                              titleController.text,
-                              descriptionController.text,
-                            ),
-                          );
-                    } else if (value == 'close') {
-                      context.read<InfoCollectionBloc>().add(
-                            const CloseInfoCollectionBlocEvent(),
-                          );
-                      context.pop();
-                    }
-                  },
-                  itemBuilder: (context) => state.editingMode
-                      ? [
+                    onSelected: (value) {
+                      if (value == InfoCollectionPopupMode.edit) {
+                        context.read<InfoCollectionBloc>().add(
+                              const InfoCollectionModeBlocEvent(
+                                InfoCollectionPopupMode.edit,
+                              ),
+                            );
+                        context.read<InfoCollectionBloc>().add(
+                              const EditInfoCollectionBlocEvent(),
+                            );
+                      } else if (value ==
+                          InfoCollectionPopupMode.deleteCollection) {
+                        ShowDeleteDialog.show(
+                          context,
+                          onYes: () {
+                            context.read<InfoCollectionBloc>().add(
+                                  const DeleteInfoCollectionBlocEvent(),
+                                );
+                            context.go('/collection');
+                          },
+                        );
+                      } else if (value ==
+                          InfoCollectionPopupMode.chooseSeveral) {
+                        context.read<InfoCollectionBloc>().add(
+                              const InfoCollectionModeBlocEvent(
+                                InfoCollectionPopupMode.chooseSeveral,
+                              ),
+                            );
+                      } else if (value == InfoCollectionEditingMode.save) {
+                        context.read<InfoCollectionBloc>().add(
+                              SaveInfoCollectionBlocEvent(
+                                titleController.text,
+                                descriptionController.text,
+                              ),
+                            );
+                      } else if (value == InfoCollectionEditingMode.close) {
+                        context.read<InfoCollectionBloc>().add(
+                              const InfoCollectionModeBlocEvent(
+                                InfoCollectionPopupMode.initial,
+                              ),
+                            );
+                        context.read<InfoCollectionBloc>().add(
+                              const CloseInfoCollectionBlocEvent(),
+                            );
+                      }
+                    },
+                    itemBuilder: (context) {
+                      print(state.popupModeStatus);
+                      if (state.popupModeStatus == InfoCollectionPopupMode.edit)
+                        return [
                           const PopupMenuItem(
-                            value: 'save',
+                            value: InfoCollectionEditingMode.save,
                             child: Text(
                               'Сохранить',
                             ),
                           ),
                           const PopupMenuItem(
-                            value: 'close',
+                            value: InfoCollectionEditingMode.close,
                             child: Text(
                               'Отменить',
                             ),
                           ),
-                        ]
-                      : [
+                        ];
+                      if (state.popupModeStatus ==
+                          InfoCollectionPopupMode.initial)
+                        return [
                           const PopupMenuItem(
-                            value: 'edit',
+                            value: InfoCollectionPopupMode.edit,
                             child: Text(
                               'Редактировать',
                             ),
                           ),
                           const PopupMenuItem(
-                            value: 'choose',
+                            value: InfoCollectionPopupMode.chooseSeveral,
                             child: Text(
                               'Выбрать несколько',
                             ),
                           ),
                           const PopupMenuItem(
-                            value: 'delete',
+                            value: InfoCollectionPopupMode.deleteCollection,
                             child: Text(
                               'Удалить подборку',
                             ),
                           ),
                           const PopupMenuItem(
-                            value: 'share',
+                            value: InfoCollectionPopupMode.share,
                             child: Text(
                               'Поделиться',
                             ),
                           ),
-                        ],
-                ),
+                        ];
+
+                      return [
+                        const PopupMenuItem(
+                          value: InfoCollectionEditingMode.save,
+                          child: Text(
+                            'Сохранить',
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: InfoCollectionEditingMode.close,
+                          child: Text(
+                            'Отменить',
+                          ),
+                        ),
+                      ];
+                    }),
+                // itemBuilder: (context) => state.editingMode
+                //     ? [
+                //         const PopupMenuItem(
+                //           value: InfoCollectionEditingMode.save,
+                //           child: Text(
+                //             'Сохранить',
+                //           ),
+                //         ),
+                //         const PopupMenuItem(
+                //           value: InfoCollectionEditingMode.close,
+                //           child: Text(
+                //             'Отменить',
+                //           ),
+                //         ),
+                //       ]
+                //     : [
+                //         const PopupMenuItem(
+                //           value: InfoCollectionPopupMode.edit,
+                //           child: Text(
+                //             'Редактировать',
+                //           ),
+                //         ),
+                //         const PopupMenuItem(
+                //           value: InfoCollectionPopupMode.chooseSeveral,
+                //           child: Text(
+                //             'Выбрать несколько',
+                //           ),
+                //         ),
+                //         const PopupMenuItem(
+                //           value: InfoCollectionPopupMode.deleteCollection,
+                //           child: Text(
+                //             'Удалить подборку',
+                //           ),
+                //         ),
+                //         const PopupMenuItem(
+                //           value: InfoCollectionPopupMode.share,
+                //           child: Text(
+                //             'Поделиться',
+                //           ),
+                //         ),
+                //       ],
+                // ),
               );
             },
           ),
@@ -259,19 +289,24 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TextField(
-                            readOnly: !state.editingMode,
-                            controller: titleController,
-                            style: AppTextStyles.whiteBodyBold,
-                            decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 0.0,
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                          ),
+                          !state.editingMode
+                              ? Text(
+                                  state.collectionModel.title,
+                                  style: AppTextStyles.whiteBodyBold,
+                                )
+                              : TextField(
+                                  controller: titleController,
+                                  style: AppTextStyles.whiteBodyBold,
+                                  decoration: const InputDecoration(
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 0.0,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                ),
                           const SizedBox(
                             height: 20.0,
                           ),
@@ -319,99 +354,100 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                                 vertical: 19.0,
                                                 horizontal: 27.0,
                                               ),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Text(
-                                                    formatDate(
-                                                      state.collectionModel
-                                                          .creationTime,
-                                                    ),
-                                                    style: AppTextStyles
-                                                        .subtitleWhite,
-                                                  ),
-                                                  Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            '${state.collectionModel.audiosList.length.toString()} аудио',
-                                                            style: AppTextStyles
-                                                                .subtitleWhite,
+                                              child: !state.editingMode
+                                                  ? Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          formatDate(
+                                                            state
+                                                                .collectionModel
+                                                                .creationTime,
                                                           ),
-                                                          const SizedBox(
-                                                            height: 4.0,
-                                                          ),
-                                                          const Text(
-                                                            '2:30 часа',
-                                                            style: AppTextStyles
-                                                                .subtitleWhite,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Column(
-                                                        children: [
-                                                          BlocBuilder<
-                                                              MiniPlayerBloc,
-                                                              MiniPlayerBlocState>(
-                                                            builder: (context,
-                                                                state,) {
-                                                              return GestureDetector(
-                                                                onTap: () {
-                                                                  context
-                                                                      .read<
-                                                                          MiniPlayerBloc>()
-                                                                      .add(
-                                                                        MiniPlayerBlocEvent
-                                                                            .playAll(
-                                                                          !state
-                                                                              .isPlayingAll,
-                                                                        ),
-                                                                      );
-                                                                  if (!state
-                                                                      .isPlayingAll) {
-                                                                    context
-                                                                        .read<
-                                                                            MiniPlayerBloc>()
-                                                                        .add(
-                                                                          MiniPlayerBlocEvent
-                                                                              .open(
-                                                                            audioList,
-                                                                          ),
-                                                                        );
-                                                                  } else {
-                                                                    context
-                                                                        .read<
-                                                                            MiniPlayerBloc>()
-                                                                        .add(
-                                                                          const MiniPlayerBlocEvent
-                                                                              .close(),
-                                                                        );
-                                                                  }
-                                                                },
-                                                                child:
-                                                                    const RunAllCollectionAudios(),
-                                                              );
-                                                            },
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
+                                                          style: AppTextStyles
+                                                              .subtitleWhite,
+                                                        ),
+                                                        Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .end,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Text(
+                                                                  '${state.collectionModel.audiosList.length.toString()} аудио',
+                                                                  style: AppTextStyles
+                                                                      .subtitleWhite,
+                                                                ),
+                                                                const SizedBox(
+                                                                  height: 4.0,
+                                                                ),
+                                                                const Text(
+                                                                  '2:30 часа',
+                                                                  style: AppTextStyles
+                                                                      .subtitleWhite,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              children: [
+                                                                BlocBuilder<
+                                                                    MiniPlayerBloc,
+                                                                    MiniPlayerBlocState>(
+                                                                  builder: (
+                                                                    context,
+                                                                    state,
+                                                                  ) {
+                                                                    return GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        context
+                                                                            .read<MiniPlayerBloc>()
+                                                                            .add(
+                                                                              MiniPlayerBlocEvent.playAll(
+                                                                                !state.isPlayingAll,
+                                                                              ),
+                                                                            );
+                                                                        if (!state
+                                                                            .isPlayingAll) {
+                                                                          context
+                                                                              .read<MiniPlayerBloc>()
+                                                                              .add(
+                                                                                MiniPlayerBlocEvent.open(
+                                                                                  audioList,
+                                                                                ),
+                                                                              );
+                                                                        } else {
+                                                                          context
+                                                                              .read<MiniPlayerBloc>()
+                                                                              .add(
+                                                                                const MiniPlayerBlocEvent.close(),
+                                                                              );
+                                                                        }
+                                                                      },
+                                                                      child:
+                                                                          const RunAllCollectionAudios(),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : null,
                                             ),
                                           ],
                                         )
@@ -464,21 +500,30 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                      child: TextField(
-                        maxLines: null,
-                        scrollPhysics: const NeverScrollableScrollPhysics(),
-                        readOnly: !state.editingMode,
-                        controller: descriptionController,
-                        style: AppTextStyles.subtitleTall,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                          ),
-                        ),
-                      ),
+                      child: state.editingMode
+                          ? TextField(
+                              maxLines: null,
+                              scrollPhysics:
+                                  const NeverScrollableScrollPhysics(),
+                              readOnly: !state.editingMode,
+                              controller: descriptionController,
+                              style: AppTextStyles.subtitleTall,
+                              decoration: const InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                ),
+                              ),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(left: 7.0),
+                              child: Text(
+                                state.collectionModel.collectionDescription,
+                                style: AppTextStyles.subtitleTall,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -526,6 +571,12 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                             title:
                                 state.collectionModel.audiosList[index].title,
                             duration: '30 минут',
+                            onSave: (controller) {
+                              print("Поделиться натиснуто");
+                            },
+                            onCancel: () {
+                              print("Поделиться натиснуто");
+                            },
                             onRename: () {
                               print("Переименовать натиснуто");
                             },
@@ -542,7 +593,11 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                               context.go('/collection/info/choose');
                             },
                             onShare: () {
-                              print("Поделиться натиснуто");
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    ShareAudioRecordsScreenStateEvent(
+                                      state.collectionModel.audiosList[index],
+                                    ),
+                                  );
                             },
                           ),
                           const SizedBox(

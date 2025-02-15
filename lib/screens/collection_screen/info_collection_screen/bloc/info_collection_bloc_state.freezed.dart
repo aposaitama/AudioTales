@@ -21,6 +21,10 @@ mixin _$InfoCollectionBlocState {
   bool get editingMode => throw _privateConstructorUsedError;
   String get imagePath => throw _privateConstructorUsedError;
   InfoCollectionState get status => throw _privateConstructorUsedError;
+  InfoCollectionPopupMode get popupModeStatus =>
+      throw _privateConstructorUsedError;
+  InfoCollectionEditingMode get editingModeStatus =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +44,9 @@ abstract class $InfoCollectionBlocStateCopyWith<$Res> {
       CollectionModel collectionModel,
       bool editingMode,
       String imagePath,
-      InfoCollectionState status});
+      InfoCollectionState status,
+      InfoCollectionPopupMode popupModeStatus,
+      InfoCollectionEditingMode editingModeStatus});
 
   $CollectionModelCopyWith<$Res> get collectionModel;
 }
@@ -66,6 +72,8 @@ class _$InfoCollectionBlocStateCopyWithImpl<$Res,
     Object? editingMode = null,
     Object? imagePath = null,
     Object? status = null,
+    Object? popupModeStatus = null,
+    Object? editingModeStatus = null,
   }) {
     return _then(_value.copyWith(
       audioList: null == audioList
@@ -88,6 +96,14 @@ class _$InfoCollectionBlocStateCopyWithImpl<$Res,
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as InfoCollectionState,
+      popupModeStatus: null == popupModeStatus
+          ? _value.popupModeStatus
+          : popupModeStatus // ignore: cast_nullable_to_non_nullable
+              as InfoCollectionPopupMode,
+      editingModeStatus: null == editingModeStatus
+          ? _value.editingModeStatus
+          : editingModeStatus // ignore: cast_nullable_to_non_nullable
+              as InfoCollectionEditingMode,
     ) as $Val);
   }
 
@@ -116,7 +132,9 @@ abstract class _$$InfoCollectionBlocStateImplCopyWith<$Res>
       CollectionModel collectionModel,
       bool editingMode,
       String imagePath,
-      InfoCollectionState status});
+      InfoCollectionState status,
+      InfoCollectionPopupMode popupModeStatus,
+      InfoCollectionEditingMode editingModeStatus});
 
   @override
   $CollectionModelCopyWith<$Res> get collectionModel;
@@ -142,6 +160,8 @@ class __$$InfoCollectionBlocStateImplCopyWithImpl<$Res>
     Object? editingMode = null,
     Object? imagePath = null,
     Object? status = null,
+    Object? popupModeStatus = null,
+    Object? editingModeStatus = null,
   }) {
     return _then(_$InfoCollectionBlocStateImpl(
       audioList: null == audioList
@@ -164,6 +184,14 @@ class __$$InfoCollectionBlocStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as InfoCollectionState,
+      popupModeStatus: null == popupModeStatus
+          ? _value.popupModeStatus
+          : popupModeStatus // ignore: cast_nullable_to_non_nullable
+              as InfoCollectionPopupMode,
+      editingModeStatus: null == editingModeStatus
+          ? _value.editingModeStatus
+          : editingModeStatus // ignore: cast_nullable_to_non_nullable
+              as InfoCollectionEditingMode,
     ));
   }
 }
@@ -182,7 +210,9 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
           creationTime: ''),
       this.editingMode = false,
       this.imagePath = '',
-      this.status = InfoCollectionState.loading})
+      this.status = InfoCollectionState.loading,
+      this.popupModeStatus = InfoCollectionPopupMode.initial,
+      this.editingModeStatus = InfoCollectionEditingMode.initial})
       : _audioList = audioList;
 
   final List<AudioRecordsModel> _audioList;
@@ -206,10 +236,16 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
   @override
   @JsonKey()
   final InfoCollectionState status;
+  @override
+  @JsonKey()
+  final InfoCollectionPopupMode popupModeStatus;
+  @override
+  @JsonKey()
+  final InfoCollectionEditingMode editingModeStatus;
 
   @override
   String toString() {
-    return 'InfoCollectionBlocState(audioList: $audioList, collectionModel: $collectionModel, editingMode: $editingMode, imagePath: $imagePath, status: $status)';
+    return 'InfoCollectionBlocState(audioList: $audioList, collectionModel: $collectionModel, editingMode: $editingMode, imagePath: $imagePath, status: $status, popupModeStatus: $popupModeStatus, editingModeStatus: $editingModeStatus)';
   }
 
   @override
@@ -225,7 +261,11 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
                 other.editingMode == editingMode) &&
             (identical(other.imagePath, imagePath) ||
                 other.imagePath == imagePath) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.popupModeStatus, popupModeStatus) ||
+                other.popupModeStatus == popupModeStatus) &&
+            (identical(other.editingModeStatus, editingModeStatus) ||
+                other.editingModeStatus == editingModeStatus));
   }
 
   @override
@@ -235,7 +275,9 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
       collectionModel,
       editingMode,
       imagePath,
-      status);
+      status,
+      popupModeStatus,
+      editingModeStatus);
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -249,11 +291,14 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
 
 abstract class _InfoCollectionBlocState implements InfoCollectionBlocState {
   const factory _InfoCollectionBlocState(
-      {final List<AudioRecordsModel> audioList,
-      final CollectionModel collectionModel,
-      final bool editingMode,
-      final String imagePath,
-      final InfoCollectionState status}) = _$InfoCollectionBlocStateImpl;
+          {final List<AudioRecordsModel> audioList,
+          final CollectionModel collectionModel,
+          final bool editingMode,
+          final String imagePath,
+          final InfoCollectionState status,
+          final InfoCollectionPopupMode popupModeStatus,
+          final InfoCollectionEditingMode editingModeStatus}) =
+      _$InfoCollectionBlocStateImpl;
 
   @override
   List<AudioRecordsModel> get audioList;
@@ -265,6 +310,10 @@ abstract class _InfoCollectionBlocState implements InfoCollectionBlocState {
   String get imagePath;
   @override
   InfoCollectionState get status;
+  @override
+  InfoCollectionPopupMode get popupModeStatus;
+  @override
+  InfoCollectionEditingMode get editingModeStatus;
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.

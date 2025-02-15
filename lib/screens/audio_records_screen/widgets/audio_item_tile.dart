@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class AudioItemTile extends StatelessWidget {
+enum PopupValues {
+  edit,
+  save,
+  cancel,
+  addToCollection,
+  delete,
+  share,
+}
+
+class AudioItemTile extends StatefulWidget {
   final String title;
   final String duration;
   final Color? color;
@@ -17,6 +28,8 @@ class AudioItemTile extends StatelessWidget {
   final VoidCallback onDelete;
   final VoidCallback onChoose;
   final VoidCallback onShare;
+  final ValueChanged<TextEditingController> onSave;
+  final VoidCallback onCancel;
 
   const AudioItemTile({
     super.key,
@@ -28,15 +41,40 @@ class AudioItemTile extends StatelessWidget {
     required this.onDelete,
     required this.onChoose,
     required this.onShare,
+    required this.onSave,
+    required this.onCancel,
   });
+
+  @override
+  State<AudioItemTile> createState() => _AudioItemTileState();
+}
+
+class _AudioItemTileState extends State<AudioItemTile> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.title);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
       builder: (context, state) {
+        final editingAudioId = context
+            .select((AudioRecordsScreenBloc bloc) => bloc.state.editingAudioId);
+        final isEditing = editingAudioId == widget.audio.id;
+
         bool isPlaying = state.audioRecordsList.isNotEmpty &&
             state.currentPlayingIndex < state.audioRecordsList.length &&
-            state.audioRecordsList[state.currentPlayingIndex] == audio &&
+            state.audioRecordsList[state.currentPlayingIndex] == widget.audio &&
             state.status == MiniPlayerStatus.playing;
 
         return Container(
@@ -66,10 +104,10 @@ class AudioItemTile extends StatelessWidget {
                           }
                         } else {
                           if (state.status == MiniPlayerStatus.paused &&
-                              state.audioRecordsList.contains(audio)) {
+                              state.audioRecordsList.contains(widget.audio)) {
                             bloc.add(const MiniPlayerBlocEvent.resume());
                           } else {
-                            bloc.add(MiniPlayerBlocEvent.open([audio]));
+                            bloc.add(MiniPlayerBlocEvent.open([widget.audio]));
                           }
                         }
                       },
@@ -78,28 +116,42 @@ class AudioItemTile extends StatelessWidget {
                             ? 'assets/icons/Pause.svg'
                             : 'assets/icons/Play.svg',
                         colorFilter: ColorFilter.mode(
-                          color ?? AppColors.blueColor,
+                          widget.color ?? AppColors.blueColor,
                           BlendMode.srcIn,
                         ),
                       ),
                     ),
                     const SizedBox(width: 23.0),
                     Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            color: AppColors.fontColor,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w500,
-                            height: 1.0,
-                            fontFamily: 'TTNorms',
-                          ),
-                        ),
+                        !isEditing
+                            ? Text(
+                                widget.title,
+                                style: AppTextStyles.subtitle,
+                              )
+                            : SizedBox(
+                                width: 150,
+                                child: TextField(
+                                  autofocus: true,
+                                  controller: _controller,
+                                  style: AppTextStyles.subtitle,
+                                  decoration: const InputDecoration(
+                                    isDense: true,
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 0.0,
+                                      vertical: 0.0,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
                         const SizedBox(height: 4.0),
                         Text(
-                          audio.duration,
+                          widget.audio.duration,
                           style: TextStyle(
                             color: AppColors.fontColor.withOpacity(0.5),
                             fontSize: 14.0,
@@ -115,59 +167,106 @@ class AudioItemTile extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 9.0),
-                  child: PopupMenuButton<String>(
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    color: Colors.white,
-                    offset: const Offset(-10, 45),
-                    icon: SvgPicture.asset('assets/icons/SmalDots.svg'),
-                    onSelected: (value) {
-                      switch (value) {
-                        case 'edit':
-                          onRename();
-                          break;
-                        case 'delete':
-                          onDelete();
-                          break;
-                        case 'choose':
-                          onChoose();
-                          break;
-                        case 'share':
-                          onShare();
-                          break;
-                      }
+                  child: BlocBuilder<AudioRecordsScreenBloc,
+                      AudioRecordsScreenState>(
+                    builder: (context, state) {
+                      return PopupMenuButton(
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                        ),
+                        color: Colors.white,
+                        offset: const Offset(-10, 45),
+                        icon: SvgPicture.asset('assets/icons/SmalDots.svg'),
+                        onSelected: (value) {
+                          switch (value) {
+                            case PopupValues.edit:
+                              widget.onRename();
+                              break;
+                            case PopupValues.delete:
+                              widget.onDelete();
+                              break;
+                            case PopupValues.addToCollection:
+                              widget.onChoose();
+                              break;
+                            case PopupValues.share:
+                              widget.onShare();
+                              break;
+                            case PopupValues.save:
+                              widget.onSave(_controller);
+                              break;
+                            case PopupValues.cancel:
+                              widget.onCancel();
+                              break;
+                          }
+                        },
+                        itemBuilder: (context) {
+                          if (state.popupStatus == AudioPopupStatus.initial)
+                            return [
+                              const PopupMenuItem(
+                                value: PopupValues.edit,
+                                child: Text(
+                                  'Переименовать',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                              const PopupMenuItem(
+                                value: PopupValues.addToCollection,
+                                child: Text(
+                                  'Добавить в подборку',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                              const PopupMenuItem(
+                                value: PopupValues.delete,
+                                child: Text(
+                                  'Удалить',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                              const PopupMenuItem(
+                                value: PopupValues.share,
+                                child: Text(
+                                  'Поделиться',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                            ];
+                          if (state.popupStatus == AudioPopupStatus.editing)
+                            return [
+                              const PopupMenuItem(
+                                value: PopupValues.save,
+                                child: Text(
+                                  'Сохранить',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                              const PopupMenuItem(
+                                value: PopupValues.cancel,
+                                child: Text(
+                                  'Отменить',
+                                  style: AppTextStyles.subtitleTall,
+                                ),
+                              ),
+                            ];
+                          return [
+                            const PopupMenuItem(
+                              value: 'edit',
+                              child: Text(
+                                'Сохранить',
+                                style: AppTextStyles.subtitleTall,
+                              ),
+                            ),
+                            const PopupMenuItem(
+                              value: 'choose',
+                              child: Text(
+                                'Отменить',
+                                style: AppTextStyles.subtitleTall,
+                              ),
+                            ),
+                          ];
+                        },
+                      );
                     },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(
-                        value: 'edit',
-                        child: Text(
-                          'Переименовать',
-                          style: AppTextStyles.subtitleTall,
-                        ),
-                      ),
-                      const PopupMenuItem(
-                        value: 'choose',
-                        child: Text(
-                          'Добавить в подборку',
-                          style: AppTextStyles.subtitleTall,
-                        ),
-                      ),
-                      const PopupMenuItem(
-                        value: 'delete',
-                        child: Text(
-                          'Удалить',
-                          style: AppTextStyles.subtitleTall,
-                        ),
-                      ),
-                      const PopupMenuItem(
-                        value: 'share',
-                        child: Text(
-                          'Поделиться',
-                          style: AppTextStyles.subtitleTall,
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ],

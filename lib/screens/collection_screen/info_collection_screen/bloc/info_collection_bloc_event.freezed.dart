@@ -21,6 +21,7 @@ mixin _$InfoCollectionBlocEvent {
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -32,6 +33,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -43,6 +45,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -55,6 +58,7 @@ mixin _$InfoCollectionBlocEvent {
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -67,6 +71,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -78,6 +83,7 @@ mixin _$InfoCollectionBlocEvent {
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -199,6 +205,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -213,6 +220,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -227,6 +235,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -245,6 +254,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -260,6 +270,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -274,6 +285,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -392,6 +404,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -406,6 +419,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -420,6 +434,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -438,6 +453,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -453,6 +469,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -467,6 +484,7 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -544,6 +562,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -558,6 +577,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -572,6 +592,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -590,6 +611,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -605,6 +627,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -619,6 +642,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -635,6 +659,188 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
 abstract class EditInfoCollectionBlocEvent implements InfoCollectionBlocEvent {
   const factory EditInfoCollectionBlocEvent() =
       _$EditInfoCollectionBlocEventImpl;
+}
+
+/// @nodoc
+abstract class _$$InfoCollectionModeBlocEventImplCopyWith<$Res> {
+  factory _$$InfoCollectionModeBlocEventImplCopyWith(
+          _$InfoCollectionModeBlocEventImpl value,
+          $Res Function(_$InfoCollectionModeBlocEventImpl) then) =
+      __$$InfoCollectionModeBlocEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({InfoCollectionPopupMode mode});
+}
+
+/// @nodoc
+class __$$InfoCollectionModeBlocEventImplCopyWithImpl<$Res>
+    extends _$InfoCollectionBlocEventCopyWithImpl<$Res,
+        _$InfoCollectionModeBlocEventImpl>
+    implements _$$InfoCollectionModeBlocEventImplCopyWith<$Res> {
+  __$$InfoCollectionModeBlocEventImplCopyWithImpl(
+      _$InfoCollectionModeBlocEventImpl _value,
+      $Res Function(_$InfoCollectionModeBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mode = null,
+  }) {
+    return _then(_$InfoCollectionModeBlocEventImpl(
+      null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as InfoCollectionPopupMode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
+  const _$InfoCollectionModeBlocEventImpl(this.mode);
+
+  @override
+  final InfoCollectionPopupMode mode;
+
+  @override
+  String toString() {
+    return 'InfoCollectionBlocEvent.mode(mode: $mode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InfoCollectionModeBlocEventImpl &&
+            (identical(other.mode, mode) || other.mode == mode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, mode);
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InfoCollectionModeBlocEventImplCopyWith<_$InfoCollectionModeBlocEventImpl>
+      get copyWith => __$$InfoCollectionModeBlocEventImplCopyWithImpl<
+          _$InfoCollectionModeBlocEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(CollectionModel collectionModel) loaded,
+    required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
+    required TResult Function(String title, String description) save,
+    required TResult Function() chooseImage,
+    required TResult Function() delete,
+    required TResult Function() close,
+  }) {
+    return mode(this.mode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(CollectionModel collectionModel)? loaded,
+    TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
+    TResult? Function(String title, String description)? save,
+    TResult? Function()? chooseImage,
+    TResult? Function()? delete,
+    TResult? Function()? close,
+  }) {
+    return mode?.call(this.mode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CollectionModel collection)? loading,
+    TResult Function(CollectionModel collectionModel)? loaded,
+    TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
+    TResult Function(String title, String description)? save,
+    TResult Function()? chooseImage,
+    TResult Function()? delete,
+    TResult Function()? close,
+    required TResult orElse(),
+  }) {
+    if (mode != null) {
+      return mode(this.mode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
+    required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
+    required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
+    required TResult Function(SaveInfoCollectionBlocEvent value) save,
+    required TResult Function(ChooseImageInfoCollectionBlocEvent value)
+        chooseImage,
+    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
+    required TResult Function(CloseInfoCollectionBlocEvent value) close,
+  }) {
+    return mode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
+    TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
+    TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
+    TResult? Function(SaveInfoCollectionBlocEvent value)? save,
+    TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
+    TResult? Function(CloseInfoCollectionBlocEvent value)? close,
+  }) {
+    return mode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
+    TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
+    TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
+    TResult Function(SaveInfoCollectionBlocEvent value)? save,
+    TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
+    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
+    TResult Function(CloseInfoCollectionBlocEvent value)? close,
+    required TResult orElse(),
+  }) {
+    if (mode != null) {
+      return mode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InfoCollectionModeBlocEvent implements InfoCollectionBlocEvent {
+  const factory InfoCollectionModeBlocEvent(
+      final InfoCollectionPopupMode mode) = _$InfoCollectionModeBlocEventImpl;
+
+  InfoCollectionPopupMode get mode;
+
+  /// Create a copy of InfoCollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InfoCollectionModeBlocEventImplCopyWith<_$InfoCollectionModeBlocEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -721,6 +927,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -735,6 +942,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -749,6 +957,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -767,6 +976,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -782,6 +992,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -796,6 +1007,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -873,6 +1085,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -887,6 +1100,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -901,6 +1115,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -919,6 +1134,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -934,6 +1150,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -948,6 +1165,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -1016,6 +1234,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -1030,6 +1249,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -1044,6 +1264,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -1062,6 +1283,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -1077,6 +1299,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -1091,6 +1314,7 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -1159,6 +1383,7 @@ class _$CloseInfoCollectionBlocEventImpl
     required TResult Function(CollectionModel collection) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
+    required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(String title, String description) save,
     required TResult Function() chooseImage,
     required TResult Function() delete,
@@ -1173,6 +1398,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult? Function(CollectionModel collection)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
+    TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(String title, String description)? save,
     TResult? Function()? chooseImage,
     TResult? Function()? delete,
@@ -1187,6 +1413,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult Function(CollectionModel collection)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
+    TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(String title, String description)? save,
     TResult Function()? chooseImage,
     TResult Function()? delete,
@@ -1205,6 +1432,7 @@ class _$CloseInfoCollectionBlocEventImpl
     required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
     required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
     required TResult Function(EditInfoCollectionBlocEvent value) edit,
+    required TResult Function(InfoCollectionModeBlocEvent value) mode,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ChooseImageInfoCollectionBlocEvent value)
         chooseImage,
@@ -1220,6 +1448,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult? Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
@@ -1234,6 +1463,7 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
     TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
     TResult Function(EditInfoCollectionBlocEvent value)? edit,
+    TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
     TResult Function(DeleteInfoCollectionBlocEvent value)? delete,

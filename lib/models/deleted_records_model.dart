@@ -17,6 +17,7 @@ class TimestampConverter implements JsonConverter<DateTime, Timestamp> {
 @freezed
 class DeletedRecordsModel with _$DeletedRecordsModel {
   const factory DeletedRecordsModel({
+    required String id,
     required String title,
     required String url,
     required String duration,

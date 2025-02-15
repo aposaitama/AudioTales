@@ -9,6 +9,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
+import 'package:memory_box_avada/screens/home_screen/widgets/colection_preview.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
@@ -93,72 +94,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       BlocBuilder<CollectionBloc, CollectionBlocState>(
                         builder: (context, state) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                height: 240,
-                                width: MediaQuery.of(context).size.width / 2 -
-                                    22.5,
-                                decoration: BoxDecoration(
-                                  color: AppColors.mainColor.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(12),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      offset: const Offset(0, 5),
-                                      blurRadius: 10,
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    height: 112,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2 -
-                                            22.5,
-                                    decoration: BoxDecoration(
-                                      color: AppColors.orangeColor
-                                          .withOpacity(0.9),
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          offset: const Offset(0, 10),
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 15.0,
-                                  ),
-                                  Container(
-                                    height: 112,
-                                    width:
-                                        MediaQuery.of(context).size.width / 2 -
-                                            22.5,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          AppColors.blueColor.withOpacity(0.85),
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
-                                          offset: const Offset(0, 5),
-                                          blurRadius: 10,
-                                          spreadRadius: 1,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                          return CollectionPreview(
+                            collectionList: state.collectionList,
                           );
                         },
                       ),
@@ -255,6 +192,12 @@ class HomeScreen extends StatelessWidget {
                                                 "Переименовать натиснуто",
                                               );
                                             },
+                                            onSave: (controller) {
+                                              print("Поделиться натиснуто");
+                                            },
+                                            onCancel: () {
+                                              print("Поделиться натиснуто");
+                                            },
                                             onDelete: () {
                                               context
                                                   .read<
@@ -272,7 +215,14 @@ class HomeScreen extends StatelessWidget {
                                               );
                                             },
                                             onShare: () {
-                                              print("Поделиться натиснуто");
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    ShareAudioRecordsScreenStateEvent(
+                                                      state.audioList[index],
+                                                    ),
+                                                  );
                                             },
                                           ),
                                           const SizedBox(

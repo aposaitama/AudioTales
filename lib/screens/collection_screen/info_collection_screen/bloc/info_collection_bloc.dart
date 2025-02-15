@@ -26,6 +26,7 @@ class InfoCollectionBloc
     on<ChooseImageInfoCollectionBlocEvent>(_chooseImage);
     on<SaveInfoCollectionBlocEvent>(_save);
     on<DeleteInfoCollectionBlocEvent>(_delete);
+    on<InfoCollectionModeBlocEvent>(_changeMode);
   }
 
   void _subscribeToCollectionStream(String collectionTitle) {
@@ -36,64 +37,102 @@ class InfoCollectionBloc
     });
   }
 
-  Future<void> _loading(LoadingInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
-    emit(state.copyWith(
+  Future<void> _changeMode(
+    InfoCollectionModeBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        popupModeStatus: event.mode,
+      ),
+    );
+  }
+
+  Future<void> _loading(
+    LoadingInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
         status: InfoCollectionState.loading,
-        collectionModel: event.collection,),);
+        collectionModel: event.collection,
+      ),
+    );
 
-    _subscribeToCollectionStream(event.collection.title);
+    _subscribeToCollectionStream(event.collection.id);
   }
 
-  Future<void> _loaded(LoadedInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
-    emit(state.copyWith(
+  Future<void> _loaded(
+    LoadedInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
         collectionModel: event.collectionModel,
-        status: InfoCollectionState.loaded,),);
+        status: InfoCollectionState.loaded,
+      ),
+    );
   }
 
-  Future<void> _editMode(EditInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
+  Future<void> _editMode(
+    EditInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
     emit(state.copyWith(editingMode: true));
   }
 
-  Future<void> _save(SaveInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
-    var cancel = BotToast.showLoading();
-    String imageUrl = '';
+  Future<void> _save(
+    SaveInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    String imageUrl = state.collectionModel.imageUrl;
     if (state.imagePath.isNotEmpty) {
       imageUrl = await _firebaseStorageService.uploadImage(state.imagePath);
     }
     await _firebaseFirestoreService.updateCollectionById(
-        collectionId: state.collectionModel.id,
-        newTitle: event.title,
-        newDescription: event.description,
-        newImageUrl: imageUrl,);
-    cancel();
-    emit(state.copyWith(
-      editingMode: false,
-    ),);
+      collectionId: state.collectionModel.id,
+      newTitle: event.title,
+      newDescription: event.description,
+      newImageUrl: imageUrl,
+    );
+
+    emit(
+      state.copyWith(
+        editingMode: false,
+        collectionModel: CollectionModel(
+          id: state.collectionModel.id,
+          title: event.title,
+          audiosList: state.collectionModel.audiosList,
+          imageUrl: state.collectionModel.imageUrl,
+          collectionDescription: event.description,
+          creationTime: state.collectionModel.creationTime,
+        ),
+      ),
+    );
   }
 
-  Future<void> _delete(DeleteInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
+  Future<void> _delete(
+    DeleteInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
     await _firebaseFirestoreService.deleteCollection(state.collectionModel.id);
   }
 
-  Future<void> _closeEditingMode(CloseInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
-    emit(state.copyWith(
-      editingMode: false,
-      imagePath: '',
-      collectionModel: state.collectionModel.copyWith(
-        title: state.collectionModel.title,
-        collectionDescription: state.collectionModel.collectionDescription,
+  Future<void> _closeEditingMode(
+    CloseInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        editingMode: false,
       ),
-    ),);
+    );
   }
 
-  Future<void> _chooseImage(ChooseImageInfoCollectionBlocEvent event,
-      Emitter<InfoCollectionBlocState> emit,) async {
+  Future<void> _chooseImage(
+    ChooseImageInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
     final XFile? pickedFile =
         await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile == null) return;

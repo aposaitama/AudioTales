@@ -5,10 +5,12 @@ part 'audio_records_model.g.dart';
 
 @freezed
 class AudioRecordsModel with _$AudioRecordsModel {
-  const factory AudioRecordsModel(
-      {required String title,
-      required String url,
-      required String duration,}) = _AudioRecordsModel;
+  const factory AudioRecordsModel({
+    required String title,
+    required String url,
+    required String duration,
+    required String id,
+  }) = _AudioRecordsModel;
 
   factory AudioRecordsModel.fromJson(Map<String, dynamic> json) =>
       _$AudioRecordsModelFromJson(json);

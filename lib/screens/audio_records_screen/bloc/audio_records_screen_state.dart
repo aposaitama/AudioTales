@@ -9,10 +9,18 @@ enum AudioRecordsScreenStatus {
   error,
 }
 
+enum AudioPopupStatus {
+  initial,
+  editing,
+  addToCollection,
+}
+
 @freezed
 class AudioRecordsScreenState with _$AudioRecordsScreenState {
   const factory AudioRecordsScreenState({
     @Default([]) List<AudioRecordsModel> audioList,
     @Default(AudioRecordsScreenStatus.loading) AudioRecordsScreenStatus status,
+    @Default(AudioPopupStatus.initial) AudioPopupStatus popupStatus,
+    String? editingAudioId,
   }) = _AudioRecordsScreenState;
 }
