@@ -364,11 +364,13 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                                               .spaceBetween,
                                                       children: [
                                                         Text(
-                                                          formatDate(
-                                                            state
-                                                                .collectionModel
-                                                                .creationTime,
-                                                          ),
+                                                          state.collectionModel
+                                                              .creationTime
+                                                          // formatDate(
+                                                          //   state
+                                                          //       .collectionModel
+                                                          //       .creationTime,
+                                                          ,
                                                           style: AppTextStyles
                                                               .subtitleWhite,
                                                         ),

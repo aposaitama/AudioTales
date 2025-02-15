@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
-import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
+
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/choose_several_screen/widgets/choose_collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -82,18 +82,21 @@ class ChooseSeveralScreen extends StatelessWidget {
                       ),
                       itemCount: state.collectionList.length,
                       itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            context.go('/collection/info');
-                            context.read<InfoCollectionBloc>().add(
-                                  LoadingInfoCollectionBlocEvent(
-                                    state.collectionList[index],
-                                  ),
-                                );
-                          },
-                          child: CollectionItemTile(
-                            collection: state.collectionList[index],
-                          ),
+                        return Stack(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                context.read<CollectionBloc>().add(
+                                      ToggleCollectionSelectionBlocEvent(
+                                        state.collectionList[index],
+                                      ),
+                                    );
+                              },
+                              child: ChooseCollectionItemTile(
+                                collection: state.collectionList[index],
+                              ),
+                            ),
+                          ],
                         );
                       },
                     );

@@ -22,7 +22,7 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/collection/info/choose',
+      initialLocation: '/home',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(

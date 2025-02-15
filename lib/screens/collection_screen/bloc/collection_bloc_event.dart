@@ -8,10 +8,17 @@ part 'collection_bloc_event.freezed.dart';
 class CollectionBlocEvent with _$CollectionBlocEvent {
   const factory CollectionBlocEvent.loading() = LoadingCollectionBlocEvent;
   const factory CollectionBlocEvent.loaded(
-      List<CollectionModel> collectionList,) = LoadedCollectionBlocEvent;
+    List<CollectionModel> collectionList,
+  ) = LoadedCollectionBlocEvent;
   const factory CollectionBlocEvent.uploadImage() = UploadImageBlocEvent;
   const factory CollectionBlocEvent.chooseAudios(
-      List<AudioRecordsModel> audiosList,) = ChooseAudiosBlocEvent;
+    List<AudioRecordsModel> audiosList,
+  ) = ChooseAudiosBlocEvent;
   const factory CollectionBlocEvent.createCollection(
-      String title, String collectionDescription,) = CreateCollectionBlocEvent;
+    String title,
+    String collectionDescription,
+  ) = CreateCollectionBlocEvent;
+  const factory CollectionBlocEvent.toggleCollectionSelection(
+    CollectionModel collection,
+  ) = ToggleCollectionSelectionBlocEvent;
 }

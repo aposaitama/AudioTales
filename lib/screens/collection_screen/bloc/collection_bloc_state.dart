@@ -18,5 +18,6 @@ class CollectionBlocState with _$CollectionBlocState {
     @Default([]) List<CollectionModel> collectionList,
     @Default([]) List<AudioRecordsModel> audiosList,
     @Default(CollectionBlocStatus.loading) CollectionBlocStatus status,
+    @Default([]) List<CollectionModel> choosedCollectionList,
   }) = _CollectionBlocState;
 }

@@ -22,6 +22,8 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     on<CreateCollectionBlocEvent>(_createCollection);
     on<UploadImageBlocEvent>(_uploadImage);
     on<ChooseAudiosBlocEvent>(_chooseAudios);
+    on<ToggleCollectionSelectionBlocEvent>(_onToggleCollectionSelection);
+
     _subscribeToCollectionStream();
   }
 
@@ -51,6 +53,19 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
         collectionList: event.collectionList,
       ),
     );
+  }
+
+  void _onToggleCollectionSelection(
+    ToggleCollectionSelectionBlocEvent event,
+    Emitter<CollectionBlocState> emit,
+  ) {
+    final updatedList = List<CollectionModel>.from(state.choosedCollectionList);
+    if (updatedList.contains(event.collection)) {
+      updatedList.remove(event.collection);
+    } else {
+      updatedList.add(event.collection);
+    }
+    emit(state.copyWith(choosedCollectionList: updatedList));
   }
 
   Future<void> _createCollection(

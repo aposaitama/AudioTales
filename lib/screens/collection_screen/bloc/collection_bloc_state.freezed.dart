@@ -22,6 +22,8 @@ mixin _$CollectionBlocState {
       throw _privateConstructorUsedError;
   List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
   CollectionBlocStatus get status => throw _privateConstructorUsedError;
+  List<CollectionModel> get choosedCollectionList =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of CollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -41,7 +43,8 @@ abstract class $CollectionBlocStateCopyWith<$Res> {
       String imageUrl,
       List<CollectionModel> collectionList,
       List<AudioRecordsModel> audiosList,
-      CollectionBlocStatus status});
+      CollectionBlocStatus status,
+      List<CollectionModel> choosedCollectionList});
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$CollectionBlocStateCopyWithImpl<$Res, $Val extends CollectionBlocState>
     Object? collectionList = null,
     Object? audiosList = null,
     Object? status = null,
+    Object? choosedCollectionList = null,
   }) {
     return _then(_value.copyWith(
       imagePath: null == imagePath
@@ -86,6 +90,10 @@ class _$CollectionBlocStateCopyWithImpl<$Res, $Val extends CollectionBlocState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CollectionBlocStatus,
+      choosedCollectionList: null == choosedCollectionList
+          ? _value.choosedCollectionList
+          : choosedCollectionList // ignore: cast_nullable_to_non_nullable
+              as List<CollectionModel>,
     ) as $Val);
   }
 }
@@ -103,7 +111,8 @@ abstract class _$$CollectionBlocStateImplCopyWith<$Res>
       String imageUrl,
       List<CollectionModel> collectionList,
       List<AudioRecordsModel> audiosList,
-      CollectionBlocStatus status});
+      CollectionBlocStatus status,
+      List<CollectionModel> choosedCollectionList});
 }
 
 /// @nodoc
@@ -124,6 +133,7 @@ class __$$CollectionBlocStateImplCopyWithImpl<$Res>
     Object? collectionList = null,
     Object? audiosList = null,
     Object? status = null,
+    Object? choosedCollectionList = null,
   }) {
     return _then(_$CollectionBlocStateImpl(
       imagePath: null == imagePath
@@ -146,6 +156,10 @@ class __$$CollectionBlocStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as CollectionBlocStatus,
+      choosedCollectionList: null == choosedCollectionList
+          ? _value._choosedCollectionList
+          : choosedCollectionList // ignore: cast_nullable_to_non_nullable
+              as List<CollectionModel>,
     ));
   }
 }
@@ -158,9 +172,11 @@ class _$CollectionBlocStateImpl implements _CollectionBlocState {
       this.imageUrl = '',
       final List<CollectionModel> collectionList = const [],
       final List<AudioRecordsModel> audiosList = const [],
-      this.status = CollectionBlocStatus.loading})
+      this.status = CollectionBlocStatus.loading,
+      final List<CollectionModel> choosedCollectionList = const []})
       : _collectionList = collectionList,
-        _audiosList = audiosList;
+        _audiosList = audiosList,
+        _choosedCollectionList = choosedCollectionList;
 
   @override
   @JsonKey()
@@ -189,10 +205,19 @@ class _$CollectionBlocStateImpl implements _CollectionBlocState {
   @override
   @JsonKey()
   final CollectionBlocStatus status;
+  final List<CollectionModel> _choosedCollectionList;
+  @override
+  @JsonKey()
+  List<CollectionModel> get choosedCollectionList {
+    if (_choosedCollectionList is EqualUnmodifiableListView)
+      return _choosedCollectionList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_choosedCollectionList);
+  }
 
   @override
   String toString() {
-    return 'CollectionBlocState(imagePath: $imagePath, imageUrl: $imageUrl, collectionList: $collectionList, audiosList: $audiosList, status: $status)';
+    return 'CollectionBlocState(imagePath: $imagePath, imageUrl: $imageUrl, collectionList: $collectionList, audiosList: $audiosList, status: $status, choosedCollectionList: $choosedCollectionList)';
   }
 
   @override
@@ -208,7 +233,9 @@ class _$CollectionBlocStateImpl implements _CollectionBlocState {
                 .equals(other._collectionList, _collectionList) &&
             const DeepCollectionEquality()
                 .equals(other._audiosList, _audiosList) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality()
+                .equals(other._choosedCollectionList, _choosedCollectionList));
   }
 
   @override
@@ -218,7 +245,8 @@ class _$CollectionBlocStateImpl implements _CollectionBlocState {
       imageUrl,
       const DeepCollectionEquality().hash(_collectionList),
       const DeepCollectionEquality().hash(_audiosList),
-      status);
+      status,
+      const DeepCollectionEquality().hash(_choosedCollectionList));
 
   /// Create a copy of CollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -232,11 +260,13 @@ class _$CollectionBlocStateImpl implements _CollectionBlocState {
 
 abstract class _CollectionBlocState implements CollectionBlocState {
   const factory _CollectionBlocState(
-      {final String imagePath,
-      final String imageUrl,
-      final List<CollectionModel> collectionList,
-      final List<AudioRecordsModel> audiosList,
-      final CollectionBlocStatus status}) = _$CollectionBlocStateImpl;
+          {final String imagePath,
+          final String imageUrl,
+          final List<CollectionModel> collectionList,
+          final List<AudioRecordsModel> audiosList,
+          final CollectionBlocStatus status,
+          final List<CollectionModel> choosedCollectionList}) =
+      _$CollectionBlocStateImpl;
 
   @override
   String get imagePath;
@@ -248,6 +278,8 @@ abstract class _CollectionBlocState implements CollectionBlocState {
   List<AudioRecordsModel> get audiosList;
   @override
   CollectionBlocStatus get status;
+  @override
+  List<CollectionModel> get choosedCollectionList;
 
   /// Create a copy of CollectionBlocState
   /// with the given fields replaced by the non-null parameter values.

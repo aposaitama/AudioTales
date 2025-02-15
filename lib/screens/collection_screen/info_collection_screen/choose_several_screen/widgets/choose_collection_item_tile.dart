@@ -1,11 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class CollectionItemTile extends StatelessWidget {
+class ChooseCollectionItemTile extends StatelessWidget {
   final CollectionModel collection;
-  const CollectionItemTile({super.key, required this.collection});
+  const ChooseCollectionItemTile({super.key, required this.collection});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +57,42 @@ class CollectionItemTile extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        BlocBuilder<CollectionBloc, CollectionBlocState>(
+          builder: (context, state) {
+            final isSelected = state.choosedCollectionList.contains(collection);
+
+            return Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color:
+                      !isSelected ? const Color.fromRGBO(0, 0, 0, 0.5) : null,
+                ),
+                child: Center(
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2.0, color: Colors.white),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: isSelected
+                        ? Center(
+                            child: SvgPicture.asset(
+                              'assets/icons/Check_Box_Done.svg',
+                              colorFilter: const ColorFilter.mode(
+                                Colors.white,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          )
+                        : null,
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ],
     );
