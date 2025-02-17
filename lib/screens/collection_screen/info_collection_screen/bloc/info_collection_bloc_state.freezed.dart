@@ -25,6 +25,8 @@ mixin _$InfoCollectionBlocState {
       throw _privateConstructorUsedError;
   InfoCollectionEditingMode get editingModeStatus =>
       throw _privateConstructorUsedError;
+  List<AudioRecordsModel> get selectedAudios =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +48,8 @@ abstract class $InfoCollectionBlocStateCopyWith<$Res> {
       String imagePath,
       InfoCollectionState status,
       InfoCollectionPopupMode popupModeStatus,
-      InfoCollectionEditingMode editingModeStatus});
+      InfoCollectionEditingMode editingModeStatus,
+      List<AudioRecordsModel> selectedAudios});
 
   $CollectionModelCopyWith<$Res> get collectionModel;
 }
@@ -74,6 +77,7 @@ class _$InfoCollectionBlocStateCopyWithImpl<$Res,
     Object? status = null,
     Object? popupModeStatus = null,
     Object? editingModeStatus = null,
+    Object? selectedAudios = null,
   }) {
     return _then(_value.copyWith(
       audioList: null == audioList
@@ -104,6 +108,10 @@ class _$InfoCollectionBlocStateCopyWithImpl<$Res,
           ? _value.editingModeStatus
           : editingModeStatus // ignore: cast_nullable_to_non_nullable
               as InfoCollectionEditingMode,
+      selectedAudios: null == selectedAudios
+          ? _value.selectedAudios
+          : selectedAudios // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
     ) as $Val);
   }
 
@@ -134,7 +142,8 @@ abstract class _$$InfoCollectionBlocStateImplCopyWith<$Res>
       String imagePath,
       InfoCollectionState status,
       InfoCollectionPopupMode popupModeStatus,
-      InfoCollectionEditingMode editingModeStatus});
+      InfoCollectionEditingMode editingModeStatus,
+      List<AudioRecordsModel> selectedAudios});
 
   @override
   $CollectionModelCopyWith<$Res> get collectionModel;
@@ -162,6 +171,7 @@ class __$$InfoCollectionBlocStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? popupModeStatus = null,
     Object? editingModeStatus = null,
+    Object? selectedAudios = null,
   }) {
     return _then(_$InfoCollectionBlocStateImpl(
       audioList: null == audioList
@@ -192,6 +202,10 @@ class __$$InfoCollectionBlocStateImplCopyWithImpl<$Res>
           ? _value.editingModeStatus
           : editingModeStatus // ignore: cast_nullable_to_non_nullable
               as InfoCollectionEditingMode,
+      selectedAudios: null == selectedAudios
+          ? _value._selectedAudios
+          : selectedAudios // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
     ));
   }
 }
@@ -212,8 +226,10 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
       this.imagePath = '',
       this.status = InfoCollectionState.loading,
       this.popupModeStatus = InfoCollectionPopupMode.initial,
-      this.editingModeStatus = InfoCollectionEditingMode.initial})
-      : _audioList = audioList;
+      this.editingModeStatus = InfoCollectionEditingMode.initial,
+      final List<AudioRecordsModel> selectedAudios = const []})
+      : _audioList = audioList,
+        _selectedAudios = selectedAudios;
 
   final List<AudioRecordsModel> _audioList;
   @override
@@ -242,10 +258,18 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
   @override
   @JsonKey()
   final InfoCollectionEditingMode editingModeStatus;
+  final List<AudioRecordsModel> _selectedAudios;
+  @override
+  @JsonKey()
+  List<AudioRecordsModel> get selectedAudios {
+    if (_selectedAudios is EqualUnmodifiableListView) return _selectedAudios;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedAudios);
+  }
 
   @override
   String toString() {
-    return 'InfoCollectionBlocState(audioList: $audioList, collectionModel: $collectionModel, editingMode: $editingMode, imagePath: $imagePath, status: $status, popupModeStatus: $popupModeStatus, editingModeStatus: $editingModeStatus)';
+    return 'InfoCollectionBlocState(audioList: $audioList, collectionModel: $collectionModel, editingMode: $editingMode, imagePath: $imagePath, status: $status, popupModeStatus: $popupModeStatus, editingModeStatus: $editingModeStatus, selectedAudios: $selectedAudios)';
   }
 
   @override
@@ -265,7 +289,9 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
             (identical(other.popupModeStatus, popupModeStatus) ||
                 other.popupModeStatus == popupModeStatus) &&
             (identical(other.editingModeStatus, editingModeStatus) ||
-                other.editingModeStatus == editingModeStatus));
+                other.editingModeStatus == editingModeStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedAudios, _selectedAudios));
   }
 
   @override
@@ -277,7 +303,8 @@ class _$InfoCollectionBlocStateImpl implements _InfoCollectionBlocState {
       imagePath,
       status,
       popupModeStatus,
-      editingModeStatus);
+      editingModeStatus,
+      const DeepCollectionEquality().hash(_selectedAudios));
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -297,7 +324,8 @@ abstract class _InfoCollectionBlocState implements InfoCollectionBlocState {
           final String imagePath,
           final InfoCollectionState status,
           final InfoCollectionPopupMode popupModeStatus,
-          final InfoCollectionEditingMode editingModeStatus}) =
+          final InfoCollectionEditingMode editingModeStatus,
+          final List<AudioRecordsModel> selectedAudios}) =
       _$InfoCollectionBlocStateImpl;
 
   @override
@@ -314,6 +342,8 @@ abstract class _InfoCollectionBlocState implements InfoCollectionBlocState {
   InfoCollectionPopupMode get popupModeStatus;
   @override
   InfoCollectionEditingMode get editingModeStatus;
+  @override
+  List<AudioRecordsModel> get selectedAudios;
 
   /// Create a copy of InfoCollectionBlocState
   /// with the given fields replaced by the non-null parameter values.

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
@@ -18,56 +22,70 @@ class ChooseSeveralScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const double tileHeight = 240.0;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Подборки',
-          style: AppTextStyles.appBarTextOpacity,
-        ),
-        toolbarHeight: 65,
-        backgroundColor: AppColors.greenColor,
-        leading: Builder(
-          builder: (context) => Align(
-            alignment: Alignment.topLeft,
-            child: IconButton(
-              icon: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                  'assets/icons/Add.svg',
-                  height: 24.0,
-                  width: 24.0,
+    return BlocBuilder<CollectionBloc, CollectionBlocState>(
+      builder: (context, state) {
+        List<CollectionModel> choosedCollection = state.choosedCollectionList;
+        if (state.status == CollectionBlocStatus.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (state.collectionList.isEmpty) {
+          return const Center(child: Text('Нет подборок'));
+        }
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Подборки',
+              style: AppTextStyles.appBarTextOpacity,
+            ),
+            toolbarHeight: 65,
+            backgroundColor: AppColors.greenColor,
+            leading: Builder(
+              builder: (context) => Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      'assets/icons/Add.svg',
+                      height: 24.0,
+                      width: 24.0,
+                    ),
+                  ),
+                  onPressed: () => context.go('/collection/add'),
                 ),
               ),
-              onPressed: () => context.go('/collection/add'),
             ),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GestureDetector(
-              child: const Text(
-                'Добавить',
-                style: AppTextStyles.whiteTitle,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: BlocBuilder<AudioRecordsScreenBloc,
+                    AudioRecordsScreenState>(
+                  builder: (context, state) {
+                    return GestureDetector(
+                      onTap: () {
+                        context.read<AudioRecordsScreenBloc>().add(
+                              ChooseCollectionAudioRecordsScreenStateEvent(
+                                choosedCollection,
+                              ),
+                            );
+                        context.go('/collection');
+                      },
+                      child: const Text(
+                        'Добавить',
+                        style: AppTextStyles.whiteTitle,
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          const CustomProfileTopClipPath(
-            backgroundColor: AppColors.greenColor,
-          ),
-          BlocBuilder<CollectionBloc, CollectionBlocState>(
-            builder: (context, state) {
-              if (state.status == CollectionBlocStatus.loading) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              if (state.collectionList.isEmpty) {
-                return const Center(child: Text('Нет подборок'));
-              }
-              return Padding(
+          body: Stack(
+            children: [
+              const CustomProfileTopClipPath(
+                backgroundColor: AppColors.greenColor,
+              ),
+              Padding(
                 padding: const EdgeInsets.only(top: 40.0),
                 child: LayoutBuilder(
                   builder: (context, constraints) {
@@ -102,11 +120,11 @@ class ChooseSeveralScreen extends StatelessWidget {
                     );
                   },
                 ),
-              );
-            },
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

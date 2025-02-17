@@ -25,6 +25,8 @@ class AudioRecordsScreenBloc
     on<CancelEditingAudioRecordsScreenStateEvent>(_cancelEditing);
     on<SaveAudioRecordsScreenStateEvent>(_updateAudioTitle);
     on<ShareAudioRecordsScreenStateEvent>(_share);
+    on<ChooseAudioRecordsScreenStateEvent>(_chooseAudio);
+    on<ChooseCollectionAudioRecordsScreenStateEvent>(_chooseColection);
 
     _subscribeToAudioStream();
   }
@@ -35,6 +37,26 @@ class AudioRecordsScreenBloc
         add(LoadedAudioRecordsScreenStateEvent(audioList));
       },
     );
+  }
+
+  Future<void> _chooseAudio(
+    ChooseAudioRecordsScreenStateEvent event,
+    Emitter<AudioRecordsScreenState> emit,
+  ) async {
+    emit(
+      state.copyWith(choosingAudioList: event.audio),
+    );
+  }
+
+  Future<void> _chooseColection(
+    ChooseCollectionAudioRecordsScreenStateEvent event,
+    Emitter<AudioRecordsScreenState> emit,
+  ) async {
+    await _firebaseFirestoreService.addAudiosToCollections(
+      state.choosingAudioList,
+      event.collectionList,
+    );
+    emit(state.copyWith(choosingCollection: event.collectionList));
   }
 
   Future<void> _share(

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 
 part 'audio_records_screen_event.freezed.dart';
@@ -24,6 +25,12 @@ class AudioRecordsScreenStateEvent with _$AudioRecordsScreenStateEvent {
       SaveAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.editAudio(String audioId) =
       EditAudioRecordsScreenStateEvent;
+  const factory AudioRecordsScreenStateEvent.chooseAudio(
+    List<AudioRecordsModel> audio,
+  ) = ChooseAudioRecordsScreenStateEvent;
+  const factory AudioRecordsScreenStateEvent.chooseCollection(
+    List<CollectionModel> collectionList,
+  ) = ChooseCollectionAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.cancelEditing() =
       CancelEditingAudioRecordsScreenStateEvent;
   const factory AudioRecordsScreenStateEvent.changePopupMode(

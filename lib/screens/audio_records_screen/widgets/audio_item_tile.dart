@@ -7,6 +7,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
+import 'package:memory_box_avada/sources/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -151,7 +152,7 @@ class _AudioItemTileState extends State<AudioItemTile> {
                               ),
                         const SizedBox(height: 4.0),
                         Text(
-                          widget.audio.duration,
+                          formatDuration(widget.audio.duration),
                           style: TextStyle(
                             color: AppColors.fontColor.withOpacity(0.5),
                             fontSize: 14.0,
@@ -200,7 +201,7 @@ class _AudioItemTileState extends State<AudioItemTile> {
                           }
                         },
                         itemBuilder: (context) {
-                          if (state.popupStatus == AudioPopupStatus.initial)
+                          if (state.popupStatus == AudioPopupStatus.initial) {
                             return [
                               const PopupMenuItem(
                                 value: PopupValues.edit,
@@ -231,7 +232,8 @@ class _AudioItemTileState extends State<AudioItemTile> {
                                 ),
                               ),
                             ];
-                          if (state.popupStatus == AudioPopupStatus.editing)
+                          }
+                          if (state.popupStatus == AudioPopupStatus.editing) {
                             return [
                               const PopupMenuItem(
                                 value: PopupValues.save,
@@ -248,6 +250,7 @@ class _AudioItemTileState extends State<AudioItemTile> {
                                 ),
                               ),
                             ];
+                          }
                           return [
                             const PopupMenuItem(
                               value: 'edit',

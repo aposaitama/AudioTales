@@ -246,10 +246,6 @@ class RecentlyDeletedScreen extends StatelessWidget {
                                 children: [
                                   DeletedAudioItemTile(
                                     audio: audio,
-                                    title: audio.title,
-                                    duration:
-                                        '30 минут', // Замінити на audio.duration, якщо є
-
                                     onDelete: () =>
                                         context.read<RecentlyDeletedBloc>().add(
                                               DeleteAudioRecentlyDeletedBlocEvent(

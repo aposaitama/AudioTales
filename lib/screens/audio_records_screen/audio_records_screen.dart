@@ -12,6 +12,7 @@ import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_t
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
+import 'package:memory_box_avada/sources/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class AudioRecordsScreen extends StatefulWidget {
@@ -121,14 +122,19 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                                 fontFamily: 'TTNorms',
                               ),
                             ),
-                            const Text(
-                              '10:30 часов',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w500,
-                                height: 1.0,
-                                fontFamily: 'TTNorms',
+                            SizedBox(
+                              width: 80.0,
+                              child: Text(
+                                formatDuration(
+                                  getTotalDuration(state.audioList),
+                                ),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.0,
+                                  fontFamily: 'TTNorms',
+                                ),
                               ),
                             ),
                           ],
@@ -197,6 +203,12 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                                   );
                             },
                             onChoose: () {
+                              context.read<AudioRecordsScreenBloc>().add(
+                                    ChooseAudioRecordsScreenStateEvent(
+                                      [audio],
+                                    ),
+                                  );
+
                               context.go('/collection/info/choose');
                             },
                             onShare: () {

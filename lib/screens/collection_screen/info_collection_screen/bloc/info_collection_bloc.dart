@@ -1,14 +1,21 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:share_plus/share_plus.dart';
 
 class InfoCollectionBloc
     extends Bloc<InfoCollectionBlocEvent, InfoCollectionBlocState> {
@@ -27,6 +34,14 @@ class InfoCollectionBloc
     on<SaveInfoCollectionBlocEvent>(_save);
     on<DeleteInfoCollectionBlocEvent>(_delete);
     on<InfoCollectionModeBlocEvent>(_changeMode);
+    on<AddAudioToSelevtedListInfoCollectionBlocEvent>(_addAudioToSelectedList);
+    on<DeleteSeveralAudiosInfoCollectionBlocEvent>(_deleteSeveralAudios);
+    on<ShareCollectionInfoCollectionBlocEvent>(_shareCollection);
+    on<ShareAudiosInfoCollectionBlocEvent>(_shareAudios);
+    on<DonwloadAudiosInfoCollectionBlocEvent>(_downloadAudios);
+    on<ClearAudioToSelevtedListInfoCollectionBlocEvent>(
+      _clearAudioSelectedList,
+    );
   }
 
   void _subscribeToCollectionStream(String collectionTitle) {
@@ -37,6 +52,112 @@ class InfoCollectionBloc
     });
   }
 
+  Future<void> _clearAudioSelectedList(
+    ClearAudioToSelevtedListInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        selectedAudios: [],
+      ),
+    );
+  }
+
+  Future<void> _downloadAudios(
+    DonwloadAudiosInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    if (await Permission.storage.request().isGranted) {
+      try {
+        for (AudioRecordsModel audio in state.selectedAudios) {
+          String url = audio.url;
+
+          Directory tempDir = await getApplicationDocumentsDirectory();
+          String savePath = '${tempDir.path}/${audio.title}.mp3';
+
+          File file = File(savePath);
+          var res = await get(Uri.parse(url));
+
+          file.writeAsBytes(res.bodyBytes);
+
+          print('Аудіофайл завантажено до: $savePath');
+        }
+
+        emit(state.copyWith(selectedAudios: []));
+      } catch (e) {
+        print("Помилка при завантаженні файлів: $e");
+      }
+    } else {
+      print("Необхідно надати дозволи на зберігання файлів.");
+    }
+  }
+
+  Future<void> _shareCollection(
+    ShareCollectionInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    String urls = state.selectedAudios.map((audio) => audio.url).join('\n');
+
+    Share.share(
+        'Прослухай колекцію ${state.collectionModel.title}, ${state.collectionModel.collectionDescription}, ось аудіозаписи:\n$urls');
+
+    emit(
+      state.copyWith(
+        selectedAudios: [],
+      ),
+    );
+  }
+
+  Future<void> _shareAudios(
+    ShareAudiosInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    String urls = state.selectedAudios.map((audio) => audio.url).join('\n');
+
+    Share.share('Прослухай ці аудіозаписи:\n$urls');
+
+    emit(
+      state.copyWith(
+        selectedAudios: [],
+      ),
+    );
+  }
+
+  Future<void> _deleteSeveralAudios(
+    DeleteSeveralAudiosInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    await _firebaseFirestoreService.deleteAudiosFromCollection(
+      state.selectedAudios,
+      state.collectionModel.id,
+    );
+
+    emit(
+      state.copyWith(
+        selectedAudios: [],
+      ),
+    );
+  }
+
+  Future<void> _addAudioToSelectedList(
+    AddAudioToSelevtedListInfoCollectionBlocEvent event,
+    Emitter<InfoCollectionBlocState> emit,
+  ) async {
+    final updatedList = List<AudioRecordsModel>.from(state.selectedAudios);
+
+    if (updatedList.contains(event.audio)) {
+      updatedList.remove(event.audio);
+    } else {
+      updatedList.add(event.audio);
+    }
+
+    emit(
+      state.copyWith(
+        selectedAudios: updatedList,
+      ),
+    );
+  }
+
   Future<void> _changeMode(
     InfoCollectionModeBlocEvent event,
     Emitter<InfoCollectionBlocState> emit,
@@ -44,6 +165,7 @@ class InfoCollectionBloc
     emit(
       state.copyWith(
         popupModeStatus: event.mode,
+        selectedAudios: [],
       ),
     );
   }

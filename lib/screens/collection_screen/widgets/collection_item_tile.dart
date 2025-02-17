@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/sources/duration_helper.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class CollectionItemTile extends StatelessWidget {
@@ -30,7 +31,7 @@ class CollectionItemTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: ((MediaQuery.of(context).size.width - 70) / 2) / 2,
+                width: ((MediaQuery.of(context).size.width - 90) / 2) / 2,
                 child: Text(
                   collection.title,
                   style: AppTextStyles.appBarSubTextHeavy,
@@ -41,13 +42,15 @@ class CollectionItemTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${collection.audiosList.length} аудио',
+                    '${collection.audiosList.length} аудіо',
                     style: AppTextStyles.subtitleWhite,
                   ),
-                  const Text(
-                    overflow: TextOverflow.clip,
-                    '2:30 часа',
-                    style: AppTextStyles.subtitleWhite,
+                  SizedBox(
+                    width: ((MediaQuery.of(context).size.width - 72) / 2) / 2,
+                    child: Text(
+                      formatDuration(getTotalDuration(collection.audiosList)),
+                      style: AppTextStyles.subtitleWhite,
+                    ),
                   ),
                 ],
               ),

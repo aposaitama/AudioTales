@@ -19,7 +19,12 @@ mixin _$AudioRecordsScreenState {
   List<AudioRecordsModel> get audioList => throw _privateConstructorUsedError;
   AudioRecordsScreenStatus get status => throw _privateConstructorUsedError;
   AudioPopupStatus get popupStatus => throw _privateConstructorUsedError;
+  List<AudioRecordsModel> get choosingAudioList =>
+      throw _privateConstructorUsedError;
   String? get editingAudioId => throw _privateConstructorUsedError;
+  String? get choosingAudioId => throw _privateConstructorUsedError;
+  List<CollectionModel>? get choosingCollection =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of AudioRecordsScreenState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +43,10 @@ abstract class $AudioRecordsScreenStateCopyWith<$Res> {
       {List<AudioRecordsModel> audioList,
       AudioRecordsScreenStatus status,
       AudioPopupStatus popupStatus,
-      String? editingAudioId});
+      List<AudioRecordsModel> choosingAudioList,
+      String? editingAudioId,
+      String? choosingAudioId,
+      List<CollectionModel>? choosingCollection});
 }
 
 /// @nodoc
@@ -60,7 +68,10 @@ class _$AudioRecordsScreenStateCopyWithImpl<$Res,
     Object? audioList = null,
     Object? status = null,
     Object? popupStatus = null,
+    Object? choosingAudioList = null,
     Object? editingAudioId = freezed,
+    Object? choosingAudioId = freezed,
+    Object? choosingCollection = freezed,
   }) {
     return _then(_value.copyWith(
       audioList: null == audioList
@@ -75,10 +86,22 @@ class _$AudioRecordsScreenStateCopyWithImpl<$Res,
           ? _value.popupStatus
           : popupStatus // ignore: cast_nullable_to_non_nullable
               as AudioPopupStatus,
+      choosingAudioList: null == choosingAudioList
+          ? _value.choosingAudioList
+          : choosingAudioList // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
       editingAudioId: freezed == editingAudioId
           ? _value.editingAudioId
           : editingAudioId // ignore: cast_nullable_to_non_nullable
               as String?,
+      choosingAudioId: freezed == choosingAudioId
+          ? _value.choosingAudioId
+          : choosingAudioId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      choosingCollection: freezed == choosingCollection
+          ? _value.choosingCollection
+          : choosingCollection // ignore: cast_nullable_to_non_nullable
+              as List<CollectionModel>?,
     ) as $Val);
   }
 }
@@ -96,7 +119,10 @@ abstract class _$$AudioRecordsScreenStateImplCopyWith<$Res>
       {List<AudioRecordsModel> audioList,
       AudioRecordsScreenStatus status,
       AudioPopupStatus popupStatus,
-      String? editingAudioId});
+      List<AudioRecordsModel> choosingAudioList,
+      String? editingAudioId,
+      String? choosingAudioId,
+      List<CollectionModel>? choosingCollection});
 }
 
 /// @nodoc
@@ -117,7 +143,10 @@ class __$$AudioRecordsScreenStateImplCopyWithImpl<$Res>
     Object? audioList = null,
     Object? status = null,
     Object? popupStatus = null,
+    Object? choosingAudioList = null,
     Object? editingAudioId = freezed,
+    Object? choosingAudioId = freezed,
+    Object? choosingCollection = freezed,
   }) {
     return _then(_$AudioRecordsScreenStateImpl(
       audioList: null == audioList
@@ -132,10 +161,22 @@ class __$$AudioRecordsScreenStateImplCopyWithImpl<$Res>
           ? _value.popupStatus
           : popupStatus // ignore: cast_nullable_to_non_nullable
               as AudioPopupStatus,
+      choosingAudioList: null == choosingAudioList
+          ? _value._choosingAudioList
+          : choosingAudioList // ignore: cast_nullable_to_non_nullable
+              as List<AudioRecordsModel>,
       editingAudioId: freezed == editingAudioId
           ? _value.editingAudioId
           : editingAudioId // ignore: cast_nullable_to_non_nullable
               as String?,
+      choosingAudioId: freezed == choosingAudioId
+          ? _value.choosingAudioId
+          : choosingAudioId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      choosingCollection: freezed == choosingCollection
+          ? _value._choosingCollection
+          : choosingCollection // ignore: cast_nullable_to_non_nullable
+              as List<CollectionModel>?,
     ));
   }
 }
@@ -147,8 +188,13 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
       {final List<AudioRecordsModel> audioList = const [],
       this.status = AudioRecordsScreenStatus.loading,
       this.popupStatus = AudioPopupStatus.initial,
-      this.editingAudioId})
-      : _audioList = audioList;
+      final List<AudioRecordsModel> choosingAudioList = const [],
+      this.editingAudioId,
+      this.choosingAudioId,
+      final List<CollectionModel>? choosingCollection})
+      : _audioList = audioList,
+        _choosingAudioList = choosingAudioList,
+        _choosingCollection = choosingCollection;
 
   final List<AudioRecordsModel> _audioList;
   @override
@@ -165,12 +211,34 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
   @override
   @JsonKey()
   final AudioPopupStatus popupStatus;
+  final List<AudioRecordsModel> _choosingAudioList;
+  @override
+  @JsonKey()
+  List<AudioRecordsModel> get choosingAudioList {
+    if (_choosingAudioList is EqualUnmodifiableListView)
+      return _choosingAudioList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_choosingAudioList);
+  }
+
   @override
   final String? editingAudioId;
+  @override
+  final String? choosingAudioId;
+  final List<CollectionModel>? _choosingCollection;
+  @override
+  List<CollectionModel>? get choosingCollection {
+    final value = _choosingCollection;
+    if (value == null) return null;
+    if (_choosingCollection is EqualUnmodifiableListView)
+      return _choosingCollection;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'AudioRecordsScreenState(audioList: $audioList, status: $status, popupStatus: $popupStatus, editingAudioId: $editingAudioId)';
+    return 'AudioRecordsScreenState(audioList: $audioList, status: $status, popupStatus: $popupStatus, choosingAudioList: $choosingAudioList, editingAudioId: $editingAudioId, choosingAudioId: $choosingAudioId, choosingCollection: $choosingCollection)';
   }
 
   @override
@@ -183,8 +251,14 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.popupStatus, popupStatus) ||
                 other.popupStatus == popupStatus) &&
+            const DeepCollectionEquality()
+                .equals(other._choosingAudioList, _choosingAudioList) &&
             (identical(other.editingAudioId, editingAudioId) ||
-                other.editingAudioId == editingAudioId));
+                other.editingAudioId == editingAudioId) &&
+            (identical(other.choosingAudioId, choosingAudioId) ||
+                other.choosingAudioId == choosingAudioId) &&
+            const DeepCollectionEquality()
+                .equals(other._choosingCollection, _choosingCollection));
   }
 
   @override
@@ -193,7 +267,10 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
       const DeepCollectionEquality().hash(_audioList),
       status,
       popupStatus,
-      editingAudioId);
+      const DeepCollectionEquality().hash(_choosingAudioList),
+      editingAudioId,
+      choosingAudioId,
+      const DeepCollectionEquality().hash(_choosingCollection));
 
   /// Create a copy of AudioRecordsScreenState
   /// with the given fields replaced by the non-null parameter values.
@@ -207,10 +284,14 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
 
 abstract class _AudioRecordsScreenState implements AudioRecordsScreenState {
   const factory _AudioRecordsScreenState(
-      {final List<AudioRecordsModel> audioList,
-      final AudioRecordsScreenStatus status,
-      final AudioPopupStatus popupStatus,
-      final String? editingAudioId}) = _$AudioRecordsScreenStateImpl;
+          {final List<AudioRecordsModel> audioList,
+          final AudioRecordsScreenStatus status,
+          final AudioPopupStatus popupStatus,
+          final List<AudioRecordsModel> choosingAudioList,
+          final String? editingAudioId,
+          final String? choosingAudioId,
+          final List<CollectionModel>? choosingCollection}) =
+      _$AudioRecordsScreenStateImpl;
 
   @override
   List<AudioRecordsModel> get audioList;
@@ -219,7 +300,13 @@ abstract class _AudioRecordsScreenState implements AudioRecordsScreenState {
   @override
   AudioPopupStatus get popupStatus;
   @override
+  List<AudioRecordsModel> get choosingAudioList;
+  @override
   String? get editingAudioId;
+  @override
+  String? get choosingAudioId;
+  @override
+  List<CollectionModel>? get choosingCollection;
 
   /// Create a copy of AudioRecordsScreenState
   /// with the given fields replaced by the non-null parameter values.

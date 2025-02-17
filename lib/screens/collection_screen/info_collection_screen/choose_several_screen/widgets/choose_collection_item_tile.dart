@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
+import 'package:memory_box_avada/sources/duration_helper.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class ChooseCollectionItemTile extends StatelessWidget {
@@ -34,7 +35,7 @@ class ChooseCollectionItemTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: ((MediaQuery.of(context).size.width - 70) / 2) / 2,
+                width: ((MediaQuery.of(context).size.width - 90) / 2) / 2,
                 child: Text(
                   collection.title,
                   style: AppTextStyles.appBarSubTextHeavy,
@@ -48,10 +49,12 @@ class ChooseCollectionItemTile extends StatelessWidget {
                     '${collection.audiosList.length} аудио',
                     style: AppTextStyles.subtitleWhite,
                   ),
-                  const Text(
-                    overflow: TextOverflow.clip,
-                    '2:30 часа',
-                    style: AppTextStyles.subtitleWhite,
+                  SizedBox(
+                    width: ((MediaQuery.of(context).size.width - 72) / 2) / 2,
+                    child: Text(
+                      formatDuration(getTotalDuration(collection.audiosList)),
+                      style: AppTextStyles.subtitleWhite,
+                    ),
                   ),
                 ],
               ),

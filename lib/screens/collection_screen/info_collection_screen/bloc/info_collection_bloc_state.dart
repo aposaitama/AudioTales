@@ -24,6 +24,14 @@ enum InfoCollectionEditingMode {
   close,
 }
 
+enum InfoCollectionChooseMode {
+  cancel,
+  addToCollection,
+  share,
+  download,
+  deleteAudios,
+}
+
 @freezed
 class InfoCollectionBlocState with _$InfoCollectionBlocState {
   const factory InfoCollectionBlocState({
@@ -46,5 +54,6 @@ class InfoCollectionBlocState with _$InfoCollectionBlocState {
     InfoCollectionPopupMode popupModeStatus,
     @Default(InfoCollectionEditingMode.initial)
     InfoCollectionEditingMode editingModeStatus,
+    @Default([]) List<AudioRecordsModel> selectedAudios,
   }) = _InfoCollectionBlocState;
 }

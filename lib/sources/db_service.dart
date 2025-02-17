@@ -28,6 +28,45 @@ class FirestoreService {
     } catch (e) {}
   }
 
+  Future<void> deleteAudiosFromCollection(
+    List<AudioRecordsModel> audiosList,
+    String collectionId,
+  ) async {
+    try {
+      QuerySnapshot collectionSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('collections')
+          .where('id', isEqualTo: collectionId)
+          .get();
+
+      if (collectionSnapshot.docs.isNotEmpty) {
+        var collectionDoc = collectionSnapshot.docs.first;
+
+        List<dynamic> audiosListInCollection =
+            collectionDoc['audiosList'] ?? [];
+
+        for (var audio in audiosList) {
+          audiosListInCollection
+              .removeWhere((audioData) => audioData['id'] == audio.id);
+        }
+
+        await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('collections')
+            .doc(collectionDoc.id)
+            .update({'audiosList': audiosListInCollection});
+
+        print('Аудіозаписи успішно видалено з колекції!');
+      } else {
+        print('Колекція не знайдена!');
+      }
+    } catch (e) {
+      print('Помилка при видаленні аудіозаписів: $e');
+    }
+  }
+
   Future<void> saveUserCollection(
     String title,
     String collectionDescription,
@@ -91,6 +130,59 @@ class FirestoreService {
       }
     } catch (e) {
       print('Error updating collection: $e');
+    }
+  }
+
+  Future<void> addAudiosToCollections(
+    List<AudioRecordsModel> audios,
+    List<CollectionModel> collections,
+  ) async {
+    try {
+      for (CollectionModel collection in collections) {
+        QuerySnapshot collectionSnapshot = await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('collections')
+            .where('id', isEqualTo: collection.id)
+            .get();
+
+        if (collectionSnapshot.docs.isNotEmpty) {
+          var collectionDoc = collectionSnapshot.docs.first;
+          List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
+
+          for (var audio in audios) {
+            // Пошук аудіофайлу по його ID
+            QuerySnapshot audioSnapshot = await _firestore
+                .collection('users')
+                .doc(uid)
+                .collection('audios')
+                .where('id', isEqualTo: audio.id)
+                .get();
+
+            if (audioSnapshot.docs.isNotEmpty) {
+              var audioDoc = audioSnapshot.docs.first;
+              Map<String, dynamic> audioData =
+                  audioDoc.data() as Map<String, dynamic>;
+
+              // Перевірка, чи вже існує цей аудіозапис у колекції
+              if (!audiosList
+                  .any((existingAudio) => existingAudio['id'] == audio.id)) {
+                audiosList.add(audioData);
+
+                await _firestore
+                    .collection('users')
+                    .doc(uid)
+                    .collection('collections')
+                    .doc(collectionDoc.id)
+                    .update({'audiosList': audiosList});
+              }
+            }
+          }
+        }
+      }
+      print('Аудіозаписи успішно додано до колекцій!');
+    } catch (e) {
+      print('Помилка під час додавання аудіозаписів до колекцій: $e');
     }
   }
 
