@@ -1,20 +1,16 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
-import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/widgets/add_audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/choose_audio_item_tile.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/run_all_collection_audios.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
@@ -49,21 +45,6 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
     descriptionController = TextEditingController(
       text: state.collectionModel.collectionDescription,
     );
-  }
-
-  String formatDate(String creationTime) {
-    final dateTime = DateTime.parse(creationTime);
-    return '${dateTime.day.toString().padLeft(
-              2,
-              '0',
-            )}.'
-        '${dateTime.month.toString().padLeft(
-              2,
-              '0',
-            )}.'
-        '${dateTime.year.toString().substring(
-              2,
-            )}';
   }
 
   @override
@@ -413,13 +394,11 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                                               .spaceBetween,
                                                       children: [
                                                         Text(
-                                                          state.collectionModel
-                                                              .creationTime
-                                                          // formatDate(
-                                                          //   state
-                                                          //       .collectionModel
-                                                          //       .creationTime,
-                                                          ,
+                                                          formatCollectionDate(
+                                                            state
+                                                                .collectionModel
+                                                                .creationTime,
+                                                          ),
                                                           style: AppTextStyles
                                                               .subtitleWhite,
                                                         ),

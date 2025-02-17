@@ -24,6 +24,7 @@ class FirestoreService {
         'title': title,
         'url': downloadUrl,
         'duration': duration,
+        'creationTime': DateTime.now().toString(),
       });
     } catch (e) {}
   }
@@ -151,7 +152,6 @@ class FirestoreService {
           List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
 
           for (var audio in audios) {
-            // Пошук аудіофайлу по його ID
             QuerySnapshot audioSnapshot = await _firestore
                 .collection('users')
                 .doc(uid)
@@ -164,7 +164,6 @@ class FirestoreService {
               Map<String, dynamic> audioData =
                   audioDoc.data() as Map<String, dynamic>;
 
-              // Перевірка, чи вже існує цей аудіозапис у колекції
               if (!audiosList
                   .any((existingAudio) => existingAudio['id'] == audio.id)) {
                 audiosList.add(audioData);
@@ -242,6 +241,7 @@ class FirestoreService {
             'url': doc['url'],
             'duration': doc['duration'],
             'deletedAt': Timestamp.now(),
+            'creationTime': doc['creationTime'],
           });
 
           await _firestore
@@ -325,6 +325,7 @@ class FirestoreService {
             'title': doc['title'],
             'url': doc['url'],
             'duration': doc['duration'],
+            'creationTime': doc['creationTime'],
           });
         }
         for (var doc in audioSnapshot.docs) {
@@ -408,11 +409,11 @@ class FirestoreService {
   }
 
   Stream<List<AudioRecordsModel>> getUserAudiosStream() {
-    print(uuid.v1());
     return _firestore
         .collection('users')
         .doc(uid)
         .collection('audios')
+        .orderBy('creationTime', descending: true)
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
@@ -443,6 +444,7 @@ class FirestoreService {
         .collection('users')
         .doc(uid)
         .collection('collections')
+        .orderBy('creationTime', descending: true)
         .snapshots()
         .map(
           (snapshot) => snapshot.docs

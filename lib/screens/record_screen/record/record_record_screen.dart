@@ -62,9 +62,6 @@ class _RecordScreenRecordActionState extends State<RecordScreenRecordAction> {
                                   context.read<RecordStatusBloc>().add(
                                         const ListeningRecordStatusEvent(),
                                       ),
-                                  // context
-                                  //     .read<ListenRecordBloc>()
-                                  //     .add(const InitialPlayingEvent()),
                                   context.read<RecordBloc>().add(
                                         const RecordEvent.stopRecording(),
                                       ),

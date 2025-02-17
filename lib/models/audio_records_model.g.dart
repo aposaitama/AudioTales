@@ -13,6 +13,7 @@ _$AudioRecordsModelImpl _$$AudioRecordsModelImplFromJson(
       url: json['url'] as String,
       duration: json['duration'] as String,
       id: json['id'] as String,
+      creationTime: json['creationTime'] as String,
     );
 
 Map<String, dynamic> _$$AudioRecordsModelImplToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$AudioRecordsModelImplToJson(
       'url': instance.url,
       'duration': instance.duration,
       'id': instance.id,
+      'creationTime': instance.creationTime,
     };

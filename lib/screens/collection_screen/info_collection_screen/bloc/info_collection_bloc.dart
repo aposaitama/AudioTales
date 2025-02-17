@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
-import 'package:bot_toast/bot_toast.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,9 +36,6 @@ class InfoCollectionBloc
     on<ShareCollectionInfoCollectionBlocEvent>(_shareCollection);
     on<ShareAudiosInfoCollectionBlocEvent>(_shareAudios);
     on<DonwloadAudiosInfoCollectionBlocEvent>(_downloadAudios);
-    on<ClearAudioToSelevtedListInfoCollectionBlocEvent>(
-      _clearAudioSelectedList,
-    );
   }
 
   void _subscribeToCollectionStream(String collectionTitle) {
@@ -50,17 +44,6 @@ class InfoCollectionBloc
         .listen((collectionModel) {
       add(LoadedInfoCollectionBlocEvent(collectionModel));
     });
-  }
-
-  Future<void> _clearAudioSelectedList(
-    ClearAudioToSelevtedListInfoCollectionBlocEvent event,
-    Emitter<InfoCollectionBlocState> emit,
-  ) async {
-    emit(
-      state.copyWith(
-        selectedAudios: [],
-      ),
-    );
   }
 
   Future<void> _downloadAudios(
@@ -99,7 +82,8 @@ class InfoCollectionBloc
     String urls = state.selectedAudios.map((audio) => audio.url).join('\n');
 
     Share.share(
-        'Прослухай колекцію ${state.collectionModel.title}, ${state.collectionModel.collectionDescription}, ось аудіозаписи:\n$urls');
+      'Прослухай колекцію ${state.collectionModel.title}, ${state.collectionModel.collectionDescription}, ось аудіозаписи:\n$urls',
+    );
 
     emit(
       state.copyWith(

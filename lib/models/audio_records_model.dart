@@ -10,6 +10,7 @@ class AudioRecordsModel with _$AudioRecordsModel {
     required String url,
     required String duration,
     required String id,
+    required String creationTime,
   }) = _AudioRecordsModel;
 
   factory AudioRecordsModel.fromJson(Map<String, dynamic> json) =>

@@ -89,3 +89,15 @@ String _formatDuration(int hours, int minutes, double seconds) {
 String _twoDigit(int number) {
   return number < 10 ? '0$number' : '$number';
 }
+
+String formatCollectionDate(String dateString) {
+  DateTime dateTime = DateTime.parse(dateString);
+  String formattedDate =
+      "${dateTime.day.toString().padLeft(2, '0')}.${dateTime.month.toString().padLeft(2, '0')}.${dateTime.year % 100}";
+  return formattedDate;
+}
+
+void main() {
+  String dateString = "2025-02-17 16:17:16.705285";
+  print(formatCollectionDate(dateString));
+}

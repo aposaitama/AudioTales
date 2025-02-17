@@ -23,7 +23,6 @@ mixin _$InfoCollectionBlocEvent {
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -41,7 +40,6 @@ mixin _$InfoCollectionBlocEvent {
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -59,7 +57,6 @@ mixin _$InfoCollectionBlocEvent {
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -80,9 +77,6 @@ mixin _$InfoCollectionBlocEvent {
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -106,8 +100,6 @@ mixin _$InfoCollectionBlocEvent {
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -129,8 +121,6 @@ mixin _$InfoCollectionBlocEvent {
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -261,7 +251,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -282,7 +271,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -303,7 +291,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -330,9 +317,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -359,8 +343,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -385,8 +367,6 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -514,7 +494,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -535,7 +514,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -556,7 +534,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -583,9 +560,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -612,8 +586,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -638,8 +610,6 @@ class _$LoadedInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -726,7 +696,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -747,7 +716,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -768,7 +736,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -795,9 +762,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -824,8 +788,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -850,8 +812,6 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -954,7 +914,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -975,7 +934,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -996,7 +954,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -1023,9 +980,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -1052,8 +1006,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1078,8 +1030,6 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1209,7 +1159,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -1230,7 +1179,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -1251,7 +1199,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -1278,9 +1225,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -1307,8 +1251,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1333,8 +1275,6 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1369,213 +1309,6 @@ abstract class AddAudioToSelevtedListInfoCollectionBlocEvent
   _$$AddAudioToSelevtedListInfoCollectionBlocEventImplCopyWith<
           _$AddAudioToSelevtedListInfoCollectionBlocEventImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWith<
-    $Res> {
-  factory _$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWith(
-          _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl value,
-          $Res Function(_$ClearAudioToSelevtedListInfoCollectionBlocEventImpl)
-              then) =
-      __$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWithImpl<$Res>
-    extends _$InfoCollectionBlocEventCopyWithImpl<$Res,
-        _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl>
-    implements
-        _$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWith<$Res> {
-  __$$ClearAudioToSelevtedListInfoCollectionBlocEventImplCopyWithImpl(
-      _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl _value,
-      $Res Function(_$ClearAudioToSelevtedListInfoCollectionBlocEventImpl)
-          _then)
-      : super(_value, _then);
-
-  /// Create a copy of InfoCollectionBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl
-    implements ClearAudioToSelevtedListInfoCollectionBlocEvent {
-  const _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl();
-
-  @override
-  String toString() {
-    return 'InfoCollectionBlocEvent.clearAudioToSelectedList()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
-    required TResult Function(CollectionModel collectionModel) loaded,
-    required TResult Function() edit,
-    required TResult Function(InfoCollectionPopupMode mode) mode,
-    required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
-    required TResult Function(String title, String description) save,
-    required TResult Function() shareCollection,
-    required TResult Function() downloadAudios,
-    required TResult Function() shareAudios,
-    required TResult Function() chooseImage,
-    required TResult Function() delete,
-    required TResult Function() deleteSeveralAudios,
-    required TResult Function() close,
-  }) {
-    return clearAudioToSelectedList();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
-    TResult? Function(CollectionModel collectionModel)? loaded,
-    TResult? Function()? edit,
-    TResult? Function(InfoCollectionPopupMode mode)? mode,
-    TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
-    TResult? Function(String title, String description)? save,
-    TResult? Function()? shareCollection,
-    TResult? Function()? downloadAudios,
-    TResult? Function()? shareAudios,
-    TResult? Function()? chooseImage,
-    TResult? Function()? delete,
-    TResult? Function()? deleteSeveralAudios,
-    TResult? Function()? close,
-  }) {
-    return clearAudioToSelectedList?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
-    TResult Function(CollectionModel collectionModel)? loaded,
-    TResult Function()? edit,
-    TResult Function(InfoCollectionPopupMode mode)? mode,
-    TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
-    TResult Function(String title, String description)? save,
-    TResult Function()? shareCollection,
-    TResult Function()? downloadAudios,
-    TResult Function()? shareAudios,
-    TResult Function()? chooseImage,
-    TResult Function()? delete,
-    TResult Function()? deleteSeveralAudios,
-    TResult Function()? close,
-    required TResult orElse(),
-  }) {
-    if (clearAudioToSelectedList != null) {
-      return clearAudioToSelectedList();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadingInfoCollectionBlocEvent value) loading,
-    required TResult Function(LoadedInfoCollectionBlocEvent value) loaded,
-    required TResult Function(EditInfoCollectionBlocEvent value) edit,
-    required TResult Function(InfoCollectionModeBlocEvent value) mode,
-    required TResult Function(
-            AddAudioToSelevtedListInfoCollectionBlocEvent value)
-        addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
-    required TResult Function(SaveInfoCollectionBlocEvent value) save,
-    required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
-        shareCollection,
-    required TResult Function(DonwloadAudiosInfoCollectionBlocEvent value)
-        downloadAudios,
-    required TResult Function(ShareAudiosInfoCollectionBlocEvent value)
-        shareAudios,
-    required TResult Function(ChooseImageInfoCollectionBlocEvent value)
-        chooseImage,
-    required TResult Function(DeleteInfoCollectionBlocEvent value) delete,
-    required TResult Function(DeleteSeveralAudiosInfoCollectionBlocEvent value)
-        deleteSeveralAudios,
-    required TResult Function(CloseInfoCollectionBlocEvent value) close,
-  }) {
-    return clearAudioToSelectedList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadingInfoCollectionBlocEvent value)? loading,
-    TResult? Function(LoadedInfoCollectionBlocEvent value)? loaded,
-    TResult? Function(EditInfoCollectionBlocEvent value)? edit,
-    TResult? Function(InfoCollectionModeBlocEvent value)? mode,
-    TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
-        addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
-    TResult? Function(SaveInfoCollectionBlocEvent value)? save,
-    TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
-        shareCollection,
-    TResult? Function(DonwloadAudiosInfoCollectionBlocEvent value)?
-        downloadAudios,
-    TResult? Function(ShareAudiosInfoCollectionBlocEvent value)? shareAudios,
-    TResult? Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
-    TResult? Function(DeleteInfoCollectionBlocEvent value)? delete,
-    TResult? Function(DeleteSeveralAudiosInfoCollectionBlocEvent value)?
-        deleteSeveralAudios,
-    TResult? Function(CloseInfoCollectionBlocEvent value)? close,
-  }) {
-    return clearAudioToSelectedList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadingInfoCollectionBlocEvent value)? loading,
-    TResult Function(LoadedInfoCollectionBlocEvent value)? loaded,
-    TResult Function(EditInfoCollectionBlocEvent value)? edit,
-    TResult Function(InfoCollectionModeBlocEvent value)? mode,
-    TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
-        addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
-    TResult Function(SaveInfoCollectionBlocEvent value)? save,
-    TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
-        shareCollection,
-    TResult Function(DonwloadAudiosInfoCollectionBlocEvent value)?
-        downloadAudios,
-    TResult Function(ShareAudiosInfoCollectionBlocEvent value)? shareAudios,
-    TResult Function(ChooseImageInfoCollectionBlocEvent value)? chooseImage,
-    TResult Function(DeleteInfoCollectionBlocEvent value)? delete,
-    TResult Function(DeleteSeveralAudiosInfoCollectionBlocEvent value)?
-        deleteSeveralAudios,
-    TResult Function(CloseInfoCollectionBlocEvent value)? close,
-    required TResult orElse(),
-  }) {
-    if (clearAudioToSelectedList != null) {
-      return clearAudioToSelectedList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ClearAudioToSelevtedListInfoCollectionBlocEvent
-    implements InfoCollectionBlocEvent {
-  const factory ClearAudioToSelevtedListInfoCollectionBlocEvent() =
-      _$ClearAudioToSelevtedListInfoCollectionBlocEventImpl;
 }
 
 /// @nodoc
@@ -1664,7 +1397,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -1685,7 +1417,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -1706,7 +1437,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -1733,9 +1463,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -1762,8 +1489,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1788,8 +1513,6 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -1876,7 +1599,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -1897,7 +1619,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -1918,7 +1639,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -1945,9 +1665,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -1974,8 +1691,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2000,8 +1715,6 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2079,7 +1792,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -2100,7 +1812,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -2121,7 +1832,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -2148,9 +1858,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -2177,8 +1884,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2203,8 +1908,6 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2282,7 +1985,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -2303,7 +2005,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -2324,7 +2025,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -2351,9 +2051,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -2380,8 +2077,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2406,8 +2101,6 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2485,7 +2178,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -2506,7 +2198,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -2527,7 +2218,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -2554,9 +2244,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -2583,8 +2270,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2609,8 +2294,6 @@ class _$ChooseImageInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2688,7 +2371,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -2709,7 +2391,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -2730,7 +2411,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -2757,9 +2437,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -2786,8 +2463,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2812,8 +2487,6 @@ class _$DeleteInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -2892,7 +2565,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -2913,7 +2585,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -2934,7 +2605,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -2961,9 +2631,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -2990,8 +2657,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -3016,8 +2681,6 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -3095,7 +2758,6 @@ class _$CloseInfoCollectionBlocEventImpl
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
     required TResult Function(AudioRecordsModel audio) addAudioToSelectedList,
-    required TResult Function() clearAudioToSelectedList,
     required TResult Function(String title, String description) save,
     required TResult Function() shareCollection,
     required TResult Function() downloadAudios,
@@ -3116,7 +2778,6 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
     TResult? Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult? Function()? clearAudioToSelectedList,
     TResult? Function(String title, String description)? save,
     TResult? Function()? shareCollection,
     TResult? Function()? downloadAudios,
@@ -3137,7 +2798,6 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
     TResult Function(AudioRecordsModel audio)? addAudioToSelectedList,
-    TResult Function()? clearAudioToSelectedList,
     TResult Function(String title, String description)? save,
     TResult Function()? shareCollection,
     TResult Function()? downloadAudios,
@@ -3164,9 +2824,6 @@ class _$CloseInfoCollectionBlocEventImpl
     required TResult Function(
             AddAudioToSelevtedListInfoCollectionBlocEvent value)
         addAudioToSelectedList,
-    required TResult Function(
-            ClearAudioToSelevtedListInfoCollectionBlocEvent value)
-        clearAudioToSelectedList,
     required TResult Function(SaveInfoCollectionBlocEvent value) save,
     required TResult Function(ShareCollectionInfoCollectionBlocEvent value)
         shareCollection,
@@ -3193,8 +2850,6 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult? Function(InfoCollectionModeBlocEvent value)? mode,
     TResult? Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult? Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult? Function(SaveInfoCollectionBlocEvent value)? save,
     TResult? Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,
@@ -3219,8 +2874,6 @@ class _$CloseInfoCollectionBlocEventImpl
     TResult Function(InfoCollectionModeBlocEvent value)? mode,
     TResult Function(AddAudioToSelevtedListInfoCollectionBlocEvent value)?
         addAudioToSelectedList,
-    TResult Function(ClearAudioToSelevtedListInfoCollectionBlocEvent value)?
-        clearAudioToSelectedList,
     TResult Function(SaveInfoCollectionBlocEvent value)? save,
     TResult Function(ShareCollectionInfoCollectionBlocEvent value)?
         shareCollection,

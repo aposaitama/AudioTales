@@ -14,6 +14,7 @@ class SoundWavePainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final double centerY = size.height / 2;
+    const double barSpacing = 4.0;
 
     canvas.drawLine(
       Offset(0, centerY),
@@ -23,7 +24,8 @@ class SoundWavePainter extends CustomPainter {
 
     for (int i = 0; i < decibelValues.length; i++) {
       double lineHeight = decibelValues[i];
-      double startX = i * 4;
+
+      double startX = size.width - (decibelValues.length - i) * barSpacing;
       double startY = centerY - lineHeight / 2;
       double endY = centerY + lineHeight / 2;
 
