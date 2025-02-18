@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:memory_box_avada/models/timestamp_converter.dart';
 
 part 'audio_records_model.freezed.dart';
 part 'audio_records_model.g.dart';
@@ -10,7 +12,7 @@ class AudioRecordsModel with _$AudioRecordsModel {
     required String url,
     required String duration,
     required String id,
-    required String creationTime,
+    @TimestampConverter() required DateTime creationTime,
   }) = _AudioRecordsModel;
 
   factory AudioRecordsModel.fromJson(Map<String, dynamic> json) =>

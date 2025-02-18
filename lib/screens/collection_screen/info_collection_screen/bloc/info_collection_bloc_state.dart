@@ -43,7 +43,6 @@ class InfoCollectionBlocState with _$InfoCollectionBlocState {
         audiosList: [],
         imageUrl: '',
         collectionDescription: '',
-        creationTime: '',
       ),
     )
     CollectionModel collectionModel,

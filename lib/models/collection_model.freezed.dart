@@ -25,7 +25,8 @@ mixin _$CollectionModel {
   List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get collectionDescription => throw _privateConstructorUsedError;
-  String get creationTime => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime? get creationTime => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +50,7 @@ abstract class $CollectionModelCopyWith<$Res> {
       List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription,
-      String creationTime});
+      @TimestampConverter() DateTime? creationTime});
 }
 
 /// @nodoc
@@ -72,7 +73,7 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
-    Object? creationTime = null,
+    Object? creationTime = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,10 +96,10 @@ class _$CollectionModelCopyWithImpl<$Res, $Val extends CollectionModel>
           ? _value.collectionDescription
           : collectionDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      creationTime: null == creationTime
+      creationTime: freezed == creationTime
           ? _value.creationTime
           : creationTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -117,7 +118,7 @@ abstract class _$$CollectionModelImplCopyWith<$Res>
       List<AudioRecordsModel> audiosList,
       String imageUrl,
       String collectionDescription,
-      String creationTime});
+      @TimestampConverter() DateTime? creationTime});
 }
 
 /// @nodoc
@@ -138,7 +139,7 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
     Object? audiosList = null,
     Object? imageUrl = null,
     Object? collectionDescription = null,
-    Object? creationTime = null,
+    Object? creationTime = freezed,
   }) {
     return _then(_$CollectionModelImpl(
       id: null == id
@@ -161,10 +162,10 @@ class __$$CollectionModelImplCopyWithImpl<$Res>
           ? _value.collectionDescription
           : collectionDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      creationTime: null == creationTime
+      creationTime: freezed == creationTime
           ? _value.creationTime
           : creationTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime?,
     ));
   }
 }
@@ -178,7 +179,7 @@ class _$CollectionModelImpl implements _CollectionModel {
       required final List<AudioRecordsModel> audiosList,
       required this.imageUrl,
       required this.collectionDescription,
-      required this.creationTime})
+      @TimestampConverter() this.creationTime})
       : _audiosList = audiosList;
 
   factory _$CollectionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -201,7 +202,8 @@ class _$CollectionModelImpl implements _CollectionModel {
   @override
   final String collectionDescription;
   @override
-  final String creationTime;
+  @TimestampConverter()
+  final DateTime? creationTime;
 
   @override
   String toString() {
@@ -255,12 +257,13 @@ class _$CollectionModelImpl implements _CollectionModel {
 
 abstract class _CollectionModel implements CollectionModel {
   const factory _CollectionModel(
-      {required final String id,
-      required final String title,
-      required final List<AudioRecordsModel> audiosList,
-      required final String imageUrl,
-      required final String collectionDescription,
-      required final String creationTime}) = _$CollectionModelImpl;
+          {required final String id,
+          required final String title,
+          required final List<AudioRecordsModel> audiosList,
+          required final String imageUrl,
+          required final String collectionDescription,
+          @TimestampConverter() final DateTime? creationTime}) =
+      _$CollectionModelImpl;
 
   factory _CollectionModel.fromJson(Map<String, dynamic> json) =
       _$CollectionModelImpl.fromJson;
@@ -276,7 +279,8 @@ abstract class _CollectionModel implements CollectionModel {
   @override
   String get collectionDescription;
   @override
-  String get creationTime;
+  @TimestampConverter()
+  DateTime? get creationTime;
 
   /// Create a copy of CollectionModel
   /// with the given fields replaced by the non-null parameter values.

@@ -24,7 +24,8 @@ mixin _$AudioRecordsModel {
   String get url => throw _privateConstructorUsedError;
   String get duration => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get creationTime => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime get creationTime => throw _privateConstructorUsedError;
 
   /// Serializes this AudioRecordsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,7 @@ abstract class $AudioRecordsModelCopyWith<$Res> {
       String url,
       String duration,
       String id,
-      String creationTime});
+      @TimestampConverter() DateTime creationTime});
 }
 
 /// @nodoc
@@ -91,7 +92,7 @@ class _$AudioRecordsModelCopyWithImpl<$Res, $Val extends AudioRecordsModel>
       creationTime: null == creationTime
           ? _value.creationTime
           : creationTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ) as $Val);
   }
 }
@@ -109,7 +110,7 @@ abstract class _$$AudioRecordsModelImplCopyWith<$Res>
       String url,
       String duration,
       String id,
-      String creationTime});
+      @TimestampConverter() DateTime creationTime});
 }
 
 /// @nodoc
@@ -151,7 +152,7 @@ class __$$AudioRecordsModelImplCopyWithImpl<$Res>
       creationTime: null == creationTime
           ? _value.creationTime
           : creationTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
     ));
   }
 }
@@ -164,7 +165,7 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
       required this.url,
       required this.duration,
       required this.id,
-      required this.creationTime});
+      @TimestampConverter() required this.creationTime});
 
   factory _$AudioRecordsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AudioRecordsModelImplFromJson(json);
@@ -178,7 +179,8 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
   @override
   final String id;
   @override
-  final String creationTime;
+  @TimestampConverter()
+  final DateTime creationTime;
 
   @override
   String toString() {
@@ -223,11 +225,12 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
 
 abstract class _AudioRecordsModel implements AudioRecordsModel {
   const factory _AudioRecordsModel(
-      {required final String title,
-      required final String url,
-      required final String duration,
-      required final String id,
-      required final String creationTime}) = _$AudioRecordsModelImpl;
+          {required final String title,
+          required final String url,
+          required final String duration,
+          required final String id,
+          @TimestampConverter() required final DateTime creationTime}) =
+      _$AudioRecordsModelImpl;
 
   factory _AudioRecordsModel.fromJson(Map<String, dynamic> json) =
       _$AudioRecordsModelImpl.fromJson;
@@ -241,7 +244,8 @@ abstract class _AudioRecordsModel implements AudioRecordsModel {
   @override
   String get id;
   @override
-  String get creationTime;
+  @TimestampConverter()
+  DateTime get creationTime;
 
   /// Create a copy of AudioRecordsModel
   /// with the given fields replaced by the non-null parameter values.

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
@@ -114,6 +115,7 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                     } else if (value ==
                         InfoCollectionPopupMode.deleteCollection) {
                       ShowDeleteDialog.show(
+                        'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
                         context,
                         onYes: () {
                           context.read<InfoCollectionBloc>().add(
@@ -394,10 +396,11 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                                               .spaceBetween,
                                                       children: [
                                                         Text(
-                                                          formatCollectionDate(
-                                                            state
-                                                                .collectionModel
-                                                                .creationTime,
+                                                          DateFormat('dd.MM.yy')
+                                                              .format(
+                                                            state.collectionModel
+                                                                    .creationTime ??
+                                                                DateTime.now(),
                                                           ),
                                                           style: AppTextStyles
                                                               .subtitleWhite,
@@ -627,13 +630,21 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                     print("Переименовать натиснуто");
                                   },
                                   onDelete: () {
-                                    context.read<AudioRecordsScreenBloc>().add(
-                                          DeleteAudioFromCollectionRecordsScreenStateEvent(
-                                            state.collectionModel.title,
-                                            state.collectionModel
-                                                .audiosList[index].title,
-                                          ),
-                                        );
+                                    ShowDeleteDialog.show(
+                                      'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                                      context,
+                                      onYes: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              DeleteAudioFromCollectionRecordsScreenStateEvent(
+                                                state.collectionModel.title,
+                                                state.collectionModel
+                                                    .audiosList[index].title,
+                                              ),
+                                            );
+                                      },
+                                    );
                                   },
                                   onChoose: () {
                                     context.go('/collection/info/choose');

@@ -5,6 +5,7 @@ import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class ShowDeleteDialog {
   static Future<void> show(
+    String text,
     BuildContext context, {
     VoidCallback? onYes,
     VoidCallback? onNo,
@@ -12,21 +13,21 @@ class ShowDeleteDialog {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        content: const Padding(
-          padding: EdgeInsets.only(top: 50.0),
+        content: Padding(
+          padding: const EdgeInsets.only(top: 50.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 'Подтверждаете удаление?',
                 style: AppTextStyles.titleRed,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
-              SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               Text(
                 textAlign: TextAlign.center,
-                'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                text,
                 style: AppTextStyles.subtitleTall,
               ),
             ],

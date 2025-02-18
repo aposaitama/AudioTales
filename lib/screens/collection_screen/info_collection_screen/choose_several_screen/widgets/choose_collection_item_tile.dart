@@ -19,14 +19,19 @@ class ChooseCollectionItemTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(14),
-          child: CachedNetworkImage(
-            imageUrl: collection.imageUrl,
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.cover,
-            errorWidget: (context, error, stackTrace) =>
-                const Icon(Icons.broken_image, size: 50),
-          ),
+          child: collection.imageUrl.isNotEmpty
+              ? CachedNetworkImage(
+                  imageUrl: collection.imageUrl,
+                  width: double.infinity,
+                  height: double.infinity,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.broken_image, size: 50),
+                )
+              : const Icon(Icons.image_not_supported, size: 50),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),

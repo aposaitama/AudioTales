@@ -24,7 +24,7 @@ class FirestoreService {
         'title': title,
         'url': downloadUrl,
         'duration': duration,
-        'creationTime': DateTime.now().toString(),
+        'creationTime': Timestamp.now(),
       });
     } catch (e) {}
   }
@@ -87,7 +87,7 @@ class FirestoreService {
         'collectionDescription': collectionDescription,
         'audiosList': serializedAudiosList,
         'imageUrl': imageUrl,
-        'creationTime': DateTime.now().toString(),
+        'creationTime': Timestamp.now(),
       });
     } catch (e) {}
   }
@@ -466,13 +466,13 @@ class FirestoreService {
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) {
-        return const CollectionModel(
+        return CollectionModel(
           id: '',
           title: '',
           collectionDescription: '',
           audiosList: [],
           imageUrl: '',
-          creationTime: '',
+          creationTime: DateTime.now(),
         );
       }
 

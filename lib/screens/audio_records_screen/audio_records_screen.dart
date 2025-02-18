@@ -8,6 +8,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_records.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
@@ -196,11 +197,17 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                                   );
                             },
                             onDelete: () {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    DeleteAudioRecordsScreenStateEvent(
-                                      audio.title,
-                                    ),
-                                  );
+                              ShowDeleteDialog.show(
+                                'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                                context,
+                                onYes: () {
+                                  context.read<AudioRecordsScreenBloc>().add(
+                                        DeleteAudioRecordsScreenStateEvent(
+                                          audio.title,
+                                        ),
+                                      );
+                                },
+                              );
                             },
                             onChoose: () {
                               context.read<AudioRecordsScreenBloc>().add(

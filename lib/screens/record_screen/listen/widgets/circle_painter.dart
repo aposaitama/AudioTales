@@ -17,16 +17,14 @@ class CirclePainter extends CustomPainter {
     final double centerY = size.height / 2;
     final double progress =
         (position.inMilliseconds / duration.inMilliseconds).clamp(0.0, 1.0);
-    final double circleX = progress * size.width; // обчислюємо позицію кола
+    final double circleX = progress * size.width;
 
-    // Малюємо лінію
     canvas.drawLine(
       Offset(0, centerY),
       Offset(size.width, centerY),
       paint,
     );
 
-    // Малюємо круг
     canvas.drawCircle(
       Offset(circleX, centerY),
       10,

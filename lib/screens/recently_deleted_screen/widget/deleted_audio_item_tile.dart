@@ -71,7 +71,7 @@ class DeletedAudioItemTile extends StatelessWidget {
                               MiniPlayerBlocEvent.open(
                                 [
                                   AudioRecordsModel(
-                                    creationTime: '',
+                                    creationTime: DateTime.now(),
                                     id: audio.id,
                                     title: audio.title,
                                     url: audio.url,

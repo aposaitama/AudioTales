@@ -67,7 +67,7 @@ class ChooseAudioItemTile extends StatelessWidget {
                               MiniPlayerBlocEvent.open(
                                 [
                                   AudioRecordsModel(
-                                    creationTime: '',
+                                    creationTime: audio.creationTime,
                                     id: audio.id,
                                     title: audio.title,
                                     url: audio.url,

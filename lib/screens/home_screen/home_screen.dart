@@ -9,16 +9,47 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/colection_preview.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
   const HomeScreen({
     super.key,
     required this.scaffoldKey,
   });
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // late ScrollController _scrollController;
+  // int _page = 1;
+  // static const int _pageSize = 3;
+
+  // // void _loadNextPage() {
+  // //   context.read<AudioRecordsScreenBloc>().add(
+  // //         LoadedAudioRecordsScreenStateEvent(page: _page, pageSize: _pageSize),
+  // //       );
+  // //   _page++;
+  // // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _scrollController = ScrollController();
+  //   _scrollController.addListener(_scrollListener);
+  // }
+
+  // void _scrollListener() {
+  //   if (_scrollController.position.pixels ==
+  //       _scrollController.position.maxScrollExtent) {
+  //     _loadNextPage();
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                   width: 24.0,
                 ),
               ),
-              onPressed: () => scaffoldKey.currentState?.openDrawer(),
+              onPressed: () => widget.scaffoldKey.currentState?.openDrawer(),
             ),
           ),
         ),
@@ -199,15 +230,21 @@ class HomeScreen extends StatelessWidget {
                                               print("Поделиться натиснуто");
                                             },
                                             onDelete: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    DeleteAudioRecordsScreenStateEvent(
-                                                      state.audioList[index]
-                                                          .title,
-                                                    ),
-                                                  );
+                                              ShowDeleteDialog.show(
+                                                'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                                                context,
+                                                onYes: () {
+                                                  context
+                                                      .read<
+                                                          AudioRecordsScreenBloc>()
+                                                      .add(
+                                                        DeleteAudioRecordsScreenStateEvent(
+                                                          state.audioList[index]
+                                                              .title,
+                                                        ),
+                                                      );
+                                                },
+                                              );
                                             },
                                             onChoose: () {
                                               context.go(
