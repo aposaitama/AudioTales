@@ -6,6 +6,8 @@ import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/navigation/app_navigation.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
+import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc.dart';
+import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc.dart';
@@ -28,6 +30,8 @@ void main() async {
         BlocProvider(create: (_) => MiniPlayerBloc()),
         BlocProvider(create: (_) => InfoCollectionBloc()),
         BlocProvider(create: (_) => RecentlyDeletedBloc()),
+        BlocProvider(create: (_) => AuthBloc()),
+        BlocProvider(create: (_) => RegisterScreenBloc()),
       ],
       child: const MyApp(),
     ),

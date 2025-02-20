@@ -26,30 +26,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // late ScrollController _scrollController;
-  // int _page = 1;
-  // static const int _pageSize = 3;
+  late ScrollController _scrollController;
 
-  // // void _loadNextPage() {
-  // //   context.read<AudioRecordsScreenBloc>().add(
-  // //         LoadedAudioRecordsScreenStateEvent(page: _page, pageSize: _pageSize),
-  // //       );
-  // //   _page++;
-  // // }
+  void _scrollListener() {
+    final totalItems =
+        context.read<AudioRecordsScreenBloc>().state.audioList.length;
+    final audioCount = 9;
+    final currentIndex = _scrollController.position.pixels /
+        (_scrollController.position.maxScrollExtent / totalItems);
+    if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
+      context
+          .read<AudioRecordsScreenBloc>()
+          .add(const LoadNextPageAudioRecordsScreenStateEvent());
+    }
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _scrollController = ScrollController();
-  //   _scrollController.addListener(_scrollListener);
-  // }
-
-  // void _scrollListener() {
-  //   if (_scrollController.position.pixels ==
-  //       _scrollController.position.maxScrollExtent) {
-  //     _loadNextPage();
-  //   }
-  // }
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -210,6 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context, state) {
                                 return Expanded(
                                   child: ListView.builder(
+                                    controller: _scrollController,
                                     itemCount: state.audioList.length,
                                     itemBuilder: (context, int index) {
                                       return Column(

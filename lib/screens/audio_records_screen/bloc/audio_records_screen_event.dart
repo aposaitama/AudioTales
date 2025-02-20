@@ -36,4 +36,8 @@ class AudioRecordsScreenStateEvent with _$AudioRecordsScreenStateEvent {
   const factory AudioRecordsScreenStateEvent.changePopupMode(
     AudioPopupStatus popupStatus,
   ) = ChangePopupAudioRecordsScreenStateEvent;
+  const factory AudioRecordsScreenStateEvent.loadNextPage() =
+      LoadNextPageAudioRecordsScreenStateEvent;
+  const factory AudioRecordsScreenStateEvent.clearList() =
+      ClearListAudioRecordsScreenStateEvent;
 }

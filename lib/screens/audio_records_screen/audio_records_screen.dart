@@ -25,6 +25,29 @@ class AudioRecordsScreen extends StatefulWidget {
 }
 
 class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
+  late ScrollController _scrollController;
+
+  void _scrollListener() {
+    final totalItems =
+        context.read<AudioRecordsScreenBloc>().state.audioList.length;
+    int audioCount = 9;
+    final currentIndex = _scrollController.position.pixels /
+        (_scrollController.position.maxScrollExtent / totalItems);
+
+    if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
+      context
+          .read<AudioRecordsScreenBloc>()
+          .add(const LoadNextPageAudioRecordsScreenStateEvent());
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,6 +200,7 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                     horizontal: 16.0,
                   ),
                   child: ListView.builder(
+                    controller: _scrollController,
                     itemCount: state.audioList.length,
                     itemBuilder: (context, int index) {
                       final audio = state.audioList[index];

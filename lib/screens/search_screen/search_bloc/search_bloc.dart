@@ -11,6 +11,7 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
   StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
+  final int _page = 1;
 
   SearchBloc() : super(const SearchBlocState()) {
     on<LoadingSearchBlocEvent>(_loading);
@@ -20,7 +21,8 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   }
 
   void _subscribeToAudioStream() {
-    _audioSubscription = _firebaseFirestoreService.getUserAudiosStream().listen(
+    _audioSubscription =
+        _firebaseFirestoreService.getUserAudiosStream(_page).listen(
       (audioList) {
         add(LoadedSearchBlocEvent(audioList));
       },

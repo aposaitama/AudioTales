@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc.dart';
+import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_event.dart';
+import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_state.dart';
+import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc.dart';
+import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc_event.dart';
 
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -153,16 +159,31 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 32.0),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 32.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Выйти из приложения',
-                          style: AppTextStyles.subtitle,
+                        BlocBuilder<AuthBloc, AuthBlocState>(
+                          builder: (context, state) {
+                            return GestureDetector(
+                              onTap: () {
+                                context
+                                    .read<AuthBloc>()
+                                    .add(const LogoutRequestedAuthBlocEvent());
+                                context
+                                    .read<RegisterScreenBloc>()
+                                    .add(const LogOutRegisterScreenBlocEvent());
+                                context.go('/bypass');
+                              },
+                              child: const Text(
+                                'Выйти из приложения',
+                                style: AppTextStyles.subtitle,
+                              ),
+                            );
+                          },
                         ),
-                        Text(
+                        const Text(
                           'Удалить аккаунт',
                           style: AppTextStyles.subtitleRed,
                         ),

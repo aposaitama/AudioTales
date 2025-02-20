@@ -4,6 +4,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/audio_records_scre
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_code.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_enter_num.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/register_screen_welcome.dart';
+import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bypass_screen.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/add_collection.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/choose_audio_records.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/choose_several_screen/choose_several_screen.dart';
@@ -22,7 +23,7 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/home',
+      initialLocation: '/bypass',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
@@ -133,6 +134,10 @@ class AppRouter {
         GoRoute(
           path: '/register_num',
           builder: (context, state) => const RegisterScreenEnterNum(),
+        ),
+        GoRoute(
+          path: '/bypass',
+          builder: (context, state) => const BypassScreen(),
         ),
         GoRoute(
           path: '/register_code',

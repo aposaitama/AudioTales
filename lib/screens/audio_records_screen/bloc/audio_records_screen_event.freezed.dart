@@ -31,6 +31,8 @@ mixin _$AudioRecordsScreenStateEvent {
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +67,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,6 +94,10 @@ mixin _$AudioRecordsScreenStateEvent {
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +117,9 @@ mixin _$AudioRecordsScreenStateEvent {
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -126,6 +139,9 @@ mixin _$AudioRecordsScreenStateEvent {
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -214,6 +230,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return loading();
   }
@@ -233,6 +251,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return loading?.call();
   }
@@ -252,6 +272,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -283,6 +305,10 @@ class _$LoadingAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return loading(this);
   }
@@ -305,6 +331,9 @@ class _$LoadingAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +356,9 @@ class _$LoadingAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -438,6 +470,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return loaded(audioList);
   }
@@ -457,6 +491,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return loaded?.call(audioList);
   }
@@ -476,6 +512,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -507,6 +545,10 @@ class _$LoadedAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return loaded(this);
   }
@@ -529,6 +571,9 @@ class _$LoadedAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return loaded?.call(this);
   }
@@ -551,6 +596,9 @@ class _$LoadedAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -676,6 +724,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return share(audioElem);
   }
@@ -695,6 +745,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return share?.call(audioElem);
   }
@@ -714,6 +766,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (share != null) {
@@ -745,6 +799,10 @@ class _$ShareAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return share(this);
   }
@@ -767,6 +825,9 @@ class _$ShareAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return share?.call(this);
   }
@@ -789,6 +850,9 @@ class _$ShareAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (share != null) {
@@ -901,6 +965,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return deleteAudio(title);
   }
@@ -920,6 +986,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return deleteAudio?.call(title);
   }
@@ -939,6 +1007,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -970,6 +1040,10 @@ class _$DeleteAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return deleteAudio(this);
   }
@@ -992,6 +1066,9 @@ class _$DeleteAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return deleteAudio?.call(this);
   }
@@ -1014,6 +1091,9 @@ class _$DeleteAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (deleteAudio != null) {
@@ -1143,6 +1223,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return deleteAudioFromCollection(collectionTitle, audioTitle);
   }
@@ -1162,6 +1244,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return deleteAudioFromCollection?.call(collectionTitle, audioTitle);
   }
@@ -1181,6 +1265,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (deleteAudioFromCollection != null) {
@@ -1212,6 +1298,10 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return deleteAudioFromCollection(this);
   }
@@ -1234,6 +1324,9 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return deleteAudioFromCollection?.call(this);
   }
@@ -1256,6 +1349,9 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (deleteAudioFromCollection != null) {
@@ -1370,6 +1466,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return saveAudio(newTitle);
   }
@@ -1389,6 +1487,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return saveAudio?.call(newTitle);
   }
@@ -1408,6 +1508,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (saveAudio != null) {
@@ -1439,6 +1541,10 @@ class _$SaveAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return saveAudio(this);
   }
@@ -1461,6 +1567,9 @@ class _$SaveAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return saveAudio?.call(this);
   }
@@ -1483,6 +1592,9 @@ class _$SaveAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (saveAudio != null) {
@@ -1594,6 +1706,8 @@ class _$EditAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return editAudio(audioId);
   }
@@ -1613,6 +1727,8 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return editAudio?.call(audioId);
   }
@@ -1632,6 +1748,8 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (editAudio != null) {
@@ -1663,6 +1781,10 @@ class _$EditAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return editAudio(this);
   }
@@ -1685,6 +1807,9 @@ class _$EditAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return editAudio?.call(this);
   }
@@ -1707,6 +1832,9 @@ class _$EditAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (editAudio != null) {
@@ -1826,6 +1954,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return chooseAudio(audio);
   }
@@ -1845,6 +1975,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return chooseAudio?.call(audio);
   }
@@ -1864,6 +1996,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (chooseAudio != null) {
@@ -1895,6 +2029,10 @@ class _$ChooseAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return chooseAudio(this);
   }
@@ -1917,6 +2055,9 @@ class _$ChooseAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return chooseAudio?.call(this);
   }
@@ -1939,6 +2080,9 @@ class _$ChooseAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (chooseAudio != null) {
@@ -2065,6 +2209,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return chooseCollection(collectionList);
   }
@@ -2084,6 +2230,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return chooseCollection?.call(collectionList);
   }
@@ -2103,6 +2251,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (chooseCollection != null) {
@@ -2134,6 +2284,10 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return chooseCollection(this);
   }
@@ -2156,6 +2310,9 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return chooseCollection?.call(this);
   }
@@ -2178,6 +2335,9 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (chooseCollection != null) {
@@ -2262,6 +2422,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return cancelEditing();
   }
@@ -2281,6 +2443,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return cancelEditing?.call();
   }
@@ -2300,6 +2464,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (cancelEditing != null) {
@@ -2331,6 +2497,10 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return cancelEditing(this);
   }
@@ -2353,6 +2523,9 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return cancelEditing?.call(this);
   }
@@ -2375,6 +2548,9 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (cancelEditing != null) {
@@ -2479,6 +2655,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
   }) {
     return changePopupMode(popupStatus);
   }
@@ -2498,6 +2676,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
   }) {
     return changePopupMode?.call(popupStatus);
   }
@@ -2517,6 +2697,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult Function(List<CollectionModel> collectionList)? chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
     required TResult orElse(),
   }) {
     if (changePopupMode != null) {
@@ -2548,6 +2730,10 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
         cancelEditing,
     required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
         changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
   }) {
     return changePopupMode(this);
   }
@@ -2570,6 +2756,9 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
   }) {
     return changePopupMode?.call(this);
   }
@@ -2592,6 +2781,9 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
         cancelEditing,
     TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
         changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
     required TResult orElse(),
   }) {
     if (changePopupMode != null) {
@@ -2615,4 +2807,410 @@ abstract class ChangePopupAudioRecordsScreenStateEvent
   _$$ChangePopupAudioRecordsScreenStateEventImplCopyWith<
           _$ChangePopupAudioRecordsScreenStateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadNextPageAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$LoadNextPageAudioRecordsScreenStateEventImplCopyWith(
+          _$LoadNextPageAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$LoadNextPageAudioRecordsScreenStateEventImpl) then) =
+      __$$LoadNextPageAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadNextPageAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$LoadNextPageAudioRecordsScreenStateEventImpl>
+    implements _$$LoadNextPageAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$LoadNextPageAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$LoadNextPageAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$LoadNextPageAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadNextPageAudioRecordsScreenStateEventImpl
+    implements LoadNextPageAudioRecordsScreenStateEvent {
+  const _$LoadNextPageAudioRecordsScreenStateEventImpl();
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.loadNextPage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadNextPageAudioRecordsScreenStateEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
+    required TResult Function(List<CollectionModel> collectionList)
+        chooseCollection,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
+  }) {
+    return loadNextPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
+  }) {
+    return loadNextPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
+    required TResult orElse(),
+  }) {
+    if (loadNextPage != null) {
+      return loadNextPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(ChooseAudioRecordsScreenStateEvent value)
+        chooseAudio,
+    required TResult Function(
+            ChooseCollectionAudioRecordsScreenStateEvent value)
+        chooseCollection,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
+  }) {
+    return loadNextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+  }) {
+    return loadNextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+    required TResult orElse(),
+  }) {
+    if (loadNextPage != null) {
+      return loadNextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadNextPageAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory LoadNextPageAudioRecordsScreenStateEvent() =
+      _$LoadNextPageAudioRecordsScreenStateEventImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearListAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  factory _$$ClearListAudioRecordsScreenStateEventImplCopyWith(
+          _$ClearListAudioRecordsScreenStateEventImpl value,
+          $Res Function(_$ClearListAudioRecordsScreenStateEventImpl) then) =
+      __$$ClearListAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearListAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$ClearListAudioRecordsScreenStateEventImpl>
+    implements _$$ClearListAudioRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$ClearListAudioRecordsScreenStateEventImplCopyWithImpl(
+      _$ClearListAudioRecordsScreenStateEventImpl _value,
+      $Res Function(_$ClearListAudioRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearListAudioRecordsScreenStateEventImpl
+    implements ClearListAudioRecordsScreenStateEvent {
+  const _$ClearListAudioRecordsScreenStateEventImpl();
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.clearList()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearListAudioRecordsScreenStateEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
+    required TResult Function(List<CollectionModel> collectionList)
+        chooseCollection,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
+  }) {
+    return clearList();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
+  }) {
+    return clearList?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String audioId)? editAudio,
+    TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
+    required TResult orElse(),
+  }) {
+    if (clearList != null) {
+      return clearList();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(ChooseAudioRecordsScreenStateEvent value)
+        chooseAudio,
+    required TResult Function(
+            ChooseCollectionAudioRecordsScreenStateEvent value)
+        chooseCollection,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
+  }) {
+    return clearList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+  }) {
+    return clearList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+    required TResult orElse(),
+  }) {
+    if (clearList != null) {
+      return clearList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearListAudioRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory ClearListAudioRecordsScreenStateEvent() =
+      _$ClearListAudioRecordsScreenStateEventImpl;
 }

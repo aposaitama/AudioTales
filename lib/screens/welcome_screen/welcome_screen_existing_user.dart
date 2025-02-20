@@ -15,15 +15,20 @@ class WelcomeScreenExistingUser extends StatefulWidget {
 }
 
 class _WelcomeScreenExistingUserState extends State<WelcomeScreenExistingUser> {
+  Timer? _timer;
   @override
   void initState() {
     super.initState();
-    Timer(
-      const Duration(seconds: 2),
-      () async {
-        context.go('/home');
-      },
-    );
+    _timer = Timer(const Duration(seconds: 2), () {
+      if (!mounted) return;
+      context.go('/home');
+    });
+    // Timer(
+    //   const Duration(seconds: 2),
+    //   () async {
+    //     context.go('/home');
+    //   },
+    // );
   }
 
   @override

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bot_toast/bot_toast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
@@ -16,6 +17,7 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
   StreamSubscription<List<CollectionModel>>? _collectionSubscription;
+  StreamSubscription<User?>? _authSubscription;
   CollectionBloc() : super(const CollectionBlocState()) {
     on<LoadingCollectionBlocEvent>(_loading);
     on<LoadedCollectionBlocEvent>(_loaded);
@@ -25,6 +27,19 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     on<ToggleCollectionSelectionBlocEvent>(_onToggleCollectionSelection);
 
     _subscribeToCollectionStream();
+    _subscribeToAuthChanges();
+  }
+
+  void _subscribeToAuthChanges() {
+    _authSubscription = FirebaseAuth.instance.authStateChanges().listen(
+      (user) {
+        if (user == null) return;
+
+        add(const LoadingCollectionBlocEvent());
+
+        _subscribeToCollectionStream();
+      },
+    );
   }
 
   void _subscribeToCollectionStream() {
