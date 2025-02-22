@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
@@ -38,9 +39,9 @@ class InfoCollectionBloc
     on<DonwloadAudiosInfoCollectionBlocEvent>(_downloadAudios);
   }
 
-  void _subscribeToCollectionStream(String collectionTitle) {
+  void _subscribeToCollectionStream(String collectionId) {
     _audioSubscription = _firebaseFirestoreService
-        .getUserCollectionStreamByTitle(collectionTitle)
+        .getUserCollectionStreamById(collectionId)
         .listen((collectionModel) {
       add(LoadedInfoCollectionBlocEvent(collectionModel));
     });
@@ -50,28 +51,35 @@ class InfoCollectionBloc
     DonwloadAudiosInfoCollectionBlocEvent event,
     Emitter<InfoCollectionBlocState> emit,
   ) async {
-    if (await Permission.storage.request().isGranted) {
-      try {
-        for (AudioRecordsModel audio in state.selectedAudios) {
-          String url = audio.url;
+    print('start');
 
-          Directory tempDir = await getApplicationDocumentsDirectory();
-          String savePath = '${tempDir.path}/${audio.title}.mp3';
+    try {
+      for (AudioRecordsModel audio in state.selectedAudios) {
+        String url = audio.url;
 
-          File file = File(savePath);
-          var res = await get(Uri.parse(url));
+        // Завантажуємо аудіофайл
+        var response = await http.get(Uri.parse(url));
 
-          file.writeAsBytes(res.bodyBytes);
+        if (response.statusCode == 200) {
+          // Отримуємо тимчасовий каталог
+          Directory tempDir = await getTemporaryDirectory();
+          String tempPath = '${tempDir.path}/${audio.title}.mp3';
 
-          print('Аудіофайл завантажено до: $savePath');
+          // Записуємо у файл
+          File file = File(tempPath);
+          await file.writeAsBytes(response.bodyBytes);
+
+          // Ділимося файлом через share_plus
+          XFile xFile = XFile(tempPath);
+          await Share.shareXFiles([xFile]);
+        } else {
+          print('Не вдалося завантажити файл: $url');
         }
-
-        emit(state.copyWith(selectedAudios: []));
-      } catch (e) {
-        print("Помилка при завантаженні файлів: $e");
       }
-    } else {
-      print("Необхідно надати дозволи на зберігання файлів.");
+
+      emit(state.copyWith(selectedAudios: []));
+    } catch (e) {
+      print("Помилка при завантаженні файлів: $e");
     }
   }
 
@@ -161,11 +169,11 @@ class InfoCollectionBloc
     emit(
       state.copyWith(
         status: InfoCollectionState.loading,
-        collectionModel: event.collection,
+        // collectionModel: event.collection,
       ),
     );
 
-    _subscribeToCollectionStream(event.collection.id);
+    _subscribeToCollectionStream(event.collectionId);
   }
 
   Future<void> _loaded(

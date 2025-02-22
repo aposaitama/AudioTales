@@ -6,14 +6,16 @@ import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/deleted_records_model.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc_event.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc_state.dart';
+import 'package:memory_box_avada/sources/auth_service.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
 
 class RecentlyDeletedBloc
     extends Bloc<RecentlyDeletedBlocEvent, RecentlyDeletedBlocState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
+  final AuthService _authService = locator<AuthService>();
   StreamSubscription<List<DeletedRecordsModel>>? _deletedAudioSubscription;
-
+  StreamSubscription<bool>? _authSubscription;
   RecentlyDeletedBloc() : super(const RecentlyDeletedBlocState()) {
     on<LoadingRecentlyDeletedBlocEvent>(_loading);
     on<LoadedRecentlyDeletedBlocEvent>(_loaded);
@@ -31,6 +33,20 @@ class RecentlyDeletedBloc
 
     on<RestoreAudioRecentlyDeletedBlocEvent>(_restoreAll);
     _subscribeToDeletedAudiosStream();
+    _subscribeToAuthChanges();
+  }
+
+  void _subscribeToAuthChanges() {
+    _authSubscription?.cancel();
+
+    _authSubscription = _authService.authStatusChanges.listen((isAuthorized) {
+      print('Auth status changed: $isAuthorized');
+      if (isAuthorized) {
+        _subscribeToDeletedAudiosStream();
+      } else {
+        _deletedAudioSubscription?.cancel();
+      }
+    });
   }
 
   void _subscribeToDeletedAudiosStream() {

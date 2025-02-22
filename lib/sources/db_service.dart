@@ -4,7 +4,9 @@ import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/deleted_records_model.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/models/user_model.dart';
+import 'package:memory_box_avada/utils/duration_converter.dart';
 import 'package:uuid/uuid.dart';
 
 class FirestoreService {
@@ -24,24 +26,61 @@ class FirestoreService {
         'phoneNumber': phoneNumber,
         'audiosCount': 0,
         'subscription': 'initial',
+        'duration': '0:00:00.000000',
       });
     } catch (e) {
       print(e);
     }
   }
 
+  Future<Duration> _getTotalUserDuration() async {
+    final userRef = _firestore.collection('users').doc(uid);
+    final userDoc = await userRef.get();
+    String currentDurationString =
+        userDoc.data()?['duration'] ?? '0:00:00.000000';
+    return const DurationConverter().fromJson(currentDurationString);
+  }
+
+  Future<Duration> _getTotalCollectionDuration(String collectionId) async {
+    QuerySnapshot collectionSnapshot = await _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('collections')
+        .where('id', isEqualTo: collectionId)
+        .get();
+
+    if (collectionSnapshot.docs.isEmpty) {
+      return Duration.zero;
+    }
+
+    var collectionDoc = collectionSnapshot.docs.first;
+
+    String currentDurationString =
+        collectionDoc['duration'] ?? '0:00:00.000000';
+
+    return const DurationConverter().fromJson(currentDurationString);
+  }
+
   Future<void> saveUserAudio(
     String title,
     String downloadUrl,
-    String duration,
+    Duration duration,
   ) async {
     try {
+      final currentDuration = await _getTotalUserDuration();
+      final newTotalDuration = currentDuration + duration;
+
       await _firestore.collection('users').doc(uid).collection('audios').add({
         'id': uuid.v1(),
         'title': title,
         'url': downloadUrl,
-        'duration': duration,
+        'duration': duration.toString(),
         'creationTime': Timestamp.now(),
+      });
+
+      await _firestore.collection('users').doc(uid).update({
+        'audiosCount': FieldValue.increment(1),
+        'duration': newTotalDuration.toString(),
       });
     } catch (e) {}
   }
@@ -64,7 +103,11 @@ class FirestoreService {
         List<dynamic> audiosListInCollection =
             collectionDoc['audiosList'] ?? [];
 
+        Duration currentDurationString = const DurationConverter()
+            .fromJson(collectionDoc['duration'] ?? '0:00:00.000000');
+
         for (var audio in audiosList) {
+          currentDurationString -= audio.duration;
           audiosListInCollection
               .removeWhere((audioData) => audioData['id'] == audio.id);
         }
@@ -74,7 +117,13 @@ class FirestoreService {
             .doc(uid)
             .collection('collections')
             .doc(collectionDoc.id)
-            .update({'audiosList': audiosListInCollection});
+            .update({
+          'duration': currentDurationString.toString(),
+          'audiosList': audiosListInCollection,
+          'audioCount': FieldValue.increment(
+            -audiosList.length,
+          ),
+        });
 
         print('Аудіозаписи успішно видалено з колекції!');
       } else {
@@ -92,6 +141,10 @@ class FirestoreService {
     String imageUrl,
   ) async {
     try {
+      Duration totalDuration = Duration.zero;
+      for (var audio in audiosList) {
+        totalDuration += audio.duration;
+      }
       List<Map<String, dynamic>> serializedAudiosList =
           audiosList.map((audio) => audio.toJson()).toList();
       await _firestore
@@ -104,6 +157,8 @@ class FirestoreService {
         'collectionDescription': collectionDescription,
         'audiosList': serializedAudiosList,
         'imageUrl': imageUrl,
+        'audioCount': audiosList.length,
+        'duration': totalDuration.toString(),
         'creationTime': Timestamp.now(),
       });
     } catch (e) {}
@@ -153,10 +208,10 @@ class FirestoreService {
 
   Future<void> addAudiosToCollections(
     List<AudioRecordsModel> audios,
-    List<CollectionModel> collections,
+    List<SimpleCollectionModel> collections,
   ) async {
     try {
-      for (CollectionModel collection in collections) {
+      for (SimpleCollectionModel collection in collections) {
         QuerySnapshot collectionSnapshot = await _firestore
             .collection('users')
             .doc(uid)
@@ -167,6 +222,11 @@ class FirestoreService {
         if (collectionSnapshot.docs.isNotEmpty) {
           var collectionDoc = collectionSnapshot.docs.first;
           List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
+
+          // Отримуємо поточну тривалість колекції
+          Duration currentDuration = Duration.zero;
+          String durationString = collectionDoc['duration'] ?? '0:00:00.000000';
+          currentDuration = const DurationConverter().fromJson(durationString);
 
           for (var audio in audios) {
             QuerySnapshot audioSnapshot = await _firestore
@@ -181,16 +241,27 @@ class FirestoreService {
               Map<String, dynamic> audioData =
                   audioDoc.data() as Map<String, dynamic>;
 
+              // Додаємо новий аудіофайл лише якщо його ще немає в списку
               if (!audiosList
                   .any((existingAudio) => existingAudio['id'] == audio.id)) {
                 audiosList.add(audioData);
+
+                // Оновлюємо тривалість колекції
+                currentDuration += audio.duration;
 
                 await _firestore
                     .collection('users')
                     .doc(uid)
                     .collection('collections')
                     .doc(collectionDoc.id)
-                    .update({'audiosList': audiosList});
+                    .update(
+                  {
+                    'audiosList': audiosList,
+                    'audioCount': FieldValue.increment(1),
+                    'duration':
+                        currentDuration.toString(), // Оновлюємо duration
+                  },
+                );
               }
             }
           }
@@ -199,6 +270,47 @@ class FirestoreService {
       print('Аудіозаписи успішно додано до колекцій!');
     } catch (e) {
       print('Помилка під час додавання аудіозаписів до колекцій: $e');
+    }
+  }
+
+  Future<void> updateAudioTitleInCollectionById({
+    required String collectionId,
+    required String audioId,
+    required String newTitle,
+  }) async {
+    try {
+      QuerySnapshot collectionSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('collections') // Виправлено назву колекції
+          .where('id', isEqualTo: collectionId)
+          .get();
+
+      if (collectionSnapshot.docs.isNotEmpty) {
+        var collectionDoc = collectionSnapshot.docs.first;
+
+        List<dynamic> audiosList = List.from(collectionDoc['audiosList'] ?? []);
+
+        for (var audio in audiosList) {
+          if (audio['id'] == audioId) {
+            audio['title'] = newTitle; // Оновлення назви аудіо
+            break;
+          }
+        }
+
+        await _firestore
+            .collection('users')
+            .doc(uid)
+            .collection('collections')
+            .doc(collectionDoc.id)
+            .update({'audiosList': audiosList});
+
+        print('Назву аудіозапису в колекції успішно оновлено!');
+      } else {
+        print('Колекція не знайдена!');
+      }
+    } catch (e) {
+      print('Помилка при оновленні назви аудіозапису в колекції: $e');
     }
   }
 
@@ -246,8 +358,12 @@ class FirestoreService {
           .where('title', isEqualTo: audioTitle)
           .get();
 
+      final currentDuration = await _getTotalUserDuration();
+
       if (audioSnapshot.docs.isNotEmpty) {
         for (var doc in audioSnapshot.docs) {
+          final newTotalDuration = currentDuration -
+              const DurationConverter().fromJson(doc['duration']);
           await _firestore
               .collection('users')
               .doc(uid)
@@ -260,7 +376,10 @@ class FirestoreService {
             'deletedAt': Timestamp.now(),
             'creationTime': doc['creationTime'],
           });
-
+          await _firestore.collection('users').doc(uid).update({
+            'audiosCount': FieldValue.increment(-1),
+            'duration': newTotalDuration.toString(),
+          });
           await _firestore
               .collection('users')
               .doc(uid)
@@ -333,6 +452,9 @@ class FirestoreService {
             .get();
 
         for (var doc in audioSnapshot.docs) {
+          final currentDuration = await _getTotalUserDuration();
+          final newTotalDuration = currentDuration +
+              const DurationConverter().fromJson(doc['duration']);
           await _firestore
               .collection('users')
               .doc(uid)
@@ -343,6 +465,10 @@ class FirestoreService {
             'url': doc['url'],
             'duration': doc['duration'],
             'creationTime': doc['creationTime'],
+          });
+          await _firestore.collection('users').doc(uid).update({
+            'audiosCount': FieldValue.increment(1),
+            'duration': newTotalDuration.toString(),
           });
         }
         for (var doc in audioSnapshot.docs) {
@@ -390,20 +516,46 @@ class FirestoreService {
 
       if (collectionSnapshot.docs.isNotEmpty) {
         for (var collectionDoc in collectionSnapshot.docs) {
-          List<dynamic> audiosList = collectionDoc['audiosList'];
-          audiosList.removeWhere((audio) => audio['title'] == audioTitle);
+          String durationString = collectionDoc['duration'] ?? '0:00:00.000000';
+          Duration collectionDuration =
+              const DurationConverter().fromJson(durationString);
 
-          await _firestore
-              .collection('users')
-              .doc(uid)
-              .collection('collections')
-              .doc(collectionDoc.id)
-              .update({
-            'audiosList': audiosList,
-          });
+          List<dynamic> audiosList = collectionDoc['audiosList'];
+
+          var audioToDelete = audiosList.firstWhere(
+            (audio) => audio['title'] == audioTitle,
+            orElse: () => null,
+          );
+
+          if (audioToDelete != null) {
+            Duration audioDuration =
+                const DurationConverter().fromJson(audioToDelete['duration']);
+            Duration newDuration = collectionDuration - audioDuration;
+
+            audiosList.removeWhere((audio) => audio['title'] == audioTitle);
+
+            await _firestore
+                .collection('users')
+                .doc(uid)
+                .collection('collections')
+                .doc(collectionDoc.id)
+                .update({
+              'audiosList': audiosList,
+              'audioCount': FieldValue.increment(-1),
+              'duration': newDuration.toString(),
+            });
+
+            print('Аудіозапис успішно видалено з колекції!');
+          } else {
+            print('Аудіозапис не знайдено в колекції.');
+          }
         }
-      } else {}
-    } catch (e) {}
+      } else {
+        print('Колекція не знайдена!');
+      }
+    } catch (e) {
+      print('Помилка при видаленні аудіозапису: $e');
+    }
   }
 
   Future<List<AudioRecordsModel>> getUserAudios() async {
@@ -425,35 +577,79 @@ class FirestoreService {
     }
   }
 
-  Stream<List<AudioRecordsModel>> getUserAudiosStream2(
-    List<AudioRecordsModel> audioList,
-  ) {
-    print("Current UID: $uid");
-    if (audioList.isEmpty) {
-      return _firestore
-          .collection('users')
-          .doc(uid)
-          .collection('audios')
-          .orderBy('creationTime', descending: true)
-          .limit(6)
-          .snapshots()
-          .map(
-            (snapshot) => snapshot.docs
-                .map((doc) => AudioRecordsModel.fromJson(doc.data()))
-                .toList(),
-          );
-    }
+  Stream<UserModel?> getUserStream(String userId) {
+    return _firestore.collection('users').doc(userId).snapshots().map(
+      (snapshot) {
+        if (snapshot.exists) {
+          return UserModel.fromJson(snapshot.data()!);
+        }
+        return null;
+      },
+    );
+  }
 
-    var lastAudio = audioList.last;
+  Future<void> updateUserData(UserModel user) async {
+    try {
+      await _firestore.collection('users').doc(uid).update(user.toJson());
+      print("User data updated successfully!");
+    } catch (e) {
+      print("Error updating user data: $e");
+    }
+  }
+
+  // Stream<List<AudioRecordsModel>> getUserAudiosStream2(
+  //   List<AudioRecordsModel> audioList,
+  // ) {
+  //   print("Current UID: $uid");
+  //   if (audioList.isEmpty) {
+  //     return _firestore
+  //         .collection('users')
+  //         .doc(uid)
+  //         .collection('audios')
+  //         .orderBy('creationTime', descending: true)
+  //         .limit(6)
+  //         .snapshots()
+  //         .map(
+  //           (snapshot) => snapshot.docs
+  //               .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+  //               .toList(),
+  //         );
+  //   }
+
+  //   var lastAudio = audioList.last;
+
+  //   return _firestore
+  //       .collection('users')
+  //       .doc(uid)
+  //       .collection('audios')
+  //       .orderBy('creationTime', descending: true)
+  //       .startAfter([lastAudio.creationTime])
+  //       .limit(6)
+  //       .snapshots()
+  //       .map(
+  //         (snapshot) => snapshot.docs
+  //             .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+  //             .toList(),
+  //       );
+  // }
+
+  Stream<List<AudioRecordsModel>> searchAudiosStream({
+    required String searchedText,
+  }) {
+    if (searchedText.isEmpty) {
+      return Stream.value([]);
+    }
 
     return _firestore
         .collection('users')
         .doc(uid)
         .collection('audios')
-        .orderBy('creationTime', descending: true)
-        .startAfter(
-            [lastAudio.creationTime]) // Починаємо після останнього аудіо
-        .limit(6)
+        .where('title', isGreaterThanOrEqualTo: searchedText)
+        .where(
+          'title',
+          isLessThan: '$searchedText\uf8ff',
+        )
+        .orderBy('title')
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
@@ -462,14 +658,12 @@ class FirestoreService {
         );
   }
 
-  Stream<List<AudioRecordsModel>> getUserAudiosStream(int page) {
+  Stream<List<AudioRecordsModel>> getUserAudiosStream3() {
     return _firestore
         .collection('users')
         .doc(uid)
         .collection('audios')
         .orderBy('creationTime', descending: true)
-        .startAfter([page * 6])
-        .limit(6)
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
@@ -495,7 +689,7 @@ class FirestoreService {
         );
   }
 
-  Stream<List<CollectionModel>> getUserCollectionStream() {
+  Stream<List<SimpleCollectionModel>> getUserCollectionStream() {
     return _firestore
         .collection('users')
         .doc(uid)
@@ -505,20 +699,20 @@ class FirestoreService {
         .map(
           (snapshot) => snapshot.docs
               .map(
-                (doc) => CollectionModel.fromJson(doc.data()),
+                (doc) => SimpleCollectionModel.fromJson(doc.data()),
               )
               .toList(),
         );
   }
 
-  Stream<CollectionModel> getUserCollectionStreamByTitle(
-    String collectionTitle,
+  Stream<CollectionModel> getUserCollectionStreamById(
+    String collectionId,
   ) {
     return _firestore
         .collection('users')
         .doc(uid)
         .collection('collections')
-        .where('id', isEqualTo: collectionTitle)
+        .where('id', isEqualTo: collectionId)
         .snapshots()
         .map((snapshot) {
       if (snapshot.docs.isEmpty) {

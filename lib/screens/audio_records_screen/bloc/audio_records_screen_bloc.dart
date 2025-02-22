@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
+import 'package:memory_box_avada/sources/auth_service.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -13,9 +13,10 @@ class AudioRecordsScreenBloc
     extends Bloc<AudioRecordsScreenStateEvent, AudioRecordsScreenState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
-  StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
-  StreamSubscription<User?>? _authSubscription;
   int _page = 1;
+  final AuthService _authService = locator<AuthService>();
+  StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
+  StreamSubscription<bool>? _authSubscription;
   AudioRecordsScreenBloc() : super(const AudioRecordsScreenState()) {
     on<LoadingAudioRecordsScreenStateEvent>(_loading);
     on<LoadedAudioRecordsScreenStateEvent>(_loaded);
@@ -23,6 +24,7 @@ class AudioRecordsScreenBloc
     on<DeleteAudioFromCollectionRecordsScreenStateEvent>(
       _deleteAudioFromCollection,
     );
+    // on<LoadNextPageAudioRecordsScreenStateEvent>(_loadNextPage);
     on<EditAudioRecordsScreenStateEvent>(_editAudio);
     on<ChangePopupAudioRecordsScreenStateEvent>(_changePopup);
     on<CancelEditingAudioRecordsScreenStateEvent>(_cancelEditing);
@@ -30,54 +32,32 @@ class AudioRecordsScreenBloc
     on<ShareAudioRecordsScreenStateEvent>(_share);
     on<ChooseAudioRecordsScreenStateEvent>(_chooseAudio);
     on<ChooseCollectionAudioRecordsScreenStateEvent>(_chooseColection);
-    on<LoadNextPageAudioRecordsScreenStateEvent>(_loadNextPage);
-    on<ClearListAudioRecordsScreenStateEvent>(_clearList);
+    on<SaveAudioInColectionRecordsScreenStateEvent>(_saveAudioInCollection);
 
     _subscribeToAudioStream();
     _subscribeToAuthChanges();
   }
 
-  Future<void> _clearList(
-    ClearListAudioRecordsScreenStateEvent event,
-    Emitter<AudioRecordsScreenState> emit,
-  ) async {
-    emit(state.copyWith(audioList: []));
-  }
-
   void _subscribeToAuthChanges() {
-    _authSubscription = FirebaseAuth.instance.authStateChanges().listen(
-      (user) {
-        if (user == null) return;
+    _authSubscription?.cancel();
 
-        add(ClearListAudioRecordsScreenStateEvent());
-
+    _authSubscription = _authService.authStatusChanges.listen((isAuthorized) {
+      print('Auth status changed: $isAuthorized');
+      if (isAuthorized) {
         _subscribeToAudioStream();
-      },
-    );
+      } else {
+        _audioSubscription?.cancel();
+      }
+    });
   }
 
   void _subscribeToAudioStream() {
-    final currentUid = FirebaseAuth.instance.currentUser?.uid;
-    print(currentUid);
-    if (currentUid == null) return;
     _audioSubscription =
-        _firebaseFirestoreService.getUserAudiosStream2(state.audioList).listen(
+        _firebaseFirestoreService.getUserAudiosStream3().listen(
       (audioList) {
-        // print('Received audio list: $audioList');
         add(LoadedAudioRecordsScreenStateEvent(audioList));
       },
-      onError: (error) {
-        print('Error receiving audio list: $error');
-      },
     );
-  }
-
-  Future<void> _loadNextPage(
-    LoadNextPageAudioRecordsScreenStateEvent event,
-    Emitter<AudioRecordsScreenState> emit,
-  ) async {
-    _page++;
-    _subscribeToAudioStream();
   }
 
   Future<void> _chooseAudio(
@@ -105,6 +85,23 @@ class AudioRecordsScreenBloc
     Emitter<AudioRecordsScreenState> emit,
   ) async {
     Share.share('Прослухай цей аудіозапис - ${event.audioElem.url}');
+  }
+
+  Future<void> _saveAudioInCollection(
+    SaveAudioInColectionRecordsScreenStateEvent event,
+    Emitter<AudioRecordsScreenState> emit,
+  ) async {
+    await _firebaseFirestoreService.updateAudioTitleInCollectionById(
+      collectionId: event.collectionId,
+      audioId: state.editingAudioId!,
+      newTitle: event.newTitle,
+    );
+    emit(
+      state.copyWith(
+        editingAudioId: '',
+        popupStatus: AudioPopupStatus.initial,
+      ),
+    );
   }
 
   Future<void> _updateAudioTitle(
@@ -155,20 +152,11 @@ class AudioRecordsScreenBloc
     LoadedAudioRecordsScreenStateEvent event,
     Emitter<AudioRecordsScreenState> emit,
   ) async {
-    final updatedAudioList = List<AudioRecordsModel>.from(state.audioList);
-
-    for (var newAudio in event.audioList) {
-      if (!updatedAudioList.any((audio) => audio.id == newAudio.id)) {
-        updatedAudioList.add(newAudio);
-      }
-    }
-
-    updatedAudioList.sort((a, b) => b.creationTime.compareTo(a.creationTime));
-
+    // final audioList = await _firebaseFirestoreService.getUserAudios();
     emit(
       state.copyWith(
         status: AudioRecordsScreenStatus.loaded,
-        audioList: updatedAudioList,
+        audioList: event.audioList,
       ),
     );
   }
@@ -193,7 +181,6 @@ class AudioRecordsScreenBloc
   @override
   Future<void> close() {
     _audioSubscription?.cancel();
-    _authSubscription?.cancel();
     return super.close();
   }
 }

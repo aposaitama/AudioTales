@@ -7,7 +7,7 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/widget/add_audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
@@ -69,10 +69,7 @@ class AddCollection extends StatelessWidget {
             onTap: () {
               context.pop();
               context.read<CollectionBloc>().add(
-                    CreateCollectionBlocEvent(
-                      title.text,
-                      collectionDescription.text,
-                    ),
+                    CreateCollectionBlocEvent(),
                   );
             },
             child: const Padding(
@@ -87,6 +84,13 @@ class AddCollection extends StatelessWidget {
       ),
       body: BlocBuilder<CollectionBloc, CollectionBlocState>(
         builder: (context, state) {
+          if (state.newCollectionTitle.isNotEmpty) {
+            title.text = state.newCollectionTitle;
+          }
+          if (state.newCollectionDescription.isNotEmpty) {
+            collectionDescription.text = state.newCollectionDescription;
+          }
+
           return Stack(
             children: [
               const CustomProfileTopClipPath(
@@ -113,6 +117,11 @@ class AddCollection extends StatelessWidget {
                           borderSide: BorderSide.none,
                         ),
                       ),
+                      onChanged: (text) {
+                        context
+                            .read<CollectionBloc>()
+                            .add(UpdateTitleBlocEvent(text));
+                      },
                     ),
                     const MaxGap(20.0),
                     GestureDetector(
@@ -180,6 +189,11 @@ class AddCollection extends StatelessWidget {
                             borderSide: BorderSide.none,
                           ),
                         ),
+                        onChanged: (text) {
+                          context
+                              .read<CollectionBloc>()
+                              .add(UpdateDescriptionBlocEvent(text));
+                        },
                       ),
                     ),
                     Row(
@@ -205,34 +219,12 @@ class AddCollection extends StatelessWidget {
                             itemBuilder: (context, int index) {
                               return Column(
                                 children: [
-                                  AudioItemTile(
+                                  AddAudioItemTile(
+                                    color: AppColors.greenColor,
                                     audio: state.audiosList[index],
-                                    title: state.audiosList[index].title,
-                                    duration: '30 минут',
-                                    onRename: () {},
                                     onDelete: () {
-                                      context
-                                          .read<AudioRecordsScreenBloc>()
-                                          .add(
-                                            DeleteAudioRecordsScreenStateEvent(
-                                              state.audiosList[index].title,
-                                            ),
-                                          );
-                                    },
-                                    onSave: (controller) {
-                                      print("Поделиться натиснуто");
-                                    },
-                                    onCancel: () {
-                                      print("Поделиться натиснуто");
-                                    },
-                                    onChoose: () {
-                                      context.go('/collection/info/choose');
-                                    },
-                                    onShare: () {
-                                      context
-                                          .read<AudioRecordsScreenBloc>()
-                                          .add(
-                                            ShareAudioRecordsScreenStateEvent(
+                                      context.read<CollectionBloc>().add(
+                                            DeleteAudioFromCreateCollectionBlocEvent(
                                               state.audiosList[index],
                                             ),
                                           );

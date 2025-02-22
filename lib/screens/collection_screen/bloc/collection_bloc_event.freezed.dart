@@ -19,35 +19,45 @@ mixin _$CollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +66,12 @@ mixin _$CollectionBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -67,7 +82,11 @@ mixin _$CollectionBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -78,7 +97,11 @@ mixin _$CollectionBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -154,12 +177,16 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
     return loading();
@@ -169,12 +196,15 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
     return loading?.call();
   }
@@ -183,12 +213,15 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -203,7 +236,12 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -217,7 +255,11 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -231,7 +273,11 @@ class _$LoadingCollectionBlocEventImpl implements LoadingCollectionBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -255,7 +301,7 @@ abstract class _$$LoadedCollectionBlocEventImplCopyWith<$Res> {
           $Res Function(_$LoadedCollectionBlocEventImpl) then) =
       __$$LoadedCollectionBlocEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CollectionModel> collectionList});
+  $Res call({List<SimpleCollectionModel> collectionList});
 }
 
 /// @nodoc
@@ -279,7 +325,7 @@ class __$$LoadedCollectionBlocEventImplCopyWithImpl<$Res>
       null == collectionList
           ? _value._collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
-              as List<CollectionModel>,
+              as List<SimpleCollectionModel>,
     ));
   }
 }
@@ -288,12 +334,12 @@ class __$$LoadedCollectionBlocEventImplCopyWithImpl<$Res>
 
 class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
   const _$LoadedCollectionBlocEventImpl(
-      final List<CollectionModel> collectionList)
+      final List<SimpleCollectionModel> collectionList)
       : _collectionList = collectionList;
 
-  final List<CollectionModel> _collectionList;
+  final List<SimpleCollectionModel> _collectionList;
   @override
-  List<CollectionModel> get collectionList {
+  List<SimpleCollectionModel> get collectionList {
     if (_collectionList is EqualUnmodifiableListView) return _collectionList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_collectionList);
@@ -330,12 +376,16 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
     return loaded(collectionList);
@@ -345,12 +395,15 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
     return loaded?.call(collectionList);
   }
@@ -359,12 +412,15 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -379,7 +435,12 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -393,7 +454,11 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -407,7 +472,11 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -422,10 +491,10 @@ class _$LoadedCollectionBlocEventImpl implements LoadedCollectionBlocEvent {
 
 abstract class LoadedCollectionBlocEvent implements CollectionBlocEvent {
   const factory LoadedCollectionBlocEvent(
-          final List<CollectionModel> collectionList) =
+          final List<SimpleCollectionModel> collectionList) =
       _$LoadedCollectionBlocEventImpl;
 
-  List<CollectionModel> get collectionList;
+  List<SimpleCollectionModel> get collectionList;
 
   /// Create a copy of CollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -477,12 +546,16 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
     return uploadImage();
@@ -492,12 +565,15 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
     return uploadImage?.call();
   }
@@ -506,12 +582,15 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
@@ -526,7 +605,12 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -540,7 +624,11 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -554,7 +642,11 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -569,6 +661,403 @@ class _$UploadImageBlocEventImpl implements UploadImageBlocEvent {
 
 abstract class UploadImageBlocEvent implements CollectionBlocEvent {
   const factory UploadImageBlocEvent() = _$UploadImageBlocEventImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateTitleBlocEventImplCopyWith<$Res> {
+  factory _$$UpdateTitleBlocEventImplCopyWith(_$UpdateTitleBlocEventImpl value,
+          $Res Function(_$UpdateTitleBlocEventImpl) then) =
+      __$$UpdateTitleBlocEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title});
+}
+
+/// @nodoc
+class __$$UpdateTitleBlocEventImplCopyWithImpl<$Res>
+    extends _$CollectionBlocEventCopyWithImpl<$Res, _$UpdateTitleBlocEventImpl>
+    implements _$$UpdateTitleBlocEventImplCopyWith<$Res> {
+  __$$UpdateTitleBlocEventImplCopyWithImpl(_$UpdateTitleBlocEventImpl _value,
+      $Res Function(_$UpdateTitleBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+  }) {
+    return _then(_$UpdateTitleBlocEventImpl(
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateTitleBlocEventImpl implements UpdateTitleBlocEvent {
+  const _$UpdateTitleBlocEventImpl(this.title);
+
+  @override
+  final String title;
+
+  @override
+  String toString() {
+    return 'CollectionBlocEvent.updateTitle(title: $title)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateTitleBlocEventImpl &&
+            (identical(other.title, title) || other.title == title));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateTitleBlocEventImplCopyWith<_$UpdateTitleBlocEventImpl>
+      get copyWith =>
+          __$$UpdateTitleBlocEventImplCopyWithImpl<_$UpdateTitleBlocEventImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
+    required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
+    required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
+        toggleCollectionSelection,
+  }) {
+    return updateTitle(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
+    TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+  }) {
+    return updateTitle?.call(title);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
+    TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (updateTitle != null) {
+      return updateTitle(title);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingCollectionBlocEvent value) loading,
+    required TResult Function(LoadedCollectionBlocEvent value) loaded,
+    required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
+    required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
+    required TResult Function(CreateCollectionBlocEvent value) createCollection,
+    required TResult Function(ToggleCollectionSelectionBlocEvent value)
+        toggleCollectionSelection,
+  }) {
+    return updateTitle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingCollectionBlocEvent value)? loading,
+    TResult? Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult? Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult? Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+  }) {
+    return updateTitle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingCollectionBlocEvent value)? loading,
+    TResult Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (updateTitle != null) {
+      return updateTitle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateTitleBlocEvent implements CollectionBlocEvent {
+  const factory UpdateTitleBlocEvent(final String title) =
+      _$UpdateTitleBlocEventImpl;
+
+  String get title;
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateTitleBlocEventImplCopyWith<_$UpdateTitleBlocEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateDescriptionBlocEventImplCopyWith<$Res> {
+  factory _$$UpdateDescriptionBlocEventImplCopyWith(
+          _$UpdateDescriptionBlocEventImpl value,
+          $Res Function(_$UpdateDescriptionBlocEventImpl) then) =
+      __$$UpdateDescriptionBlocEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String descripton});
+}
+
+/// @nodoc
+class __$$UpdateDescriptionBlocEventImplCopyWithImpl<$Res>
+    extends _$CollectionBlocEventCopyWithImpl<$Res,
+        _$UpdateDescriptionBlocEventImpl>
+    implements _$$UpdateDescriptionBlocEventImplCopyWith<$Res> {
+  __$$UpdateDescriptionBlocEventImplCopyWithImpl(
+      _$UpdateDescriptionBlocEventImpl _value,
+      $Res Function(_$UpdateDescriptionBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? descripton = null,
+  }) {
+    return _then(_$UpdateDescriptionBlocEventImpl(
+      null == descripton
+          ? _value.descripton
+          : descripton // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateDescriptionBlocEventImpl implements UpdateDescriptionBlocEvent {
+  const _$UpdateDescriptionBlocEventImpl(this.descripton);
+
+  @override
+  final String descripton;
+
+  @override
+  String toString() {
+    return 'CollectionBlocEvent.updateDescription(descripton: $descripton)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDescriptionBlocEventImpl &&
+            (identical(other.descripton, descripton) ||
+                other.descripton == descripton));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, descripton);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDescriptionBlocEventImplCopyWith<_$UpdateDescriptionBlocEventImpl>
+      get copyWith => __$$UpdateDescriptionBlocEventImplCopyWithImpl<
+          _$UpdateDescriptionBlocEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
+    required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
+    required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
+        toggleCollectionSelection,
+  }) {
+    return updateDescription(descripton);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
+    TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+  }) {
+    return updateDescription?.call(descripton);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
+    TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (updateDescription != null) {
+      return updateDescription(descripton);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingCollectionBlocEvent value) loading,
+    required TResult Function(LoadedCollectionBlocEvent value) loaded,
+    required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
+    required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
+    required TResult Function(CreateCollectionBlocEvent value) createCollection,
+    required TResult Function(ToggleCollectionSelectionBlocEvent value)
+        toggleCollectionSelection,
+  }) {
+    return updateDescription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingCollectionBlocEvent value)? loading,
+    TResult? Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult? Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult? Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+  }) {
+    return updateDescription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingCollectionBlocEvent value)? loading,
+    TResult Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (updateDescription != null) {
+      return updateDescription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateDescriptionBlocEvent implements CollectionBlocEvent {
+  const factory UpdateDescriptionBlocEvent(final String descripton) =
+      _$UpdateDescriptionBlocEventImpl;
+
+  String get descripton;
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateDescriptionBlocEventImplCopyWith<_$UpdateDescriptionBlocEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -650,12 +1139,16 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
     return chooseAudios(audiosList);
@@ -665,12 +1158,15 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
     return chooseAudios?.call(audiosList);
   }
@@ -679,12 +1175,15 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (chooseAudios != null) {
@@ -699,7 +1198,12 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -713,7 +1217,11 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -727,7 +1235,11 @@ class _$ChooseAudiosBlocEventImpl implements ChooseAudiosBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -754,13 +1266,228 @@ abstract class ChooseAudiosBlocEvent implements CollectionBlocEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteAudioFromCreateCollectionBlocEventImplCopyWith<$Res> {
+  factory _$$DeleteAudioFromCreateCollectionBlocEventImplCopyWith(
+          _$DeleteAudioFromCreateCollectionBlocEventImpl value,
+          $Res Function(_$DeleteAudioFromCreateCollectionBlocEventImpl) then) =
+      __$$DeleteAudioFromCreateCollectionBlocEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AudioRecordsModel audio});
+
+  $AudioRecordsModelCopyWith<$Res> get audio;
+}
+
+/// @nodoc
+class __$$DeleteAudioFromCreateCollectionBlocEventImplCopyWithImpl<$Res>
+    extends _$CollectionBlocEventCopyWithImpl<$Res,
+        _$DeleteAudioFromCreateCollectionBlocEventImpl>
+    implements _$$DeleteAudioFromCreateCollectionBlocEventImplCopyWith<$Res> {
+  __$$DeleteAudioFromCreateCollectionBlocEventImplCopyWithImpl(
+      _$DeleteAudioFromCreateCollectionBlocEventImpl _value,
+      $Res Function(_$DeleteAudioFromCreateCollectionBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? audio = null,
+  }) {
+    return _then(_$DeleteAudioFromCreateCollectionBlocEventImpl(
+      null == audio
+          ? _value.audio
+          : audio // ignore: cast_nullable_to_non_nullable
+              as AudioRecordsModel,
+    ));
+  }
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AudioRecordsModelCopyWith<$Res> get audio {
+    return $AudioRecordsModelCopyWith<$Res>(_value.audio, (value) {
+      return _then(_value.copyWith(audio: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteAudioFromCreateCollectionBlocEventImpl
+    implements DeleteAudioFromCreateCollectionBlocEvent {
+  const _$DeleteAudioFromCreateCollectionBlocEventImpl(this.audio);
+
+  @override
+  final AudioRecordsModel audio;
+
+  @override
+  String toString() {
+    return 'CollectionBlocEvent.deleteAudioFromCreateCollection(audio: $audio)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAudioFromCreateCollectionBlocEventImpl &&
+            (identical(other.audio, audio) || other.audio == audio));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, audio);
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteAudioFromCreateCollectionBlocEventImplCopyWith<
+          _$DeleteAudioFromCreateCollectionBlocEventImpl>
+      get copyWith =>
+          __$$DeleteAudioFromCreateCollectionBlocEventImplCopyWithImpl<
+              _$DeleteAudioFromCreateCollectionBlocEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
+    required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
+    required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
+        toggleCollectionSelection,
+  }) {
+    return deleteAudioFromCreateCollection(audio);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
+    TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+  }) {
+    return deleteAudioFromCreateCollection?.call(audio);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
+    TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
+    TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (deleteAudioFromCreateCollection != null) {
+      return deleteAudioFromCreateCollection(audio);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingCollectionBlocEvent value) loading,
+    required TResult Function(LoadedCollectionBlocEvent value) loaded,
+    required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
+    required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
+    required TResult Function(CreateCollectionBlocEvent value) createCollection,
+    required TResult Function(ToggleCollectionSelectionBlocEvent value)
+        toggleCollectionSelection,
+  }) {
+    return deleteAudioFromCreateCollection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingCollectionBlocEvent value)? loading,
+    TResult? Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult? Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult? Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+  }) {
+    return deleteAudioFromCreateCollection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingCollectionBlocEvent value)? loading,
+    TResult Function(LoadedCollectionBlocEvent value)? loaded,
+    TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
+    TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
+    TResult Function(CreateCollectionBlocEvent value)? createCollection,
+    TResult Function(ToggleCollectionSelectionBlocEvent value)?
+        toggleCollectionSelection,
+    required TResult orElse(),
+  }) {
+    if (deleteAudioFromCreateCollection != null) {
+      return deleteAudioFromCreateCollection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAudioFromCreateCollectionBlocEvent
+    implements CollectionBlocEvent {
+  const factory DeleteAudioFromCreateCollectionBlocEvent(
+          final AudioRecordsModel audio) =
+      _$DeleteAudioFromCreateCollectionBlocEventImpl;
+
+  AudioRecordsModel get audio;
+
+  /// Create a copy of CollectionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteAudioFromCreateCollectionBlocEventImplCopyWith<
+          _$DeleteAudioFromCreateCollectionBlocEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$CreateCollectionBlocEventImplCopyWith<$Res> {
   factory _$$CreateCollectionBlocEventImplCopyWith(
           _$CreateCollectionBlocEventImpl value,
           $Res Function(_$CreateCollectionBlocEventImpl) then) =
       __$$CreateCollectionBlocEventImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String title, String collectionDescription});
 }
 
 /// @nodoc
@@ -775,105 +1502,81 @@ class __$$CreateCollectionBlocEventImplCopyWithImpl<$Res>
 
   /// Create a copy of CollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? collectionDescription = null,
-  }) {
-    return _then(_$CreateCollectionBlocEventImpl(
-      null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      null == collectionDescription
-          ? _value.collectionDescription
-          : collectionDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$CreateCollectionBlocEventImpl implements CreateCollectionBlocEvent {
-  const _$CreateCollectionBlocEventImpl(this.title, this.collectionDescription);
-
-  @override
-  final String title;
-  @override
-  final String collectionDescription;
+  const _$CreateCollectionBlocEventImpl();
 
   @override
   String toString() {
-    return 'CollectionBlocEvent.createCollection(title: $title, collectionDescription: $collectionDescription)';
+    return 'CollectionBlocEvent.createCollection()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateCollectionBlocEventImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.collectionDescription, collectionDescription) ||
-                other.collectionDescription == collectionDescription));
+            other is _$CreateCollectionBlocEventImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, collectionDescription);
-
-  /// Create a copy of CollectionBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CreateCollectionBlocEventImplCopyWith<_$CreateCollectionBlocEventImpl>
-      get copyWith => __$$CreateCollectionBlocEventImplCopyWithImpl<
-          _$CreateCollectionBlocEventImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
-    return createCollection(title, collectionDescription);
+    return createCollection();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
-    return createCollection?.call(title, collectionDescription);
+    return createCollection?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (createCollection != null) {
-      return createCollection(title, collectionDescription);
+      return createCollection();
     }
     return orElse();
   }
@@ -884,7 +1587,12 @@ class _$CreateCollectionBlocEventImpl implements CreateCollectionBlocEvent {
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -898,7 +1606,11 @@ class _$CreateCollectionBlocEventImpl implements CreateCollectionBlocEvent {
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -912,7 +1624,11 @@ class _$CreateCollectionBlocEventImpl implements CreateCollectionBlocEvent {
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -926,18 +1642,7 @@ class _$CreateCollectionBlocEventImpl implements CreateCollectionBlocEvent {
 }
 
 abstract class CreateCollectionBlocEvent implements CollectionBlocEvent {
-  const factory CreateCollectionBlocEvent(
-          final String title, final String collectionDescription) =
-      _$CreateCollectionBlocEventImpl;
-
-  String get title;
-  String get collectionDescription;
-
-  /// Create a copy of CollectionBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateCollectionBlocEventImplCopyWith<_$CreateCollectionBlocEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  const factory CreateCollectionBlocEvent() = _$CreateCollectionBlocEventImpl;
 }
 
 /// @nodoc
@@ -947,9 +1652,9 @@ abstract class _$$ToggleCollectionSelectionBlocEventImplCopyWith<$Res> {
           $Res Function(_$ToggleCollectionSelectionBlocEventImpl) then) =
       __$$ToggleCollectionSelectionBlocEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CollectionModel collection});
+  $Res call({SimpleCollectionModel collection});
 
-  $CollectionModelCopyWith<$Res> get collection;
+  $SimpleCollectionModelCopyWith<$Res> get collection;
 }
 
 /// @nodoc
@@ -973,7 +1678,7 @@ class __$$ToggleCollectionSelectionBlocEventImplCopyWithImpl<$Res>
       null == collection
           ? _value.collection
           : collection // ignore: cast_nullable_to_non_nullable
-              as CollectionModel,
+              as SimpleCollectionModel,
     ));
   }
 
@@ -981,8 +1686,8 @@ class __$$ToggleCollectionSelectionBlocEventImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CollectionModelCopyWith<$Res> get collection {
-    return $CollectionModelCopyWith<$Res>(_value.collection, (value) {
+  $SimpleCollectionModelCopyWith<$Res> get collection {
+    return $SimpleCollectionModelCopyWith<$Res>(_value.collection, (value) {
       return _then(_value.copyWith(collection: value));
     });
   }
@@ -995,7 +1700,7 @@ class _$ToggleCollectionSelectionBlocEventImpl
   const _$ToggleCollectionSelectionBlocEventImpl(this.collection);
 
   @override
-  final CollectionModel collection;
+  final SimpleCollectionModel collection;
 
   @override
   String toString() {
@@ -1028,12 +1733,16 @@ class _$ToggleCollectionSelectionBlocEventImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CollectionModel> collectionList) loaded,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        loaded,
     required TResult Function() uploadImage,
+    required TResult Function(String title) updateTitle,
+    required TResult Function(String descripton) updateDescription,
     required TResult Function(List<AudioRecordsModel> audiosList) chooseAudios,
-    required TResult Function(String title, String collectionDescription)
-        createCollection,
-    required TResult Function(CollectionModel collection)
+    required TResult Function(AudioRecordsModel audio)
+        deleteAudioFromCreateCollection,
+    required TResult Function() createCollection,
+    required TResult Function(SimpleCollectionModel collection)
         toggleCollectionSelection,
   }) {
     return toggleCollectionSelection(collection);
@@ -1043,12 +1752,15 @@ class _$ToggleCollectionSelectionBlocEventImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CollectionModel> collectionList)? loaded,
+    TResult? Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult? Function()? uploadImage,
+    TResult? Function(String title)? updateTitle,
+    TResult? Function(String descripton)? updateDescription,
     TResult? Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult? Function(String title, String collectionDescription)?
-        createCollection,
-    TResult? Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult? Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult? Function()? createCollection,
+    TResult? Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
   }) {
     return toggleCollectionSelection?.call(collection);
   }
@@ -1057,12 +1769,15 @@ class _$ToggleCollectionSelectionBlocEventImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CollectionModel> collectionList)? loaded,
+    TResult Function(List<SimpleCollectionModel> collectionList)? loaded,
     TResult Function()? uploadImage,
+    TResult Function(String title)? updateTitle,
+    TResult Function(String descripton)? updateDescription,
     TResult Function(List<AudioRecordsModel> audiosList)? chooseAudios,
-    TResult Function(String title, String collectionDescription)?
-        createCollection,
-    TResult Function(CollectionModel collection)? toggleCollectionSelection,
+    TResult Function(AudioRecordsModel audio)? deleteAudioFromCreateCollection,
+    TResult Function()? createCollection,
+    TResult Function(SimpleCollectionModel collection)?
+        toggleCollectionSelection,
     required TResult orElse(),
   }) {
     if (toggleCollectionSelection != null) {
@@ -1077,7 +1792,12 @@ class _$ToggleCollectionSelectionBlocEventImpl
     required TResult Function(LoadingCollectionBlocEvent value) loading,
     required TResult Function(LoadedCollectionBlocEvent value) loaded,
     required TResult Function(UploadImageBlocEvent value) uploadImage,
+    required TResult Function(UpdateTitleBlocEvent value) updateTitle,
+    required TResult Function(UpdateDescriptionBlocEvent value)
+        updateDescription,
     required TResult Function(ChooseAudiosBlocEvent value) chooseAudios,
+    required TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)
+        deleteAudioFromCreateCollection,
     required TResult Function(CreateCollectionBlocEvent value) createCollection,
     required TResult Function(ToggleCollectionSelectionBlocEvent value)
         toggleCollectionSelection,
@@ -1091,7 +1811,11 @@ class _$ToggleCollectionSelectionBlocEventImpl
     TResult? Function(LoadingCollectionBlocEvent value)? loading,
     TResult? Function(LoadedCollectionBlocEvent value)? loaded,
     TResult? Function(UploadImageBlocEvent value)? uploadImage,
+    TResult? Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult? Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult? Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult? Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult? Function(CreateCollectionBlocEvent value)? createCollection,
     TResult? Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -1105,7 +1829,11 @@ class _$ToggleCollectionSelectionBlocEventImpl
     TResult Function(LoadingCollectionBlocEvent value)? loading,
     TResult Function(LoadedCollectionBlocEvent value)? loaded,
     TResult Function(UploadImageBlocEvent value)? uploadImage,
+    TResult Function(UpdateTitleBlocEvent value)? updateTitle,
+    TResult Function(UpdateDescriptionBlocEvent value)? updateDescription,
     TResult Function(ChooseAudiosBlocEvent value)? chooseAudios,
+    TResult Function(DeleteAudioFromCreateCollectionBlocEvent value)?
+        deleteAudioFromCreateCollection,
     TResult Function(CreateCollectionBlocEvent value)? createCollection,
     TResult Function(ToggleCollectionSelectionBlocEvent value)?
         toggleCollectionSelection,
@@ -1121,10 +1849,10 @@ class _$ToggleCollectionSelectionBlocEventImpl
 abstract class ToggleCollectionSelectionBlocEvent
     implements CollectionBlocEvent {
   const factory ToggleCollectionSelectionBlocEvent(
-          final CollectionModel collection) =
+          final SimpleCollectionModel collection) =
       _$ToggleCollectionSelectionBlocEventImpl;
 
-  CollectionModel get collection;
+  SimpleCollectionModel get collection;
 
   /// Create a copy of CollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.

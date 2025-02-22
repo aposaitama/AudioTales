@@ -64,14 +64,6 @@ class CollectionScreen extends StatelessWidget {
             ),
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: SvgPicture.asset(
-              'assets/icons/Dots.svg',
-            ),
-          ),
-        ],
       ),
       body: Stack(
         children: [
@@ -106,7 +98,7 @@ class CollectionScreen extends StatelessWidget {
                             context.go('/collection/info');
                             context.read<InfoCollectionBloc>().add(
                                   LoadingInfoCollectionBlocEvent(
-                                    state.collectionList[index],
+                                    state.collectionList[index].id,
                                   ),
                                 );
                           },

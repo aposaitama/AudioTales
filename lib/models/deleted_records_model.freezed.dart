@@ -23,7 +23,8 @@ mixin _$DeletedRecordsModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  String get duration => throw _privateConstructorUsedError;
+  @DurationConverter()
+  Duration get duration => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get deletedAt => throw _privateConstructorUsedError;
 
@@ -47,7 +48,7 @@ abstract class $DeletedRecordsModelCopyWith<$Res> {
       {String id,
       String title,
       String url,
-      String duration,
+      @DurationConverter() Duration duration,
       @TimestampConverter() DateTime deletedAt});
 }
 
@@ -88,7 +89,7 @@ class _$DeletedRecordsModelCopyWithImpl<$Res, $Val extends DeletedRecordsModel>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       deletedAt: null == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -109,7 +110,7 @@ abstract class _$$DeletedRecordsModelImplCopyWith<$Res>
       {String id,
       String title,
       String url,
-      String duration,
+      @DurationConverter() Duration duration,
       @TimestampConverter() DateTime deletedAt});
 }
 
@@ -148,7 +149,7 @@ class __$$DeletedRecordsModelImplCopyWithImpl<$Res>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       deletedAt: null == deletedAt
           ? _value.deletedAt
           : deletedAt // ignore: cast_nullable_to_non_nullable
@@ -164,7 +165,7 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
       {required this.id,
       required this.title,
       required this.url,
-      required this.duration,
+      @DurationConverter() required this.duration,
       @TimestampConverter() required this.deletedAt});
 
   factory _$DeletedRecordsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -177,7 +178,8 @@ class _$DeletedRecordsModelImpl implements _DeletedRecordsModel {
   @override
   final String url;
   @override
-  final String duration;
+  @DurationConverter()
+  final Duration duration;
   @override
   @TimestampConverter()
   final DateTime deletedAt;
@@ -228,7 +230,7 @@ abstract class _DeletedRecordsModel implements DeletedRecordsModel {
           {required final String id,
           required final String title,
           required final String url,
-          required final String duration,
+          @DurationConverter() required final Duration duration,
           @TimestampConverter() required final DateTime deletedAt}) =
       _$DeletedRecordsModelImpl;
 
@@ -242,7 +244,8 @@ abstract class _DeletedRecordsModel implements DeletedRecordsModel {
   @override
   String get url;
   @override
-  String get duration;
+  @DurationConverter()
+  Duration get duration;
   @override
   @TimestampConverter()
   DateTime get deletedAt;

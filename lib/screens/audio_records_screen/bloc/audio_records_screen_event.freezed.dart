@@ -25,9 +25,11 @@ mixin _$AudioRecordsScreenStateEvent {
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -44,9 +46,12 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -62,9 +67,12 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -84,6 +92,8 @@ mixin _$AudioRecordsScreenStateEvent {
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -109,6 +119,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -131,6 +143,8 @@ mixin _$AudioRecordsScreenStateEvent {
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -224,9 +238,11 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -246,9 +262,12 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -267,9 +286,12 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -295,6 +317,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -323,6 +347,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -348,6 +374,8 @@ class _$LoadingAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -464,9 +492,11 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -486,9 +516,12 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -507,9 +540,12 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -535,6 +571,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -563,6 +601,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -588,6 +628,8 @@ class _$LoadedAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -718,9 +760,11 @@ class _$ShareAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -740,9 +784,12 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -761,9 +808,12 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -789,6 +839,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -817,6 +869,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -842,6 +896,8 @@ class _$ShareAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -959,9 +1015,11 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -981,9 +1039,12 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -1002,9 +1063,12 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -1030,6 +1094,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -1058,6 +1124,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1083,6 +1151,8 @@ class _$DeleteAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1217,9 +1287,11 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -1239,9 +1311,12 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -1260,9 +1335,12 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -1288,6 +1366,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -1316,6 +1396,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1341,6 +1423,8 @@ class _$DeleteAudioFromCollectionRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1460,9 +1544,11 @@ class _$SaveAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -1482,9 +1568,12 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -1503,9 +1592,12 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -1531,6 +1623,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -1559,6 +1653,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1584,6 +1680,8 @@ class _$SaveAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1616,6 +1714,278 @@ abstract class SaveAudioRecordsScreenStateEvent
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveAudioRecordsScreenStateEventImplCopyWith<
           _$SaveAudioRecordsScreenStateEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveAudioInColectionRecordsScreenStateEventImplCopyWith<
+    $Res> {
+  factory _$$SaveAudioInColectionRecordsScreenStateEventImplCopyWith(
+          _$SaveAudioInColectionRecordsScreenStateEventImpl value,
+          $Res Function(_$SaveAudioInColectionRecordsScreenStateEventImpl)
+              then) =
+      __$$SaveAudioInColectionRecordsScreenStateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String collectionId, String newTitle});
+}
+
+/// @nodoc
+class __$$SaveAudioInColectionRecordsScreenStateEventImplCopyWithImpl<$Res>
+    extends _$AudioRecordsScreenStateEventCopyWithImpl<$Res,
+        _$SaveAudioInColectionRecordsScreenStateEventImpl>
+    implements
+        _$$SaveAudioInColectionRecordsScreenStateEventImplCopyWith<$Res> {
+  __$$SaveAudioInColectionRecordsScreenStateEventImplCopyWithImpl(
+      _$SaveAudioInColectionRecordsScreenStateEventImpl _value,
+      $Res Function(_$SaveAudioInColectionRecordsScreenStateEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? collectionId = null,
+    Object? newTitle = null,
+  }) {
+    return _then(_$SaveAudioInColectionRecordsScreenStateEventImpl(
+      null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == newTitle
+          ? _value.newTitle
+          : newTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveAudioInColectionRecordsScreenStateEventImpl
+    implements SaveAudioInColectionRecordsScreenStateEvent {
+  const _$SaveAudioInColectionRecordsScreenStateEventImpl(
+      this.collectionId, this.newTitle);
+
+  @override
+  final String collectionId;
+  @override
+  final String newTitle;
+
+  @override
+  String toString() {
+    return 'AudioRecordsScreenStateEvent.saveAudioInColection(collectionId: $collectionId, newTitle: $newTitle)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveAudioInColectionRecordsScreenStateEventImpl &&
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId) &&
+            (identical(other.newTitle, newTitle) ||
+                other.newTitle == newTitle));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, collectionId, newTitle);
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveAudioInColectionRecordsScreenStateEventImplCopyWith<
+          _$SaveAudioInColectionRecordsScreenStateEventImpl>
+      get copyWith =>
+          __$$SaveAudioInColectionRecordsScreenStateEventImplCopyWithImpl<
+                  _$SaveAudioInColectionRecordsScreenStateEventImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function(AudioRecordsModel audioElem) share,
+    required TResult Function(String title) deleteAudio,
+    required TResult Function(String collectionTitle, String audioTitle)
+        deleteAudioFromCollection,
+    required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
+    required TResult Function(String audioId) editAudio,
+    required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
+    required TResult Function(List<SimpleCollectionModel> collectionList)
+        chooseCollection,
+    required TResult Function() cancelEditing,
+    required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
+    required TResult Function() loadNextPage,
+    required TResult Function() clearList,
+  }) {
+    return saveAudioInColection(collectionId, newTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function(AudioRecordsModel audioElem)? share,
+    TResult? Function(String title)? deleteAudio,
+    TResult? Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
+    TResult? Function(String audioId)? editAudio,
+    TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
+    TResult? Function()? cancelEditing,
+    TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult? Function()? loadNextPage,
+    TResult? Function()? clearList,
+  }) {
+    return saveAudioInColection?.call(collectionId, newTitle);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function(AudioRecordsModel audioElem)? share,
+    TResult Function(String title)? deleteAudio,
+    TResult Function(String collectionTitle, String audioTitle)?
+        deleteAudioFromCollection,
+    TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
+    TResult Function(String audioId)? editAudio,
+    TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
+    TResult Function()? cancelEditing,
+    TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
+    TResult Function()? loadNextPage,
+    TResult Function()? clearList,
+    required TResult orElse(),
+  }) {
+    if (saveAudioInColection != null) {
+      return saveAudioInColection(collectionId, newTitle);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingAudioRecordsScreenStateEvent value)
+        loading,
+    required TResult Function(LoadedAudioRecordsScreenStateEvent value) loaded,
+    required TResult Function(ShareAudioRecordsScreenStateEvent value) share,
+    required TResult Function(DeleteAudioRecordsScreenStateEvent value)
+        deleteAudio,
+    required TResult Function(
+            DeleteAudioFromCollectionRecordsScreenStateEvent value)
+        deleteAudioFromCollection,
+    required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
+    required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
+    required TResult Function(ChooseAudioRecordsScreenStateEvent value)
+        chooseAudio,
+    required TResult Function(
+            ChooseCollectionAudioRecordsScreenStateEvent value)
+        chooseCollection,
+    required TResult Function(CancelEditingAudioRecordsScreenStateEvent value)
+        cancelEditing,
+    required TResult Function(ChangePopupAudioRecordsScreenStateEvent value)
+        changePopupMode,
+    required TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)
+        loadNextPage,
+    required TResult Function(ClearListAudioRecordsScreenStateEvent value)
+        clearList,
+  }) {
+    return saveAudioInColection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult? Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult? Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult? Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
+    TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult? Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult? Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult? Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult? Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+  }) {
+    return saveAudioInColection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingAudioRecordsScreenStateEvent value)? loading,
+    TResult Function(LoadedAudioRecordsScreenStateEvent value)? loaded,
+    TResult Function(ShareAudioRecordsScreenStateEvent value)? share,
+    TResult Function(DeleteAudioRecordsScreenStateEvent value)? deleteAudio,
+    TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
+        deleteAudioFromCollection,
+    TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
+    TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
+    TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
+    TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
+        chooseCollection,
+    TResult Function(CancelEditingAudioRecordsScreenStateEvent value)?
+        cancelEditing,
+    TResult Function(ChangePopupAudioRecordsScreenStateEvent value)?
+        changePopupMode,
+    TResult Function(LoadNextPageAudioRecordsScreenStateEvent value)?
+        loadNextPage,
+    TResult Function(ClearListAudioRecordsScreenStateEvent value)? clearList,
+    required TResult orElse(),
+  }) {
+    if (saveAudioInColection != null) {
+      return saveAudioInColection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SaveAudioInColectionRecordsScreenStateEvent
+    implements AudioRecordsScreenStateEvent {
+  const factory SaveAudioInColectionRecordsScreenStateEvent(
+          final String collectionId, final String newTitle) =
+      _$SaveAudioInColectionRecordsScreenStateEventImpl;
+
+  String get collectionId;
+  String get newTitle;
+
+  /// Create a copy of AudioRecordsScreenStateEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SaveAudioInColectionRecordsScreenStateEventImplCopyWith<
+          _$SaveAudioInColectionRecordsScreenStateEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1700,9 +2070,11 @@ class _$EditAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -1722,9 +2094,12 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -1743,9 +2118,12 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -1771,6 +2149,8 @@ class _$EditAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -1799,6 +2179,8 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1824,6 +2206,8 @@ class _$EditAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -1948,9 +2332,11 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -1970,9 +2356,12 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -1991,9 +2380,12 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -2019,6 +2411,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -2047,6 +2441,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2072,6 +2468,8 @@ class _$ChooseAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2117,7 +2515,7 @@ abstract class _$$ChooseCollectionAudioRecordsScreenStateEventImplCopyWith<
               then) =
       __$$ChooseCollectionAudioRecordsScreenStateEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CollectionModel> collectionList});
+  $Res call({List<SimpleCollectionModel> collectionList});
 }
 
 /// @nodoc
@@ -2142,7 +2540,7 @@ class __$$ChooseCollectionAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
       null == collectionList
           ? _value._collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
-              as List<CollectionModel>,
+              as List<SimpleCollectionModel>,
     ));
   }
 }
@@ -2152,12 +2550,12 @@ class __$$ChooseCollectionAudioRecordsScreenStateEventImplCopyWithImpl<$Res>
 class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     implements ChooseCollectionAudioRecordsScreenStateEvent {
   const _$ChooseCollectionAudioRecordsScreenStateEventImpl(
-      final List<CollectionModel> collectionList)
+      final List<SimpleCollectionModel> collectionList)
       : _collectionList = collectionList;
 
-  final List<CollectionModel> _collectionList;
+  final List<SimpleCollectionModel> _collectionList;
   @override
-  List<CollectionModel> get collectionList {
+  List<SimpleCollectionModel> get collectionList {
     if (_collectionList is EqualUnmodifiableListView) return _collectionList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_collectionList);
@@ -2203,9 +2601,11 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -2225,9 +2625,12 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -2246,9 +2649,12 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -2274,6 +2680,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -2302,6 +2710,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2327,6 +2737,8 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2350,10 +2762,10 @@ class _$ChooseCollectionAudioRecordsScreenStateEventImpl
 abstract class ChooseCollectionAudioRecordsScreenStateEvent
     implements AudioRecordsScreenStateEvent {
   const factory ChooseCollectionAudioRecordsScreenStateEvent(
-          final List<CollectionModel> collectionList) =
+          final List<SimpleCollectionModel> collectionList) =
       _$ChooseCollectionAudioRecordsScreenStateEventImpl;
 
-  List<CollectionModel> get collectionList;
+  List<SimpleCollectionModel> get collectionList;
 
   /// Create a copy of AudioRecordsScreenStateEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -2416,9 +2828,11 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -2438,9 +2852,12 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -2459,9 +2876,12 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -2487,6 +2907,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -2515,6 +2937,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2540,6 +2964,8 @@ class _$CancelEditingAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2649,9 +3075,11 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -2671,9 +3099,12 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -2692,9 +3123,12 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -2720,6 +3154,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -2748,6 +3184,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2773,6 +3211,8 @@ class _$ChangePopupAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2862,9 +3302,11 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -2884,9 +3326,12 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -2905,9 +3350,12 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -2933,6 +3381,8 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -2961,6 +3411,8 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -2986,6 +3438,8 @@ class _$LoadNextPageAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -3065,9 +3519,11 @@ class _$ClearListAudioRecordsScreenStateEventImpl
     required TResult Function(String collectionTitle, String audioTitle)
         deleteAudioFromCollection,
     required TResult Function(String newTitle) saveAudio,
+    required TResult Function(String collectionId, String newTitle)
+        saveAudioInColection,
     required TResult Function(String audioId) editAudio,
     required TResult Function(List<AudioRecordsModel> audio) chooseAudio,
-    required TResult Function(List<CollectionModel> collectionList)
+    required TResult Function(List<SimpleCollectionModel> collectionList)
         chooseCollection,
     required TResult Function() cancelEditing,
     required TResult Function(AudioPopupStatus popupStatus) changePopupMode,
@@ -3087,9 +3543,12 @@ class _$ClearListAudioRecordsScreenStateEventImpl
     TResult? Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult? Function(String newTitle)? saveAudio,
+    TResult? Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult? Function(String audioId)? editAudio,
     TResult? Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult? Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult? Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult? Function()? cancelEditing,
     TResult? Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult? Function()? loadNextPage,
@@ -3108,9 +3567,12 @@ class _$ClearListAudioRecordsScreenStateEventImpl
     TResult Function(String collectionTitle, String audioTitle)?
         deleteAudioFromCollection,
     TResult Function(String newTitle)? saveAudio,
+    TResult Function(String collectionId, String newTitle)?
+        saveAudioInColection,
     TResult Function(String audioId)? editAudio,
     TResult Function(List<AudioRecordsModel> audio)? chooseAudio,
-    TResult Function(List<CollectionModel> collectionList)? chooseCollection,
+    TResult Function(List<SimpleCollectionModel> collectionList)?
+        chooseCollection,
     TResult Function()? cancelEditing,
     TResult Function(AudioPopupStatus popupStatus)? changePopupMode,
     TResult Function()? loadNextPage,
@@ -3136,6 +3598,8 @@ class _$ClearListAudioRecordsScreenStateEventImpl
             DeleteAudioFromCollectionRecordsScreenStateEvent value)
         deleteAudioFromCollection,
     required TResult Function(SaveAudioRecordsScreenStateEvent value) saveAudio,
+    required TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)
+        saveAudioInColection,
     required TResult Function(EditAudioRecordsScreenStateEvent value) editAudio,
     required TResult Function(ChooseAudioRecordsScreenStateEvent value)
         chooseAudio,
@@ -3164,6 +3628,8 @@ class _$ClearListAudioRecordsScreenStateEventImpl
     TResult? Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult? Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult? Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult? Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult? Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult? Function(ChooseCollectionAudioRecordsScreenStateEvent value)?
@@ -3189,6 +3655,8 @@ class _$ClearListAudioRecordsScreenStateEventImpl
     TResult Function(DeleteAudioFromCollectionRecordsScreenStateEvent value)?
         deleteAudioFromCollection,
     TResult Function(SaveAudioRecordsScreenStateEvent value)? saveAudio,
+    TResult Function(SaveAudioInColectionRecordsScreenStateEvent value)?
+        saveAudioInColection,
     TResult Function(EditAudioRecordsScreenStateEvent value)? editAudio,
     TResult Function(ChooseAudioRecordsScreenStateEvent value)? chooseAudio,
     TResult Function(ChooseCollectionAudioRecordsScreenStateEvent value)?

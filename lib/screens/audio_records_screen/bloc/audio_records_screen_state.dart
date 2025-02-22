@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
 
 part 'audio_records_screen_state.freezed.dart';
 
@@ -25,6 +26,6 @@ class AudioRecordsScreenState with _$AudioRecordsScreenState {
     @Default([]) List<AudioRecordsModel> choosingAudioList,
     String? editingAudioId,
     String? choosingAudioId,
-    List<CollectionModel>? choosingCollection,
+    List<SimpleCollectionModel>? choosingCollection,
   }) = _AudioRecordsScreenState;
 }

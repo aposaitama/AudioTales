@@ -23,7 +23,7 @@ mixin _$AudioRecordsScreenState {
       throw _privateConstructorUsedError;
   String? get editingAudioId => throw _privateConstructorUsedError;
   String? get choosingAudioId => throw _privateConstructorUsedError;
-  List<CollectionModel>? get choosingCollection =>
+  List<SimpleCollectionModel>? get choosingCollection =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of AudioRecordsScreenState
@@ -46,7 +46,7 @@ abstract class $AudioRecordsScreenStateCopyWith<$Res> {
       List<AudioRecordsModel> choosingAudioList,
       String? editingAudioId,
       String? choosingAudioId,
-      List<CollectionModel>? choosingCollection});
+      List<SimpleCollectionModel>? choosingCollection});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class _$AudioRecordsScreenStateCopyWithImpl<$Res,
       choosingCollection: freezed == choosingCollection
           ? _value.choosingCollection
           : choosingCollection // ignore: cast_nullable_to_non_nullable
-              as List<CollectionModel>?,
+              as List<SimpleCollectionModel>?,
     ) as $Val);
   }
 }
@@ -122,7 +122,7 @@ abstract class _$$AudioRecordsScreenStateImplCopyWith<$Res>
       List<AudioRecordsModel> choosingAudioList,
       String? editingAudioId,
       String? choosingAudioId,
-      List<CollectionModel>? choosingCollection});
+      List<SimpleCollectionModel>? choosingCollection});
 }
 
 /// @nodoc
@@ -176,7 +176,7 @@ class __$$AudioRecordsScreenStateImplCopyWithImpl<$Res>
       choosingCollection: freezed == choosingCollection
           ? _value._choosingCollection
           : choosingCollection // ignore: cast_nullable_to_non_nullable
-              as List<CollectionModel>?,
+              as List<SimpleCollectionModel>?,
     ));
   }
 }
@@ -191,7 +191,7 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
       final List<AudioRecordsModel> choosingAudioList = const [],
       this.editingAudioId,
       this.choosingAudioId,
-      final List<CollectionModel>? choosingCollection})
+      final List<SimpleCollectionModel>? choosingCollection})
       : _audioList = audioList,
         _choosingAudioList = choosingAudioList,
         _choosingCollection = choosingCollection;
@@ -225,9 +225,9 @@ class _$AudioRecordsScreenStateImpl implements _AudioRecordsScreenState {
   final String? editingAudioId;
   @override
   final String? choosingAudioId;
-  final List<CollectionModel>? _choosingCollection;
+  final List<SimpleCollectionModel>? _choosingCollection;
   @override
-  List<CollectionModel>? get choosingCollection {
+  List<SimpleCollectionModel>? get choosingCollection {
     final value = _choosingCollection;
     if (value == null) return null;
     if (_choosingCollection is EqualUnmodifiableListView)
@@ -290,7 +290,7 @@ abstract class _AudioRecordsScreenState implements AudioRecordsScreenState {
           final List<AudioRecordsModel> choosingAudioList,
           final String? editingAudioId,
           final String? choosingAudioId,
-          final List<CollectionModel>? choosingCollection}) =
+          final List<SimpleCollectionModel>? choosingCollection}) =
       _$AudioRecordsScreenStateImpl;
 
   @override
@@ -306,7 +306,7 @@ abstract class _AudioRecordsScreenState implements AudioRecordsScreenState {
   @override
   String? get choosingAudioId;
   @override
-  List<CollectionModel>? get choosingCollection;
+  List<SimpleCollectionModel>? get choosingCollection;
 
   /// Create a copy of AudioRecordsScreenState
   /// with the given fields replaced by the non-null parameter values.

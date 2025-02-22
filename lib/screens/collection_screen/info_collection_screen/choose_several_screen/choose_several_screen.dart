@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
@@ -24,7 +25,8 @@ class ChooseSeveralScreen extends StatelessWidget {
 
     return BlocBuilder<CollectionBloc, CollectionBlocState>(
       builder: (context, state) {
-        List<CollectionModel> choosedCollection = state.choosedCollectionList;
+        List<SimpleCollectionModel> choosedCollection =
+            state.choosedCollectionList;
         if (state.status == CollectionBlocStatus.loading) {
           return const Center(child: CircularProgressIndicator());
         }

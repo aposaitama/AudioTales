@@ -7,7 +7,7 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -144,8 +144,16 @@ class _AudioItemTileState extends State<AudioItemTile> {
                                       horizontal: 0.0,
                                       vertical: 0.0,
                                     ),
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide.none,
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                        width: 1,
+                                      ),
                                     ),
                                   ),
                                 ),

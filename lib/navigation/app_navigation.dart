@@ -23,7 +23,7 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/bypass',
+      initialLocation: '/profile',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(

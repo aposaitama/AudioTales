@@ -62,7 +62,14 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                 const SizedBox(
                                   width: 30.0,
                                 ),
-                                SvgPicture.asset('assets/icons/SaveAs.svg'),
+                                GestureDetector(
+                                    onTap: () {
+                                      context
+                                          .read<ListenRecordBloc>()
+                                          .add(DownloadListenRecordEvent());
+                                    },
+                                    child: SvgPicture.asset(
+                                        'assets/icons/SaveAs.svg')),
                                 const SizedBox(
                                   width: 30.0,
                                 ),

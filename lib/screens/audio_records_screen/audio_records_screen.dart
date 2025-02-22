@@ -9,11 +9,14 @@ import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_records.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
+import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
+import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_event.dart';
+import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_state.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class AudioRecordsScreen extends StatefulWidget {
@@ -30,10 +33,12 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
   void _scrollListener() {
     final totalItems =
         context.read<AudioRecordsScreenBloc>().state.audioList.length;
-    int audioCount = 9;
+    final audioCount =
+        context.read<UserBloc>().state.userModel?.audiosCount ?? 0;
+
     final currentIndex = _scrollController.position.pixels /
         (_scrollController.position.maxScrollExtent / totalItems);
-
+    print(currentIndex);
     if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
       context
           .read<AudioRecordsScreenBloc>()
@@ -97,14 +102,6 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
             ),
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: SvgPicture.asset(
-              'assets/icons/Dots.svg',
-            ),
-          ),
-        ],
       ),
       body: BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
         builder: (context, state) {
@@ -133,35 +130,40 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${state.audioList.length.toString()} аудио',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w500,
-                                height: 1.0,
-                                fontFamily: 'TTNorms',
-                              ),
-                            ),
-                            SizedBox(
-                              width: 80.0,
-                              child: Text(
-                                formatDuration(
-                                  getTotalDuration(state.audioList),
+                        BlocBuilder<UserBloc, UserBlocState>(
+                          builder: (context, state) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${state.userModel?.audiosCount ?? 0} аудио',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.0,
+                                    fontFamily: 'TTNorms',
+                                  ),
                                 ),
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.0,
-                                  fontFamily: 'TTNorms',
+                                SizedBox(
+                                  width: 80.0,
+                                  child: Text(
+                                    formatDuration(
+                                      (state.userModel?.duration ??
+                                          const Duration()),
+                                    ),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.0,
+                                      fontFamily: 'TTNorms',
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ],
+                              ],
+                            );
+                          },
                         ),
                         BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
                           builder: (context, state) {

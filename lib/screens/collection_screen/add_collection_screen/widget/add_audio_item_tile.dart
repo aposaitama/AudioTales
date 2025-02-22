@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_state.dart';
+import 'package:memory_box_avada/models/deleted_records_model.dart';
+import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc.dart';
+import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc_state.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
-class ChooseAudioItemTile extends StatelessWidget {
+class AddAudioItemTile extends StatelessWidget {
   final Color? color;
   final AudioRecordsModel audio;
-  final VoidCallback onCircleTap;
+  final VoidCallback onDelete;
 
-  const ChooseAudioItemTile({
+  const AddAudioItemTile({
     super.key,
     this.color,
     required this.audio,
-    required this.onCircleTap,
+    required this.onDelete,
   });
 
   @override
@@ -67,7 +68,7 @@ class ChooseAudioItemTile extends StatelessWidget {
                               MiniPlayerBlocEvent.open(
                                 [
                                   AudioRecordsModel(
-                                    creationTime: audio.creationTime,
+                                    creationTime: DateTime.now(),
                                     id: audio.id,
                                     title: audio.title,
                                     url: audio.url,
@@ -119,29 +120,12 @@ class ChooseAudioItemTile extends StatelessWidget {
                     ),
                   ],
                 ),
-                BlocBuilder<InfoCollectionBloc, InfoCollectionBlocState>(
-                  builder: (context, state) {
-                    final isSelected = state.selectedAudios.contains(audio);
-
-                    return GestureDetector(
-                      onTap: onCircleTap,
-                      child: Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(width: 2.0, color: Colors.black),
-                        ),
-                        child: isSelected
-                            ? Center(
-                                child: SvgPicture.asset(
-                                  'assets/icons/Check_Box_Done.svg',
-                                ),
-                              )
-                            : null,
-                      ),
-                    );
-                  },
+                GestureDetector(
+                  onTap: onDelete,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 15.0),
+                    child: SvgPicture.asset('assets/icons/Delete.svg'),
+                  ),
                 ),
               ],
             ),

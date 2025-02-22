@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class ChooseCollectionItemTile extends StatelessWidget {
-  final CollectionModel collection;
+  final SimpleCollectionModel collection;
   const ChooseCollectionItemTile({super.key, required this.collection});
 
   @override
@@ -51,13 +52,13 @@ class ChooseCollectionItemTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${collection.audiosList.length} аудио',
+                    '${collection.audioCount} аудио',
                     style: AppTextStyles.subtitleWhite,
                   ),
                   SizedBox(
                     width: ((MediaQuery.of(context).size.width - 72) / 2) / 2,
                     child: Text(
-                      formatDuration(getTotalDuration(collection.audiosList)),
+                      formatDuration(collection.duration),
                       style: AppTextStyles.subtitleWhite,
                     ),
                   ),

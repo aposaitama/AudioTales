@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 
 class AddAudioItemTile extends StatefulWidget {
   final AudioRecordsModel audio;
@@ -64,7 +65,7 @@ class _AddAudioItemTileState extends State<AddAudioItemTile> {
                       ),
                       const SizedBox(height: 4.0),
                       Text(
-                        "30 минут",
+                        formatDuration(widget.audio.duration),
                         style: TextStyle(
                           color: AppColors.fontColor.withOpacity(0.5),
                           fontSize: 14.0,

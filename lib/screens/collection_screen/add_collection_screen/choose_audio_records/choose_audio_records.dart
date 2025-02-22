@@ -27,7 +27,6 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
       setState(() {
         if (isSelected) {
           widget.selectedRecords.add(record);
-          print(widget.selectedRecords);
         } else {
           widget.selectedRecords.removeWhere((r) => r.title == record.title);
         }
@@ -141,8 +140,9 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
                       filled: true,
                       fillColor: Colors.white,
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,),
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide.none,
+                      ),
                       hintText: 'Поиск',
                       hintStyle: TextStyle(
                         color: AppColors.fontColor.withOpacity(0.3),

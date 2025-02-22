@@ -8,7 +8,10 @@ class ListenRecordEvent with _$ListenRecordEvent {
   const factory ListenRecordEvent.start(Duration? currentPosition) =
       StartPlayingEvent;
   const factory ListenRecordEvent.updateCircle(
-      Duration duration, Duration position,) = UpdateCircleEvent;
+    Duration duration,
+    Duration position,
+  ) = UpdateCircleEvent;
+  const factory ListenRecordEvent.downloadAudio() = DownloadListenRecordEvent;
   const factory ListenRecordEvent.add15() = Add15Event;
   const factory ListenRecordEvent.minus15() = Minus15Event;
   const factory ListenRecordEvent.pause() = PausePlayingEvent;

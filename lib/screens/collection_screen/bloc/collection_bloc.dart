@@ -5,7 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
+import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
@@ -16,7 +18,7 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   final StorageService _firebaseStorageService = locator<StorageService>();
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
-  StreamSubscription<List<CollectionModel>>? _collectionSubscription;
+  StreamSubscription<List<SimpleCollectionModel>>? _collectionSubscription;
   StreamSubscription<User?>? _authSubscription;
   CollectionBloc() : super(const CollectionBlocState()) {
     on<LoadingCollectionBlocEvent>(_loading);
@@ -25,9 +27,37 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     on<UploadImageBlocEvent>(_uploadImage);
     on<ChooseAudiosBlocEvent>(_chooseAudios);
     on<ToggleCollectionSelectionBlocEvent>(_onToggleCollectionSelection);
+    on<UpdateTitleBlocEvent>(_updateTitle);
+    on<UpdateDescriptionBlocEvent>(_updateDescription);
+    on<DeleteAudioFromCreateCollectionBlocEvent>(_deleteAudio);
 
     _subscribeToCollectionStream();
     _subscribeToAuthChanges();
+  }
+
+  void _updateTitle(
+    UpdateTitleBlocEvent event,
+    Emitter<CollectionBlocState> emit,
+  ) {
+    emit(state.copyWith(newCollectionTitle: event.title));
+  }
+
+  void _deleteAudio(
+    DeleteAudioFromCreateCollectionBlocEvent event,
+    Emitter<CollectionBlocState> emit,
+  ) {
+    final updatedAudiosList = List<AudioRecordsModel>.from(state.audiosList);
+    if (updatedAudiosList.contains(event.audio)) {
+      updatedAudiosList.remove(event.audio);
+    }
+    emit(state.copyWith(audiosList: updatedAudiosList));
+  }
+
+  void _updateDescription(
+    UpdateDescriptionBlocEvent event,
+    Emitter<CollectionBlocState> emit,
+  ) {
+    emit(state.copyWith(newCollectionDescription: event.descripton));
   }
 
   void _subscribeToAuthChanges() {
@@ -74,7 +104,8 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     ToggleCollectionSelectionBlocEvent event,
     Emitter<CollectionBlocState> emit,
   ) {
-    final updatedList = List<CollectionModel>.from(state.choosedCollectionList);
+    final updatedList =
+        List<SimpleCollectionModel>.from(state.choosedCollectionList);
     if (updatedList.contains(event.collection)) {
       updatedList.remove(event.collection);
     } else {
@@ -88,11 +119,13 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     Emitter<CollectionBlocState> emit,
   ) async {
     var cancel = BotToast.showLoading();
+    final String imageUrl =
+        await _firebaseStorageService.uploadImage(state.imagePath);
     await _firebaseFirestoreService.saveUserCollection(
-      event.title,
-      event.collectionDescription,
+      state.newCollectionTitle,
+      state.newCollectionDescription,
       state.audiosList,
-      state.imageUrl,
+      imageUrl,
     );
     cancel();
     emit(
@@ -100,6 +133,8 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
         audiosList: [],
         imagePath: '',
         imageUrl: '',
+        newCollectionDescription: '',
+        newCollectionTitle: '',
       ),
     );
   }
@@ -111,10 +146,10 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
     final XFile? pickedFile =
         await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile == null) return;
-    final String imageUrl =
-        await _firebaseStorageService.uploadImage(pickedFile.path);
 
-    emit(state.copyWith(imagePath: pickedFile.path, imageUrl: imageUrl));
+    emit(
+      state.copyWith(imagePath: pickedFile.path),
+    );
   }
 
   Future<void> _chooseAudios(

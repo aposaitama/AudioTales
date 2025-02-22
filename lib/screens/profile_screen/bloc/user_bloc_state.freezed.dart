@@ -16,7 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserBlocState {
-  UserModel get userModel => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get editingMode => throw _privateConstructorUsedError;
+  String get newUserImagePath => throw _privateConstructorUsedError;
+  UserModel? get userModel => throw _privateConstructorUsedError;
+  UserCodeSentStatus get codeStatus => throw _privateConstructorUsedError;
+  String get verigicationId => throw _privateConstructorUsedError;
+  String get newUserPhoneNum => throw _privateConstructorUsedError;
 
   /// Create a copy of UserBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -31,9 +37,16 @@ abstract class $UserBlocStateCopyWith<$Res> {
           UserBlocState value, $Res Function(UserBlocState) then) =
       _$UserBlocStateCopyWithImpl<$Res, UserBlocState>;
   @useResult
-  $Res call({UserModel userModel});
+  $Res call(
+      {bool isLoading,
+      bool editingMode,
+      String newUserImagePath,
+      UserModel? userModel,
+      UserCodeSentStatus codeStatus,
+      String verigicationId,
+      String newUserPhoneNum});
 
-  $UserModelCopyWith<$Res> get userModel;
+  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
@@ -51,13 +64,43 @@ class _$UserBlocStateCopyWithImpl<$Res, $Val extends UserBlocState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = null,
+    Object? isLoading = null,
+    Object? editingMode = null,
+    Object? newUserImagePath = null,
+    Object? userModel = freezed,
+    Object? codeStatus = null,
+    Object? verigicationId = null,
+    Object? newUserPhoneNum = null,
   }) {
     return _then(_value.copyWith(
-      userModel: null == userModel
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      editingMode: null == editingMode
+          ? _value.editingMode
+          : editingMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      newUserImagePath: null == newUserImagePath
+          ? _value.newUserImagePath
+          : newUserImagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      userModel: freezed == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as UserModel?,
+      codeStatus: null == codeStatus
+          ? _value.codeStatus
+          : codeStatus // ignore: cast_nullable_to_non_nullable
+              as UserCodeSentStatus,
+      verigicationId: null == verigicationId
+          ? _value.verigicationId
+          : verigicationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      newUserPhoneNum: null == newUserPhoneNum
+          ? _value.newUserPhoneNum
+          : newUserPhoneNum // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -65,8 +108,12 @@ class _$UserBlocStateCopyWithImpl<$Res, $Val extends UserBlocState>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserModelCopyWith<$Res> get userModel {
-    return $UserModelCopyWith<$Res>(_value.userModel, (value) {
+  $UserModelCopyWith<$Res>? get userModel {
+    if (_value.userModel == null) {
+      return null;
+    }
+
+    return $UserModelCopyWith<$Res>(_value.userModel!, (value) {
       return _then(_value.copyWith(userModel: value) as $Val);
     });
   }
@@ -80,10 +127,17 @@ abstract class _$$UserBlocStateImplCopyWith<$Res>
       __$$UserBlocStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserModel userModel});
+  $Res call(
+      {bool isLoading,
+      bool editingMode,
+      String newUserImagePath,
+      UserModel? userModel,
+      UserCodeSentStatus codeStatus,
+      String verigicationId,
+      String newUserPhoneNum});
 
   @override
-  $UserModelCopyWith<$Res> get userModel;
+  $UserModelCopyWith<$Res>? get userModel;
 }
 
 /// @nodoc
@@ -99,13 +153,43 @@ class __$$UserBlocStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userModel = null,
+    Object? isLoading = null,
+    Object? editingMode = null,
+    Object? newUserImagePath = null,
+    Object? userModel = freezed,
+    Object? codeStatus = null,
+    Object? verigicationId = null,
+    Object? newUserPhoneNum = null,
   }) {
     return _then(_$UserBlocStateImpl(
-      userModel: null == userModel
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      editingMode: null == editingMode
+          ? _value.editingMode
+          : editingMode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      newUserImagePath: null == newUserImagePath
+          ? _value.newUserImagePath
+          : newUserImagePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      userModel: freezed == userModel
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
-              as UserModel,
+              as UserModel?,
+      codeStatus: null == codeStatus
+          ? _value.codeStatus
+          : codeStatus // ignore: cast_nullable_to_non_nullable
+              as UserCodeSentStatus,
+      verigicationId: null == verigicationId
+          ? _value.verigicationId
+          : verigicationId // ignore: cast_nullable_to_non_nullable
+              as String,
+      newUserPhoneNum: null == newUserPhoneNum
+          ? _value.newUserPhoneNum
+          : newUserPhoneNum // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -114,19 +198,38 @@ class __$$UserBlocStateImplCopyWithImpl<$Res>
 
 class _$UserBlocStateImpl implements _UserBlocState {
   const _$UserBlocStateImpl(
-      {this.userModel = const UserModel(
-          userId: '',
-          phoneNumber: '',
-          subscription: Subscription.initial,
-          audiosCount: 0)});
+      {this.isLoading = false,
+      this.editingMode = false,
+      this.newUserImagePath = '',
+      this.userModel,
+      this.codeStatus = UserCodeSentStatus.initial,
+      this.verigicationId = '',
+      this.newUserPhoneNum = ''});
 
   @override
   @JsonKey()
-  final UserModel userModel;
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool editingMode;
+  @override
+  @JsonKey()
+  final String newUserImagePath;
+  @override
+  final UserModel? userModel;
+  @override
+  @JsonKey()
+  final UserCodeSentStatus codeStatus;
+  @override
+  @JsonKey()
+  final String verigicationId;
+  @override
+  @JsonKey()
+  final String newUserPhoneNum;
 
   @override
   String toString() {
-    return 'UserBlocState(userModel: $userModel)';
+    return 'UserBlocState(isLoading: $isLoading, editingMode: $editingMode, newUserImagePath: $newUserImagePath, userModel: $userModel, codeStatus: $codeStatus, verigicationId: $verigicationId, newUserPhoneNum: $newUserPhoneNum)';
   }
 
   @override
@@ -134,12 +237,25 @@ class _$UserBlocStateImpl implements _UserBlocState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserBlocStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.editingMode, editingMode) ||
+                other.editingMode == editingMode) &&
+            (identical(other.newUserImagePath, newUserImagePath) ||
+                other.newUserImagePath == newUserImagePath) &&
             (identical(other.userModel, userModel) ||
-                other.userModel == userModel));
+                other.userModel == userModel) &&
+            (identical(other.codeStatus, codeStatus) ||
+                other.codeStatus == codeStatus) &&
+            (identical(other.verigicationId, verigicationId) ||
+                other.verigicationId == verigicationId) &&
+            (identical(other.newUserPhoneNum, newUserPhoneNum) ||
+                other.newUserPhoneNum == newUserPhoneNum));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userModel);
+  int get hashCode => Object.hash(runtimeType, isLoading, editingMode,
+      newUserImagePath, userModel, codeStatus, verigicationId, newUserPhoneNum);
 
   /// Create a copy of UserBlocState
   /// with the given fields replaced by the non-null parameter values.
@@ -151,11 +267,29 @@ class _$UserBlocStateImpl implements _UserBlocState {
 }
 
 abstract class _UserBlocState implements UserBlocState {
-  const factory _UserBlocState({final UserModel userModel}) =
-      _$UserBlocStateImpl;
+  const factory _UserBlocState(
+      {final bool isLoading,
+      final bool editingMode,
+      final String newUserImagePath,
+      final UserModel? userModel,
+      final UserCodeSentStatus codeStatus,
+      final String verigicationId,
+      final String newUserPhoneNum}) = _$UserBlocStateImpl;
 
   @override
-  UserModel get userModel;
+  bool get isLoading;
+  @override
+  bool get editingMode;
+  @override
+  String get newUserImagePath;
+  @override
+  UserModel? get userModel;
+  @override
+  UserCodeSentStatus get codeStatus;
+  @override
+  String get verigicationId;
+  @override
+  String get newUserPhoneNum;
 
   /// Create a copy of UserBlocState
   /// with the given fields replaced by the non-null parameter values.

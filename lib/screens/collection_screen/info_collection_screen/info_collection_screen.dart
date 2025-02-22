@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
+import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
@@ -18,7 +19,7 @@ import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_t
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -621,13 +622,35 @@ class _InfoCollectionScreenState extends State<InfoCollectionScreen> {
                                       .collectionModel.audiosList[index].title,
                                   duration: '30 минут',
                                   onSave: (controller) {
-                                    print("Поделиться натиснуто");
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          SaveAudioInColectionRecordsScreenStateEvent(
+                                            state.collectionModel.id,
+                                            controller.text,
+                                          ),
+                                        );
                                   },
                                   onCancel: () {
-                                    print("Поделиться натиснуто");
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          const ChangePopupAudioRecordsScreenStateEvent(
+                                            AudioPopupStatus.initial,
+                                          ),
+                                        );
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          const CancelEditingAudioRecordsScreenStateEvent(),
+                                        );
                                   },
                                   onRename: () {
-                                    print("Переименовать натиснуто");
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          const ChangePopupAudioRecordsScreenStateEvent(
+                                            AudioPopupStatus.editing,
+                                          ),
+                                        );
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          EditAudioRecordsScreenStateEvent(
+                                            state.collectionModel
+                                                .audiosList[index].id,
+                                          ),
+                                        );
                                   },
                                   onDelete: () {
                                     ShowDeleteDialog.show(

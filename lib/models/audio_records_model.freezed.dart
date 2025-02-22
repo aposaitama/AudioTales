@@ -22,7 +22,8 @@ AudioRecordsModel _$AudioRecordsModelFromJson(Map<String, dynamic> json) {
 mixin _$AudioRecordsModel {
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  String get duration => throw _privateConstructorUsedError;
+  @DurationConverter()
+  Duration get duration => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime get creationTime => throw _privateConstructorUsedError;
@@ -46,7 +47,7 @@ abstract class $AudioRecordsModelCopyWith<$Res> {
   $Res call(
       {String title,
       String url,
-      String duration,
+      @DurationConverter() Duration duration,
       String id,
       @TimestampConverter() DateTime creationTime});
 }
@@ -84,7 +85,7 @@ class _$AudioRecordsModelCopyWithImpl<$Res, $Val extends AudioRecordsModel>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -108,7 +109,7 @@ abstract class _$$AudioRecordsModelImplCopyWith<$Res>
   $Res call(
       {String title,
       String url,
-      String duration,
+      @DurationConverter() Duration duration,
       String id,
       @TimestampConverter() DateTime creationTime});
 }
@@ -144,7 +145,7 @@ class __$$AudioRecordsModelImplCopyWithImpl<$Res>
       duration: null == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Duration,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -163,7 +164,7 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
   const _$AudioRecordsModelImpl(
       {required this.title,
       required this.url,
-      required this.duration,
+      @DurationConverter() required this.duration,
       required this.id,
       @TimestampConverter() required this.creationTime});
 
@@ -175,7 +176,8 @@ class _$AudioRecordsModelImpl implements _AudioRecordsModel {
   @override
   final String url;
   @override
-  final String duration;
+  @DurationConverter()
+  final Duration duration;
   @override
   final String id;
   @override
@@ -227,7 +229,7 @@ abstract class _AudioRecordsModel implements AudioRecordsModel {
   const factory _AudioRecordsModel(
           {required final String title,
           required final String url,
-          required final String duration,
+          @DurationConverter() required final Duration duration,
           required final String id,
           @TimestampConverter() required final DateTime creationTime}) =
       _$AudioRecordsModelImpl;
@@ -240,7 +242,8 @@ abstract class _AudioRecordsModel implements AudioRecordsModel {
   @override
   String get url;
   @override
-  String get duration;
+  @DurationConverter()
+  Duration get duration;
   @override
   String get id;
   @override

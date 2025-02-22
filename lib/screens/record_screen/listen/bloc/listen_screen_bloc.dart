@@ -9,6 +9,7 @@ import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   final StorageService _firebaseStorageService = locator<StorageService>();
@@ -26,6 +27,32 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     on<ClosePlayingEvent>(_close);
     on<InitialPlayingEvent>(_initial);
     on<AddRecordNameEvent>(_addTitle);
+    on<DownloadListenRecordEvent>(_downloadAudio);
+  }
+
+  Future<void> _downloadAudio(
+    DownloadListenRecordEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    // print('start');
+
+    // Directory tempDir = await getTemporaryDirectory();
+    // final aacFilePath = '${tempDir.path}/record.aac';
+    // final mp3FilePath = '${tempDir.path}/record.mp3';
+
+    // final FlutterFFmpeg _ffmpeg = FlutterFFmpeg();
+
+    // // Конвертуємо AAC у MP3
+    // int rc = await _ffmpeg.execute(
+    //     '-i $aacFilePath -codec:a libmp3lame -qscale:a 2 $mp3FilePath');
+
+    // if (rc == 0) {
+    //   print('Конвертація успішна');
+    //   XFile xFile = XFile(mp3FilePath);
+    //   await Share.shareXFiles([xFile]);
+    // } else {
+    //   print('Помилка при конвертації');
+    // }
   }
 
   Future<void> _addTitle(
@@ -54,6 +81,7 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     final filePath = '${directory.path}/record.aac';
     if (!_isPlayerInitialized) {
       await _player.openPlayer();
+
       _isPlayerInitialized = true;
     }
 
@@ -152,7 +180,7 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     await _firebaseFirestoreService.saveUserAudio(
       state.title,
       fileUrl,
-      state.duration.toString(),
+      state.duration,
     );
 
     final file = File(filePath);

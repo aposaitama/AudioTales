@@ -11,7 +11,7 @@ _$AudioRecordsModelImpl _$$AudioRecordsModelImplFromJson(
     _$AudioRecordsModelImpl(
       title: json['title'] as String,
       url: json['url'] as String,
-      duration: json['duration'] as String,
+      duration: const DurationConverter().fromJson(json['duration'] as String),
       id: json['id'] as String,
       creationTime: const TimestampConverter()
           .fromJson(json['creationTime'] as Timestamp),
@@ -22,7 +22,7 @@ Map<String, dynamic> _$$AudioRecordsModelImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'url': instance.url,
-      'duration': instance.duration,
+      'duration': const DurationConverter().toJson(instance.duration),
       'id': instance.id,
       'creationTime': const TimestampConverter().toJson(instance.creationTime),
     };

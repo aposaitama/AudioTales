@@ -7,7 +7,9 @@ part 'info_collection_bloc_event.freezed.dart';
 
 @freezed
 class InfoCollectionBlocEvent with _$InfoCollectionBlocEvent {
-  const factory InfoCollectionBlocEvent.loading(CollectionModel collection) =
+  // const factory InfoCollectionBlocEvent.loading(CollectionModel collection) =
+  //     LoadingInfoCollectionBlocEvent;
+  const factory InfoCollectionBlocEvent.loading(String collectionId) =
       LoadingInfoCollectionBlocEvent;
   const factory InfoCollectionBlocEvent.loaded(
     CollectionModel collectionModel,

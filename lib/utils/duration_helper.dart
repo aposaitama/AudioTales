@@ -1,11 +1,9 @@
 import 'package:memory_box_avada/models/audio_records_model.dart';
 
-String formatDuration(String input) {
-  List<String> parts = input.split(':');
-
-  int hours = int.parse(parts[0]);
-  int minutes = int.parse(parts[1]);
-  int seconds = int.parse(parts[2].split('.')[0]);
+String formatDuration(Duration input) {
+  int hours = input.inHours;
+  int minutes = input.inMinutes.remainder(60);
+  int seconds = input.inSeconds.remainder(60);
 
   String result = '';
 
@@ -55,35 +53,14 @@ String getMinuteText(int minutes) {
   }
 }
 
-String getTotalDuration(List<AudioRecordsModel> audiosList) {
-  double totalSeconds = 0;
+Duration getTotalDuration(List<AudioRecordsModel> audiosList) {
+  Duration totalDuration = Duration.zero;
 
   for (var audio in audiosList) {
-    String duration = audio.duration;
-    List<String> parts = duration.split(':');
-    if (parts.length == 3) {
-      // Години, хвилини, секунди
-      int hours = int.parse(parts[0]);
-      int minutes = int.parse(parts[1]);
-      double seconds = double.parse(parts[2]);
-
-      totalSeconds += hours * 3600 + minutes * 60 + seconds;
-    }
+    totalDuration += audio.duration;
   }
 
-  int hours = totalSeconds ~/ 3600;
-  int minutes = (totalSeconds % 3600) ~/ 60;
-  double seconds = totalSeconds % 60;
-
-  String formattedDuration = _formatDuration(hours, minutes, seconds);
-  return formattedDuration;
-}
-
-String _formatDuration(int hours, int minutes, double seconds) {
-  int secondsInt = seconds.toInt();
-  int milliseconds = ((seconds - secondsInt) * 1000000).toInt();
-
-  return '$hours:${_twoDigit(minutes)}:${_twoDigit(secondsInt)}.$milliseconds';
+  return totalDuration;
 }
 
 String _twoDigit(int number) {
@@ -95,9 +72,4 @@ String formatCollectionDate(String dateString) {
   String formattedDate =
       "${dateTime.day.toString().padLeft(2, '0')}.${dateTime.month.toString().padLeft(2, '0')}.${dateTime.year % 100}";
   return formattedDate;
-}
-
-void main() {
-  String dateString = "2025-02-17 16:17:16.705285";
-  print(formatCollectionDate(dateString));
 }

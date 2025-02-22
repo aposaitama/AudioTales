@@ -22,6 +22,7 @@ mixin _$ListenRecordEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -36,6 +37,7 @@ mixin _$ListenRecordEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -50,6 +52,7 @@ mixin _$ListenRecordEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -65,6 +68,7 @@ mixin _$ListenRecordEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -79,6 +83,7 @@ mixin _$ListenRecordEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -93,6 +98,7 @@ mixin _$ListenRecordEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -172,6 +178,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -189,6 +196,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -206,6 +214,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -227,6 +236,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -244,6 +254,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -261,6 +272,7 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -355,6 +367,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -372,6 +385,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -389,6 +403,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -410,6 +425,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -427,6 +443,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -444,6 +461,7 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -556,6 +574,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -573,6 +592,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -590,6 +610,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -611,6 +632,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -628,6 +650,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -645,6 +668,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -674,6 +698,170 @@ abstract class UpdateCircleEvent implements ListenRecordEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCircleEventImplCopyWith<_$UpdateCircleEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DownloadListenRecordEventImplCopyWith<$Res> {
+  factory _$$DownloadListenRecordEventImplCopyWith(
+          _$DownloadListenRecordEventImpl value,
+          $Res Function(_$DownloadListenRecordEventImpl) then) =
+      __$$DownloadListenRecordEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DownloadListenRecordEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res,
+        _$DownloadListenRecordEventImpl>
+    implements _$$DownloadListenRecordEventImplCopyWith<$Res> {
+  __$$DownloadListenRecordEventImplCopyWithImpl(
+      _$DownloadListenRecordEventImpl _value,
+      $Res Function(_$DownloadListenRecordEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
+  const _$DownloadListenRecordEventImpl();
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.downloadAudio()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DownloadListenRecordEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(Duration duration, Duration position)
+        updateCircle,
+    required TResult Function() downloadAudio,
+    required TResult Function() add15,
+    required TResult Function() minus15,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return downloadAudio();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
+    TResult? Function()? add15,
+    TResult? Function()? minus15,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return downloadAudio?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
+    TResult Function()? add15,
+    TResult Function()? minus15,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (downloadAudio != null) {
+      return downloadAudio();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
+    required TResult Function(Add15Event value) add15,
+    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return downloadAudio(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult? Function(Add15Event value)? add15,
+    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return downloadAudio?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult Function(Add15Event value)? add15,
+    TResult Function(Minus15Event value)? minus15,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (downloadAudio != null) {
+      return downloadAudio(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DownloadListenRecordEvent implements ListenRecordEvent {
+  const factory DownloadListenRecordEvent() = _$DownloadListenRecordEventImpl;
 }
 
 /// @nodoc
@@ -721,6 +909,7 @@ class _$Add15EventImpl implements Add15Event {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -738,6 +927,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -755,6 +945,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -776,6 +967,7 @@ class _$Add15EventImpl implements Add15Event {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -793,6 +985,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -810,6 +1003,7 @@ class _$Add15EventImpl implements Add15Event {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -875,6 +1069,7 @@ class _$Minus15EventImpl implements Minus15Event {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -892,6 +1087,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -909,6 +1105,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -930,6 +1127,7 @@ class _$Minus15EventImpl implements Minus15Event {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -947,6 +1145,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -964,6 +1163,7 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -1029,6 +1229,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -1046,6 +1247,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -1063,6 +1265,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -1084,6 +1287,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -1101,6 +1305,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -1118,6 +1323,7 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -1183,6 +1389,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -1200,6 +1407,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -1217,6 +1425,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -1238,6 +1447,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -1255,6 +1465,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -1272,6 +1483,7 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -1337,6 +1549,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -1354,6 +1567,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -1371,6 +1585,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -1392,6 +1607,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -1409,6 +1625,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -1426,6 +1643,7 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -1491,6 +1709,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -1508,6 +1727,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -1525,6 +1745,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -1546,6 +1767,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -1563,6 +1785,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -1580,6 +1803,7 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,
@@ -1673,6 +1897,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     required TResult Function(Duration? currentPosition) start,
     required TResult Function(Duration duration, Duration position)
         updateCircle,
+    required TResult Function() downloadAudio,
     required TResult Function() add15,
     required TResult Function() minus15,
     required TResult Function() pause,
@@ -1690,6 +1915,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
     TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function()? downloadAudio,
     TResult? Function()? add15,
     TResult? Function()? minus15,
     TResult? Function()? pause,
@@ -1707,6 +1933,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
     TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function()? downloadAudio,
     TResult Function()? add15,
     TResult Function()? minus15,
     TResult Function()? pause,
@@ -1728,6 +1955,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
     required TResult Function(Add15Event value) add15,
     required TResult Function(Minus15Event value) minus15,
     required TResult Function(PausePlayingEvent value) pause,
@@ -1745,6 +1973,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult? Function(Add15Event value)? add15,
     TResult? Function(Minus15Event value)? minus15,
     TResult? Function(PausePlayingEvent value)? pause,
@@ -1762,6 +1991,7 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
     TResult Function(Add15Event value)? add15,
     TResult Function(Minus15Event value)? minus15,
     TResult Function(PausePlayingEvent value)? pause,

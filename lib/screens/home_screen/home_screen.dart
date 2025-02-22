@@ -12,6 +12,7 @@ import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/colection_preview.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
+import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _scrollListener() {
     final totalItems =
         context.read<AudioRecordsScreenBloc>().state.audioList.length;
-    final audioCount = 9;
+    final audioCount =
+        context.read<UserBloc>().state.userModel?.audiosCount ?? 0;
     final currentIndex = _scrollController.position.pixels /
         (_scrollController.position.maxScrollExtent / totalItems);
     if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
@@ -217,15 +219,48 @@ class _HomeScreenState extends State<HomeScreen> {
                                             title: state.audioList[index].title,
                                             duration: '30 минут',
                                             onRename: () {
-                                              print(
-                                                "Переименовать натиснуто",
-                                              );
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    const ChangePopupAudioRecordsScreenStateEvent(
+                                                      AudioPopupStatus.editing,
+                                                    ),
+                                                  );
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    EditAudioRecordsScreenStateEvent(
+                                                      state.audioList[index].id,
+                                                    ),
+                                                  );
                                             },
                                             onSave: (controller) {
-                                              print("Поделиться натиснуто");
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    SaveAudioRecordsScreenStateEvent(
+                                                      controller.text,
+                                                    ),
+                                                  );
                                             },
                                             onCancel: () {
-                                              print("Поделиться натиснуто");
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    const ChangePopupAudioRecordsScreenStateEvent(
+                                                      AudioPopupStatus.initial,
+                                                    ),
+                                                  );
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    const CancelEditingAudioRecordsScreenStateEvent(),
+                                                  );
                                             },
                                             onDelete: () {
                                               ShowDeleteDialog.show(
@@ -245,6 +280,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                               );
                                             },
                                             onChoose: () {
+                                              context
+                                                  .read<
+                                                      AudioRecordsScreenBloc>()
+                                                  .add(
+                                                    ChooseAudioRecordsScreenStateEvent(
+                                                      [state.audioList[index]],
+                                                    ),
+                                                  );
                                               context.go(
                                                 '/collection/info/choose',
                                               );

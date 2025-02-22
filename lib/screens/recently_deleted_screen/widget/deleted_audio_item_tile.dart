@@ -8,7 +8,7 @@ import 'package:memory_box_avada/screens/recently_deleted_screen/recently_delete
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
 class DeletedAudioItemTile extends StatelessWidget {

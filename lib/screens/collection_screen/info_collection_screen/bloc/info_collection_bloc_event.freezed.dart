@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$InfoCollectionBlocEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -35,7 +35,7 @@ mixin _$InfoCollectionBlocEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -52,7 +52,7 @@ mixin _$InfoCollectionBlocEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -166,9 +166,7 @@ abstract class _$$LoadingInfoCollectionBlocEventImplCopyWith<$Res> {
           $Res Function(_$LoadingInfoCollectionBlocEventImpl) then) =
       __$$LoadingInfoCollectionBlocEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CollectionModel collection});
-
-  $CollectionModelCopyWith<$Res> get collection;
+  $Res call({String collectionId});
 }
 
 /// @nodoc
@@ -186,24 +184,14 @@ class __$$LoadingInfoCollectionBlocEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collection = null,
+    Object? collectionId = null,
   }) {
     return _then(_$LoadingInfoCollectionBlocEventImpl(
-      null == collection
-          ? _value.collection
-          : collection // ignore: cast_nullable_to_non_nullable
-              as CollectionModel,
+      null == collectionId
+          ? _value.collectionId
+          : collectionId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  /// Create a copy of InfoCollectionBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CollectionModelCopyWith<$Res> get collection {
-    return $CollectionModelCopyWith<$Res>(_value.collection, (value) {
-      return _then(_value.copyWith(collection: value));
-    });
   }
 }
 
@@ -211,14 +199,14 @@ class __$$LoadingInfoCollectionBlocEventImplCopyWithImpl<$Res>
 
 class _$LoadingInfoCollectionBlocEventImpl
     implements LoadingInfoCollectionBlocEvent {
-  const _$LoadingInfoCollectionBlocEventImpl(this.collection);
+  const _$LoadingInfoCollectionBlocEventImpl(this.collectionId);
 
   @override
-  final CollectionModel collection;
+  final String collectionId;
 
   @override
   String toString() {
-    return 'InfoCollectionBlocEvent.loading(collection: $collection)';
+    return 'InfoCollectionBlocEvent.loading(collectionId: $collectionId)';
   }
 
   @override
@@ -226,12 +214,12 @@ class _$LoadingInfoCollectionBlocEventImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadingInfoCollectionBlocEventImpl &&
-            (identical(other.collection, collection) ||
-                other.collection == collection));
+            (identical(other.collectionId, collectionId) ||
+                other.collectionId == collectionId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, collection);
+  int get hashCode => Object.hash(runtimeType, collectionId);
 
   /// Create a copy of InfoCollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -246,7 +234,7 @@ class _$LoadingInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -260,13 +248,13 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult Function() deleteSeveralAudios,
     required TResult Function() close,
   }) {
-    return loading(collection);
+    return loading(collectionId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -280,13 +268,13 @@ class _$LoadingInfoCollectionBlocEventImpl
     TResult? Function()? deleteSeveralAudios,
     TResult? Function()? close,
   }) {
-    return loading?.call(collection);
+    return loading?.call(collectionId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -302,7 +290,7 @@ class _$LoadingInfoCollectionBlocEventImpl
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(collection);
+      return loading(collectionId);
     }
     return orElse();
   }
@@ -389,10 +377,10 @@ class _$LoadingInfoCollectionBlocEventImpl
 
 abstract class LoadingInfoCollectionBlocEvent
     implements InfoCollectionBlocEvent {
-  const factory LoadingInfoCollectionBlocEvent(
-      final CollectionModel collection) = _$LoadingInfoCollectionBlocEventImpl;
+  const factory LoadingInfoCollectionBlocEvent(final String collectionId) =
+      _$LoadingInfoCollectionBlocEventImpl;
 
-  CollectionModel get collection;
+  String get collectionId;
 
   /// Create a copy of InfoCollectionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -489,7 +477,7 @@ class _$LoadedInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -509,7 +497,7 @@ class _$LoadedInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -529,7 +517,7 @@ class _$LoadedInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -691,7 +679,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -711,7 +699,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -731,7 +719,7 @@ class _$EditInfoCollectionBlocEventImpl implements EditInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -909,7 +897,7 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -929,7 +917,7 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -949,7 +937,7 @@ class _$InfoCollectionModeBlocEventImpl implements InfoCollectionModeBlocEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -1154,7 +1142,7 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -1174,7 +1162,7 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -1194,7 +1182,7 @@ class _$AddAudioToSelevtedListInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -1392,7 +1380,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -1412,7 +1400,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -1432,7 +1420,7 @@ class _$SaveInfoCollectionBlocEventImpl implements SaveInfoCollectionBlocEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -1594,7 +1582,7 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -1614,7 +1602,7 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -1634,7 +1622,7 @@ class _$ShareCollectionInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -1787,7 +1775,7 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -1807,7 +1795,7 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -1827,7 +1815,7 @@ class _$DonwloadAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -1980,7 +1968,7 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -2000,7 +1988,7 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -2020,7 +2008,7 @@ class _$ShareAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -2173,7 +2161,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -2193,7 +2181,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -2213,7 +2201,7 @@ class _$ChooseImageInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -2366,7 +2354,7 @@ class _$DeleteInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -2386,7 +2374,7 @@ class _$DeleteInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -2406,7 +2394,7 @@ class _$DeleteInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -2560,7 +2548,7 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -2580,7 +2568,7 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -2600,7 +2588,7 @@ class _$DeleteSeveralAudiosInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,
@@ -2753,7 +2741,7 @@ class _$CloseInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(CollectionModel collection) loading,
+    required TResult Function(String collectionId) loading,
     required TResult Function(CollectionModel collectionModel) loaded,
     required TResult Function() edit,
     required TResult Function(InfoCollectionPopupMode mode) mode,
@@ -2773,7 +2761,7 @@ class _$CloseInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(CollectionModel collection)? loading,
+    TResult? Function(String collectionId)? loading,
     TResult? Function(CollectionModel collectionModel)? loaded,
     TResult? Function()? edit,
     TResult? Function(InfoCollectionPopupMode mode)? mode,
@@ -2793,7 +2781,7 @@ class _$CloseInfoCollectionBlocEventImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(CollectionModel collection)? loading,
+    TResult Function(String collectionId)? loading,
     TResult Function(CollectionModel collectionModel)? loaded,
     TResult Function()? edit,
     TResult Function(InfoCollectionPopupMode mode)? mode,

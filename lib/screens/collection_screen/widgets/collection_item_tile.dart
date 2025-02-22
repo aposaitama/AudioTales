@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
-import 'package:memory_box_avada/sources/duration_helper.dart';
+import 'package:memory_box_avada/models/simple_collection_model.dart';
+import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class CollectionItemTile extends StatelessWidget {
-  final CollectionModel collection;
+  final SimpleCollectionModel collection;
   const CollectionItemTile({super.key, required this.collection});
 
   @override
@@ -42,13 +43,14 @@ class CollectionItemTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${collection.audiosList.length} аудіо',
+                    '${collection.audioCount} аудіо',
                     style: AppTextStyles.subtitleWhite,
                   ),
                   SizedBox(
                     width: ((MediaQuery.of(context).size.width - 72) / 2) / 2,
                     child: Text(
-                      formatDuration(getTotalDuration(collection.audiosList)),
+                      // formatDuration(getTotalDuration(collection.audiosList)),,
+                      formatDuration(collection.duration),
                       style: AppTextStyles.subtitleWhite,
                     ),
                   ),

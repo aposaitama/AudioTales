@@ -12,7 +12,7 @@ _$DeletedRecordsModelImpl _$$DeletedRecordsModelImplFromJson(
       id: json['id'] as String,
       title: json['title'] as String,
       url: json['url'] as String,
-      duration: json['duration'] as String,
+      duration: const DurationConverter().fromJson(json['duration'] as String),
       deletedAt:
           const TimestampConverter().fromJson(json['deletedAt'] as Timestamp),
     );
@@ -23,6 +23,6 @@ Map<String, dynamic> _$$DeletedRecordsModelImplToJson(
       'id': instance.id,
       'title': instance.title,
       'url': instance.url,
-      'duration': instance.duration,
+      'duration': const DurationConverter().toJson(instance.duration),
       'deletedAt': const TimestampConverter().toJson(instance.deletedAt),
     };

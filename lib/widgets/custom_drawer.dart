@@ -59,6 +59,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Home.svg',
                         ),
                         onTap: () {
+                          context.pop();
                           context.go('/home');
                         },
                       ),
@@ -67,7 +68,10 @@ class CustomDrawer extends StatelessWidget {
                         icon: SvgPicture.asset(
                           'assets/icons/Profile.svg',
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          context.pop();
+                          context.go('/profile');
+                        },
                       ),
                       DrawerElementsRow(
                         title: 'Подборки',
@@ -75,8 +79,8 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Category.svg',
                         ),
                         onTap: () {
-                          context.go('/collection');
                           context.pop();
+                          context.go('/collection');
                         },
                       ),
                       DrawerElementsRow(
@@ -85,6 +89,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Paper.svg',
                         ),
                         onTap: () {
+                          context.pop();
                           context.go('/audio_records');
                         },
                       ),
@@ -94,6 +99,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Search.svg',
                         ),
                         onTap: () {
+                          context.pop();
                           context.go('/search');
                         },
                       ),
@@ -103,6 +109,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Delete.svg',
                         ),
                         onTap: () {
+                          context.pop();
                           context.go('/deleted');
                         },
                       ),
@@ -113,14 +120,18 @@ class CustomDrawer extends StatelessWidget {
                     icon: SvgPicture.asset(
                       'assets/icons/Paper.svg',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context.pop();
+                    },
                   ),
                   DrawerElementsRow(
                     title: 'Написать в поддержку ',
                     icon: SvgPicture.asset(
                       'assets/icons/Edit.svg',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      context.pop();
+                    },
                   ),
                 ],
               ),

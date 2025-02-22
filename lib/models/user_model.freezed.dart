@@ -23,6 +23,8 @@ mixin _$UserModel {
   String get userId => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   Subscription get subscription => throw _privateConstructorUsedError;
+  @DurationConverter()
+  Duration get duration => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get userPhoto => throw _privateConstructorUsedError;
   int get audiosCount => throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ abstract class $UserModelCopyWith<$Res> {
       {String userId,
       String phoneNumber,
       Subscription subscription,
+      @DurationConverter() Duration duration,
       String? userName,
       String? userPhoto,
       int audiosCount});
@@ -69,6 +72,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? userId = null,
     Object? phoneNumber = null,
     Object? subscription = null,
+    Object? duration = null,
     Object? userName = freezed,
     Object? userPhoto = freezed,
     Object? audiosCount = null,
@@ -86,6 +90,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.subscription
           : subscription // ignore: cast_nullable_to_non_nullable
               as Subscription,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -114,6 +122,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       {String userId,
       String phoneNumber,
       Subscription subscription,
+      @DurationConverter() Duration duration,
       String? userName,
       String? userPhoto,
       int audiosCount});
@@ -135,6 +144,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? phoneNumber = null,
     Object? subscription = null,
+    Object? duration = null,
     Object? userName = freezed,
     Object? userPhoto = freezed,
     Object? audiosCount = null,
@@ -152,6 +162,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.subscription
           : subscription // ignore: cast_nullable_to_non_nullable
               as Subscription,
+      duration: null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -175,6 +189,7 @@ class _$UserModelImpl implements _UserModel {
       {required this.userId,
       required this.phoneNumber,
       required this.subscription,
+      @DurationConverter() required this.duration,
       this.userName,
       this.userPhoto,
       required this.audiosCount});
@@ -189,6 +204,9 @@ class _$UserModelImpl implements _UserModel {
   @override
   final Subscription subscription;
   @override
+  @DurationConverter()
+  final Duration duration;
+  @override
   final String? userName;
   @override
   final String? userPhoto;
@@ -197,7 +215,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(userId: $userId, phoneNumber: $phoneNumber, subscription: $subscription, userName: $userName, userPhoto: $userPhoto, audiosCount: $audiosCount)';
+    return 'UserModel(userId: $userId, phoneNumber: $phoneNumber, subscription: $subscription, duration: $duration, userName: $userName, userPhoto: $userPhoto, audiosCount: $audiosCount)';
   }
 
   @override
@@ -210,6 +228,8 @@ class _$UserModelImpl implements _UserModel {
                 other.phoneNumber == phoneNumber) &&
             (identical(other.subscription, subscription) ||
                 other.subscription == subscription) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userPhoto, userPhoto) ||
@@ -221,7 +241,7 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, phoneNumber,
-      subscription, userName, userPhoto, audiosCount);
+      subscription, duration, userName, userPhoto, audiosCount);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -244,6 +264,7 @@ abstract class _UserModel implements UserModel {
       {required final String userId,
       required final String phoneNumber,
       required final Subscription subscription,
+      @DurationConverter() required final Duration duration,
       final String? userName,
       final String? userPhoto,
       required final int audiosCount}) = _$UserModelImpl;
@@ -257,6 +278,9 @@ abstract class _UserModel implements UserModel {
   String get phoneNumber;
   @override
   Subscription get subscription;
+  @override
+  @DurationConverter()
+  Duration get duration;
   @override
   String? get userName;
   @override

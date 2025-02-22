@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:memory_box_avada/utils/duration_converter.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -18,6 +19,7 @@ class UserModel with _$UserModel {
     required String userId,
     required String phoneNumber,
     required Subscription subscription,
+    @DurationConverter() required Duration duration,
     String? userName,
     String? userPhoto,
     required int audiosCount,

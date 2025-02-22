@@ -50,12 +50,13 @@ class _MiniPlayerState extends State<MiniPlayer> {
                   height: 75,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.topRight,
-                        colors: [
-                          AppColors.purpleColor,
-                          Color.fromRGBO(111, 106, 164, 1),
-                        ],),
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: [
+                        AppColors.purpleColor,
+                        Color.fromRGBO(111, 106, 164, 1),
+                      ],
+                    ),
                     borderRadius: BorderRadius.circular(41),
                   ),
                   child: Padding(
@@ -115,7 +116,8 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                     state
                                         .audioRecordsList[
                                             state.currentPlayingIndex]
-                                        .duration,
+                                        .duration
+                                        .toString(),
                                   ),
                                   state.position,
                                 ),
@@ -132,7 +134,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                                     style: AppTextStyles.timeTextWhite,
                                   ),
                                   Text(
-                                    "${(parseDuration(state.audioRecordsList[state.currentPlayingIndex].duration).inMinutes).toString().padLeft(2, '0')}:${(parseDuration(state.audioRecordsList[state.currentPlayingIndex].duration).inSeconds % 60).toString().padLeft(2, '0')}",
+                                    "${((state.audioRecordsList[state.currentPlayingIndex].duration).inMinutes).toString().padLeft(2, '0')}:${((state.audioRecordsList[state.currentPlayingIndex].duration).inSeconds % 60).toString().padLeft(2, '0')}",
                                     style: AppTextStyles.timeTextWhite,
                                   ),
                                 ],
@@ -143,11 +145,13 @@ class _MiniPlayerState extends State<MiniPlayer> {
                         Padding(
                           padding: const EdgeInsets.only(right: 18, left: 24.0),
                           child: GestureDetector(
-                              onTap: () => context
-                                  .read<MiniPlayerBloc>()
-                                  .add(const MiniPlayerBlocEvent.close()),
-                              child: SvgPicture.asset(
-                                  'assets/icons/FluentArrow.svg',),),
+                            onTap: () => context
+                                .read<MiniPlayerBloc>()
+                                .add(const MiniPlayerBlocEvent.close()),
+                            child: SvgPicture.asset(
+                              'assets/icons/FluentArrow.svg',
+                            ),
+                          ),
                         ),
                       ],
                     ),
