@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
-import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
@@ -12,6 +11,8 @@ import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_state.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/widgets/circle_painter.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -28,7 +29,6 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
   TextEditingController title = TextEditingController(text: 'Аудиозапись');
   @override
   Widget build(BuildContext context) {
-    print(isAnonymous);
     return BlocProvider(
       create: (context) => ListenRecordBloc(),
       child: BlocBuilder<ListenRecordBloc, ListenRecordState>(
@@ -63,13 +63,15 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                   width: 30.0,
                                 ),
                                 GestureDetector(
-                                    onTap: () {
-                                      context
-                                          .read<ListenRecordBloc>()
-                                          .add(DownloadListenRecordEvent());
-                                    },
-                                    child: SvgPicture.asset(
-                                        'assets/icons/SaveAs.svg')),
+                                  onTap: () {
+                                    context
+                                        .read<ListenRecordBloc>()
+                                        .add(const DownloadListenRecordEvent());
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/icons/SaveAs.svg',
+                                  ),
+                                ),
                                 const SizedBox(
                                   width: 30.0,
                                 ),
@@ -142,7 +144,7 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                             const RecordStatusEvent.recording(),
                                           ),
                                       context.pop(),
-                                    }
+                                    },
                                 },
                                 child: const Text('Сохранить'),
                               ),
@@ -193,8 +195,12 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                         Text(
                                           "${(state.position.inMinutes).toString().padLeft(2, '0')}:${(state.position.inSeconds % 60).toString().padLeft(2, '0')}",
                                         ),
-                                        Text(
-                                          "${(state.duration.inMinutes).toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}",
+                                        BlocBuilder<RecordBloc, RecordState>(
+                                          builder: (context, state) {
+                                            return Text(
+                                              "${(state.duration.inMinutes).toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}",
+                                            );
+                                          },
                                         ),
                                       ],
                                     ),

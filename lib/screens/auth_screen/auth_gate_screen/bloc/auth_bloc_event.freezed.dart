@@ -20,18 +20,21 @@ mixin _$AuthBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() checkRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? deleteUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,18 +43,21 @@ mixin _$AuthBlocEvent {
     required TResult Function(CheckRequestedAuthBlocEvent value) checkRequested,
     required TResult Function(LogoutRequestedAuthBlocEvent value)
         logoutRequested,
+    required TResult Function(DeleteUserAuthBlocEvent value) deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult? Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult? Function(DeleteUserAuthBlocEvent value)? deleteUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult Function(DeleteUserAuthBlocEvent value)? deleteUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,6 +130,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() checkRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() deleteUser,
   }) {
     return checkRequested();
   }
@@ -133,6 +140,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? deleteUser,
   }) {
     return checkRequested?.call();
   }
@@ -142,6 +150,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? deleteUser,
     required TResult orElse(),
   }) {
     if (checkRequested != null) {
@@ -156,6 +165,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
     required TResult Function(CheckRequestedAuthBlocEvent value) checkRequested,
     required TResult Function(LogoutRequestedAuthBlocEvent value)
         logoutRequested,
+    required TResult Function(DeleteUserAuthBlocEvent value) deleteUser,
   }) {
     return checkRequested(this);
   }
@@ -165,6 +175,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult? Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult? Function(DeleteUserAuthBlocEvent value)? deleteUser,
   }) {
     return checkRequested?.call(this);
   }
@@ -174,6 +185,7 @@ class _$CheckRequestedAuthBlocEventImpl implements CheckRequestedAuthBlocEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult Function(DeleteUserAuthBlocEvent value)? deleteUser,
     required TResult orElse(),
   }) {
     if (checkRequested != null) {
@@ -236,6 +248,7 @@ class _$LogoutRequestedAuthBlocEventImpl
   TResult when<TResult extends Object?>({
     required TResult Function() checkRequested,
     required TResult Function() logoutRequested,
+    required TResult Function() deleteUser,
   }) {
     return logoutRequested();
   }
@@ -245,6 +258,7 @@ class _$LogoutRequestedAuthBlocEventImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? checkRequested,
     TResult? Function()? logoutRequested,
+    TResult? Function()? deleteUser,
   }) {
     return logoutRequested?.call();
   }
@@ -254,6 +268,7 @@ class _$LogoutRequestedAuthBlocEventImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkRequested,
     TResult Function()? logoutRequested,
+    TResult Function()? deleteUser,
     required TResult orElse(),
   }) {
     if (logoutRequested != null) {
@@ -268,6 +283,7 @@ class _$LogoutRequestedAuthBlocEventImpl
     required TResult Function(CheckRequestedAuthBlocEvent value) checkRequested,
     required TResult Function(LogoutRequestedAuthBlocEvent value)
         logoutRequested,
+    required TResult Function(DeleteUserAuthBlocEvent value) deleteUser,
   }) {
     return logoutRequested(this);
   }
@@ -277,6 +293,7 @@ class _$LogoutRequestedAuthBlocEventImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult? Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult? Function(DeleteUserAuthBlocEvent value)? deleteUser,
   }) {
     return logoutRequested?.call(this);
   }
@@ -286,6 +303,7 @@ class _$LogoutRequestedAuthBlocEventImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CheckRequestedAuthBlocEvent value)? checkRequested,
     TResult Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult Function(DeleteUserAuthBlocEvent value)? deleteUser,
     required TResult orElse(),
   }) {
     if (logoutRequested != null) {
@@ -298,4 +316,119 @@ class _$LogoutRequestedAuthBlocEventImpl
 abstract class LogoutRequestedAuthBlocEvent implements AuthBlocEvent {
   const factory LogoutRequestedAuthBlocEvent() =
       _$LogoutRequestedAuthBlocEventImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserAuthBlocEventImplCopyWith<$Res> {
+  factory _$$DeleteUserAuthBlocEventImplCopyWith(
+          _$DeleteUserAuthBlocEventImpl value,
+          $Res Function(_$DeleteUserAuthBlocEventImpl) then) =
+      __$$DeleteUserAuthBlocEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteUserAuthBlocEventImplCopyWithImpl<$Res>
+    extends _$AuthBlocEventCopyWithImpl<$Res, _$DeleteUserAuthBlocEventImpl>
+    implements _$$DeleteUserAuthBlocEventImplCopyWith<$Res> {
+  __$$DeleteUserAuthBlocEventImplCopyWithImpl(
+      _$DeleteUserAuthBlocEventImpl _value,
+      $Res Function(_$DeleteUserAuthBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AuthBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$DeleteUserAuthBlocEventImpl implements DeleteUserAuthBlocEvent {
+  const _$DeleteUserAuthBlocEventImpl();
+
+  @override
+  String toString() {
+    return 'AuthBlocEvent.deleteUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteUserAuthBlocEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkRequested,
+    required TResult Function() logoutRequested,
+    required TResult Function() deleteUser,
+  }) {
+    return deleteUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? checkRequested,
+    TResult? Function()? logoutRequested,
+    TResult? Function()? deleteUser,
+  }) {
+    return deleteUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkRequested,
+    TResult Function()? logoutRequested,
+    TResult Function()? deleteUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CheckRequestedAuthBlocEvent value) checkRequested,
+    required TResult Function(LogoutRequestedAuthBlocEvent value)
+        logoutRequested,
+    required TResult Function(DeleteUserAuthBlocEvent value) deleteUser,
+  }) {
+    return deleteUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CheckRequestedAuthBlocEvent value)? checkRequested,
+    TResult? Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult? Function(DeleteUserAuthBlocEvent value)? deleteUser,
+  }) {
+    return deleteUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CheckRequestedAuthBlocEvent value)? checkRequested,
+    TResult Function(LogoutRequestedAuthBlocEvent value)? logoutRequested,
+    TResult Function(DeleteUserAuthBlocEvent value)? deleteUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUser != null) {
+      return deleteUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteUserAuthBlocEvent implements AuthBlocEvent {
+  const factory DeleteUserAuthBlocEvent() = _$DeleteUserAuthBlocEventImpl;
 }

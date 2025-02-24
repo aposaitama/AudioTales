@@ -4,16 +4,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_event.dart';
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_state.dart';
+import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
   final FirebaseAuth _auth = locator<FirebaseAuth>();
   StreamSubscription<User?>? _authSubscription;
-
+  final FirestoreService _firebaseFirestoreService =
+      locator<FirestoreService>();
   AuthBloc() : super(const AuthBlocState()) {
     on<CheckRequestedAuthBlocEvent>(
       _checkRequested,
     );
+    on<DeleteUserAuthBlocEvent>(_deleteUser);
     on<LogoutRequestedAuthBlocEvent>(
       _logoutRequested,
     );
@@ -23,6 +26,19 @@ class AuthBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
         const AuthBlocEvent.checkRequested(),
       );
     });
+  }
+
+  Future<void> _deleteUser(
+    DeleteUserAuthBlocEvent event,
+    Emitter<AuthBlocState> emit,
+  ) async {
+    await _firebaseFirestoreService.deleteUserDocument();
+    await _auth.currentUser!.delete();
+    emit(
+      state.copyWith(
+        gateStatus: AuthGateStatus.unAuthenticated,
+      ),
+    );
   }
 
   Future<void> _checkRequested(

@@ -207,6 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             BlocBuilder<AudioRecordsScreenBloc,
                                 AudioRecordsScreenState>(
                               builder: (context, state) {
+                                print(state.audioList.length);
                                 return Expanded(
                                   child: ListView.builder(
                                     controller: _scrollController,
@@ -215,6 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       return Column(
                                         children: [
                                           AudioItemTile(
+                                            color: AppColors.purpleColor,
                                             audio: state.audioList[index],
                                             title: state.audioList[index].title,
                                             duration: '30 минут',

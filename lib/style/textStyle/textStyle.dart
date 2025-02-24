@@ -42,6 +42,7 @@ class AppTextStyles {
     letterSpacing: 1,
     fontFamily: 'TTNorms',
   );
+
   static const TextStyle whiteBodyBold = TextStyle(
     color: Colors.white,
     fontSize: 24.0,
@@ -54,6 +55,14 @@ class AppTextStyles {
     color: Colors.white,
     fontSize: 20.0,
     fontWeight: FontWeight.w400,
+    height: 1.0,
+    letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+  static const TextStyle blackBodyTile = TextStyle(
+    color: Color.fromRGBO(58, 58, 85, 1.0),
+    fontSize: 20.0,
+    fontWeight: FontWeight.w500,
     height: 1.0,
     letterSpacing: 1,
     fontFamily: 'TTNorms',
@@ -93,6 +102,14 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     height: 1.0,
     letterSpacing: 1,
+    fontFamily: 'TTNorms',
+  );
+  static const TextStyle blackTitleLight = TextStyle(
+    color: Color.fromRGBO(58, 58, 85, 1.0),
+    fontSize: 16.0,
+    fontWeight: FontWeight.w400,
+    height: 1.0,
+    letterSpacing: 0,
     fontFamily: 'TTNorms',
   );
 

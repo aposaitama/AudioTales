@@ -12,7 +12,6 @@ import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_
 import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc_event.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/widgets/custom_text_field.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_event.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_state.dart';
@@ -154,8 +153,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(height: 16),
                         GestureDetector(
                           onTap: () {
-                            context.read<UserBloc>().add(SendOTPUserBlocEvent(
-                                maskFormatter.getUnmaskedText()));
+                            context.read<UserBloc>().add(
+                                  SendOTPUserBlocEvent(
+                                    maskFormatter.getUnmaskedText(),
+                                  ),
+                                );
                             Navigator.pop(context);
                           },
                           child: const DialogButtonOtp(
@@ -173,7 +175,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             builder: (context, state) {
               bool isPhoneNumberMatching =
                   userPhoneController.text == state.userModel?.phoneNumber;
-              print(isPhoneNumberMatching);
+
               return Column(
                 children: [
                   Stack(
@@ -429,9 +431,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       return GestureDetector(
                                         onTap: () {
                                           context.read<AuthBloc>().add(
-                                              const LogoutRequestedAuthBlocEvent());
-                                          context.read<RegisterScreenBloc>().add(
-                                              const LogOutRegisterScreenBlocEvent());
+                                                const LogoutRequestedAuthBlocEvent(),
+                                              );
+                                          context
+                                              .read<RegisterScreenBloc>()
+                                              .add(
+                                                const LogOutRegisterScreenBlocEvent(),
+                                              );
                                           context.go('/bypass');
                                         },
                                         child: const Text(
@@ -441,9 +447,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       );
                                     },
                                   ),
-                                  const Text(
-                                    'Удалить аккаунт',
-                                    style: AppTextStyles.subtitleRed,
+                                  GestureDetector(
+                                    onTap: () {
+                                      context.read<AuthBloc>().add(
+                                            const DeleteUserAuthBlocEvent(),
+                                          );
+                                      context.go('/bypass');
+                                    },
+                                    child: const Text(
+                                      'Удалить аккаунт',
+                                      style: AppTextStyles.subtitleRed,
+                                    ),
                                   ),
                                 ],
                               ),

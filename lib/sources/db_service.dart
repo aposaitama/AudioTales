@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/deleted_records_model.dart';
@@ -223,7 +222,6 @@ class FirestoreService {
           var collectionDoc = collectionSnapshot.docs.first;
           List<dynamic> audiosList = collectionDoc['audiosList'] ?? [];
 
-          // Отримуємо поточну тривалість колекції
           Duration currentDuration = Duration.zero;
           String durationString = collectionDoc['duration'] ?? '0:00:00.000000';
           currentDuration = const DurationConverter().fromJson(durationString);
@@ -241,12 +239,10 @@ class FirestoreService {
               Map<String, dynamic> audioData =
                   audioDoc.data() as Map<String, dynamic>;
 
-              // Додаємо новий аудіофайл лише якщо його ще немає в списку
               if (!audiosList
                   .any((existingAudio) => existingAudio['id'] == audio.id)) {
                 audiosList.add(audioData);
 
-                // Оновлюємо тривалість колекції
                 currentDuration += audio.duration;
 
                 await _firestore
@@ -258,8 +254,7 @@ class FirestoreService {
                   {
                     'audiosList': audiosList,
                     'audioCount': FieldValue.increment(1),
-                    'duration':
-                        currentDuration.toString(), // Оновлюємо duration
+                    'duration': currentDuration.toString(),
                   },
                 );
               }
@@ -293,7 +288,7 @@ class FirestoreService {
 
         for (var audio in audiosList) {
           if (audio['id'] == audioId) {
-            audio['title'] = newTitle; // Оновлення назви аудіо
+            audio['title'] = newTitle;
             break;
           }
         }
@@ -502,6 +497,15 @@ class FirestoreService {
     }
   }
 
+  Future<void> deleteUserDocument() async {
+    try {
+      await _firestore.collection('users').doc(uid).delete();
+      print("Документ користувача успішно видалено!");
+    } catch (e) {
+      print("Помилка при видаленні документа користувача: $e");
+    }
+  }
+
   Future<void> deleteAudioFromCollection(
     String collectionTitle,
     String audioTitle,
@@ -597,41 +601,41 @@ class FirestoreService {
     }
   }
 
-  // Stream<List<AudioRecordsModel>> getUserAudiosStream2(
-  //   List<AudioRecordsModel> audioList,
-  // ) {
-  //   print("Current UID: $uid");
-  //   if (audioList.isEmpty) {
-  //     return _firestore
-  //         .collection('users')
-  //         .doc(uid)
-  //         .collection('audios')
-  //         .orderBy('creationTime', descending: true)
-  //         .limit(6)
-  //         .snapshots()
-  //         .map(
-  //           (snapshot) => snapshot.docs
-  //               .map((doc) => AudioRecordsModel.fromJson(doc.data()))
-  //               .toList(),
-  //         );
-  //   }
+  Stream<List<AudioRecordsModel>> getUserAudiosStream2(
+    List<AudioRecordsModel> audioList,
+  ) {
+    print("Current UID: $uid");
+    if (audioList.isEmpty) {
+      return _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .orderBy('creationTime', descending: true)
+          .limit(6)
+          .snapshots()
+          .map(
+            (snapshot) => snapshot.docs
+                .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+                .toList(),
+          );
+    }
 
-  //   var lastAudio = audioList.last;
+    var lastAudio = audioList.last;
 
-  //   return _firestore
-  //       .collection('users')
-  //       .doc(uid)
-  //       .collection('audios')
-  //       .orderBy('creationTime', descending: true)
-  //       .startAfter([lastAudio.creationTime])
-  //       .limit(6)
-  //       .snapshots()
-  //       .map(
-  //         (snapshot) => snapshot.docs
-  //             .map((doc) => AudioRecordsModel.fromJson(doc.data()))
-  //             .toList(),
-  //       );
-  // }
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('audios')
+        .orderBy('creationTime', descending: true)
+        .startAfter([lastAudio.creationTime])
+        .limit(6)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+              .toList(),
+        );
+  }
 
   Stream<List<AudioRecordsModel>> searchAudiosStream({
     required String searchedText,

@@ -23,6 +23,7 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) =>
@@ -34,6 +35,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) =>
@@ -45,6 +47,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -57,6 +60,8 @@ mixin _$MiniPlayerBlocEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) =>
@@ -68,6 +73,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) =>
@@ -79,6 +85,7 @@ mixin _$MiniPlayerBlocEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -191,6 +198,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -205,6 +213,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -219,6 +228,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -237,6 +247,8 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -251,6 +263,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -265,6 +278,7 @@ class _$OpenMiniPlayerEventImpl implements OpenMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -337,6 +351,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -351,6 +366,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -365,6 +381,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -383,6 +400,8 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -397,6 +416,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -411,6 +431,7 @@ class _$CloseMiniPlayerEventImpl implements CloseMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -473,6 +494,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -487,6 +509,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -501,6 +524,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -519,6 +543,8 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -533,6 +559,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -547,6 +574,7 @@ class _$PauseMiniPlayerEventImpl implements PauseMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -610,6 +638,7 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -624,6 +653,7 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -638,6 +668,7 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -656,6 +687,8 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -670,6 +703,7 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -684,6 +718,7 @@ class _$ResumeMiniPlayerEventImpl implements ResumeMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -777,6 +812,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -791,6 +827,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -805,6 +842,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -823,6 +861,8 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -837,6 +877,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -851,6 +892,7 @@ class _$UpdateLineMiniPlayerEventImpl implements UpdateLineMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -872,6 +914,192 @@ abstract class UpdateLineMiniPlayerEvent implements MiniPlayerBlocEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateLineMiniPlayerEventImplCopyWith<_$UpdateLineMiniPlayerEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateSliderLineMiniPlayerEventImplCopyWith<$Res> {
+  factory _$$UpdateSliderLineMiniPlayerEventImplCopyWith(
+          _$UpdateSliderLineMiniPlayerEventImpl value,
+          $Res Function(_$UpdateSliderLineMiniPlayerEventImpl) then) =
+      __$$UpdateSliderLineMiniPlayerEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int newSliderPosition});
+}
+
+/// @nodoc
+class __$$UpdateSliderLineMiniPlayerEventImplCopyWithImpl<$Res>
+    extends _$MiniPlayerBlocEventCopyWithImpl<$Res,
+        _$UpdateSliderLineMiniPlayerEventImpl>
+    implements _$$UpdateSliderLineMiniPlayerEventImplCopyWith<$Res> {
+  __$$UpdateSliderLineMiniPlayerEventImplCopyWithImpl(
+      _$UpdateSliderLineMiniPlayerEventImpl _value,
+      $Res Function(_$UpdateSliderLineMiniPlayerEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newSliderPosition = null,
+  }) {
+    return _then(_$UpdateSliderLineMiniPlayerEventImpl(
+      null == newSliderPosition
+          ? _value.newSliderPosition
+          : newSliderPosition // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateSliderLineMiniPlayerEventImpl
+    implements UpdateSliderLineMiniPlayerEvent {
+  const _$UpdateSliderLineMiniPlayerEventImpl(this.newSliderPosition);
+
+  @override
+  final int newSliderPosition;
+
+  @override
+  String toString() {
+    return 'MiniPlayerBlocEvent.updateSlider(newSliderPosition: $newSliderPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateSliderLineMiniPlayerEventImpl &&
+            (identical(other.newSliderPosition, newSliderPosition) ||
+                other.newSliderPosition == newSliderPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newSliderPosition);
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateSliderLineMiniPlayerEventImplCopyWith<
+          _$UpdateSliderLineMiniPlayerEventImpl>
+      get copyWith => __$$UpdateSliderLineMiniPlayerEventImplCopyWithImpl<
+          _$UpdateSliderLineMiniPlayerEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<AudioRecordsModel> audioRecordsList) open,
+    required TResult Function() close,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
+    required TResult Function() nextTrack,
+    required TResult Function(bool isPlayAll) playAll,
+  }) {
+    return updateSlider(newSliderPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult? Function()? close,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
+    TResult? Function()? nextTrack,
+    TResult? Function(bool isPlayAll)? playAll,
+  }) {
+    return updateSlider?.call(newSliderPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<AudioRecordsModel> audioRecordsList)? open,
+    TResult Function()? close,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
+    TResult Function()? nextTrack,
+    TResult Function(bool isPlayAll)? playAll,
+    required TResult orElse(),
+  }) {
+    if (updateSlider != null) {
+      return updateSlider(newSliderPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OpenMiniPlayerEvent value) open,
+    required TResult Function(CloseMiniPlayerEvent value) close,
+    required TResult Function(PauseMiniPlayerEvent value) pause,
+    required TResult Function(ResumeMiniPlayerEvent value) resume,
+    required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
+    required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
+    required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
+  }) {
+    return updateSlider(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OpenMiniPlayerEvent value)? open,
+    TResult? Function(CloseMiniPlayerEvent value)? close,
+    TResult? Function(PauseMiniPlayerEvent value)? pause,
+    TResult? Function(ResumeMiniPlayerEvent value)? resume,
+    TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
+    TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+  }) {
+    return updateSlider?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OpenMiniPlayerEvent value)? open,
+    TResult Function(CloseMiniPlayerEvent value)? close,
+    TResult Function(PauseMiniPlayerEvent value)? pause,
+    TResult Function(ResumeMiniPlayerEvent value)? resume,
+    TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
+    TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
+    TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
+    required TResult orElse(),
+  }) {
+    if (updateSlider != null) {
+      return updateSlider(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateSliderLineMiniPlayerEvent implements MiniPlayerBlocEvent {
+  const factory UpdateSliderLineMiniPlayerEvent(final int newSliderPosition) =
+      _$UpdateSliderLineMiniPlayerEventImpl;
+
+  int get newSliderPosition;
+
+  /// Create a copy of MiniPlayerBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateSliderLineMiniPlayerEventImplCopyWith<
+          _$UpdateSliderLineMiniPlayerEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -925,6 +1153,7 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -939,6 +1168,7 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -953,6 +1183,7 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -971,6 +1202,8 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -985,6 +1218,7 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -999,6 +1233,7 @@ class _$NextTrackMiniPlayerEventImpl implements NextTrackMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),
@@ -1092,6 +1327,7 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function(Duration position) updateLine,
+    required TResult Function(int newSliderPosition) updateSlider,
     required TResult Function() nextTrack,
     required TResult Function(bool isPlayAll) playAll,
   }) {
@@ -1106,6 +1342,7 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function(Duration position)? updateLine,
+    TResult? Function(int newSliderPosition)? updateSlider,
     TResult? Function()? nextTrack,
     TResult? Function(bool isPlayAll)? playAll,
   }) {
@@ -1120,6 +1357,7 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function(Duration position)? updateLine,
+    TResult Function(int newSliderPosition)? updateSlider,
     TResult Function()? nextTrack,
     TResult Function(bool isPlayAll)? playAll,
     required TResult orElse(),
@@ -1138,6 +1376,8 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     required TResult Function(PauseMiniPlayerEvent value) pause,
     required TResult Function(ResumeMiniPlayerEvent value) resume,
     required TResult Function(UpdateLineMiniPlayerEvent value) updateLine,
+    required TResult Function(UpdateSliderLineMiniPlayerEvent value)
+        updateSlider,
     required TResult Function(NextTrackMiniPlayerEvent value) nextTrack,
     required TResult Function(PlayAllTrackMiniPlayerEvent value) playAll,
   }) {
@@ -1152,6 +1392,7 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     TResult? Function(PauseMiniPlayerEvent value)? pause,
     TResult? Function(ResumeMiniPlayerEvent value)? resume,
     TResult? Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult? Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult? Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult? Function(PlayAllTrackMiniPlayerEvent value)? playAll,
   }) {
@@ -1166,6 +1407,7 @@ class _$PlayAllTrackMiniPlayerEventImpl implements PlayAllTrackMiniPlayerEvent {
     TResult Function(PauseMiniPlayerEvent value)? pause,
     TResult Function(ResumeMiniPlayerEvent value)? resume,
     TResult Function(UpdateLineMiniPlayerEvent value)? updateLine,
+    TResult Function(UpdateSliderLineMiniPlayerEvent value)? updateSlider,
     TResult Function(NextTrackMiniPlayerEvent value)? nextTrack,
     TResult Function(PlayAllTrackMiniPlayerEvent value)? playAll,
     required TResult orElse(),

@@ -9,7 +9,6 @@ import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 
 class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   final StorageService _firebaseStorageService = locator<StorageService>();

@@ -122,6 +122,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       context.pop();
+                      context.go('/subscription');
                     },
                   ),
                   DrawerElementsRow(

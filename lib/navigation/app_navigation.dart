@@ -17,13 +17,14 @@ import 'package:memory_box_avada/screens/recently_deleted_screen/recently_delete
 import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
 import 'package:memory_box_avada/screens/root_screen/root_screen.dart';
 import 'package:memory_box_avada/screens/search_screen/search_screen.dart';
+import 'package:memory_box_avada/screens/subscription_screen/subscription_screen.dart';
 import 'package:memory_box_avada/screens/welcome_screen/welcome_screen_new_user.dart';
 
 class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/profile',
+      initialLocation: '/bypass',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
@@ -97,6 +98,15 @@ class AppRouter {
                   path: '/search',
                   builder: (context, state) =>
                       SearchScreen(scaffoldKey: scaffoldKey),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/subscription',
+                  builder: (context, state) =>
+                      SubscriptionScreen(scaffoldKey: scaffoldKey),
                 ),
               ],
             ),

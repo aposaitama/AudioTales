@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
+import 'package:memory_box_avada/screens/root_screen/widgets/custom_slider.dart';
 import 'package:memory_box_avada/screens/root_screen/widgets/line_painter.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
@@ -106,22 +107,23 @@ class _MiniPlayerState extends State<MiniPlayer> {
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              CustomPaint(
-                                size: Size(
-                                  MediaQuery.of(context).size.width - 160,
-                                  6,
-                                ),
-                                painter: LinePainter(
-                                  parseDuration(
-                                    state
-                                        .audioRecordsList[
-                                            state.currentPlayingIndex]
-                                        .duration
-                                        .toString(),
-                                  ),
-                                  state.position,
-                                ),
-                              ),
+                              // CustomPaint(
+                              //   size: Size(
+                              //     MediaQuery.of(context).size.width - 160,
+                              //     6,
+                              //   ),
+                              //   painter: LinePainter(
+                              //     parseDuration(
+                              //       state
+                              //           .audioRecordsList[
+                              //               state.currentPlayingIndex]
+                              //           .duration
+                              //           .toString(),
+                              //     ),
+                              //     state.position,
+                              //   ),
+                              // ),
+                              CustomSlider(),
                               const SizedBox(
                                 height: 3.0,
                               ),

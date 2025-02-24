@@ -13,7 +13,7 @@ class AudioRecordsScreenBloc
     extends Bloc<AudioRecordsScreenStateEvent, AudioRecordsScreenState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
-  int _page = 1;
+
   final AuthService _authService = locator<AuthService>();
   StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
   StreamSubscription<bool>? _authSubscription;
@@ -24,7 +24,7 @@ class AudioRecordsScreenBloc
     on<DeleteAudioFromCollectionRecordsScreenStateEvent>(
       _deleteAudioFromCollection,
     );
-    // on<LoadNextPageAudioRecordsScreenStateEvent>(_loadNextPage);
+    on<LoadNextPageAudioRecordsScreenStateEvent>(_loadNextPage);
     on<EditAudioRecordsScreenStateEvent>(_editAudio);
     on<ChangePopupAudioRecordsScreenStateEvent>(_changePopup);
     on<CancelEditingAudioRecordsScreenStateEvent>(_cancelEditing);
@@ -42,7 +42,6 @@ class AudioRecordsScreenBloc
     _authSubscription?.cancel();
 
     _authSubscription = _authService.authStatusChanges.listen((isAuthorized) {
-      print('Auth status changed: $isAuthorized');
       if (isAuthorized) {
         _subscribeToAudioStream();
       } else {
@@ -51,13 +50,38 @@ class AudioRecordsScreenBloc
     });
   }
 
+  // void _subscribeToAudioStream() {
+  //   _audioSubscription =
+  //       _firebaseFirestoreService.getUserAudiosStream3().listen(
+  //     (audioList) {
+  //       add(LoadedAudioRecordsScreenStateEvent(audioList));
+  //     },
+  //   );
+  // }
+
   void _subscribeToAudioStream() {
     _audioSubscription =
-        _firebaseFirestoreService.getUserAudiosStream3().listen(
+        _firebaseFirestoreService.getUserAudiosStream2(state.audioList).listen(
       (audioList) {
         add(LoadedAudioRecordsScreenStateEvent(audioList));
       },
     );
+  }
+
+  Future<void> _loadNextPage(
+    LoadNextPageAudioRecordsScreenStateEvent event,
+    Emitter<AudioRecordsScreenState> emit,
+  ) async {
+    final currentAudioList = state.audioList;
+
+    final audioStream =
+        _firebaseFirestoreService.getUserAudiosStream2(currentAudioList);
+
+    audioStream.listen((newAudioList) {
+      final updatedList = List<AudioRecordsModel>.from(currentAudioList)
+        ..addAll(newAudioList);
+      add(LoadedAudioRecordsScreenStateEvent(updatedList));
+    });
   }
 
   Future<void> _chooseAudio(
