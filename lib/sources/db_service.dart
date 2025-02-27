@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
@@ -476,6 +477,7 @@ class FirestoreService {
         }
       }
     } catch (e) {
+      BotToast.showText(text: "Error updating user data: $e");
       print('Помилка під час видалення аудіо: $e');
     }
   }
@@ -493,6 +495,7 @@ class FirestoreService {
         await doc.reference.delete();
       }
     } catch (e) {
+      BotToast.showText(text: "Error updating user data: $e");
       print('Ошибка при удалении: $e');
     }
   }
@@ -500,8 +503,8 @@ class FirestoreService {
   Future<void> deleteUserDocument() async {
     try {
       await _firestore.collection('users').doc(uid).delete();
-      print("Документ користувача успішно видалено!");
     } catch (e) {
+      BotToast.showText(text: "Error updating user data: $e");
       print("Помилка при видаленні документа користувача: $e");
     }
   }
@@ -548,17 +551,13 @@ class FirestoreService {
               'audioCount': FieldValue.increment(-1),
               'duration': newDuration.toString(),
             });
-
-            print('Аудіозапис успішно видалено з колекції!');
-          } else {
-            print('Аудіозапис не знайдено в колекції.');
-          }
+          } else {}
         }
       } else {
-        print('Колекція не знайдена!');
+        BotToast.showText(text: "Колекція не знайдена!");
       }
     } catch (e) {
-      print('Помилка при видаленні аудіозапису: $e');
+      BotToast.showText(text: "Помилка при видаленні аудіозапису: $e");
     }
   }
 
@@ -595,16 +594,42 @@ class FirestoreService {
   Future<void> updateUserData(UserModel user) async {
     try {
       await _firestore.collection('users').doc(uid).update(user.toJson());
-      print("User data updated successfully!");
     } catch (e) {
-      print("Error updating user data: $e");
+      BotToast.showText(text: "Error updating user data: $e");
+    }
+  }
+
+  Future<void> updateUserSubscription(Subscription subscription) async {
+    try {
+      await _firestore
+          .collection('users')
+          .doc(uid)
+          .update({'subscription': subscription.toString().split('.').last});
+    } catch (e) {
+      BotToast.showText(text: "Error updating user data: $e");
+    }
+  }
+
+  Future<bool> isAudioTitleExists(String title) async {
+    try {
+      QuerySnapshot audioSnapshot = await _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .where('title', isEqualTo: title)
+          .get();
+
+      return audioSnapshot.docs.isNotEmpty;
+    } catch (e) {
+      BotToast.showText(text: 'Error checking audio title existence: $e');
+
+      return false;
     }
   }
 
   Stream<List<AudioRecordsModel>> getUserAudiosStream2(
     List<AudioRecordsModel> audioList,
   ) {
-    print("Current UID: $uid");
     if (audioList.isEmpty) {
       return _firestore
           .collection('users')
@@ -638,11 +663,34 @@ class FirestoreService {
   }
 
   Stream<List<AudioRecordsModel>> searchAudiosStream({
+    required List<AudioRecordsModel> audioList,
     required String searchedText,
   }) {
     if (searchedText.isEmpty) {
       return Stream.value([]);
     }
+
+    if (audioList.isEmpty) {
+      return _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .where('title', isGreaterThanOrEqualTo: searchedText)
+          .where(
+            'title',
+            isLessThan: '$searchedText\uf8ff',
+          )
+          .orderBy('title')
+          .limit(10)
+          .snapshots()
+          .map(
+            (snapshot) => snapshot.docs
+                .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+                .toList(),
+          );
+    }
+
+    var lastAudio = audioList.last;
 
     return _firestore
         .collection('users')
@@ -654,12 +702,31 @@ class FirestoreService {
           isLessThan: '$searchedText\uf8ff',
         )
         .orderBy('title')
+        .startAfter([lastAudio.title])
+        .limit(10)
         .snapshots()
         .map(
           (snapshot) => snapshot.docs
               .map((doc) => AudioRecordsModel.fromJson(doc.data()))
               .toList(),
         );
+  }
+
+  Future<int> getAudioCount({required String searchedText}) async {
+    if (searchedText.isEmpty) {
+      return 0;
+    }
+
+    final query = await _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('audios')
+        .where('title', isGreaterThanOrEqualTo: searchedText)
+        .where('title', isLessThan: '$searchedText\uf8ff')
+        .count()
+        .get();
+
+    return query.count!;
   }
 
   Stream<List<AudioRecordsModel>> getUserAudiosStream3() {

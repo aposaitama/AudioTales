@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/auth_screen/widgets/custom_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 
@@ -21,6 +23,7 @@ class _WelcomeScreenExistingUserState extends State<WelcomeScreenExistingUser> {
     super.initState();
     _timer = Timer(const Duration(seconds: 2), () {
       if (!mounted) return;
+      context.read<NavigationCubit>().navigateTo(0);
       context.go('/home');
     });
     // Timer(

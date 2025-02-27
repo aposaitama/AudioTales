@@ -20,6 +20,8 @@ mixin _$ListenRecordState {
   Duration get position => throw _privateConstructorUsedError;
   ListenStatus get status => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  DownloadListenStatus get downloadStatus => throw _privateConstructorUsedError;
+  bool get isAudioTitleExist => throw _privateConstructorUsedError;
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +40,9 @@ abstract class $ListenRecordStateCopyWith<$Res> {
       {Duration duration,
       Duration position,
       ListenStatus status,
-      String title});
+      String title,
+      DownloadListenStatus downloadStatus,
+      bool isAudioTitleExist});
 }
 
 /// @nodoc
@@ -60,6 +64,8 @@ class _$ListenRecordStateCopyWithImpl<$Res, $Val extends ListenRecordState>
     Object? position = null,
     Object? status = null,
     Object? title = null,
+    Object? downloadStatus = null,
+    Object? isAudioTitleExist = null,
   }) {
     return _then(_value.copyWith(
       duration: null == duration
@@ -78,6 +84,14 @@ class _$ListenRecordStateCopyWithImpl<$Res, $Val extends ListenRecordState>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      downloadStatus: null == downloadStatus
+          ? _value.downloadStatus
+          : downloadStatus // ignore: cast_nullable_to_non_nullable
+              as DownloadListenStatus,
+      isAudioTitleExist: null == isAudioTitleExist
+          ? _value.isAudioTitleExist
+          : isAudioTitleExist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -94,7 +108,9 @@ abstract class _$$ListenRecordStateImplCopyWith<$Res>
       {Duration duration,
       Duration position,
       ListenStatus status,
-      String title});
+      String title,
+      DownloadListenStatus downloadStatus,
+      bool isAudioTitleExist});
 }
 
 /// @nodoc
@@ -114,6 +130,8 @@ class __$$ListenRecordStateImplCopyWithImpl<$Res>
     Object? position = null,
     Object? status = null,
     Object? title = null,
+    Object? downloadStatus = null,
+    Object? isAudioTitleExist = null,
   }) {
     return _then(_$ListenRecordStateImpl(
       duration: null == duration
@@ -132,6 +150,14 @@ class __$$ListenRecordStateImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      downloadStatus: null == downloadStatus
+          ? _value.downloadStatus
+          : downloadStatus // ignore: cast_nullable_to_non_nullable
+              as DownloadListenStatus,
+      isAudioTitleExist: null == isAudioTitleExist
+          ? _value.isAudioTitleExist
+          : isAudioTitleExist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -143,7 +169,9 @@ class _$ListenRecordStateImpl implements _ListenRecordState {
       {this.duration = Duration.zero,
       this.position = Duration.zero,
       this.status = ListenStatus.initial,
-      this.title = 'Аудиозапись'});
+      this.title = 'Аудиозапись',
+      this.downloadStatus = DownloadListenStatus.initial,
+      this.isAudioTitleExist = false});
 
   @override
   @JsonKey()
@@ -157,10 +185,16 @@ class _$ListenRecordStateImpl implements _ListenRecordState {
   @override
   @JsonKey()
   final String title;
+  @override
+  @JsonKey()
+  final DownloadListenStatus downloadStatus;
+  @override
+  @JsonKey()
+  final bool isAudioTitleExist;
 
   @override
   String toString() {
-    return 'ListenRecordState(duration: $duration, position: $position, status: $status, title: $title)';
+    return 'ListenRecordState(duration: $duration, position: $position, status: $status, title: $title, downloadStatus: $downloadStatus, isAudioTitleExist: $isAudioTitleExist)';
   }
 
   @override
@@ -173,12 +207,16 @@ class _$ListenRecordStateImpl implements _ListenRecordState {
             (identical(other.position, position) ||
                 other.position == position) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.downloadStatus, downloadStatus) ||
+                other.downloadStatus == downloadStatus) &&
+            (identical(other.isAudioTitleExist, isAudioTitleExist) ||
+                other.isAudioTitleExist == isAudioTitleExist));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, duration, position, status, title);
+  int get hashCode => Object.hash(runtimeType, duration, position, status,
+      title, downloadStatus, isAudioTitleExist);
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.
@@ -195,7 +233,9 @@ abstract class _ListenRecordState implements ListenRecordState {
       {final Duration duration,
       final Duration position,
       final ListenStatus status,
-      final String title}) = _$ListenRecordStateImpl;
+      final String title,
+      final DownloadListenStatus downloadStatus,
+      final bool isAudioTitleExist}) = _$ListenRecordStateImpl;
 
   @override
   Duration get duration;
@@ -205,6 +245,10 @@ abstract class _ListenRecordState implements ListenRecordState {
   ListenStatus get status;
   @override
   String get title;
+  @override
+  DownloadListenStatus get downloadStatus;
+  @override
+  bool get isAudioTitleExist;
 
   /// Create a copy of ListenRecordState
   /// with the given fields replaced by the non-null parameter values.

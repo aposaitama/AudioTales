@@ -8,4 +8,5 @@ class SubscriptionBlocEvent with _$SubscriptionBlocEvent {
   const factory SubscriptionBlocEvent.subscriptionSelected(
     Subscription subscriptionType,
   ) = SubscriptionSelected;
+  const factory SubscriptionBlocEvent.updateSubscription() = SubscriptionUpdate;
 }

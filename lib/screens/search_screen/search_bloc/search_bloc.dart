@@ -13,13 +13,24 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
       locator<FirestoreService>();
   final AuthService _authService = locator<AuthService>();
   StreamSubscription<List<AudioRecordsModel>>? _audioSubscription;
+
   StreamSubscription<bool>? _authSubscription;
 
   SearchBloc() : super(const SearchBlocState()) {
     on<SearchAudioRecordsEvent>(_search);
     on<LoadedSearchBlocEvent>(_onLoadedSearchBlocEvent);
+    on<LoadNextSearchEvent>(_loadNextPage);
+    on<ClearSearchBlocEvent>(_clearLList);
     // _subscribeToAudioStream();
     _subscribeToAuthChanges();
+  }
+
+  void _clearLList(
+    ClearSearchBlocEvent event,
+    Emitter<SearchBlocState> emit,
+  ) async {
+    emit(state.copyWith(
+        audiosList: [], filteredAudiosCount: 0, filteredAudiosList: []));
   }
 
   // void _subscribeToAudioStream() {
@@ -38,6 +49,9 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
         // _subscribeToAudioStream();
       } else {
         _audioSubscription?.cancel();
+
+        add(LoadedSearchBlocEvent([]));
+        add(SearchAudioRecordsEvent(''));
       }
     });
   }
@@ -55,13 +69,26 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   //   emit(state.copyWith(filteredAudiosList: filtered));
   // }
 
+  Future<void> _loadNextPage(
+    LoadNextSearchEvent event,
+    Emitter<SearchBlocState> emit,
+  ) async {
+    final currentAudioList = state.audiosList;
+    final searchStream = _firebaseFirestoreService.searchAudiosStream(
+        audioList: currentAudioList, searchedText: event.query);
+    searchStream.listen((newAudioList) {
+      final updatedList = List<AudioRecordsModel>.from(currentAudioList)
+        ..addAll(newAudioList);
+      add(LoadedSearchBlocEvent(updatedList));
+    });
+  }
+
   Future<void> _search(
     SearchAudioRecordsEvent event,
     Emitter<SearchBlocState> emit,
   ) async {
     final query = event.query.trim();
-    print(query);
-
+    add(const ClearSearchBlocEvent());
     await _audioSubscription?.cancel();
 
     if (query.isEmpty) {
@@ -72,8 +99,12 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
       );
     }
 
+    int audiosCount =
+        await _firebaseFirestoreService.getAudioCount(searchedText: query);
+    emit(state.copyWith(filteredAudiosCount: audiosCount));
+    print(audiosCount);
     _audioSubscription = _firebaseFirestoreService
-        .searchAudiosStream(searchedText: query)
+        .searchAudiosStream(searchedText: query, audioList: state.audiosList)
         .listen((audioList) {
       add(LoadedSearchBlocEvent(audioList));
     });

@@ -15,6 +15,7 @@ class MiniPlayerBlocState with _$MiniPlayerBlocState {
     @Default([]) List<AudioRecordsModel> audioRecordsList,
     @Default(MiniPlayerStatus.closed) MiniPlayerStatus status,
     @Default(Duration.zero) Duration position,
+    @Default(Duration.zero) Duration duration,
     @Default(0) int currentPlayingIndex,
     @Default(false) bool isPlayingAll,
   }) = _MiniPlayerBlocState;

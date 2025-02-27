@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:memory_box_avada/models/user_model.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc.dart';
+import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc_event.dart';
 import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc_state.dart';
 import 'package:memory_box_avada/screens/subscription_screen/widget/subscription_benefits.dart';
 import 'package:memory_box_avada/screens/subscription_screen/widget/subscription_plan_card.dart';
@@ -124,7 +125,11 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                             text: state.subscriptionType == Subscription.monthly
                                 ? 'Подписаться на месяц'
                                 : 'Подписаться на год',
-                            onTap: () {},
+                            onTap: () {
+                              context.read<SubscriptionBloc>().add(
+                                    const SubscriptionUpdate(),
+                                  );
+                            },
                           );
                         },
                       ),

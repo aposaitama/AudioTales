@@ -3,31 +3,28 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class ShowDeleteDialog {
+class AccessDeniedDialog {
   static Future<void> show(
-    String text,
-    BuildContext context, {
-    VoidCallback? onYes,
-    VoidCallback? onNo,
-  }) {
+    BuildContext context,
+  ) {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        content: Padding(
-          padding: const EdgeInsets.only(top: 50.0),
+        content: const Padding(
+          padding: EdgeInsets.only(top: 50.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Підтверджуєте видалення?',
+              Text(
+                'Доступ заборонено',
                 style: AppTextStyles.titleRed,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
-              const SizedBox(height: 24.0),
+              SizedBox(height: 24.0),
               Text(
                 textAlign: TextAlign.center,
-                text,
+                'Будь ласка, зареєструйтеся, щоб отримати доступ до цієї сторінки.',
                 style: AppTextStyles.subtitleTall,
               ),
             ],
@@ -40,21 +37,10 @@ class ShowDeleteDialog {
               GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
-                  onYes?.call();
                 },
                 child: const Dialogbutton(
-                  text: 'Так',
+                  text: 'Назад',
                   backgroundColor: AppColors.purpleColor,
-                ),
-              ),
-              const SizedBox(width: 10.0),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                  onNo?.call();
-                },
-                child: const Dialogbutton(
-                  text: 'Ні',
                 ),
               ),
             ],

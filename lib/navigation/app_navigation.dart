@@ -7,6 +7,7 @@ import 'package:memory_box_avada/screens/auth_screen/register_screen/register_sc
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bypass_screen.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/add_collection.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/choose_audio_records.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/choose_several_screen/choose_severa_audio_screen.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/choose_several_screen/choose_several_screen.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/info_collection_screen.dart';
 import 'package:memory_box_avada/screens/collection_screen/collection_screen.dart';
@@ -54,7 +55,9 @@ class AppRouter {
                       routes: [
                         GoRoute(
                           path: '/choose',
-                          builder: (context, state) => ChooseAudioRecords(),
+                          builder: (context, state) {
+                            return ChooseAudioRecords();
+                          },
                         ),
                       ],
                     ),
@@ -65,9 +68,16 @@ class AppRouter {
                       },
                       routes: [
                         GoRoute(
-                          path: '/choose',
-                          builder: (context, state) =>
-                              const ChooseSeveralScreen(),
+                          path: '/chooseHome',
+                          builder: (context, state) {
+                            return ChooseSeveralHomeScreen();
+                          },
+                        ),
+                        GoRoute(
+                          path: '/chooseAudio',
+                          builder: (context, state) {
+                            return ChooseSeveraAudioScreen();
+                          },
                         ),
                       ],
                     ),

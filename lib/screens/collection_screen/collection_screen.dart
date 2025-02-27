@@ -9,13 +9,16 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class CollectionScreen extends StatelessWidget {
   const CollectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     const double tileHeight = 240.0;
+    final double tileWidth = width / 2 - 24.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -76,37 +79,38 @@ class CollectionScreen extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               if (state.collectionList.isEmpty) {
-                return const Center(child: Text('Нет подборок'));
+                return const Center(
+                  child: Text(
+                    'Нет подборок.',
+                    style: AppTextStyles.body,
+                  ),
+                );
               }
               return Padding(
                 padding: const EdgeInsets.only(top: 40.0),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    final double tileWidth = constraints.maxWidth / 2 - 24.0;
-                    return GridView.builder(
-                      padding: const EdgeInsets.all(16.0),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 16.0,
-                        crossAxisSpacing: 16.0,
-                        childAspectRatio: tileWidth / tileHeight,
-                      ),
-                      itemCount: state.collectionList.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            context.go('/collection/info');
-                            context.read<InfoCollectionBloc>().add(
-                                  LoadingInfoCollectionBlocEvent(
-                                    state.collectionList[index].id,
-                                  ),
-                                );
-                          },
-                          child: CollectionItemTile(
-                            collection: state.collectionList[index],
-                          ),
-                        );
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(16.0),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16.0,
+                    crossAxisSpacing: 16.0,
+                    childAspectRatio: tileWidth / tileHeight,
+                  ),
+                  itemCount: state.collectionList.length,
+                  itemBuilder: (context, index) {
+                    state.collectionList.length;
+                    return GestureDetector(
+                      onTap: () {
+                        context.go('/collection/info');
+                        context.read<InfoCollectionBloc>().add(
+                              LoadingInfoCollectionBlocEvent(
+                                state.collectionList[index].id,
+                              ),
+                            );
                       },
+                      child: CollectionItemTile(
+                        collection: state.collectionList[index],
+                      ),
                     );
                   },
                 ),

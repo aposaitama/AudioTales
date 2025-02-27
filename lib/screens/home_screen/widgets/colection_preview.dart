@@ -1,12 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
+import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/widgets/access_denied_dialog.dart';
 
 class CollectionPreview extends StatelessWidget {
   final List<SimpleCollectionModel> collectionList;
@@ -14,6 +18,8 @@ class CollectionPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAnonymous = locator<FirebaseAuth>().currentUser?.isAnonymous;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -33,8 +39,19 @@ class CollectionPreview extends StatelessWidget {
             ],
           ),
           child: collectionList.isNotEmpty
-              ? CollectionItemTile(
-                  collection: collectionList[0],
+              ? GestureDetector(
+                  onTap: () {
+                    context.read<NavigationCubit>().navigateTo(1);
+                    context.go('/collection/info');
+                    context.read<InfoCollectionBloc>().add(
+                          LoadingInfoCollectionBlocEvent(
+                            collectionList[0].id,
+                          ),
+                        );
+                  },
+                  child: CollectionItemTile(
+                    collection: collectionList[0],
+                  ),
                 )
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -53,8 +70,12 @@ class CollectionPreview extends StatelessWidget {
                       builder: (context, state) {
                         return GestureDetector(
                           onTap: () {
-                            context.read<NavigationCubit>().navigateTo(1);
-                            context.go('/collection/add');
+                            if (isAnonymous!) {
+                              AccessDeniedDialog.show(context);
+                            } else {
+                              context.read<NavigationCubit>().navigateTo(1);
+                              context.go('/collection/add');
+                            }
                           },
                           child: const Text(
                             'Добавить',
@@ -84,8 +105,19 @@ class CollectionPreview extends StatelessWidget {
                 ],
               ),
               child: collectionList.length > 1
-                  ? CollectionItemTile(
-                      collection: collectionList[1],
+                  ? GestureDetector(
+                      onTap: () {
+                        context.read<NavigationCubit>().navigateTo(1);
+                        context.go('/collection/info');
+                        context.read<InfoCollectionBloc>().add(
+                              LoadingInfoCollectionBlocEvent(
+                                collectionList[1].id,
+                              ),
+                            );
+                      },
+                      child: CollectionItemTile(
+                        collection: collectionList[1],
+                      ),
                     )
                   : const Center(
                       child: Text(
@@ -113,8 +145,19 @@ class CollectionPreview extends StatelessWidget {
                 ],
               ),
               child: collectionList.length > 2
-                  ? CollectionItemTile(
-                      collection: collectionList[2],
+                  ? GestureDetector(
+                      onTap: () {
+                        context.go('/collection/info');
+                        context.read<NavigationCubit>().navigateTo(1);
+                        context.read<InfoCollectionBloc>().add(
+                              LoadingInfoCollectionBlocEvent(
+                                collectionList[2].id,
+                              ),
+                            );
+                      },
+                      child: CollectionItemTile(
+                        collection: collectionList[2],
+                      ),
                     )
                   : const Center(
                       child: Text(

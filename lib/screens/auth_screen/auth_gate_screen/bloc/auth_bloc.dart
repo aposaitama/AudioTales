@@ -61,6 +61,9 @@ class AuthBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
     LogoutRequestedAuthBlocEvent event,
     Emitter<AuthBlocState> emit,
   ) async {
+    if (_auth.currentUser!.isAnonymous) {
+      await _auth.currentUser!.delete();
+    }
     await _auth.signOut();
     emit(
       state.copyWith(

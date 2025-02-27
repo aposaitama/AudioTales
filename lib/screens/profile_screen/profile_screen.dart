@@ -1,11 +1,12 @@
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc.dart';
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_event.dart';
 import 'package:memory_box_avada/screens/auth_screen/auth_gate_screen/bloc/auth_bloc_state.dart';
@@ -15,9 +16,9 @@ import 'package:memory_box_avada/screens/auth_screen/register_screen/widgets/cus
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_event.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_state.dart';
-
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/dialog_button_otp.dart';
+import 'package:memory_box_avada/screens/profile_screen/widgets/show_delete_profile.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
@@ -38,6 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     filter: {"_": RegExp(r'[0-9]')},
     type: MaskAutoCompletionType.lazy,
   );
+  final isAnonymous = locator<FirebaseAuth>().currentUser?.isAnonymous;
 
   @override
   void initState() {
@@ -282,131 +284,100 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(
                     height: 24.0,
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                height: 62.0,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      offset: const Offset(0, 5),
-                                      blurRadius: 10,
-                                      spreadRadius: 1,
+                  if (!isAnonymous!)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  height: 62.0,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.1),
+                                        offset: const Offset(0, 5),
+                                        blurRadius: 10,
+                                        spreadRadius: 1,
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.circular(41),
+                                    color: const Color.fromARGB(
+                                      212,
+                                      255,
+                                      255,
+                                      255,
                                     ),
-                                  ],
-                                  borderRadius: BorderRadius.circular(41),
-                                  color:
-                                      const Color.fromARGB(212, 255, 255, 255),
-                                ),
-                                child: Center(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      if (state.editingMode) {}
-                                    },
-                                    child: !state.editingMode
-                                        ? Text(
-                                            '${state.userModel?.phoneNumber ?? 0}',
-                                            style: const TextStyle(
-                                              color: AppColors.fontColor,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
-                                              height: 1.0,
-                                              letterSpacing: 1,
-                                              fontFamily: 'TTNorms',
-                                            ),
-                                          )
-                                        : TextField(
-                                            maxLength: 13,
-                                            textAlign: TextAlign.center,
-                                            controller: newUserPhoneController
-                                                    .text.isEmpty
-                                                ? userPhoneController
-                                                : newUserPhoneController,
-                                            style: const TextStyle(
-                                              color: AppColors.fontColor,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w500,
-                                              height: 1.0,
-                                              letterSpacing: 1,
-                                              fontFamily: 'TTNorms',
-                                            ),
-                                            onChanged: (value) {
-                                              setState(() {
-                                                value =
-                                                    userPhoneController.text;
-                                              });
-                                            },
-                                            decoration: const InputDecoration(
-                                              counterText: '',
-                                              isDense: true,
-                                              contentPadding:
-                                                  EdgeInsets.symmetric(
-                                                horizontal: 0.0,
+                                  ),
+                                  child: Center(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (state.editingMode) {}
+                                      },
+                                      child: !state.editingMode
+                                          ? Text(
+                                              '${state.userModel?.phoneNumber ?? 0}',
+                                              style: const TextStyle(
+                                                color: AppColors.fontColor,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w500,
+                                                height: 1.0,
+                                                letterSpacing: 1,
+                                                fontFamily: 'TTNorms',
                                               ),
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
+                                            )
+                                          : TextField(
+                                              maxLength: 13,
+                                              textAlign: TextAlign.center,
+                                              controller: newUserPhoneController
+                                                      .text.isEmpty
+                                                  ? userPhoneController
+                                                  : newUserPhoneController,
+                                              style: const TextStyle(
+                                                color: AppColors.fontColor,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w500,
+                                                height: 1.0,
+                                                letterSpacing: 1,
+                                                fontFamily: 'TTNorms',
+                                              ),
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  value =
+                                                      userPhoneController.text;
+                                                });
+                                              },
+                                              decoration: const InputDecoration(
+                                                counterText: '',
+                                                isDense: true,
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                  horizontal: 0.0,
+                                                ),
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                ),
                                               ),
                                             ),
-                                          ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20.0,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  context.read<UserBloc>().add(
-                                        const UserEditMode(),
-                                      );
-                                },
-                                child: !state.editingMode
-                                    ? const Text(
-                                        'Редактировать',
-                                        style: TextStyle(
-                                          color: AppColors.fontColor,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w500,
-                                          height: 1.0,
-                                          letterSpacing: 1,
-                                          fontFamily: 'TTNorms',
-                                        ),
-                                      )
-                                    : GestureDetector(
-                                        onTap: () {
-                                          if (isPhoneNumberMatching) {
-                                            context.read<UserBloc>().add(
-                                                  SaveInfoEventUserBoc(
-                                                    userNameController.text,
-                                                    userPhoneController.text,
-                                                  ),
-                                                );
-                                            context.read<UserBloc>().add(
-                                                  const UserEditMode(),
-                                                );
-                                          } else if (!isPhoneNumberMatching) {
-                                            context.read<UserBloc>().add(
-                                                  SendCodeUserBlocEvent(
-                                                    userPhoneController.text,
-                                                  ),
-                                                );
-                                            if (state.codeStatus ==
-                                                UserCodeSentStatus
-                                                    .successfull) {}
-                                          }
-                                        },
-                                        child: Text(
-                                          isPhoneNumberMatching
-                                              ? 'Сохранить'
-                                              : 'Отправить смс',
-                                          style: const TextStyle(
+                                const SizedBox(
+                                  height: 20.0,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    context.read<UserBloc>().add(
+                                          const UserEditMode(),
+                                        );
+                                  },
+                                  child: !state.editingMode
+                                      ? const Text(
+                                          'Редактировать',
+                                          style: TextStyle(
                                             color: AppColors.fontColor,
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.w500,
@@ -414,58 +385,130 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             letterSpacing: 1,
                                             fontFamily: 'TTNorms',
                                           ),
+                                        )
+                                      : GestureDetector(
+                                          onTap: () {
+                                            if (isPhoneNumberMatching) {
+                                              context.read<UserBloc>().add(
+                                                    SaveInfoEventUserBoc(
+                                                      userNameController.text,
+                                                      userPhoneController.text,
+                                                    ),
+                                                  );
+                                              context.read<UserBloc>().add(
+                                                    const UserEditMode(),
+                                                  );
+                                            } else if (!isPhoneNumberMatching) {
+                                              context.read<UserBloc>().add(
+                                                    SendCodeUserBlocEvent(
+                                                      userPhoneController.text,
+                                                    ),
+                                                  );
+                                              if (state.codeStatus ==
+                                                  UserCodeSentStatus
+                                                      .successfull) {}
+                                            }
+                                          },
+                                          child: Text(
+                                            isPhoneNumberMatching
+                                                ? 'Сохранить'
+                                                : 'Отправить смс',
+                                            style: const TextStyle(
+                                              color: AppColors.fontColor,
+                                              fontSize: 14.0,
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.0,
+                                              letterSpacing: 1,
+                                              fontFamily: 'TTNorms',
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                              ),
-                            ],
-                          ),
-                          if (!state.editingMode)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 32.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  BlocBuilder<AuthBloc, AuthBlocState>(
-                                    builder: (context, state) {
-                                      return GestureDetector(
-                                        onTap: () {
-                                          context.read<AuthBloc>().add(
-                                                const LogoutRequestedAuthBlocEvent(),
-                                              );
-                                          context
-                                              .read<RegisterScreenBloc>()
-                                              .add(
-                                                const LogOutRegisterScreenBlocEvent(),
-                                              );
-                                          context.go('/bypass');
-                                        },
-                                        child: const Text(
-                                          'Выйти из приложения',
-                                          style: AppTextStyles.subtitle,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      context.read<AuthBloc>().add(
-                                            const DeleteUserAuthBlocEvent(),
-                                          );
-                                      context.go('/bypass');
-                                    },
-                                    child: const Text(
-                                      'Удалить аккаунт',
-                                      style: AppTextStyles.subtitleRed,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                        ],
+                            if (!state.editingMode)
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 32.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    BlocBuilder<AuthBloc, AuthBlocState>(
+                                      builder: (context, state) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            context.read<AuthBloc>().add(
+                                                  const LogoutRequestedAuthBlocEvent(),
+                                                );
+                                            context
+                                                .read<RegisterScreenBloc>()
+                                                .add(
+                                                  const LogOutRegisterScreenBlocEvent(),
+                                                );
+                                            context.go('/bypass');
+                                          },
+                                          child: const Text(
+                                            'Выйти из приложения',
+                                            style: AppTextStyles.subtitle,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        ShowDeleteProfile.show(
+                                          'Все аудиофайлы исчезнут и восстановить аккаунт будет невозможно',
+                                          context,
+                                          onYes: () {
+                                            context.read<AuthBloc>().add(
+                                                  const DeleteUserAuthBlocEvent(),
+                                                );
+                                            context.go('/bypass');
+                                          },
+                                        );
+                                      },
+                                      child: const Text(
+                                        'Удалить аккаунт',
+                                        style: AppTextStyles.subtitleRed,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  if (isAnonymous!)
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 32.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            BlocBuilder<AuthBloc, AuthBlocState>(
+                              builder: (context, state) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    context.read<AuthBloc>().add(
+                                          const LogoutRequestedAuthBlocEvent(),
+                                        );
+                                    context.read<RegisterScreenBloc>().add(
+                                          const LogOutRegisterScreenBlocEvent(),
+                                        );
+                                    context.go('/bypass');
+                                  },
+                                  child: const Text(
+                                    'Выйти из приложения',
+                                    style: AppTextStyles.subtitle,
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                 ],
               );
             },

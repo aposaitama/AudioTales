@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialog_button.dart';
-import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/screens/profile_screen/widgets/delete_button.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class ShowDeleteDialog {
+class ShowDeleteProfile {
   static Future<void> show(
     String text,
     BuildContext context, {
@@ -19,8 +19,8 @@ class ShowDeleteDialog {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Text(
-                'Підтверджуєте видалення?',
-                style: AppTextStyles.titleRed,
+                'Точно удалить аккаунт?',
+                style: AppTextStyles.blackBodyTile,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
@@ -42,10 +42,7 @@ class ShowDeleteDialog {
                   Navigator.pop(context);
                   onYes?.call();
                 },
-                child: const Dialogbutton(
-                  text: 'Так',
-                  backgroundColor: AppColors.purpleColor,
-                ),
+                child: const CustomDeleteButton(),
               ),
               const SizedBox(width: 10.0),
               GestureDetector(
@@ -54,7 +51,7 @@ class ShowDeleteDialog {
                   onNo?.call();
                 },
                 child: const Dialogbutton(
-                  text: 'Ні',
+                  text: 'Нет',
                 ),
               ),
             ],

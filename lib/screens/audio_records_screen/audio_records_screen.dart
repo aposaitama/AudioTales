@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
+import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
@@ -28,29 +29,30 @@ class AudioRecordsScreen extends StatefulWidget {
 }
 
 class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
-  late ScrollController _scrollController;
+  // late ScrollController _scrollController;
+  final FocusNode _focus = FocusNode();
 
-  void _scrollListener() {
-    final totalItems =
-        context.read<AudioRecordsScreenBloc>().state.audioList.length;
-    final audioCount =
-        context.read<UserBloc>().state.userModel?.audiosCount ?? 0;
+  // void _scrollListener() {
+  //   final totalItems =
+  //       context.read<AudioRecordsScreenBloc>().state.audioList.length;
+  //   final audioCount =
+  //       context.read<UserBloc>().state.userModel?.audiosCount ?? 0;
 
-    final currentIndex = _scrollController.position.pixels /
-        (_scrollController.position.maxScrollExtent / totalItems);
-    print(currentIndex);
-    if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
-      context
-          .read<AudioRecordsScreenBloc>()
-          .add(const LoadNextPageAudioRecordsScreenStateEvent());
-    }
-  }
+  //   final currentIndex = _scrollController.position.pixels /
+  //       (_scrollController.position.maxScrollExtent / totalItems);
+  //   print(currentIndex);
+  //   if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
+  //     context
+  //         .read<AudioRecordsScreenBloc>()
+  //         .add(const LoadNextPageAudioRecordsScreenStateEvent());
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    _scrollController.addListener(_scrollListener);
+    // _scrollController = ScrollController();
+    // _scrollController.addListener(_scrollListener);
   }
 
   @override
@@ -202,72 +204,101 @@ class _AudioRecordsScreenState extends State<AudioRecordsScreen> {
                     horizontal: 16.0,
                   ),
                   child: ListView.builder(
-                    controller: _scrollController,
+                    // controller: _scrollController,
                     itemCount: state.audioList.length,
                     itemBuilder: (context, int index) {
                       final audio = state.audioList[index];
                       return Column(
                         children: [
-                          AudioItemTile(
-                            audio: audio,
-                            title: audio.title,
-                            duration: '30 минут',
-                            onRename: () {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    const ChangePopupAudioRecordsScreenStateEvent(
-                                      AudioPopupStatus.editing,
-                                    ),
-                                  );
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    EditAudioRecordsScreenStateEvent(audio.id),
-                                  );
+                          Focus(
+                            focusNode: _focus,
+                            onFocusChange: (value) {
+                              if (!value) {
+                                print('focus change');
+                                // FocusManager.instance.primaryFocus?.unfocus();
+                                _focus.unfocus();
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      const ChangePopupAudioRecordsScreenStateEvent(
+                                        AudioPopupStatus.initial,
+                                      ),
+                                    );
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      const CancelEditingAudioRecordsScreenStateEvent(),
+                                    );
+                              }
                             },
-                            onDelete: () {
-                              ShowDeleteDialog.show(
-                                'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
-                                context,
-                                onYes: () {
-                                  context.read<AudioRecordsScreenBloc>().add(
-                                        DeleteAudioRecordsScreenStateEvent(
-                                          audio.title,
-                                        ),
-                                      );
-                                },
-                              );
-                            },
-                            onChoose: () {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    ChooseAudioRecordsScreenStateEvent(
-                                      [audio],
-                                    ),
-                                  );
+                            child: AudioItemTile(
+                              audio: audio,
+                              title: audio.title,
+                              duration: '30 минут',
+                              onRename: () {
+                                WidgetsBinding.instance
+                                    .addPostFrameCallback((_) {
+                                  _focus.requestFocus();
+                                });
 
-                              context.go('/collection/info/choose');
-                            },
-                            onShare: () {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    ShareAudioRecordsScreenStateEvent(
-                                      audio,
-                                    ),
-                                  );
-                            },
-                            onSave: (controller) {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    SaveAudioRecordsScreenStateEvent(
-                                      controller.text,
-                                    ),
-                                  );
-                            },
-                            onCancel: () {
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    const ChangePopupAudioRecordsScreenStateEvent(
-                                      AudioPopupStatus.initial,
-                                    ),
-                                  );
-                              context.read<AudioRecordsScreenBloc>().add(
-                                    const CancelEditingAudioRecordsScreenStateEvent(),
-                                  );
-                            },
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      const ChangePopupAudioRecordsScreenStateEvent(
+                                        AudioPopupStatus.editing,
+                                      ),
+                                    );
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      EditAudioRecordsScreenStateEvent(
+                                        audio.id,
+                                      ),
+                                    );
+                              },
+                              onDelete: () {
+                                ShowDeleteDialog.show(
+                                  'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                                  context,
+                                  onYes: () {
+                                    context.read<AudioRecordsScreenBloc>().add(
+                                          DeleteAudioRecordsScreenStateEvent(
+                                            audio.title,
+                                          ),
+                                        );
+                                  },
+                                );
+                              },
+                              onChoose: () {
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      ChooseAudioRecordsScreenStateEvent(
+                                        [audio],
+                                      ),
+                                    );
+                                context.read<NavigationCubit>().navigateTo(-1);
+
+                                context.go(
+                                  '/collection/info/chooseAudio',
+                                );
+                              },
+                              onShare: () {
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      ShareAudioRecordsScreenStateEvent(
+                                        audio,
+                                      ),
+                                    );
+                              },
+                              onSave: (controller) {
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      SaveAudioRecordsScreenStateEvent(
+                                        controller.text,
+                                      ),
+                                    );
+                              },
+                              onCancel: () {
+                                FocusManager.instance.primaryFocus?.unfocus();
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      const ChangePopupAudioRecordsScreenStateEvent(
+                                        AudioPopupStatus.initial,
+                                      ),
+                                    );
+                                context.read<AudioRecordsScreenBloc>().add(
+                                      const CancelEditingAudioRecordsScreenStateEvent(),
+                                    );
+                              },
+                            ),
                           ),
                           const SizedBox(
                             height: 10.0,

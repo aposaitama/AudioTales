@@ -13,7 +13,9 @@ import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
 class ChooseAudioRecords extends StatefulWidget {
-  ChooseAudioRecords({super.key});
+  ChooseAudioRecords({
+    super.key,
+  });
 
   @override
   State<ChooseAudioRecords> createState() => _ChooseAudioRecordsState();

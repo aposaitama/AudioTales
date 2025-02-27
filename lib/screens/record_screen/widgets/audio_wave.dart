@@ -16,12 +16,6 @@ class SoundWavePainter extends CustomPainter {
     final double centerY = size.height / 2;
     const double barSpacing = 4.0;
 
-    canvas.drawLine(
-      Offset(0, centerY),
-      Offset(size.width, centerY),
-      paint,
-    );
-
     for (int i = 0; i < decibelValues.length; i++) {
       double lineHeight = decibelValues[i];
 
@@ -34,6 +28,16 @@ class SoundWavePainter extends CustomPainter {
         Offset(startX, endY),
         paint,
       );
+      if (i > 0) {
+        double prevX =
+            size.width - (decibelValues.length - (i - 1)) * barSpacing;
+        double midY = (startY + endY) / 2;
+        canvas.drawLine(
+          Offset(prevX, midY),
+          Offset(startX, midY),
+          paint,
+        );
+      }
     }
   }
 

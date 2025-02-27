@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
-import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
-import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_state.dart';
+import 'package:memory_box_avada/style/colors/colors.dart';
 
-class CustomSlider extends StatelessWidget {
-  const CustomSlider({super.key});
+class CustomListenPageSlider extends StatelessWidget {
+  const CustomListenPageSlider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +14,20 @@ class CustomSlider extends StatelessWidget {
       data: SliderThemeData(
         trackHeight: 2.0,
         overlayShape: SliderComponentShape.noThumb,
-        thumbColor: Colors.white,
+        thumbColor: AppColors.fontColor,
         thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6.0),
-        inactiveTrackColor: Colors.white,
-        activeTrackColor: Colors.white,
+        inactiveTrackColor: AppColors.fontColor,
+        activeTrackColor: AppColors.fontColor,
       ),
-      child: BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
+      child: BlocBuilder<ListenRecordBloc, ListenRecordState>(
         builder: (context, state) {
           return Slider(
             value: state.position.inMilliseconds.toDouble(),
             min: 0.00,
-            max: state.duration.inMilliseconds.toDouble(),
+            max: state.duration.inMilliseconds.toDouble() + 100,
             onChanged: (value) {
-              context.read<MiniPlayerBloc>().add(
-                    UpdateSliderLineMiniPlayerEvent(value.toInt()),
+              context.read<ListenRecordBloc>().add(
+                    UpdateCircleEvent(value.toInt()),
                   );
             },
           );

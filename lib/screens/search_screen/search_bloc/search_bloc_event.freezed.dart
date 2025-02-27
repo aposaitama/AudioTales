@@ -20,21 +20,27 @@ mixin _$SearchBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
     required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
     TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
     TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -42,21 +48,27 @@ mixin _$SearchBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadingSearchBlocEvent value) loading,
     required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
     required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingSearchBlocEvent value)? loading,
     TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
     TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingSearchBlocEvent value)? loading,
     TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
     TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,7 +141,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
     required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
   }) {
     return loading();
   }
@@ -139,7 +153,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
     TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
   }) {
     return loading?.call();
   }
@@ -149,7 +165,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
     TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -163,7 +181,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadingSearchBlocEvent value) loading,
     required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
     required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
   }) {
     return loading(this);
   }
@@ -173,7 +193,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingSearchBlocEvent value)? loading,
     TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
     TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
   }) {
     return loading?.call(this);
   }
@@ -183,7 +205,9 @@ class _$LoadingSearchBlocEventImpl implements LoadingSearchBlocEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingSearchBlocEvent value)? loading,
     TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
     TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -277,7 +301,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
     required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
   }) {
     return loaded(audioList);
   }
@@ -287,7 +313,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
     TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
   }) {
     return loaded?.call(audioList);
   }
@@ -297,7 +325,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
     TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -311,7 +341,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadingSearchBlocEvent value) loading,
     required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
     required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
   }) {
     return loaded(this);
   }
@@ -321,7 +353,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingSearchBlocEvent value)? loading,
     TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
     TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
   }) {
     return loaded?.call(this);
   }
@@ -331,7 +365,9 @@ class _$LoadedSearchBlocEventImpl implements LoadedSearchBlocEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingSearchBlocEvent value)? loading,
     TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
     TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -352,6 +388,130 @@ abstract class LoadedSearchBlocEvent implements SearchBlocEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoadedSearchBlocEventImplCopyWith<_$LoadedSearchBlocEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearSearchBlocEventImplCopyWith<$Res> {
+  factory _$$ClearSearchBlocEventImplCopyWith(_$ClearSearchBlocEventImpl value,
+          $Res Function(_$ClearSearchBlocEventImpl) then) =
+      __$$ClearSearchBlocEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSearchBlocEventImplCopyWithImpl<$Res>
+    extends _$SearchBlocEventCopyWithImpl<$Res, _$ClearSearchBlocEventImpl>
+    implements _$$ClearSearchBlocEventImplCopyWith<$Res> {
+  __$$ClearSearchBlocEventImplCopyWithImpl(_$ClearSearchBlocEventImpl _value,
+      $Res Function(_$ClearSearchBlocEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$ClearSearchBlocEventImpl implements ClearSearchBlocEvent {
+  const _$ClearSearchBlocEventImpl();
+
+  @override
+  String toString() {
+    return 'SearchBlocEvent.clearAudios()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearSearchBlocEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
+    required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
+  }) {
+    return clearAudios();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
+    TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
+  }) {
+    return clearAudios?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
+    TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
+    required TResult orElse(),
+  }) {
+    if (clearAudios != null) {
+      return clearAudios();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingSearchBlocEvent value) loading,
+    required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
+    required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
+  }) {
+    return clearAudios(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingSearchBlocEvent value)? loading,
+    TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
+    TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
+  }) {
+    return clearAudios?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingSearchBlocEvent value)? loading,
+    TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
+    TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
+    required TResult orElse(),
+  }) {
+    if (clearAudios != null) {
+      return clearAudios(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClearSearchBlocEvent implements SearchBlocEvent {
+  const factory ClearSearchBlocEvent() = _$ClearSearchBlocEventImpl;
 }
 
 /// @nodoc
@@ -427,7 +587,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
     required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
   }) {
     return search(query);
   }
@@ -437,7 +599,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
     TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
   }) {
     return search?.call(query);
   }
@@ -447,7 +611,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
     TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -461,7 +627,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadingSearchBlocEvent value) loading,
     required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
     required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
   }) {
     return search(this);
   }
@@ -471,7 +639,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadingSearchBlocEvent value)? loading,
     TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
     TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
   }) {
     return search?.call(this);
   }
@@ -481,7 +651,9 @@ class _$SearchAudioRecordsEventImpl implements SearchAudioRecordsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadingSearchBlocEvent value)? loading,
     TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
     TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -502,4 +674,164 @@ abstract class SearchAudioRecordsEvent implements SearchBlocEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchAudioRecordsEventImplCopyWith<_$SearchAudioRecordsEventImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadNextSearchEventImplCopyWith<$Res> {
+  factory _$$LoadNextSearchEventImplCopyWith(_$LoadNextSearchEventImpl value,
+          $Res Function(_$LoadNextSearchEventImpl) then) =
+      __$$LoadNextSearchEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$LoadNextSearchEventImplCopyWithImpl<$Res>
+    extends _$SearchBlocEventCopyWithImpl<$Res, _$LoadNextSearchEventImpl>
+    implements _$$LoadNextSearchEventImplCopyWith<$Res> {
+  __$$LoadNextSearchEventImplCopyWithImpl(_$LoadNextSearchEventImpl _value,
+      $Res Function(_$LoadNextSearchEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$LoadNextSearchEventImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadNextSearchEventImpl implements LoadNextSearchEvent {
+  const _$LoadNextSearchEventImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'SearchBlocEvent.loadeNext(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadNextSearchEventImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of SearchBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadNextSearchEventImplCopyWith<_$LoadNextSearchEventImpl> get copyWith =>
+      __$$LoadNextSearchEventImplCopyWithImpl<_$LoadNextSearchEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<AudioRecordsModel> audioList) loaded,
+    required TResult Function() clearAudios,
+    required TResult Function(String query) search,
+    required TResult Function(String query) loadeNext,
+  }) {
+    return loadeNext(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult? Function()? clearAudios,
+    TResult? Function(String query)? search,
+    TResult? Function(String query)? loadeNext,
+  }) {
+    return loadeNext?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<AudioRecordsModel> audioList)? loaded,
+    TResult Function()? clearAudios,
+    TResult Function(String query)? search,
+    TResult Function(String query)? loadeNext,
+    required TResult orElse(),
+  }) {
+    if (loadeNext != null) {
+      return loadeNext(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadingSearchBlocEvent value) loading,
+    required TResult Function(LoadedSearchBlocEvent value) loaded,
+    required TResult Function(ClearSearchBlocEvent value) clearAudios,
+    required TResult Function(SearchAudioRecordsEvent value) search,
+    required TResult Function(LoadNextSearchEvent value) loadeNext,
+  }) {
+    return loadeNext(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadingSearchBlocEvent value)? loading,
+    TResult? Function(LoadedSearchBlocEvent value)? loaded,
+    TResult? Function(ClearSearchBlocEvent value)? clearAudios,
+    TResult? Function(SearchAudioRecordsEvent value)? search,
+    TResult? Function(LoadNextSearchEvent value)? loadeNext,
+  }) {
+    return loadeNext?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadingSearchBlocEvent value)? loading,
+    TResult Function(LoadedSearchBlocEvent value)? loaded,
+    TResult Function(ClearSearchBlocEvent value)? clearAudios,
+    TResult Function(SearchAudioRecordsEvent value)? search,
+    TResult Function(LoadNextSearchEvent value)? loadeNext,
+    required TResult orElse(),
+  }) {
+    if (loadeNext != null) {
+      return loadeNext(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadNextSearchEvent implements SearchBlocEvent {
+  const factory LoadNextSearchEvent(final String query) =
+      _$LoadNextSearchEventImpl;
+
+  String get query;
+
+  /// Create a copy of SearchBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadNextSearchEventImplCopyWith<_$LoadNextSearchEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

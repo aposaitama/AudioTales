@@ -13,15 +13,12 @@ import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/choose_several_screen/widgets/choose_collection_item_tile.dart';
-import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc.dart';
-import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc_event.dart';
-import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc_state.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
 
-class ChooseSeveralHomeScreen extends StatelessWidget {
-  const ChooseSeveralHomeScreen({super.key});
+class ChooseSeveraAudioScreen extends StatelessWidget {
+  const ChooseSeveraAudioScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,9 @@ class ChooseSeveralHomeScreen extends StatelessWidget {
         if (state.status == CollectionBlocStatus.loading) {
           return const Center(child: CircularProgressIndicator());
         }
-
+        // if (state.collectionList.isEmpty) {
+        //   return const Center(child: Text('Нет подборок'));
+        // }
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -64,22 +63,18 @@ class ChooseSeveralHomeScreen extends StatelessWidget {
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
-                child: BlocBuilder<HomeScreenBloc, HomeScreenState>(
+                child: BlocBuilder<AudioRecordsScreenBloc,
+                    AudioRecordsScreenState>(
                   builder: (context, state) {
                     return GestureDetector(
                       onTap: () {
-                        context.read<HomeScreenBloc>().add(
-                              ChooseCollectionHomeScreenBlocEvent(
+                        context.read<AudioRecordsScreenBloc>().add(
+                              ChooseCollectionAudioRecordsScreenStateEvent(
                                 choosedCollection,
                               ),
                             );
-                        context.read<NavigationCubit>().navigateTo(0);
-                        context.go('/home');
-                        context.read<HomeScreenBloc>().add(
-                              const ChooseCollectionHomeScreenBlocEvent(
-                                [],
-                              ),
-                            );
+                        context.read<NavigationCubit>().navigateTo(3);
+                        context.go('/audio_records');
                       },
                       child: const Text(
                         'Добавить',

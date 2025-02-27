@@ -23,6 +23,7 @@ mixin _$RecordEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$RecordEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$RecordEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$RecordEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$RecordEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$RecordEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) {
     return startRecording();
   }
@@ -154,6 +161,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) {
     return startRecording?.call();
   }
@@ -166,6 +174,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) {
     if (startRecording != null) {
@@ -182,6 +191,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) {
     return startRecording(this);
   }
@@ -194,6 +204,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) {
     return startRecording?.call(this);
   }
@@ -206,6 +217,7 @@ class _$StartRecordingEventImpl implements StartRecordingEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) {
     if (startRecording != null) {
@@ -303,6 +315,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) {
     return updateWave(decibels, duration);
   }
@@ -315,6 +328,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) {
     return updateWave?.call(decibels, duration);
   }
@@ -327,6 +341,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) {
     if (updateWave != null) {
@@ -343,6 +358,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) {
     return updateWave(this);
   }
@@ -355,6 +371,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) {
     return updateWave?.call(this);
   }
@@ -367,6 +384,7 @@ class _$UpdateWaveEventImpl implements UpdateWaveEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) {
     if (updateWave != null) {
@@ -436,6 +454,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) {
     return stopRecording();
   }
@@ -448,6 +467,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) {
     return stopRecording?.call();
   }
@@ -460,6 +480,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) {
     if (stopRecording != null) {
@@ -476,6 +497,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) {
     return stopRecording(this);
   }
@@ -488,6 +510,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) {
     return stopRecording?.call(this);
   }
@@ -500,6 +523,7 @@ class _$StopRecordingEventImpl implements StopRecordingEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) {
     if (stopRecording != null) {
@@ -560,6 +584,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) {
     return pauseRecording();
   }
@@ -572,6 +597,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) {
     return pauseRecording?.call();
   }
@@ -584,6 +610,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) {
     if (pauseRecording != null) {
@@ -600,6 +627,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) {
     return pauseRecording(this);
   }
@@ -612,6 +640,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) {
     return pauseRecording?.call(this);
   }
@@ -624,6 +653,7 @@ class _$PauseRecordingEventImpl implements PauseRecordingEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) {
     if (pauseRecording != null) {
@@ -684,6 +714,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     required TResult Function() stopRecording,
     required TResult Function() pauseRecording,
     required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
   }) {
     return resumeRecording();
   }
@@ -696,6 +727,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     TResult? Function()? stopRecording,
     TResult? Function()? pauseRecording,
     TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
   }) {
     return resumeRecording?.call();
   }
@@ -708,6 +740,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     TResult Function()? stopRecording,
     TResult Function()? pauseRecording,
     TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
     required TResult orElse(),
   }) {
     if (resumeRecording != null) {
@@ -724,6 +757,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     required TResult Function(StopRecordingEvent value) stopRecording,
     required TResult Function(PauseRecordingEvent value) pauseRecording,
     required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
   }) {
     return resumeRecording(this);
   }
@@ -736,6 +770,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     TResult? Function(StopRecordingEvent value)? stopRecording,
     TResult? Function(PauseRecordingEvent value)? pauseRecording,
     TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
   }) {
     return resumeRecording?.call(this);
   }
@@ -748,6 +783,7 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
     TResult Function(StopRecordingEvent value)? stopRecording,
     TResult Function(PauseRecordingEvent value)? pauseRecording,
     TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
     required TResult orElse(),
   }) {
     if (resumeRecording != null) {
@@ -759,4 +795,137 @@ class _$ResumeRecordingEventImpl implements ResumeRecordingEvent {
 
 abstract class ResumeRecordingEvent implements RecordEvent {
   const factory ResumeRecordingEvent() = _$ResumeRecordingEventImpl;
+}
+
+/// @nodoc
+abstract class _$$CheckDurationRecordingEventImplCopyWith<$Res> {
+  factory _$$CheckDurationRecordingEventImplCopyWith(
+          _$CheckDurationRecordingEventImpl value,
+          $Res Function(_$CheckDurationRecordingEventImpl) then) =
+      __$$CheckDurationRecordingEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CheckDurationRecordingEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$CheckDurationRecordingEventImpl>
+    implements _$$CheckDurationRecordingEventImplCopyWith<$Res> {
+  __$$CheckDurationRecordingEventImplCopyWithImpl(
+      _$CheckDurationRecordingEventImpl _value,
+      $Res Function(_$CheckDurationRecordingEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CheckDurationRecordingEventImpl implements CheckDurationRecordingEvent {
+  const _$CheckDurationRecordingEventImpl();
+
+  @override
+  String toString() {
+    return 'RecordEvent.checkDuration()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckDurationRecordingEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() startRecording,
+    required TResult Function(double decibels, Duration duration) updateWave,
+    required TResult Function() stopRecording,
+    required TResult Function() pauseRecording,
+    required TResult Function() resumeRecording,
+    required TResult Function() checkDuration,
+  }) {
+    return checkDuration();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? startRecording,
+    TResult? Function(double decibels, Duration duration)? updateWave,
+    TResult? Function()? stopRecording,
+    TResult? Function()? pauseRecording,
+    TResult? Function()? resumeRecording,
+    TResult? Function()? checkDuration,
+  }) {
+    return checkDuration?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? startRecording,
+    TResult Function(double decibels, Duration duration)? updateWave,
+    TResult Function()? stopRecording,
+    TResult Function()? pauseRecording,
+    TResult Function()? resumeRecording,
+    TResult Function()? checkDuration,
+    required TResult orElse(),
+  }) {
+    if (checkDuration != null) {
+      return checkDuration();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartRecordingEvent value) startRecording,
+    required TResult Function(UpdateWaveEvent value) updateWave,
+    required TResult Function(StopRecordingEvent value) stopRecording,
+    required TResult Function(PauseRecordingEvent value) pauseRecording,
+    required TResult Function(ResumeRecordingEvent value) resumeRecording,
+    required TResult Function(CheckDurationRecordingEvent value) checkDuration,
+  }) {
+    return checkDuration(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StartRecordingEvent value)? startRecording,
+    TResult? Function(UpdateWaveEvent value)? updateWave,
+    TResult? Function(StopRecordingEvent value)? stopRecording,
+    TResult? Function(PauseRecordingEvent value)? pauseRecording,
+    TResult? Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult? Function(CheckDurationRecordingEvent value)? checkDuration,
+  }) {
+    return checkDuration?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartRecordingEvent value)? startRecording,
+    TResult Function(UpdateWaveEvent value)? updateWave,
+    TResult Function(StopRecordingEvent value)? stopRecording,
+    TResult Function(PauseRecordingEvent value)? pauseRecording,
+    TResult Function(ResumeRecordingEvent value)? resumeRecording,
+    TResult Function(CheckDurationRecordingEvent value)? checkDuration,
+    required TResult orElse(),
+  }) {
+    if (checkDuration != null) {
+      return checkDuration(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CheckDurationRecordingEvent implements RecordEvent {
+  const factory CheckDurationRecordingEvent() =
+      _$CheckDurationRecordingEventImpl;
 }

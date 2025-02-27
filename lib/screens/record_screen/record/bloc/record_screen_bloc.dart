@@ -16,6 +16,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     on<StopRecordingEvent>(_stopRecording);
     on<PauseRecordingEvent>(_pauseRecording);
     on<ResumeRecordingEvent>(_resumeRecording);
+    // on<CheckDurationRecordingEvent>(_checkDuration);
   }
 
   Future<void> _startRecording(
@@ -35,11 +36,12 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
     try {
       await _recorder.startRecorder(toFile: filePath);
-      _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
+      _recorder.setSubscriptionDuration(const Duration(milliseconds: 50));
 
       _recorder.onProgress?.listen(
         (event) {
           if (event.decibels != null) {
+            print(event.duration);
             add(RecordEvent.updateWave(event.decibels!, event.duration));
           }
         },
@@ -60,9 +62,11 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   }
 
   Future<void> _resumeRecording(
-      ResumeRecordingEvent event, Emitter<RecordState> emit,) async {
+    ResumeRecordingEvent event,
+    Emitter<RecordState> emit,
+  ) async {
     await _recorder.resumeRecorder();
-    _recorder.setSubscriptionDuration(const Duration(milliseconds: 100));
+    _recorder.setSubscriptionDuration(const Duration(milliseconds: 50));
 
     _recorder.onProgress?.listen(
       (event) {
@@ -114,10 +118,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     if (_recorder.isRecording) {
       try {
         await _recorder.stopRecorder();
-        print("Recording stopped");
-      } catch (e) {
-        print("Failed to stop recording: $e");
-      }
+      } catch (e) {}
     }
 
     emit(

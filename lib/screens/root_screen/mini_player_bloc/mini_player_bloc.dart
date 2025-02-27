@@ -11,6 +11,7 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
     on<CloseMiniPlayerEvent>(_closePlayer);
     on<PauseMiniPlayerEvent>(_pausePlayer);
     on<UpdateLineMiniPlayerEvent>(_updateLine);
+    on<UpdateDurationLineMiniPlayerEvent>(_updateDuration);
     on<UpdateSliderLineMiniPlayerEvent>(_updateSliderLine);
     on<NextTrackMiniPlayerEvent>(_nextTrack);
     on<ResumeMiniPlayerEvent>(_resumePlayer);
@@ -38,9 +39,8 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
       );
       _player.setSubscriptionDuration(const Duration(milliseconds: 100));
       _player.onProgress!.listen((event) {
-        if (state.status == MiniPlayerStatus.playing) {
-          add(UpdateLineMiniPlayerEvent(event.position));
-        }
+        add(UpdateLineMiniPlayerEvent(event.position));
+        add(UpdateDurationLineMiniPlayerEvent(event.duration.inMilliseconds));
       });
     } catch (e) {
       print(e);
@@ -62,6 +62,7 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
     _isPlayerInitialized = false;
     emit(
       state.copyWith(
+        duration: Duration.zero,
         position: Duration.zero,
         status: MiniPlayerStatus.closed,
         currentPlayingIndex: 0,
@@ -127,6 +128,15 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   ) async {
     // _player.seekToPlayer(Duration(milliseconds: event.newSliderPosition));
     emit(state.copyWith(position: event.position));
+  }
+
+  Future<void> _updateDuration(
+    UpdateDurationLineMiniPlayerEvent event,
+    Emitter<MiniPlayerBlocState> emit,
+  ) async {
+    // _player.seekToPlayer(Duration(milliseconds: event.newSliderPosition));
+    emit(state.copyWith(
+        duration: Duration(milliseconds: event.newSliderPosition)));
   }
 
   Future<void> _updateSliderLine(

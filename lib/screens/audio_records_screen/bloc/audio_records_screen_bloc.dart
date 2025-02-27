@@ -61,7 +61,7 @@ class AudioRecordsScreenBloc
 
   void _subscribeToAudioStream() {
     _audioSubscription =
-        _firebaseFirestoreService.getUserAudiosStream2(state.audioList).listen(
+        _firebaseFirestoreService.getUserAudiosStream3().listen(
       (audioList) {
         add(LoadedAudioRecordsScreenStateEvent(audioList));
       },
@@ -101,7 +101,13 @@ class AudioRecordsScreenBloc
       state.choosingAudioList,
       event.collectionList,
     );
-    emit(state.copyWith(choosingCollection: event.collectionList));
+
+    emit(
+      state.copyWith(
+        choosingCollection: [],
+        choosingAudioList: [],
+      ),
+    );
   }
 
   Future<void> _share(

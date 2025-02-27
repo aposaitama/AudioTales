@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
@@ -9,6 +10,7 @@ import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   final StorageService _firebaseStorageService = locator<StorageService>();
@@ -27,31 +29,73 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     on<InitialPlayingEvent>(_initial);
     on<AddRecordNameEvent>(_addTitle);
     on<DownloadListenRecordEvent>(_downloadAudio);
+    on<UpdateDurationEvent>(_updateDuration);
+    on<UpdatePositionEvent>(_updatePosition);
+    on<ShareListenRecordEvent>(_shareAudio);
+    on<DeleteListenRecordEvent>(_deleteAudio);
+    on<AdjustAudioPositionEvent>(_adjustAudioPosition);
   }
 
   Future<void> _downloadAudio(
     DownloadListenRecordEvent event,
     Emitter<ListenRecordState> emit,
   ) async {
-    // print('start');
+    final directory = await getApplicationDocumentsDirectory();
+    final sourcePath = '${directory.path}/record.aac';
+    final tempFile = File(sourcePath);
 
-    // Directory tempDir = await getTemporaryDirectory();
-    // final aacFilePath = '${tempDir.path}/record.aac';
-    // final mp3FilePath = '${tempDir.path}/record.mp3';
+    if (await tempFile.exists()) {
+      try {
+        final savePath = await FileSaver.instance.saveAs(
+          mimeType: MimeType.aac,
+          ext: 'aac',
+          name: '${state.title}.aac',
+          bytes: tempFile.readAsBytesSync(),
+        );
 
-    // final FlutterFFmpeg _ffmpeg = FlutterFFmpeg();
+        if (savePath == null) {
+          return;
+        }
 
-    // // Конвертуємо AAC у MP3
-    // int rc = await _ffmpeg.execute(
-    //     '-i $aacFilePath -codec:a libmp3lame -qscale:a 2 $mp3FilePath');
+        emit(state.copyWith(downloadStatus: DownloadListenStatus.successful));
+        add(const DeleteListenRecordEvent());
+      } catch (e) {
+        // Логування помилки, якщо вона трапилась
+        print('Error during file save: $e');
+        return;
+      }
+    } else {}
+  }
 
-    // if (rc == 0) {
-    //   print('Конвертація успішна');
-    //   XFile xFile = XFile(mp3FilePath);
-    //   await Share.shareXFiles([xFile]);
-    // } else {
-    //   print('Помилка при конвертації');
-    // }
+  Future<void> _shareAudio(
+    ShareListenRecordEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final sourcePath = '${directory.path}/record.aac';
+    final tempFile = File(sourcePath);
+    if (await tempFile.exists()) {
+      final xFile = XFile(sourcePath);
+      Share.shareXFiles([xFile]);
+    }
+  }
+
+  Future<void> _deleteAudio(
+    DeleteListenRecordEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/record.aac';
+    final file = File(filePath);
+    if (file.existsSync()) {
+      file.delete();
+    } else {}
+    emit(
+      state.copyWith(
+        status: ListenStatus.close,
+        downloadStatus: DownloadListenStatus.initial,
+      ),
+    );
   }
 
   Future<void> _addTitle(
@@ -65,11 +109,35 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     InitialPlayingEvent event,
     Emitter<ListenRecordState> emit,
   ) async {
-    emit(
-      state.copyWith(
-        status: ListenStatus.initial,
-      ),
-    );
+    emit(state.copyWith(isAudioTitleExist: false));
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/record.aac';
+
+    try {
+      await _player.openPlayer();
+      _isPlayerInitialized = true;
+
+      final duration =
+          await _player.startPlayer(fromURI: filePath, codec: Codec.aacADTS);
+      await _player.stopPlayer();
+
+      emit(
+        state.copyWith(
+          title: 'Аудиозапись',
+          status: ListenStatus.initial,
+          duration: Duration(milliseconds: duration?.inMilliseconds ?? 0),
+          position: Duration.zero,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          status: ListenStatus.initial,
+          duration: Duration.zero,
+          position: Duration.zero,
+        ),
+      );
+    }
   }
 
   Future<void> _startPlaying(
@@ -101,7 +169,8 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
       _player.setSubscriptionDuration(const Duration(milliseconds: 100));
       _player.onProgress!.listen((event) {
         if (state.status == ListenStatus.inProgress) {
-          add(ListenRecordEvent.updateCircle(event.duration, event.position));
+          add(UpdateDurationEvent(event.duration));
+          add(ListenRecordEvent.updatePosition(event.position.inMilliseconds));
         }
       });
     } catch (e) {
@@ -113,7 +182,36 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     UpdateCircleEvent event,
     Emitter<ListenRecordState> emit,
   ) async {
-    emit(state.copyWith(duration: event.duration, position: event.position));
+    _player.seekToPlayer(Duration(milliseconds: event.newSliderPosition));
+    emit(
+      state.copyWith(
+        position: Duration(
+          milliseconds: event.newSliderPosition,
+        ),
+      ),
+    );
+  }
+
+  void _updateDuration(
+    UpdateDurationEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        duration: event.duration,
+      ),
+    );
+  }
+
+  void _updatePosition(
+    UpdatePositionEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        position: Duration(milliseconds: event.newSliderPosition),
+      ),
+    );
   }
 
   Future<void> _pausePlaying(
@@ -132,29 +230,55 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
   ) async {
     await _player.resumePlayer();
     emit(state.copyWith(status: ListenStatus.resume));
+
+    _player.setSubscriptionDuration(const Duration(milliseconds: 100));
+    _player.onProgress!.listen((event) {
+      if (state.status == ListenStatus.inProgress ||
+          state.status == ListenStatus.resume) {
+        add(UpdateDurationEvent(event.duration));
+        add(ListenRecordEvent.updatePosition(event.position.inMilliseconds));
+      }
+    });
   }
 
-  // Future<void> _add15Sec(
-  //     Add15Event event, Emitter<ListenRecordState> emit) async {
-  //   try {
-  //     final progress = await _player.getProgress();
-  //     final currentPosition = progress['position'] ?? Duration.zero;
-  //     final maxDuration = progress['duration'] ?? Duration.zero;
+  Future<void> _adjustAudioPosition(
+    AdjustAudioPositionEvent event,
+    Emitter<ListenRecordState> emit,
+  ) async {
+    try {
+      final currentPosition = state.position;
+      final maxDuration = state.duration;
 
-  //     final newPosition = currentPosition + Duration(seconds: 15);
+      Duration newPosition;
+      if (event.isAdd) {
+        newPosition = currentPosition +
+            const Duration(
+              seconds: 15,
+            );
+      } else {
+        newPosition = currentPosition -
+            const Duration(
+              seconds: 15,
+            );
+      }
 
-  //     if (newPosition <= maxDuration) {
-  //       await _player.seekToPlayer(newPosition);
-  //       if (!emit.isDone) emit(ListenRecordProgress(newPosition));
-  //     } else {
-  //       await _player.seekToPlayer(maxDuration);
-  //       if (!emit.isDone) emit(ListenRecordProgress(maxDuration));
-  //     }
-  //   } catch (e) {
-  //     print("Error in _add15Sec: $e");
-  //     if (!emit.isDone) emit(const ListenRecordInitial());
-  //   }
-  // }
+      if (newPosition < maxDuration && newPosition >= Duration.zero) {
+        await _player.seekToPlayer(newPosition);
+        emit(state.copyWith(position: newPosition));
+      } else {
+        await _player.seekToPlayer(
+          newPosition < Duration.zero ? Duration.zero : maxDuration,
+        );
+        emit(
+          state.copyWith(
+            position: newPosition < Duration.zero ? Duration.zero : maxDuration,
+          ),
+        );
+      }
+    } catch (e) {
+      emit(state.copyWith(position: Duration.zero));
+    }
+  }
 
   Future<void> _stopPlaying(
     StopPlayingEvent event,
@@ -170,29 +294,40 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
     ClosePlayingEvent event,
     Emitter<ListenRecordState> emit,
   ) async {
-    await _player.closePlayer();
-    var cancel = BotToast.showLoading();
-    final directory = await getApplicationDocumentsDirectory();
-    final filePath = '${directory.path}/record.aac';
-    String fileUrl =
-        await _firebaseStorageService.uploadFile(filePath, state.title);
-    await _firebaseFirestoreService.saveUserAudio(
-      state.title,
-      fileUrl,
-      state.duration,
-    );
+    final isTitleExist =
+        await _firebaseFirestoreService.isAudioTitleExists(state.title);
 
-    final file = File(filePath);
-    if (await file.exists()) {
-      await file.delete();
-      cancel();
-    }
-    emit(
-      state.copyWith(
-        status: ListenStatus.close,
-        duration: Duration.zero,
-        position: Duration.zero,
-      ),
-    );
+    if (!isTitleExist) {
+      await _player.closePlayer();
+      var cancel = BotToast.showLoading();
+      final directory = await getApplicationDocumentsDirectory();
+      final filePath = '${directory.path}/record.aac';
+      String fileUrl =
+          await _firebaseStorageService.uploadFile(filePath, state.title);
+      await _firebaseFirestoreService.saveUserAudio(
+        state.title,
+        fileUrl,
+        state.duration,
+      );
+
+      final file = File(filePath);
+      if (await file.exists()) {
+        await file.delete();
+        cancel();
+      }
+      emit(
+        state.copyWith(
+          status: ListenStatus.close,
+          duration: Duration.zero,
+          position: Duration.zero,
+          isAudioTitleExist: false,
+        ),
+      );
+    } else
+      emit(
+        state.copyWith(
+          isAudioTitleExist: true,
+        ),
+      );
   }
 }

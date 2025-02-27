@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
+import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
@@ -21,7 +22,7 @@ enum PopupValues {
   share,
 }
 
-class AudioItemTile extends StatefulWidget {
+class AudioHomeTile extends StatefulWidget {
   final String title;
   final String duration;
   final Color? color;
@@ -33,7 +34,7 @@ class AudioItemTile extends StatefulWidget {
   final ValueChanged<TextEditingController> onSave;
   final VoidCallback onCancel;
 
-  const AudioItemTile({
+  const AudioHomeTile({
     super.key,
     required this.title,
     required this.duration,
@@ -48,10 +49,10 @@ class AudioItemTile extends StatefulWidget {
   });
 
   @override
-  State<AudioItemTile> createState() => _AudioItemTileState();
+  State<AudioHomeTile> createState() => _AudioHomeTileState();
 }
 
-class _AudioItemTileState extends State<AudioItemTile> {
+class _AudioHomeTileState extends State<AudioHomeTile> {
   late TextEditingController _controller;
   late FocusNode _focusNode;
 
@@ -73,8 +74,8 @@ class _AudioItemTileState extends State<AudioItemTile> {
   Widget build(BuildContext context) {
     return BlocBuilder<MiniPlayerBloc, MiniPlayerBlocState>(
       builder: (context, state) {
-        final editingAudioId = context
-            .select((AudioRecordsScreenBloc bloc) => bloc.state.editingAudioId);
+        final editingAudioId =
+            context.select((HomeScreenBloc bloc) => bloc.state.editingAudioId);
         final isEditing = editingAudioId == widget.audio.id;
 
         bool isPlaying = state.audioRecordsList.isNotEmpty &&

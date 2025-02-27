@@ -20,11 +20,13 @@ mixin _$ListenRecordEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -36,10 +38,13 @@ mixin _$ListenRecordEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -51,10 +56,13 @@ mixin _$ListenRecordEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -67,10 +75,13 @@ mixin _$ListenRecordEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -82,10 +93,13 @@ mixin _$ListenRecordEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -97,10 +111,13 @@ mixin _$ListenRecordEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -176,11 +193,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -195,10 +214,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -213,10 +235,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -235,10 +260,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -253,10 +281,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -271,10 +302,13 @@ class _$InitialPlayingEventImpl implements InitialPlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -365,11 +399,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -384,10 +420,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -402,10 +441,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -424,10 +466,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -442,10 +487,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -460,10 +508,13 @@ class _$StartPlayingEventImpl implements StartPlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -492,12 +543,227 @@ abstract class StartPlayingEvent implements ListenRecordEvent {
 }
 
 /// @nodoc
+abstract class _$$UpdatePositionEventImplCopyWith<$Res> {
+  factory _$$UpdatePositionEventImplCopyWith(_$UpdatePositionEventImpl value,
+          $Res Function(_$UpdatePositionEventImpl) then) =
+      __$$UpdatePositionEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int newSliderPosition});
+}
+
+/// @nodoc
+class __$$UpdatePositionEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$UpdatePositionEventImpl>
+    implements _$$UpdatePositionEventImplCopyWith<$Res> {
+  __$$UpdatePositionEventImplCopyWithImpl(_$UpdatePositionEventImpl _value,
+      $Res Function(_$UpdatePositionEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newSliderPosition = null,
+  }) {
+    return _then(_$UpdatePositionEventImpl(
+      null == newSliderPosition
+          ? _value.newSliderPosition
+          : newSliderPosition // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdatePositionEventImpl implements UpdatePositionEvent {
+  const _$UpdatePositionEventImpl(this.newSliderPosition);
+
+  @override
+  final int newSliderPosition;
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.updatePosition(newSliderPosition: $newSliderPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdatePositionEventImpl &&
+            (identical(other.newSliderPosition, newSliderPosition) ||
+                other.newSliderPosition == newSliderPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newSliderPosition);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdatePositionEventImplCopyWith<_$UpdatePositionEventImpl> get copyWith =>
+      __$$UpdatePositionEventImplCopyWithImpl<_$UpdatePositionEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
+    required TResult Function() downloadAudio,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return updatePosition(newSliderPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
+    TResult? Function()? downloadAudio,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return updatePosition?.call(newSliderPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
+    TResult Function()? downloadAudio,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (updatePosition != null) {
+      return updatePosition(newSliderPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return updatePosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return updatePosition?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (updatePosition != null) {
+      return updatePosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdatePositionEvent implements ListenRecordEvent {
+  const factory UpdatePositionEvent(final int newSliderPosition) =
+      _$UpdatePositionEventImpl;
+
+  int get newSliderPosition;
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdatePositionEventImplCopyWith<_$UpdatePositionEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 abstract class _$$UpdateCircleEventImplCopyWith<$Res> {
   factory _$$UpdateCircleEventImplCopyWith(_$UpdateCircleEventImpl value,
           $Res Function(_$UpdateCircleEventImpl) then) =
       __$$UpdateCircleEventImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Duration duration, Duration position});
+  $Res call({int newSliderPosition});
 }
 
 /// @nodoc
@@ -513,18 +779,13 @@ class __$$UpdateCircleEventImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? duration = null,
-    Object? position = null,
+    Object? newSliderPosition = null,
   }) {
     return _then(_$UpdateCircleEventImpl(
-      null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-      null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as Duration,
+      null == newSliderPosition
+          ? _value.newSliderPosition
+          : newSliderPosition // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -532,16 +793,14 @@ class __$$UpdateCircleEventImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateCircleEventImpl implements UpdateCircleEvent {
-  const _$UpdateCircleEventImpl(this.duration, this.position);
+  const _$UpdateCircleEventImpl(this.newSliderPosition);
 
   @override
-  final Duration duration;
-  @override
-  final Duration position;
+  final int newSliderPosition;
 
   @override
   String toString() {
-    return 'ListenRecordEvent.updateCircle(duration: $duration, position: $position)';
+    return 'ListenRecordEvent.updateCircle(newSliderPosition: $newSliderPosition)';
   }
 
   @override
@@ -549,14 +808,12 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateCircleEventImpl &&
-            (identical(other.duration, duration) ||
-                other.duration == duration) &&
-            (identical(other.position, position) ||
-                other.position == position));
+            (identical(other.newSliderPosition, newSliderPosition) ||
+                other.newSliderPosition == newSliderPosition));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, duration, position);
+  int get hashCode => Object.hash(runtimeType, newSliderPosition);
 
   /// Create a copy of ListenRecordEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -572,18 +829,20 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
     required TResult Function(String title) addTitle,
   }) {
-    return updateCircle(duration, position);
+    return updateCircle(newSliderPosition);
   }
 
   @override
@@ -591,17 +850,20 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
     TResult? Function(String title)? addTitle,
   }) {
-    return updateCircle?.call(duration, position);
+    return updateCircle?.call(newSliderPosition);
   }
 
   @override
@@ -609,10 +871,13 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -621,7 +886,7 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
     required TResult orElse(),
   }) {
     if (updateCircle != null) {
-      return updateCircle(duration, position);
+      return updateCircle(newSliderPosition);
     }
     return orElse();
   }
@@ -631,10 +896,13 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -649,10 +917,13 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -667,10 +938,13 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -686,17 +960,230 @@ class _$UpdateCircleEventImpl implements UpdateCircleEvent {
 }
 
 abstract class UpdateCircleEvent implements ListenRecordEvent {
-  const factory UpdateCircleEvent(
-          final Duration duration, final Duration position) =
+  const factory UpdateCircleEvent(final int newSliderPosition) =
       _$UpdateCircleEventImpl;
 
-  Duration get duration;
-  Duration get position;
+  int get newSliderPosition;
 
   /// Create a copy of ListenRecordEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCircleEventImplCopyWith<_$UpdateCircleEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateDurationEventImplCopyWith<$Res> {
+  factory _$$UpdateDurationEventImplCopyWith(_$UpdateDurationEventImpl value,
+          $Res Function(_$UpdateDurationEventImpl) then) =
+      __$$UpdateDurationEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Duration duration});
+}
+
+/// @nodoc
+class __$$UpdateDurationEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$UpdateDurationEventImpl>
+    implements _$$UpdateDurationEventImplCopyWith<$Res> {
+  __$$UpdateDurationEventImplCopyWithImpl(_$UpdateDurationEventImpl _value,
+      $Res Function(_$UpdateDurationEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? duration = null,
+  }) {
+    return _then(_$UpdateDurationEventImpl(
+      null == duration
+          ? _value.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateDurationEventImpl implements UpdateDurationEvent {
+  const _$UpdateDurationEventImpl(this.duration);
+
+  @override
+  final Duration duration;
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.updateDuration(duration: $duration)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDurationEventImpl &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, duration);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDurationEventImplCopyWith<_$UpdateDurationEventImpl> get copyWith =>
+      __$$UpdateDurationEventImplCopyWithImpl<_$UpdateDurationEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
+    required TResult Function() downloadAudio,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return updateDuration(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
+    TResult? Function()? downloadAudio,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return updateDuration?.call(duration);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
+    TResult Function()? downloadAudio,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (updateDuration != null) {
+      return updateDuration(duration);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return updateDuration(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return updateDuration?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (updateDuration != null) {
+      return updateDuration(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateDurationEvent implements ListenRecordEvent {
+  const factory UpdateDurationEvent(final Duration duration) =
+      _$UpdateDurationEventImpl;
+
+  Duration get duration;
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateDurationEventImplCopyWith<_$UpdateDurationEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -747,11 +1234,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -766,10 +1255,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -784,10 +1276,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -806,10 +1301,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -824,10 +1322,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -842,10 +1343,13 @@ class _$DownloadListenRecordEventImpl implements DownloadListenRecordEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -865,18 +1369,20 @@ abstract class DownloadListenRecordEvent implements ListenRecordEvent {
 }
 
 /// @nodoc
-abstract class _$$Add15EventImplCopyWith<$Res> {
-  factory _$$Add15EventImplCopyWith(
-          _$Add15EventImpl value, $Res Function(_$Add15EventImpl) then) =
-      __$$Add15EventImplCopyWithImpl<$Res>;
+abstract class _$$DeleteListenRecordEventImplCopyWith<$Res> {
+  factory _$$DeleteListenRecordEventImplCopyWith(
+          _$DeleteListenRecordEventImpl value,
+          $Res Function(_$DeleteListenRecordEventImpl) then) =
+      __$$DeleteListenRecordEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Add15EventImplCopyWithImpl<$Res>
-    extends _$ListenRecordEventCopyWithImpl<$Res, _$Add15EventImpl>
-    implements _$$Add15EventImplCopyWith<$Res> {
-  __$$Add15EventImplCopyWithImpl(
-      _$Add15EventImpl _value, $Res Function(_$Add15EventImpl) _then)
+class __$$DeleteListenRecordEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$DeleteListenRecordEventImpl>
+    implements _$$DeleteListenRecordEventImplCopyWith<$Res> {
+  __$$DeleteListenRecordEventImplCopyWithImpl(
+      _$DeleteListenRecordEventImpl _value,
+      $Res Function(_$DeleteListenRecordEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ListenRecordEvent
@@ -885,18 +1391,19 @@ class __$$Add15EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Add15EventImpl implements Add15Event {
-  const _$Add15EventImpl();
+class _$DeleteListenRecordEventImpl implements DeleteListenRecordEvent {
+  const _$DeleteListenRecordEventImpl();
 
   @override
   String toString() {
-    return 'ListenRecordEvent.add15()';
+    return 'ListenRecordEvent.deleteAudio()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Add15EventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteListenRecordEventImpl);
   }
 
   @override
@@ -907,18 +1414,20 @@ class _$Add15EventImpl implements Add15Event {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
     required TResult Function(String title) addTitle,
   }) {
-    return add15();
+    return deleteAudio();
   }
 
   @override
@@ -926,17 +1435,20 @@ class _$Add15EventImpl implements Add15Event {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
     TResult? Function(String title)? addTitle,
   }) {
-    return add15?.call();
+    return deleteAudio?.call();
   }
 
   @override
@@ -944,10 +1456,13 @@ class _$Add15EventImpl implements Add15Event {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -955,8 +1470,8 @@ class _$Add15EventImpl implements Add15Event {
     TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
-    if (add15 != null) {
-      return add15();
+    if (deleteAudio != null) {
+      return deleteAudio();
     }
     return orElse();
   }
@@ -966,17 +1481,20 @@ class _$Add15EventImpl implements Add15Event {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
     required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
-    return add15(this);
+    return deleteAudio(this);
   }
 
   @override
@@ -984,17 +1502,20 @@ class _$Add15EventImpl implements Add15Event {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
     TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
-    return add15?.call(this);
+    return deleteAudio?.call(this);
   }
 
   @override
@@ -1002,10 +1523,13 @@ class _$Add15EventImpl implements Add15Event {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1013,30 +1537,32 @@ class _$Add15EventImpl implements Add15Event {
     TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
-    if (add15 != null) {
-      return add15(this);
+    if (deleteAudio != null) {
+      return deleteAudio(this);
     }
     return orElse();
   }
 }
 
-abstract class Add15Event implements ListenRecordEvent {
-  const factory Add15Event() = _$Add15EventImpl;
+abstract class DeleteListenRecordEvent implements ListenRecordEvent {
+  const factory DeleteListenRecordEvent() = _$DeleteListenRecordEventImpl;
 }
 
 /// @nodoc
-abstract class _$$Minus15EventImplCopyWith<$Res> {
-  factory _$$Minus15EventImplCopyWith(
-          _$Minus15EventImpl value, $Res Function(_$Minus15EventImpl) then) =
-      __$$Minus15EventImplCopyWithImpl<$Res>;
+abstract class _$$ShareListenRecordEventImplCopyWith<$Res> {
+  factory _$$ShareListenRecordEventImplCopyWith(
+          _$ShareListenRecordEventImpl value,
+          $Res Function(_$ShareListenRecordEventImpl) then) =
+      __$$ShareListenRecordEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$Minus15EventImplCopyWithImpl<$Res>
-    extends _$ListenRecordEventCopyWithImpl<$Res, _$Minus15EventImpl>
-    implements _$$Minus15EventImplCopyWith<$Res> {
-  __$$Minus15EventImplCopyWithImpl(
-      _$Minus15EventImpl _value, $Res Function(_$Minus15EventImpl) _then)
+class __$$ShareListenRecordEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res, _$ShareListenRecordEventImpl>
+    implements _$$ShareListenRecordEventImplCopyWith<$Res> {
+  __$$ShareListenRecordEventImplCopyWithImpl(
+      _$ShareListenRecordEventImpl _value,
+      $Res Function(_$ShareListenRecordEventImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ListenRecordEvent
@@ -1045,18 +1571,19 @@ class __$$Minus15EventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Minus15EventImpl implements Minus15Event {
-  const _$Minus15EventImpl();
+class _$ShareListenRecordEventImpl implements ShareListenRecordEvent {
+  const _$ShareListenRecordEventImpl();
 
   @override
   String toString() {
-    return 'ListenRecordEvent.minus15()';
+    return 'ListenRecordEvent.shareAudio()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Minus15EventImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ShareListenRecordEventImpl);
   }
 
   @override
@@ -1067,18 +1594,20 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
     required TResult Function() close,
     required TResult Function(String title) addTitle,
   }) {
-    return minus15();
+    return shareAudio();
   }
 
   @override
@@ -1086,17 +1615,20 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
     TResult? Function()? close,
     TResult? Function(String title)? addTitle,
   }) {
-    return minus15?.call();
+    return shareAudio?.call();
   }
 
   @override
@@ -1104,10 +1636,13 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1115,8 +1650,8 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult Function(String title)? addTitle,
     required TResult orElse(),
   }) {
-    if (minus15 != null) {
-      return minus15();
+    if (shareAudio != null) {
+      return shareAudio();
     }
     return orElse();
   }
@@ -1126,17 +1661,20 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
     required TResult Function(ClosePlayingEvent value) close,
     required TResult Function(AddRecordNameEvent value) addTitle,
   }) {
-    return minus15(this);
+    return shareAudio(this);
   }
 
   @override
@@ -1144,17 +1682,20 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
     TResult? Function(ClosePlayingEvent value)? close,
     TResult? Function(AddRecordNameEvent value)? addTitle,
   }) {
-    return minus15?.call(this);
+    return shareAudio?.call(this);
   }
 
   @override
@@ -1162,10 +1703,13 @@ class _$Minus15EventImpl implements Minus15Event {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1173,15 +1717,232 @@ class _$Minus15EventImpl implements Minus15Event {
     TResult Function(AddRecordNameEvent value)? addTitle,
     required TResult orElse(),
   }) {
-    if (minus15 != null) {
-      return minus15(this);
+    if (shareAudio != null) {
+      return shareAudio(this);
     }
     return orElse();
   }
 }
 
-abstract class Minus15Event implements ListenRecordEvent {
-  const factory Minus15Event() = _$Minus15EventImpl;
+abstract class ShareListenRecordEvent implements ListenRecordEvent {
+  const factory ShareListenRecordEvent() = _$ShareListenRecordEventImpl;
+}
+
+/// @nodoc
+abstract class _$$AdjustAudioPositionEventImplCopyWith<$Res> {
+  factory _$$AdjustAudioPositionEventImplCopyWith(
+          _$AdjustAudioPositionEventImpl value,
+          $Res Function(_$AdjustAudioPositionEventImpl) then) =
+      __$$AdjustAudioPositionEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isAdd});
+}
+
+/// @nodoc
+class __$$AdjustAudioPositionEventImplCopyWithImpl<$Res>
+    extends _$ListenRecordEventCopyWithImpl<$Res,
+        _$AdjustAudioPositionEventImpl>
+    implements _$$AdjustAudioPositionEventImplCopyWith<$Res> {
+  __$$AdjustAudioPositionEventImplCopyWithImpl(
+      _$AdjustAudioPositionEventImpl _value,
+      $Res Function(_$AdjustAudioPositionEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isAdd = null,
+  }) {
+    return _then(_$AdjustAudioPositionEventImpl(
+      null == isAdd
+          ? _value.isAdd
+          : isAdd // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AdjustAudioPositionEventImpl implements AdjustAudioPositionEvent {
+  const _$AdjustAudioPositionEventImpl(this.isAdd);
+
+  @override
+  final bool isAdd;
+
+  @override
+  String toString() {
+    return 'ListenRecordEvent.adjustAudio(isAdd: $isAdd)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AdjustAudioPositionEventImpl &&
+            (identical(other.isAdd, isAdd) || other.isAdd == isAdd));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isAdd);
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AdjustAudioPositionEventImplCopyWith<_$AdjustAudioPositionEventImpl>
+      get copyWith => __$$AdjustAudioPositionEventImplCopyWithImpl<
+          _$AdjustAudioPositionEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialEv,
+    required TResult Function(Duration? currentPosition) start,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
+    required TResult Function() downloadAudio,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
+    required TResult Function() pause,
+    required TResult Function() resume,
+    required TResult Function() stop,
+    required TResult Function() close,
+    required TResult Function(String title) addTitle,
+  }) {
+    return adjustAudio(isAdd);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialEv,
+    TResult? Function(Duration? currentPosition)? start,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
+    TResult? Function()? downloadAudio,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
+    TResult? Function()? pause,
+    TResult? Function()? resume,
+    TResult? Function()? stop,
+    TResult? Function()? close,
+    TResult? Function(String title)? addTitle,
+  }) {
+    return adjustAudio?.call(isAdd);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialEv,
+    TResult Function(Duration? currentPosition)? start,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
+    TResult Function()? downloadAudio,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
+    TResult Function()? pause,
+    TResult Function()? resume,
+    TResult Function()? stop,
+    TResult Function()? close,
+    TResult Function(String title)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (adjustAudio != null) {
+      return adjustAudio(isAdd);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialPlayingEvent value) initialEv,
+    required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
+    required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
+    required TResult Function(DownloadListenRecordEvent value) downloadAudio,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
+    required TResult Function(PausePlayingEvent value) pause,
+    required TResult Function(ResumePlayingEvent value) resume,
+    required TResult Function(StopPlayingEvent value) stop,
+    required TResult Function(ClosePlayingEvent value) close,
+    required TResult Function(AddRecordNameEvent value) addTitle,
+  }) {
+    return adjustAudio(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialPlayingEvent value)? initialEv,
+    TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
+    TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
+    TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult? Function(PausePlayingEvent value)? pause,
+    TResult? Function(ResumePlayingEvent value)? resume,
+    TResult? Function(StopPlayingEvent value)? stop,
+    TResult? Function(ClosePlayingEvent value)? close,
+    TResult? Function(AddRecordNameEvent value)? addTitle,
+  }) {
+    return adjustAudio?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialPlayingEvent value)? initialEv,
+    TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
+    TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
+    TResult Function(DownloadListenRecordEvent value)? downloadAudio,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
+    TResult Function(PausePlayingEvent value)? pause,
+    TResult Function(ResumePlayingEvent value)? resume,
+    TResult Function(StopPlayingEvent value)? stop,
+    TResult Function(ClosePlayingEvent value)? close,
+    TResult Function(AddRecordNameEvent value)? addTitle,
+    required TResult orElse(),
+  }) {
+    if (adjustAudio != null) {
+      return adjustAudio(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AdjustAudioPositionEvent implements ListenRecordEvent {
+  const factory AdjustAudioPositionEvent(final bool isAdd) =
+      _$AdjustAudioPositionEventImpl;
+
+  bool get isAdd;
+
+  /// Create a copy of ListenRecordEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AdjustAudioPositionEventImplCopyWith<_$AdjustAudioPositionEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1227,11 +1988,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -1246,10 +2009,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -1264,10 +2030,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1286,10 +2055,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -1304,10 +2076,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -1322,10 +2097,13 @@ class _$PausePlayingEventImpl implements PausePlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1387,11 +2165,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -1406,10 +2186,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -1424,10 +2207,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1446,10 +2232,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -1464,10 +2253,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -1482,10 +2274,13 @@ class _$ResumePlayingEventImpl implements ResumePlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1547,11 +2342,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -1566,10 +2363,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -1584,10 +2384,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1606,10 +2409,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -1624,10 +2430,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -1642,10 +2451,13 @@ class _$StopPlayingEventImpl implements StopPlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1707,11 +2519,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -1726,10 +2540,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -1744,10 +2561,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1766,10 +2586,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -1784,10 +2607,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -1802,10 +2628,13 @@ class _$ClosePlayingEventImpl implements ClosePlayingEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,
@@ -1895,11 +2724,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initialEv,
     required TResult Function(Duration? currentPosition) start,
-    required TResult Function(Duration duration, Duration position)
-        updateCircle,
+    required TResult Function(int newSliderPosition) updatePosition,
+    required TResult Function(int newSliderPosition) updateCircle,
+    required TResult Function(Duration duration) updateDuration,
     required TResult Function() downloadAudio,
-    required TResult Function() add15,
-    required TResult Function() minus15,
+    required TResult Function() deleteAudio,
+    required TResult Function() shareAudio,
+    required TResult Function(bool isAdd) adjustAudio,
     required TResult Function() pause,
     required TResult Function() resume,
     required TResult Function() stop,
@@ -1914,10 +2745,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialEv,
     TResult? Function(Duration? currentPosition)? start,
-    TResult? Function(Duration duration, Duration position)? updateCircle,
+    TResult? Function(int newSliderPosition)? updatePosition,
+    TResult? Function(int newSliderPosition)? updateCircle,
+    TResult? Function(Duration duration)? updateDuration,
     TResult? Function()? downloadAudio,
-    TResult? Function()? add15,
-    TResult? Function()? minus15,
+    TResult? Function()? deleteAudio,
+    TResult? Function()? shareAudio,
+    TResult? Function(bool isAdd)? adjustAudio,
     TResult? Function()? pause,
     TResult? Function()? resume,
     TResult? Function()? stop,
@@ -1932,10 +2766,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialEv,
     TResult Function(Duration? currentPosition)? start,
-    TResult Function(Duration duration, Duration position)? updateCircle,
+    TResult Function(int newSliderPosition)? updatePosition,
+    TResult Function(int newSliderPosition)? updateCircle,
+    TResult Function(Duration duration)? updateDuration,
     TResult Function()? downloadAudio,
-    TResult Function()? add15,
-    TResult Function()? minus15,
+    TResult Function()? deleteAudio,
+    TResult Function()? shareAudio,
+    TResult Function(bool isAdd)? adjustAudio,
     TResult Function()? pause,
     TResult Function()? resume,
     TResult Function()? stop,
@@ -1954,10 +2791,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialPlayingEvent value) initialEv,
     required TResult Function(StartPlayingEvent value) start,
+    required TResult Function(UpdatePositionEvent value) updatePosition,
     required TResult Function(UpdateCircleEvent value) updateCircle,
+    required TResult Function(UpdateDurationEvent value) updateDuration,
     required TResult Function(DownloadListenRecordEvent value) downloadAudio,
-    required TResult Function(Add15Event value) add15,
-    required TResult Function(Minus15Event value) minus15,
+    required TResult Function(DeleteListenRecordEvent value) deleteAudio,
+    required TResult Function(ShareListenRecordEvent value) shareAudio,
+    required TResult Function(AdjustAudioPositionEvent value) adjustAudio,
     required TResult Function(PausePlayingEvent value) pause,
     required TResult Function(ResumePlayingEvent value) resume,
     required TResult Function(StopPlayingEvent value) stop,
@@ -1972,10 +2812,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialPlayingEvent value)? initialEv,
     TResult? Function(StartPlayingEvent value)? start,
+    TResult? Function(UpdatePositionEvent value)? updatePosition,
     TResult? Function(UpdateCircleEvent value)? updateCircle,
+    TResult? Function(UpdateDurationEvent value)? updateDuration,
     TResult? Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult? Function(Add15Event value)? add15,
-    TResult? Function(Minus15Event value)? minus15,
+    TResult? Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult? Function(ShareListenRecordEvent value)? shareAudio,
+    TResult? Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult? Function(PausePlayingEvent value)? pause,
     TResult? Function(ResumePlayingEvent value)? resume,
     TResult? Function(StopPlayingEvent value)? stop,
@@ -1990,10 +2833,13 @@ class _$AddRecordNameEventImpl implements AddRecordNameEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialPlayingEvent value)? initialEv,
     TResult Function(StartPlayingEvent value)? start,
+    TResult Function(UpdatePositionEvent value)? updatePosition,
     TResult Function(UpdateCircleEvent value)? updateCircle,
+    TResult Function(UpdateDurationEvent value)? updateDuration,
     TResult Function(DownloadListenRecordEvent value)? downloadAudio,
-    TResult Function(Add15Event value)? add15,
-    TResult Function(Minus15Event value)? minus15,
+    TResult Function(DeleteListenRecordEvent value)? deleteAudio,
+    TResult Function(ShareListenRecordEvent value)? shareAudio,
+    TResult Function(AdjustAudioPositionEvent value)? adjustAudio,
     TResult Function(PausePlayingEvent value)? pause,
     TResult Function(ResumePlayingEvent value)? resume,
     TResult Function(StopPlayingEvent value)? stop,

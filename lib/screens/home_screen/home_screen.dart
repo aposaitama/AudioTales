@@ -1,19 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
+import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc.dart';
+import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc_event.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/colection_preview.dart';
 import 'package:memory_box_avada/screens/home_screen/widgets/custom_home_top_clip_path.dart';
+import 'package:memory_box_avada/screens/home_screen/widgets/home_screen_audio_builder.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/widgets/access_denied_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -27,20 +28,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final isAnonymous = locator<FirebaseAuth>().currentUser?.isAnonymous;
   late ScrollController _scrollController;
 
   void _scrollListener() {
-    final totalItems =
-        context.read<AudioRecordsScreenBloc>().state.audioList.length;
+    final totalItems = context.read<HomeScreenBloc>().state.audioList.length;
+
     final audioCount =
         context.read<UserBloc>().state.userModel?.audiosCount ?? 0;
+
     final currentIndex = _scrollController.position.pixels /
         (_scrollController.position.maxScrollExtent / totalItems);
+
     if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
       context
-          .read<AudioRecordsScreenBloc>()
-          .add(const LoadNextPageAudioRecordsScreenStateEvent());
+          .read<HomeScreenBloc>()
+          .add(const LoadNextPageHomeScreenBlocEvent());
     }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -102,8 +112,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context, state) {
                               return GestureDetector(
                                 onTap: () {
-                                  context.read<NavigationCubit>().navigateTo(1);
-                                  context.go('/collection');
+                                  if (isAnonymous!) {
+                                    AccessDeniedDialog.show(context);
+                                  } else {
+                                    context
+                                        .read<NavigationCubit>()
+                                        .navigateTo(1);
+                                    context.go('/collection');
+                                  }
                                 },
                                 child: const Text(
                                   'Открыть все',
@@ -182,10 +198,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   builder: (context, state) {
                                     return GestureDetector(
                                       onTap: () {
-                                        context
-                                            .read<NavigationCubit>()
-                                            .navigateTo(3);
-                                        context.go('/audio_records');
+                                        if (isAnonymous!) {
+                                          AccessDeniedDialog.show(context);
+                                        } else {
+                                          context
+                                              .read<NavigationCubit>()
+                                              .navigateTo(3);
+                                          context.go('/audio_records');
+                                        }
                                       },
                                       child: const Text(
                                         'Открыть все',
@@ -204,136 +224,41 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(
                               height: 10.0,
                             ),
-                            BlocBuilder<AudioRecordsScreenBloc,
-                                AudioRecordsScreenState>(
-                              builder: (context, state) {
-                                print(state.audioList.length);
-                                return Expanded(
-                                  child: ListView.builder(
+                            !isAnonymous!
+                                ? HomeScreenAudioBuilder(
                                     controller: _scrollController,
-                                    itemCount: state.audioList.length,
-                                    itemBuilder: (context, int index) {
-                                      return Column(
-                                        children: [
-                                          AudioItemTile(
-                                            color: AppColors.purpleColor,
-                                            audio: state.audioList[index],
-                                            title: state.audioList[index].title,
-                                            duration: '30 минут',
-                                            onRename: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    const ChangePopupAudioRecordsScreenStateEvent(
-                                                      AudioPopupStatus.editing,
-                                                    ),
-                                                  );
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    EditAudioRecordsScreenStateEvent(
-                                                      state.audioList[index].id,
-                                                    ),
-                                                  );
-                                            },
-                                            onSave: (controller) {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    SaveAudioRecordsScreenStateEvent(
-                                                      controller.text,
-                                                    ),
-                                                  );
-                                            },
-                                            onCancel: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    const ChangePopupAudioRecordsScreenStateEvent(
-                                                      AudioPopupStatus.initial,
-                                                    ),
-                                                  );
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    const CancelEditingAudioRecordsScreenStateEvent(),
-                                                  );
-                                            },
-                                            onDelete: () {
-                                              ShowDeleteDialog.show(
-                                                'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
-                                                context,
-                                                onYes: () {
-                                                  context
-                                                      .read<
-                                                          AudioRecordsScreenBloc>()
-                                                      .add(
-                                                        DeleteAudioRecordsScreenStateEvent(
-                                                          state.audioList[index]
-                                                              .title,
-                                                        ),
-                                                      );
-                                                },
-                                              );
-                                            },
-                                            onChoose: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    ChooseAudioRecordsScreenStateEvent(
-                                                      [state.audioList[index]],
-                                                    ),
-                                                  );
-                                              context.go(
-                                                '/collection/info/choose',
-                                              );
-                                            },
-                                            onShare: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    ShareAudioRecordsScreenStateEvent(
-                                                      state.audioList[index],
-                                                    ),
-                                                  );
-                                            },
+                                  )
+                                : Expanded(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 45.0,
                                           ),
-                                          const SizedBox(
-                                            height: 10.0,
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            !isAnonymous!
+                                                ? 'Как только ты запишешь аудио, онo появится здесь.'
+                                                : 'Анонимные пользователи не могут сохранять аудио в облако.',
+                                            style: TextStyle(
+                                              color: AppColors.fontColor
+                                                  .withOpacity(0.3),
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'TTNorms',
+                                            ),
                                           ),
-                                        ],
-                                      );
-                                    },
+                                        ),
+                                        !isAnonymous!
+                                            ? SvgPicture.asset(
+                                                'assets/icons/ArrowDown.svg',
+                                              )
+                                            : const SizedBox.shrink(),
+                                      ],
+                                    ),
                                   ),
-                                );
-                              },
-                            ),
-                            // const SizedBox(
-                            //   height: 54.0,
-                            // ),
-                            // Padding(
-                            //   padding: const EdgeInsets.symmetric(
-                            //       horizontal: 45.0),
-                            //   child: Text(
-                            //     textAlign: TextAlign.center,
-                            //     'Как только ты запишешь аудио, онo появится здесь.',
-                            //     style: TextStyle(
-                            //       color:
-                            //           AppColors.fontColor.withOpacity(0.3),
-                            //       fontSize: 20.0,
-                            //       fontWeight: FontWeight.w500,
-                            //       fontFamily: 'TTNorms',
-                            //     ),
-                            //   ),
-                            // ),
-                            // SvgPicture.asset('assets/icons/ArrowDown.svg'),
                           ],
                         ),
                       ),

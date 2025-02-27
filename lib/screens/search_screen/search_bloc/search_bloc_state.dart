@@ -13,6 +13,7 @@ enum SearchBlocStatus {
 class SearchBlocState with _$SearchBlocState {
   const factory SearchBlocState({
     @Default([]) List<AudioRecordsModel> audiosList,
+    @Default(0) int filteredAudiosCount,
     @Default(SearchBlocStatus.loading) SearchBlocStatus status,
     @Default([]) List<AudioRecordsModel> filteredAudiosList,
   }) = _SearchBlocState;

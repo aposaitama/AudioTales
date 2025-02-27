@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:memory_box_avada/di/service_locator.dart';
+import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
+import 'package:memory_box_avada/widgets/access_denied_dialog.dart';
 import 'package:memory_box_avada/widgets/drawer_elements_row.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -9,6 +14,20 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isAnonymous = locator<FirebaseAuth>().currentUser?.isAnonymous;
+
+    void navigateOrDenied(String route, [int index = -1]) {
+      if (isAnonymous! && (route != '/profile' && route != '/home')) {
+        AccessDeniedDialog.show(context);
+      } else {
+        context.pop();
+
+        context.read<NavigationCubit>().navigateTo(index);
+
+        context.go(route);
+      }
+    }
+
     return Drawer(
       width: 291.0,
       backgroundColor: const Color(0xFFF6F6F6),
@@ -59,8 +78,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Home.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/home');
+                          navigateOrDenied('/home', 0);
                         },
                       ),
                       DrawerElementsRow(
@@ -69,8 +87,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Profile.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/profile');
+                          navigateOrDenied('/profile', 4);
                         },
                       ),
                       DrawerElementsRow(
@@ -79,8 +96,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Category.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/collection');
+                          navigateOrDenied('/collection', 1);
                         },
                       ),
                       DrawerElementsRow(
@@ -89,8 +105,7 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Paper.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/audio_records');
+                          navigateOrDenied('/audio_records', 3);
                         },
                       ),
                       DrawerElementsRow(
@@ -99,8 +114,10 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Search.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/search');
+                          navigateOrDenied(
+                            '/search',
+                            -1,
+                          );
                         },
                       ),
                       DrawerElementsRow(
@@ -109,8 +126,10 @@ class CustomDrawer extends StatelessWidget {
                           'assets/icons/Delete.svg',
                         ),
                         onTap: () {
-                          context.pop();
-                          context.go('/deleted');
+                          navigateOrDenied(
+                            '/deleted',
+                            -1,
+                          );
                         },
                       ),
                     ],
@@ -121,8 +140,9 @@ class CustomDrawer extends StatelessWidget {
                       'assets/icons/Paper.svg',
                     ),
                     onTap: () {
-                      context.pop();
-                      context.go('/subscription');
+                      navigateOrDenied(
+                        '/subscription',
+                      );
                     },
                   ),
                   DrawerElementsRow(

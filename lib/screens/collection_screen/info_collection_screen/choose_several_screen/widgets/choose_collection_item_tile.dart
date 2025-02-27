@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
@@ -20,16 +18,20 @@ class ChooseCollectionItemTile extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(14),
-          child: collection.imageUrl.isNotEmpty
-              ? CachedNetworkImage(
-                  imageUrl: collection.imageUrl,
+          child: (collection.imageUrl.isNotEmpty &&
+                  Uri.tryParse(collection.imageUrl)?.hasAbsolutePath == true)
+              ? Image.network(
+                  collection.imageUrl,
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  errorWidget: (context, url, error) =>
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) =>
                       const Icon(Icons.broken_image, size: 50),
                 )
               : const Icon(Icons.image_not_supported, size: 50),

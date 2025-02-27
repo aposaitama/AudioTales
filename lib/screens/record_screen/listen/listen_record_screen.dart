@@ -1,16 +1,20 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialogButton.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialog_button.dart';
+import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_state.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/widgets/circle_painter.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/widgets/custom_back_diaog.dart';
+import 'package:memory_box_avada/screens/record_screen/listen/widgets/custom_listen_page_slider.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
@@ -27,12 +31,32 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
   final bool? isAnonymous = locator<FirebaseAuth>().currentUser?.isAnonymous;
 
   TextEditingController title = TextEditingController(text: 'Аудиозапись');
+
+  @override
+  void initState() {
+    context.read<ListenRecordBloc>().add(const InitialPlayingEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ListenRecordBloc(),
+    return BlocListener<ListenRecordBloc, ListenRecordState>(
+      listener: (context, state) {
+        if (state.status == ListenStatus.close) {
+          context.pop();
+        }
+        if (state.downloadStatus == DownloadListenStatus.successful) {
+          BotToast.showText(text: 'Файл было загружено.');
+        }
+        if (state.isAudioTitleExist) {
+          BotToast.showText(
+            text: 'Помилка збереження аудіо. Файл з такою назвою вже існує.',
+          );
+        }
+      },
       child: BlocBuilder<ListenRecordBloc, ListenRecordState>(
         builder: (context, state) {
+          state.duration;
           return Column(
             children: [
               Expanded(
@@ -58,7 +82,16 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                           children: [
                             Row(
                               children: [
-                                SvgPicture.asset('assets/icons/Share.svg'),
+                                GestureDetector(
+                                  onTap: () {
+                                    context
+                                        .read<ListenRecordBloc>()
+                                        .add(const ShareListenRecordEvent());
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/icons/Share.svg',
+                                  ),
+                                ),
                                 const SizedBox(
                                   width: 30.0,
                                 ),
@@ -75,8 +108,21 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                 const SizedBox(
                                   width: 30.0,
                                 ),
-                                SvgPicture.asset(
-                                  'assets/icons/DeleteRecord.svg',
+                                GestureDetector(
+                                  onTap: () {
+                                    ShowDeleteDialog.show(
+                                      'Ваш записаний файл буде видалено назавжди.',
+                                      context,
+                                      onYes: () {
+                                        context.read<ListenRecordBloc>().add(
+                                              const DeleteListenRecordEvent(),
+                                            );
+                                      },
+                                    );
+                                  },
+                                  child: SvgPicture.asset(
+                                    'assets/icons/DeleteRecord.svg',
+                                  ),
                                 ),
                               ],
                             ),
@@ -86,50 +132,10 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                 onTap: () => {
                                   if (isAnonymous!)
                                     {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) => AlertDialog(
-                                          content: const Padding(
-                                            padding: EdgeInsets.only(top: 50.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  'Доступ заборонено',
-                                                  style: AppTextStyles.titleRed,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 1,
-                                                ),
-                                                SizedBox(height: 24.0),
-                                                Text(
-                                                  textAlign: TextAlign.center,
-                                                  'Будь ласка, зареєструйтеся, щоб отримати доступ до збереження аудіозаписів у хмару.',
-                                                  style: AppTextStyles
-                                                      .subtitleTall,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          actions: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Dialogbutton(
-                                                    text: 'Назад',
-                                                    backgroundColor:
-                                                        AppColors.purpleColor,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
+                                      CustomBackDialog.show(
+                                        'Доступ заборонено',
+                                        'Будь ласка, зареєструйтеся, щоб отримати доступ до збереження аудіозаписів у хмару.',
+                                        context,
                                       ),
                                     }
                                   else if (!isAnonymous!)
@@ -140,13 +146,16 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                       context
                                           .read<ListenRecordBloc>()
                                           .add(const ClosePlayingEvent()),
-                                      context.read<RecordStatusBloc>().add(
-                                            const RecordStatusEvent.recording(),
-                                          ),
-                                      context.pop(),
+                                      // context.read<RecordStatusBloc>().add(
+                                      //       const RecordStatusEvent.recording(),
+                                      //     ),
+                                      // context.pop(),
                                     },
                                 },
-                                child: const Text('Сохранить'),
+                                child: const Text(
+                                  'Сохранить',
+                                  style: AppTextStyles.blackTitle,
+                                ),
                               ),
                             ),
                           ],
@@ -162,14 +171,11 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                               children: [
                                 TextField(
                                   controller: title,
+                                  style: AppTextStyles.body.copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
                                   textAlign: TextAlign.center,
                                   decoration: const InputDecoration(
-                                    hintStyle: TextStyle(
-                                      color: AppColors.fontColor,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 20.0,
-                                      fontFamily: 'TTNorms',
-                                    ),
                                     contentPadding: EdgeInsets.symmetric(
                                       horizontal: 20.0,
                                       vertical: 15.0,
@@ -178,29 +184,42 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                       borderSide: BorderSide.none,
                                     ),
                                   ),
+                                  onChanged: (value) =>
+                                      context.read<ListenRecordBloc>().add(
+                                            AddRecordNameEvent(
+                                              title.text,
+                                            ),
+                                          ),
                                 ),
                                 Column(
                                   children: [
-                                    CustomPaint(
-                                      size: const Size(double.infinity, 40),
-                                      painter: CirclePainter(
-                                        state.duration,
-                                        state.position,
-                                      ),
-                                    ),
+                                    // CustomPaint(
+                                    //   size: const Size(double.infinity, 40),
+                                    //   painter: CirclePainter(
+                                    //     state.duration,
+                                    //     state.position,
+                                    //   ),
+                                    // ),
+                                    const CustomListenPageSlider(),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           "${(state.position.inMinutes).toString().padLeft(2, '0')}:${(state.position.inSeconds % 60).toString().padLeft(2, '0')}",
+                                          style: AppTextStyles.blackTitle,
                                         ),
-                                        BlocBuilder<RecordBloc, RecordState>(
-                                          builder: (context, state) {
-                                            return Text(
-                                              "${(state.duration.inMinutes).toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}",
-                                            );
-                                          },
+                                        // BlocBuilder<RecordBloc, RecordState>(
+                                        //   builder: (context, state) {
+                                        //     return Text(
+                                        //       "${(state.duration.inMinutes).toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}",
+                                        //       style: AppTextStyles.blackTitle,
+                                        //     );
+                                        //   },
+                                        // ),
+                                        Text(
+                                          "${(state.duration.inMinutes).toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}",
+                                          style: AppTextStyles.blackTitle,
                                         ),
                                       ],
                                     ),
@@ -210,8 +229,14 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(
-                                      'assets/icons/Minus15.svg',
+                                    GestureDetector(
+                                      onTap: () {
+                                        context.read<ListenRecordBloc>().add(
+                                            AdjustAudioPositionEvent(false));
+                                      },
+                                      child: SvgPicture.asset(
+                                        'assets/icons/Minus15.svg',
+                                      ),
                                     ),
                                     const SizedBox(
                                       width: 60.0,
@@ -282,8 +307,7 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         context.read<ListenRecordBloc>().add(
-                                              const Add15Event(),
-                                            );
+                                            AdjustAudioPositionEvent(true));
                                       },
                                       child: SvgPicture.asset(
                                         'assets/icons/Add15.svg',

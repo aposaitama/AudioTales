@@ -15,6 +15,8 @@ class MiniPlayerBlocEvent with _$MiniPlayerBlocEvent {
       UpdateLineMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.updateSlider(int newSliderPosition) =
       UpdateSliderLineMiniPlayerEvent;
+  const factory MiniPlayerBlocEvent.updateDuration(int newSliderPosition) =
+      UpdateDurationLineMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.nextTrack() = NextTrackMiniPlayerEvent;
   const factory MiniPlayerBlocEvent.playAll(bool isPlayAll) =
       PlayAllTrackMiniPlayerEvent;

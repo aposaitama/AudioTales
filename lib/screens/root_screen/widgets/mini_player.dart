@@ -123,7 +123,7 @@ class _MiniPlayerState extends State<MiniPlayer> {
                               //     state.position,
                               //   ),
                               // ),
-                              CustomSlider(),
+                              const CustomSlider(),
                               const SizedBox(
                                 height: 3.0,
                               ),

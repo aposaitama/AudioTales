@@ -16,45 +16,44 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SubscriptionBlocEvent {
-  Subscription get subscriptionType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Subscription subscriptionType)
         subscriptionSelected,
+    required TResult Function() updateSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult? Function()? updateSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult Function()? updateSubscription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SubscriptionSelected value) subscriptionSelected,
+    required TResult Function(SubscriptionUpdate value) updateSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult? Function(SubscriptionUpdate value)? updateSubscription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult Function(SubscriptionUpdate value)? updateSubscription,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  /// Create a copy of SubscriptionBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SubscriptionBlocEventCopyWith<SubscriptionBlocEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -63,8 +62,6 @@ abstract class $SubscriptionBlocEventCopyWith<$Res> {
   factory $SubscriptionBlocEventCopyWith(SubscriptionBlocEvent value,
           $Res Function(SubscriptionBlocEvent) then) =
       _$SubscriptionBlocEventCopyWithImpl<$Res, SubscriptionBlocEvent>;
-  @useResult
-  $Res call({Subscription subscriptionType});
 }
 
 /// @nodoc
@@ -80,27 +77,13 @@ class _$SubscriptionBlocEventCopyWithImpl<$Res,
 
   /// Create a copy of SubscriptionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? subscriptionType = null,
-  }) {
-    return _then(_value.copyWith(
-      subscriptionType: null == subscriptionType
-          ? _value.subscriptionType
-          : subscriptionType // ignore: cast_nullable_to_non_nullable
-              as Subscription,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$SubscriptionSelectedImplCopyWith<$Res>
-    implements $SubscriptionBlocEventCopyWith<$Res> {
+abstract class _$$SubscriptionSelectedImplCopyWith<$Res> {
   factory _$$SubscriptionSelectedImplCopyWith(_$SubscriptionSelectedImpl value,
           $Res Function(_$SubscriptionSelectedImpl) then) =
       __$$SubscriptionSelectedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({Subscription subscriptionType});
 }
@@ -170,6 +153,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   TResult when<TResult extends Object?>({
     required TResult Function(Subscription subscriptionType)
         subscriptionSelected,
+    required TResult Function() updateSubscription,
   }) {
     return subscriptionSelected(subscriptionType);
   }
@@ -178,6 +162,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult? Function()? updateSubscription,
   }) {
     return subscriptionSelected?.call(subscriptionType);
   }
@@ -186,6 +171,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult Function()? updateSubscription,
     required TResult orElse(),
   }) {
     if (subscriptionSelected != null) {
@@ -198,6 +184,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SubscriptionSelected value) subscriptionSelected,
+    required TResult Function(SubscriptionUpdate value) updateSubscription,
   }) {
     return subscriptionSelected(this);
   }
@@ -206,6 +193,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult? Function(SubscriptionUpdate value)? updateSubscription,
   }) {
     return subscriptionSelected?.call(this);
   }
@@ -214,6 +202,7 @@ class _$SubscriptionSelectedImpl implements SubscriptionSelected {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult Function(SubscriptionUpdate value)? updateSubscription,
     required TResult orElse(),
   }) {
     if (subscriptionSelected != null) {
@@ -227,13 +216,117 @@ abstract class SubscriptionSelected implements SubscriptionBlocEvent {
   const factory SubscriptionSelected(final Subscription subscriptionType) =
       _$SubscriptionSelectedImpl;
 
-  @override
   Subscription get subscriptionType;
 
   /// Create a copy of SubscriptionBlocEvent
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubscriptionSelectedImplCopyWith<_$SubscriptionSelectedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubscriptionUpdateImplCopyWith<$Res> {
+  factory _$$SubscriptionUpdateImplCopyWith(_$SubscriptionUpdateImpl value,
+          $Res Function(_$SubscriptionUpdateImpl) then) =
+      __$$SubscriptionUpdateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SubscriptionUpdateImplCopyWithImpl<$Res>
+    extends _$SubscriptionBlocEventCopyWithImpl<$Res, _$SubscriptionUpdateImpl>
+    implements _$$SubscriptionUpdateImplCopyWith<$Res> {
+  __$$SubscriptionUpdateImplCopyWithImpl(_$SubscriptionUpdateImpl _value,
+      $Res Function(_$SubscriptionUpdateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SubscriptionBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SubscriptionUpdateImpl implements SubscriptionUpdate {
+  const _$SubscriptionUpdateImpl();
+
+  @override
+  String toString() {
+    return 'SubscriptionBlocEvent.updateSubscription()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SubscriptionUpdateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Subscription subscriptionType)
+        subscriptionSelected,
+    required TResult Function() updateSubscription,
+  }) {
+    return updateSubscription();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult? Function()? updateSubscription,
+  }) {
+    return updateSubscription?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Subscription subscriptionType)? subscriptionSelected,
+    TResult Function()? updateSubscription,
+    required TResult orElse(),
+  }) {
+    if (updateSubscription != null) {
+      return updateSubscription();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SubscriptionSelected value) subscriptionSelected,
+    required TResult Function(SubscriptionUpdate value) updateSubscription,
+  }) {
+    return updateSubscription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult? Function(SubscriptionUpdate value)? updateSubscription,
+  }) {
+    return updateSubscription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SubscriptionSelected value)? subscriptionSelected,
+    TResult Function(SubscriptionUpdate value)? updateSubscription,
+    required TResult orElse(),
+  }) {
+    if (updateSubscription != null) {
+      return updateSubscription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SubscriptionUpdate implements SubscriptionBlocEvent {
+  const factory SubscriptionUpdate() = _$SubscriptionUpdateImpl;
 }

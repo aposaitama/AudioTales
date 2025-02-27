@@ -24,205 +24,233 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  late ScrollController _scrollController;
+
   final TextEditingController _searchController = TextEditingController();
+
+  void _scrollListener() {
+    final audioCount = context.read<SearchBloc>().state.filteredAudiosCount;
+    final totalItems = context.read<SearchBloc>().state.audiosList.length;
+    final currentIndex = _scrollController.position.pixels /
+        (_scrollController.position.maxScrollExtent / totalItems);
+
+    if (currentIndex >= totalItems - 1 && totalItems < audioCount) {
+      context
+          .read<SearchBloc>()
+          .add(LoadNextSearchEvent(_searchController.text));
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchBloc(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: RichText(
-            textAlign: TextAlign.center,
-            text: const TextSpan(
-              text: 'Поиск\n',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 36.0,
-                fontWeight: FontWeight.w700,
-                height: 1.5,
-                letterSpacing: 3,
-                fontFamily: 'TTNorms',
-              ),
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'Найди потеряшку',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w500,
-                    height: 1.0,
-                    letterSpacing: 1,
-                    fontFamily: 'TTNorms',
-                  ),
-                ),
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: RichText(
+          textAlign: TextAlign.center,
+          text: const TextSpan(
+            text: 'Поиск\n',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 36.0,
+              fontWeight: FontWeight.w700,
+              height: 1.5,
+              letterSpacing: 3,
+              fontFamily: 'TTNorms',
             ),
-          ),
-          toolbarHeight: 70,
-          backgroundColor: AppColors.blueColor,
-          leading: Builder(
-            builder: (context) => Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SvgPicture.asset(
-                    'assets/icons/Add.svg',
-                    height: 24.0,
-                    width: 24.0,
-                  ),
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Найди потеряшку',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  height: 1.0,
+                  letterSpacing: 1,
+                  fontFamily: 'TTNorms',
                 ),
-                onPressed: () => context.go('/collection/add'),
               ),
+            ],
+          ),
+        ),
+        toolbarHeight: 70,
+        backgroundColor: AppColors.blueColor,
+        leading: Builder(
+          builder: (context) => Align(
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              icon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                  'assets/icons/Add.svg',
+                  height: 24.0,
+                  width: 24.0,
+                ),
+              ),
+              onPressed: () => context.go('/collection/add'),
             ),
           ),
         ),
-        body: BlocBuilder<SearchBloc, SearchBlocState>(
-          builder: (context, state) {
-            return Stack(
-              children: [
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        const CustomProfileTopClipPath(
-                          backgroundColor: AppColors.blueColor,
-                          minusHeigth: 70,
-                        ),
-                        SearchField(
-                          controller: _searchController,
-                          onChanged: (query) {
-                            context.read<SearchBloc>().add(
-                                  SearchAudioRecordsEvent(query),
-                                );
-                          },
-                          onTapSearch: () {
-                            FocusScope.of(context).unfocus();
-                          },
-                        ),
-                      ],
-                    ),
-                    state.audiosList.isNotEmpty
-                        ? Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                                vertical: 10.0,
-                              ),
-                              child: ListView.builder(
-                                itemCount: state.audiosList.length,
-                                itemBuilder: (context, int index) {
-                                  final audio = state.audiosList[index];
-                                  return Column(
-                                    children: [
-                                      AudioItemTile(
-                                        audio: audio,
-                                        title: audio.title,
-                                        duration: '30 минут',
-                                        onRename: () {
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                const ChangePopupAudioRecordsScreenStateEvent(
-                                                  AudioPopupStatus.editing,
-                                                ),
-                                              );
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                EditAudioRecordsScreenStateEvent(
-                                                  audio.id,
-                                                ),
-                                              );
-                                        },
-                                        onSave: (controller) {
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                SaveAudioRecordsScreenStateEvent(
-                                                  controller.text,
-                                                ),
-                                              );
-                                        },
-                                        onCancel: () {
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                const ChangePopupAudioRecordsScreenStateEvent(
-                                                  AudioPopupStatus.initial,
-                                                ),
-                                              );
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                const CancelEditingAudioRecordsScreenStateEvent(),
-                                              );
-                                        },
-                                        onDelete: () {
-                                          ShowDeleteDialog.show(
-                                            'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
-                                            context,
-                                            onYes: () {
-                                              context
-                                                  .read<
-                                                      AudioRecordsScreenBloc>()
-                                                  .add(
-                                                    DeleteAudioRecordsScreenStateEvent(
-                                                      audio.title,
-                                                    ),
-                                                  );
-                                            },
-                                          );
-                                        },
-                                        onChoose: () {
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                ChooseAudioRecordsScreenStateEvent(
-                                                  [audio],
-                                                ),
-                                              );
-                                          context.go(
-                                            '/collection/info/choose',
-                                          );
-                                        },
-                                        onShare: () {
-                                          context
-                                              .read<AudioRecordsScreenBloc>()
-                                              .add(
-                                                ShareAudioRecordsScreenStateEvent(
-                                                  state.audiosList[index],
-                                                ),
-                                              );
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        height: 10.0,
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ),
+      ),
+      body: BlocBuilder<SearchBloc, SearchBlocState>(
+        builder: (context, state) {
+          return Stack(
+            children: [
+              Column(
+                children: [
+                  Stack(
+                    children: [
+                      const CustomProfileTopClipPath(
+                        backgroundColor: AppColors.blueColor,
+                        minusHeigth: 70,
+                      ),
+                      SearchField(
+                        controller: _searchController,
+                        onChanged: (query) {
+                          context.read<SearchBloc>().add(
+                                SearchAudioRecordsEvent(query),
+                              );
+                        },
+                        onTapSearch: () {
+                          FocusScope.of(context).unfocus();
+                        },
+                      ),
+                    ],
+                  ),
+                  state.audiosList.isNotEmpty
+                      ? Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 10.0,
                             ),
-                          )
-                        : const Expanded(
-                            child: Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(20),
-                                child: Text(
-                                  textAlign: TextAlign.center,
-                                  'Введи назву аудіозапису',
-                                  style: AppTextStyles.body,
-                                ),
-                              ),
+                            child: ListView.builder(
+                              controller: _scrollController,
+                              itemCount: state.audiosList.length,
+                              itemBuilder: (context, int index) {
+                                final audio = state.audiosList[index];
+                                return Column(
+                                  children: [
+                                    AudioItemTile(
+                                      audio: audio,
+                                      title: audio.title,
+                                      duration: '30 минут',
+                                      onRename: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              const ChangePopupAudioRecordsScreenStateEvent(
+                                                AudioPopupStatus.editing,
+                                              ),
+                                            );
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              EditAudioRecordsScreenStateEvent(
+                                                audio.id,
+                                              ),
+                                            );
+                                      },
+                                      onSave: (controller) {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              SaveAudioRecordsScreenStateEvent(
+                                                controller.text,
+                                              ),
+                                            );
+                                      },
+                                      onCancel: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              const ChangePopupAudioRecordsScreenStateEvent(
+                                                AudioPopupStatus.initial,
+                                              ),
+                                            );
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              const CancelEditingAudioRecordsScreenStateEvent(),
+                                            );
+                                      },
+                                      onDelete: () {
+                                        ShowDeleteDialog.show(
+                                          'Ваш файл перенесется в папку “Недавно удаленные”. Через 15 дней он исчезнет.',
+                                          context,
+                                          onYes: () {
+                                            context
+                                                .read<AudioRecordsScreenBloc>()
+                                                .add(
+                                                  DeleteAudioRecordsScreenStateEvent(
+                                                    audio.title,
+                                                  ),
+                                                );
+                                          },
+                                        );
+                                      },
+                                      onChoose: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              ChooseAudioRecordsScreenStateEvent(
+                                                [audio],
+                                              ),
+                                            );
+                                        context.go(
+                                          '/collection/info/choose',
+                                        );
+                                      },
+                                      onShare: () {
+                                        context
+                                            .read<AudioRecordsScreenBloc>()
+                                            .add(
+                                              ShareAudioRecordsScreenStateEvent(
+                                                state.audiosList[index],
+                                              ),
+                                            );
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 10.0,
+                                    ),
+                                  ],
+                                );
+                              },
                             ),
                           ),
-                  ],
-                ),
-              ],
-            );
-          },
-        ),
+                        )
+                      : _searchController.text.isEmpty
+                          ? const Expanded(
+                              child: Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    'Введи назву аудіозапису',
+                                    style: AppTextStyles.body,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SizedBox.shrink(),
+                ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }

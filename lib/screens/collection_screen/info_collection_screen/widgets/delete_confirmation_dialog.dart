@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/style/textStyle/textStyle.dart';
-import 'dialogButton.dart';
+import 'dialog_button.dart';
 
 class DeleteConfirmationDialog extends StatelessWidget {
   final VoidCallback onConfirm;

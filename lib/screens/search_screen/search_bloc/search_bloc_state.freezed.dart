@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchBlocState {
   List<AudioRecordsModel> get audiosList => throw _privateConstructorUsedError;
+  int get filteredAudiosCount => throw _privateConstructorUsedError;
   SearchBlocStatus get status => throw _privateConstructorUsedError;
   List<AudioRecordsModel> get filteredAudiosList =>
       throw _privateConstructorUsedError;
@@ -36,6 +37,7 @@ abstract class $SearchBlocStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<AudioRecordsModel> audiosList,
+      int filteredAudiosCount,
       SearchBlocStatus status,
       List<AudioRecordsModel> filteredAudiosList});
 }
@@ -56,6 +58,7 @@ class _$SearchBlocStateCopyWithImpl<$Res, $Val extends SearchBlocState>
   @override
   $Res call({
     Object? audiosList = null,
+    Object? filteredAudiosCount = null,
     Object? status = null,
     Object? filteredAudiosList = null,
   }) {
@@ -64,6 +67,10 @@ class _$SearchBlocStateCopyWithImpl<$Res, $Val extends SearchBlocState>
           ? _value.audiosList
           : audiosList // ignore: cast_nullable_to_non_nullable
               as List<AudioRecordsModel>,
+      filteredAudiosCount: null == filteredAudiosCount
+          ? _value.filteredAudiosCount
+          : filteredAudiosCount // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -86,6 +93,7 @@ abstract class _$$SearchBlocStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<AudioRecordsModel> audiosList,
+      int filteredAudiosCount,
       SearchBlocStatus status,
       List<AudioRecordsModel> filteredAudiosList});
 }
@@ -104,6 +112,7 @@ class __$$SearchBlocStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? audiosList = null,
+    Object? filteredAudiosCount = null,
     Object? status = null,
     Object? filteredAudiosList = null,
   }) {
@@ -112,6 +121,10 @@ class __$$SearchBlocStateImplCopyWithImpl<$Res>
           ? _value._audiosList
           : audiosList // ignore: cast_nullable_to_non_nullable
               as List<AudioRecordsModel>,
+      filteredAudiosCount: null == filteredAudiosCount
+          ? _value.filteredAudiosCount
+          : filteredAudiosCount // ignore: cast_nullable_to_non_nullable
+              as int,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -129,6 +142,7 @@ class __$$SearchBlocStateImplCopyWithImpl<$Res>
 class _$SearchBlocStateImpl implements _SearchBlocState {
   const _$SearchBlocStateImpl(
       {final List<AudioRecordsModel> audiosList = const [],
+      this.filteredAudiosCount = 0,
       this.status = SearchBlocStatus.loading,
       final List<AudioRecordsModel> filteredAudiosList = const []})
       : _audiosList = audiosList,
@@ -145,6 +159,9 @@ class _$SearchBlocStateImpl implements _SearchBlocState {
 
   @override
   @JsonKey()
+  final int filteredAudiosCount;
+  @override
+  @JsonKey()
   final SearchBlocStatus status;
   final List<AudioRecordsModel> _filteredAudiosList;
   @override
@@ -158,7 +175,7 @@ class _$SearchBlocStateImpl implements _SearchBlocState {
 
   @override
   String toString() {
-    return 'SearchBlocState(audiosList: $audiosList, status: $status, filteredAudiosList: $filteredAudiosList)';
+    return 'SearchBlocState(audiosList: $audiosList, filteredAudiosCount: $filteredAudiosCount, status: $status, filteredAudiosList: $filteredAudiosList)';
   }
 
   @override
@@ -168,6 +185,8 @@ class _$SearchBlocStateImpl implements _SearchBlocState {
             other is _$SearchBlocStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._audiosList, _audiosList) &&
+            (identical(other.filteredAudiosCount, filteredAudiosCount) ||
+                other.filteredAudiosCount == filteredAudiosCount) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._filteredAudiosList, _filteredAudiosList));
@@ -177,6 +196,7 @@ class _$SearchBlocStateImpl implements _SearchBlocState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_audiosList),
+      filteredAudiosCount,
       status,
       const DeepCollectionEquality().hash(_filteredAudiosList));
 
@@ -193,12 +213,15 @@ class _$SearchBlocStateImpl implements _SearchBlocState {
 abstract class _SearchBlocState implements SearchBlocState {
   const factory _SearchBlocState(
           {final List<AudioRecordsModel> audiosList,
+          final int filteredAudiosCount,
           final SearchBlocStatus status,
           final List<AudioRecordsModel> filteredAudiosList}) =
       _$SearchBlocStateImpl;
 
   @override
   List<AudioRecordsModel> get audiosList;
+  @override
+  int get filteredAudiosCount;
   @override
   SearchBlocStatus get status;
   @override

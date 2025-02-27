@@ -8,5 +8,7 @@ class SearchBlocEvent with _$SearchBlocEvent {
   const factory SearchBlocEvent.loading() = LoadingSearchBlocEvent;
   const factory SearchBlocEvent.loaded(List<AudioRecordsModel> audioList) =
       LoadedSearchBlocEvent;
+  const factory SearchBlocEvent.clearAudios() = ClearSearchBlocEvent;
   const factory SearchBlocEvent.search(String query) = SearchAudioRecordsEvent;
+  const factory SearchBlocEvent.loadeNext(String query) = LoadNextSearchEvent;
 }
