@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class SubscriptionBenefitsTile extends StatelessWidget {
   final String title;

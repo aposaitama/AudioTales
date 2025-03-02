@@ -1,9 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/utils/duration_helper.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class CollectionItemTile extends StatelessWidget {
   final SimpleCollectionModel collection;

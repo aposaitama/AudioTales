@@ -195,8 +195,6 @@ import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
 import 'package:memory_box_avada/screens/record_screen/bloc/record_status_state.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/record_screen.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
 import 'package:memory_box_avada/widgets/access_denied_dialog.dart';
@@ -301,9 +299,9 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         _buildNavItem(0, 'assets/icons/Home.svg', 'Главная',
-                            state.currentIndex),
+                            state.currentIndex,),
                         _buildNavItem(1, 'assets/icons/Category.svg',
-                            'Подборки', state.currentIndex),
+                            'Подборки', state.currentIndex,),
                       ],
                     ),
                   ),
@@ -319,14 +317,14 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         _buildNavItem(3, 'assets/icons/Paper.svg',
-                            'Аудиозаписи', state.currentIndex),
+                            'Аудиозаписи', state.currentIndex,),
                         _buildNavItem(4, 'assets/icons/Profile.svg', 'Профиль',
-                            state.currentIndex),
+                            state.currentIndex,),
                       ],
                     ),
-                  )
+                  ),
                 ],
-              )
+              ),
 
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -352,8 +350,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   }
 
   Widget _buildNavItem(
-      int index, String iconPath, String label, int currentIndex,
-      {bool isSpecial = false}) {
+      int index, String iconPath, String label, int currentIndex,) {
     return GestureDetector(
       onTap: () => _onTap(index),
       child: Column(

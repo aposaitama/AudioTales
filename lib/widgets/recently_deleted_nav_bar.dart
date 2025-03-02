@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/recently_deleted_bloc/recently_deleted_bloc_event.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class RecentlyDeletedNavBar extends StatelessWidget {
   void _onTap(index, BuildContext context) {

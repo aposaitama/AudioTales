@@ -20,7 +20,7 @@ import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_t
 import 'package:memory_box_avada/screens/profile_screen/widgets/dialog_button_otp.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/show_delete_profile.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class ProfileScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;

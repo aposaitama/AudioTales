@@ -136,7 +136,7 @@ class MiniPlayerBloc extends Bloc<MiniPlayerBlocEvent, MiniPlayerBlocState> {
   ) async {
     // _player.seekToPlayer(Duration(milliseconds: event.newSliderPosition));
     emit(state.copyWith(
-        duration: Duration(milliseconds: event.newSliderPosition)));
+        duration: Duration(milliseconds: event.newSliderPosition),),);
   }
 
   Future<void> _updateSliderLine(

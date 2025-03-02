@@ -7,7 +7,8 @@ part of 'audio_records_model.dart';
 // **************************************************************************
 
 _$AudioRecordsModelImpl _$$AudioRecordsModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$AudioRecordsModelImpl(
       title: json['title'] as String,
       url: json['url'] as String,
@@ -18,7 +19,8 @@ _$AudioRecordsModelImpl _$$AudioRecordsModelImplFromJson(
     );
 
 Map<String, dynamic> _$$AudioRecordsModelImplToJson(
-        _$AudioRecordsModelImpl instance) =>
+  _$AudioRecordsModelImpl instance,
+) =>
     <String, dynamic>{
       'title': instance.title,
       'url': instance.url,

@@ -11,7 +11,6 @@ import 'package:memory_box_avada/screens/audio_records_screen/widgets/audio_item
 import 'package:memory_box_avada/screens/audio_records_screen/widgets/run_all_records.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
-import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_event.dart';
 import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_state.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc.dart';

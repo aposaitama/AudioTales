@@ -5,7 +5,7 @@ import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
 import 'package:memory_box_avada/utils/duration_helper.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class ChooseCollectionItemTile extends StatelessWidget {
   final SimpleCollectionModel collection;

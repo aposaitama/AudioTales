@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc.dart';
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_state.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class HintContainer extends StatelessWidget {
   final ValueChanged<int> onTap;

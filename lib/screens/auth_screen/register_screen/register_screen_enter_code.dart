@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/audio_records_screen.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc_event.dart';
 import 'package:memory_box_avada/screens/auth_screen/register_screen/bloc/register_screen_bloc_state.dart';

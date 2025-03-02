@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +9,7 @@ import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_playe
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 enum PopupValues {
   edit,
@@ -221,7 +220,8 @@ class _AudioItemTileState extends State<AudioItemTile> {
                                   color: Colors.white,
                                   offset: const Offset(-10, 45),
                                   icon: SvgPicture.asset(
-                                      'assets/icons/SmalDots.svg'),
+                                    'assets/icons/SmalDots.svg',
+                                  ),
                                   onSelected: (value) {
                                     switch (value) {
                                       case PopupValues.edit:

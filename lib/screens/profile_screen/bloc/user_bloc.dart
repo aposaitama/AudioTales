@@ -8,7 +8,6 @@ import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc_state.dar
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/models/user_model.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
-import 'package:share_plus/share_plus.dart';
 
 class UserBloc extends Bloc<UserBlocEvent, UserBlocState> {
   final FirestoreService _firebaseFirestoreService =
@@ -93,7 +92,7 @@ class UserBloc extends Bloc<UserBlocEvent, UserBlocState> {
       );
     } catch (e) {
       emit(state.copyWith(
-          codeStatus: UserCodeSentStatus.initial, newUserPhoneNum: ''));
+          codeStatus: UserCodeSentStatus.initial, newUserPhoneNum: '',),);
     }
   }
 

@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
-import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_event.dart';
-import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_state.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/bloc/choose_audio_bloc_event.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/bloc/choose_audio_bloc_state.dart';
 import 'package:memory_box_avada/sources/auth_service.dart';
 import 'package:memory_box_avada/sources/db_service.dart';
 
-class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
+class ChooseAudioBloc extends Bloc<ChooseAudioBlocEvent, ChooseAudioBlocState> {
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
   final AuthService _authService = locator<AuthService>();
@@ -16,21 +16,26 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
 
   StreamSubscription<bool>? _authSubscription;
 
-  SearchBloc() : super(const SearchBlocState()) {
-    on<SearchAudioRecordsEvent>(_search);
-    on<LoadedSearchBlocEvent>(_onLoadedSearchBlocEvent);
-    on<LoadNextSearchEvent>(_loadNextPage);
-    on<ClearSearchBlocEvent>(_clearLList);
+  ChooseAudioBloc() : super(const ChooseAudioBlocState()) {
+    on<SearchChooseAudioBlocEvent>(_search);
+    on<LoadedChooseAudioBlocEvent>(_onLoadedSearchBlocEvent);
+    on<LoadNextChooseAudioBlocEvent>(_loadNextPage);
+    on<ClearChooseAudioBlocEvent>(_clearLList);
     // _subscribeToAudioStream();
     _subscribeToAuthChanges();
   }
 
   void _clearLList(
-    ClearSearchBlocEvent event,
-    Emitter<SearchBlocState> emit,
+    ClearChooseAudioBlocEvent event,
+    Emitter<ChooseAudioBlocState> emit,
   ) async {
-    emit(state.copyWith(
-        audiosList: [], filteredAudiosCount: 0, filteredAudiosList: [],),);
+    emit(
+      state.copyWith(
+        audiosList: [],
+        filteredAudiosCount: 0,
+        filteredAudiosList: [],
+      ),
+    );
   }
 
   // void _subscribeToAudioStream() {
@@ -50,8 +55,8 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
       } else {
         _audioSubscription?.cancel();
 
-        add(const LoadedSearchBlocEvent([]));
-        add(const SearchAudioRecordsEvent(''));
+        add(const LoadedChooseAudioBlocEvent([]));
+        add(const SearchChooseAudioBlocEvent(''));
       }
     });
   }
@@ -70,49 +75,55 @@ class SearchBloc extends Bloc<SearchBlocEvent, SearchBlocState> {
   // }
 
   Future<void> _loadNextPage(
-    LoadNextSearchEvent event,
-    Emitter<SearchBlocState> emit,
+    LoadNextChooseAudioBlocEvent event,
+    Emitter<ChooseAudioBlocState> emit,
   ) async {
     final currentAudioList = state.audiosList;
     final searchStream = _firebaseFirestoreService.searchAudiosStream(
-        audioList: currentAudioList, searchedText: event.query,);
+      audioList: currentAudioList,
+      searchedText: event.query,
+    );
     searchStream.listen((newAudioList) {
       final updatedList = List<AudioRecordsModel>.from(currentAudioList)
         ..addAll(newAudioList);
-      add(LoadedSearchBlocEvent(updatedList));
+      add(LoadedChooseAudioBlocEvent(updatedList));
     });
   }
 
   Future<void> _search(
-    SearchAudioRecordsEvent event,
-    Emitter<SearchBlocState> emit,
+    SearchChooseAudioBlocEvent event,
+    Emitter<ChooseAudioBlocState> emit,
   ) async {
     final query = event.query.trim();
-    add(const ClearSearchBlocEvent());
+    add(const ClearChooseAudioBlocEvent());
     await _audioSubscription?.cancel();
 
-    if (query.isEmpty) {
-      add(
-        const LoadedSearchBlocEvent(
-          [],
-        ),
-      );
-    }
+    // if (query.isEmpty) {
+    //   add(
+    //     const LoadedChooseAudioBlocEvent(
+    //       [],
+    //     ),
+    //   );
+    // }
 
     int audiosCount =
         await _firebaseFirestoreService.getAudioCount(searchedText: query);
     emit(state.copyWith(filteredAudiosCount: audiosCount));
-    print(audiosCount);
+
     _audioSubscription = _firebaseFirestoreService
-        .searchAudiosStream(searchedText: query, audioList: state.audiosList)
+        .searchAudiosChooseStream(
+      searchedText: query,
+      audioList: state.audiosList,
+    )
         .listen((audioList) {
-      add(LoadedSearchBlocEvent(audioList));
+      print(audioList);
+      add(LoadedChooseAudioBlocEvent(audioList));
     });
   }
 
   void _onLoadedSearchBlocEvent(
-    LoadedSearchBlocEvent event,
-    Emitter<SearchBlocState> emit,
+    LoadedChooseAudioBlocEvent event,
+    Emitter<ChooseAudioBlocState> emit,
   ) {
     emit(state.copyWith(audiosList: event.audioList));
   }

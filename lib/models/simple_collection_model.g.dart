@@ -7,7 +7,8 @@ part of 'simple_collection_model.dart';
 // **************************************************************************
 
 _$SimpleCollectionModelImpl _$$SimpleCollectionModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$SimpleCollectionModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
@@ -16,11 +17,14 @@ _$SimpleCollectionModelImpl _$$SimpleCollectionModelImplFromJson(
       audioCount: (json['audioCount'] as num).toInt(),
       duration: const DurationConverter().fromJson(json['duration'] as String),
       creationTime: _$JsonConverterFromJson<Timestamp, DateTime>(
-          json['creationTime'], const TimestampConverter().fromJson),
+        json['creationTime'],
+        const TimestampConverter().fromJson,
+      ),
     );
 
 Map<String, dynamic> _$$SimpleCollectionModelImplToJson(
-        _$SimpleCollectionModelImpl instance) =>
+  _$SimpleCollectionModelImpl instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -29,7 +33,9 @@ Map<String, dynamic> _$$SimpleCollectionModelImplToJson(
       'audioCount': instance.audioCount,
       'duration': const DurationConverter().toJson(instance.duration),
       'creationTime': _$JsonConverterToJson<Timestamp, DateTime>(
-          instance.creationTime, const TimestampConverter().toJson),
+        instance.creationTime,
+        const TimestampConverter().toJson,
+      ),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

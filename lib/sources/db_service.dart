@@ -712,6 +712,47 @@ class FirestoreService {
         );
   }
 
+  Stream<List<AudioRecordsModel>> searchAudiosChooseStream({
+    required List<AudioRecordsModel> audioList,
+    required String searchedText,
+  }) {
+    if (audioList.isEmpty) {
+      return _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('audios')
+          .orderBy('title')
+          .limit(10)
+          .snapshots()
+          .map(
+            (snapshot) => snapshot.docs
+                .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+                .toList(),
+          );
+    }
+
+    var lastAudio = audioList.last;
+
+    return _firestore
+        .collection('users')
+        .doc(uid)
+        .collection('audios')
+        .where('title', isGreaterThanOrEqualTo: searchedText)
+        .where(
+          'title',
+          isLessThan: '$searchedText\uf8ff',
+        )
+        .orderBy('title')
+        .startAfter([lastAudio.title])
+        .limit(10)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => AudioRecordsModel.fromJson(doc.data()))
+              .toList(),
+        );
+  }
+
   Future<int> getAudioCount({required String searchedText}) async {
     if (searchedText.isEmpty) {
       return 0;

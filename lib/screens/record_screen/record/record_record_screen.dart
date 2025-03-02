@@ -9,7 +9,7 @@ import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen
 import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
 import 'package:memory_box_avada/screens/record_screen/widgets/audio_wave.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class RecordScreenRecordAction extends StatefulWidget {
   const RecordScreenRecordAction({super.key});

@@ -5,12 +5,16 @@ import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
 import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/bloc/choose_audio_bloc.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/bloc/choose_audio_bloc_event.dart';
+import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/bloc/choose_audio_bloc_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/add_collection_screen/choose_audio_records/widgets/add_audio_item_tile.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
+import 'package:memory_box_avada/screens/search_screen/widget/search_field.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class ChooseAudioRecords extends StatefulWidget {
   ChooseAudioRecords({
@@ -23,6 +27,7 @@ class ChooseAudioRecords extends StatefulWidget {
 }
 
 class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
+  final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     void toggleSelection(AudioRecordsModel record, bool isSelected) {
@@ -94,107 +99,87 @@ class _ChooseAudioRecordsState extends State<ChooseAudioRecords> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Stack(
+      body: BlocBuilder<ChooseAudioBloc, ChooseAudioBlocState>(
+        builder: (context, chooseState) {
+          return Column(
             children: [
-              const CustomProfileTopClipPath(
-                minusHeigth: 50,
-                backgroundColor: AppColors.greenColor,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 40.0,
-                  left: 16.0,
-                  right: 16.0,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        offset: const Offset(0, 5),
-                        blurRadius: 10,
-                        spreadRadius: 1,
-                      ),
-                    ],
+              Stack(
+                children: [
+                  const CustomProfileTopClipPath(
+                    minusHeigth: 50,
+                    backgroundColor: AppColors.greenColor,
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 25.0,
-                        vertical: 15.0,
-                      ),
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(
-                          right: 15.0,
-                          top: 10.0,
-                          bottom: 10.0,
-                        ),
-                        child: SizedBox(
-                          width: 30.0,
-                          height: 30.0,
-                          child: SvgPicture.asset(
-                            'assets/icons/Search.svg',
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 40.0,
+                      left: 16.0,
+                      right: 16.0,
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            offset: const Offset(0, 5),
+                            blurRadius: 10,
+                            spreadRadius: 1,
                           ),
-                        ),
+                        ],
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide.none,
-                      ),
-                      hintText: 'Поиск',
-                      hintStyle: TextStyle(
-                        color: AppColors.fontColor.withOpacity(0.3),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'TTNorms',
+                      child: SearchField(
+                        controller: _searchController,
+                        onChanged: (query) {
+                          context.read<ChooseAudioBloc>().add(
+                                SearchChooseAudioBlocEvent(query),
+                              );
+                        },
+                        onTapSearch: () {
+                          FocusScope.of(context).unfocus();
+                        },
                       ),
                     ),
                   ),
-                ),
+                ],
+              ),
+              const SizedBox(
+                height: 11.0,
+              ),
+              BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
+                builder: (context, state) {
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                      ),
+                      child: ListView.builder(
+                        itemCount: state.audioList.length,
+                        itemBuilder: (context, int index) {
+                          return Column(
+                            children: [
+                              AddAudioItemTile(
+                                audio: state.audioList[index],
+                                isSelected: widget.selectedRecords.contains(
+                                  state.audioList[index],
+                                ),
+                                onSelected: (isSelected) => toggleSelection(
+                                  state.audioList[index],
+                                  isSelected,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
-          ),
-          const SizedBox(
-            height: 11.0,
-          ),
-          BlocBuilder<AudioRecordsScreenBloc, AudioRecordsScreenState>(
-            builder: (context, state) {
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                  ),
-                  child: ListView.builder(
-                    itemCount: state.audioList.length,
-                    itemBuilder: (context, int index) {
-                      return Column(
-                        children: [
-                          AddAudioItemTile(
-                            audio: state.audioList[index],
-                            isSelected: widget.selectedRecords.contains(
-                              state.audioList[index],
-                            ),
-                            onSelected: (isSelected) => toggleSelection(
-                              state.audioList[index],
-                              isSelected,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }

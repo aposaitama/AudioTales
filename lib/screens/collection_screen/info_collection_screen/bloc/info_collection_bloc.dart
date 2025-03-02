@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
@@ -12,7 +11,6 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/sources/db_service.dart';
 import 'package:memory_box_avada/sources/storage_service.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 
 class InfoCollectionBloc

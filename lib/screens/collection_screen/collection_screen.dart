@@ -9,7 +9,7 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class CollectionScreen extends StatelessWidget {
   const CollectionScreen({super.key});

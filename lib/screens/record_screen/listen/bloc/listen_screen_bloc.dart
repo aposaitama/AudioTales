@@ -323,11 +323,12 @@ class ListenRecordBloc extends Bloc<ListenRecordEvent, ListenRecordState> {
           isAudioTitleExist: false,
         ),
       );
-    } else
+    } else {
       emit(
         state.copyWith(
           isAudioTitleExist: true,
         ),
       );
+    }
   }
 }

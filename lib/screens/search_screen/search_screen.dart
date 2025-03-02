@@ -13,7 +13,7 @@ import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_e
 import 'package:memory_box_avada/screens/search_screen/search_bloc/search_bloc_state.dart';
 import 'package:memory_box_avada/screens/search_screen/widget/search_field.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class SearchScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -116,16 +116,23 @@ class _SearchScreenState extends State<SearchScreen> {
                         backgroundColor: AppColors.blueColor,
                         minusHeigth: 70,
                       ),
-                      SearchField(
-                        controller: _searchController,
-                        onChanged: (query) {
-                          context.read<SearchBloc>().add(
-                                SearchAudioRecordsEvent(query),
-                              );
-                        },
-                        onTapSearch: () {
-                          FocusScope.of(context).unfocus();
-                        },
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 40.0,
+                          left: 20.0,
+                          right: 20.0,
+                        ),
+                        child: SearchField(
+                          controller: _searchController,
+                          onChanged: (query) {
+                            context.read<SearchBloc>().add(
+                                  SearchAudioRecordsEvent(query),
+                                );
+                          },
+                          onTapSearch: () {
+                            FocusScope.of(context).unfocus();
+                          },
+                        ),
                       ),
                     ],
                   ),
@@ -245,7 +252,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 ),
                               ),
                             )
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                 ],
               ),
             ],

@@ -7,7 +7,7 @@ import 'package:memory_box_avada/screens/profile_screen/bloc/user_bloc.dart';
 import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc.dart';
 import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc_event.dart';
 import 'package:memory_box_avada/screens/subscription_screen/bloc/subscription_bloc_state.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class SubscriptionPlanCard extends StatefulWidget {
   final int price;

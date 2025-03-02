@@ -63,10 +63,6 @@ Duration getTotalDuration(List<AudioRecordsModel> audiosList) {
   return totalDuration;
 }
 
-String _twoDigit(int number) {
-  return number < 10 ? '0$number' : '$number';
-}
-
 String formatCollectionDate(String dateString) {
   DateTime dateTime = DateTime.parse(dateString);
   String formattedDate =

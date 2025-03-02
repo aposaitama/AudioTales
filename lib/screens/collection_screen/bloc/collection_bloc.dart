@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
@@ -18,7 +17,9 @@ class CollectionBloc extends Bloc<CollectionBlocEvent, CollectionBlocState> {
   final StorageService _firebaseStorageService = locator<StorageService>();
   final FirestoreService _firebaseFirestoreService =
       locator<FirestoreService>();
+  // ignore: unused_field
   StreamSubscription<List<SimpleCollectionModel>>? _collectionSubscription;
+  // ignore: unused_field
   StreamSubscription<User?>? _authSubscription;
   CollectionBloc() : super(const CollectionBlocState()) {
     on<LoadingCollectionBlocEvent>(_loading);

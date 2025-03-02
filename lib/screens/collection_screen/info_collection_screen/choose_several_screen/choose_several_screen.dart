@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 import 'package:memory_box_avada/navigation/cubit/navigation_cubit.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_bloc.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_event.dart';
-import 'package:memory_box_avada/screens/audio_records_screen/bloc/audio_records_screen_state.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/bloc/collection_bloc_state.dart';
@@ -18,7 +14,7 @@ import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc_event
 import 'package:memory_box_avada/screens/home_screen/bloc/home_screen_bloc_state.dart';
 import 'package:memory_box_avada/screens/profile_screen/widgets/custom_profile_top_clip_path.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class ChooseSeveralHomeScreen extends StatelessWidget {
   const ChooseSeveralHomeScreen({super.key});

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialog_button.dart';
-import 'package:memory_box_avada/screens/profile_screen/widgets/delete_button.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class CustomBackDialog {
   static Future<void> show(

@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:memory_box_avada/models/audio_records_model.dart';
-import 'package:memory_box_avada/models/collection_model.dart';
 import 'package:memory_box_avada/models/simple_collection_model.dart';
 
 part 'home_screen_bloc_state.freezed.dart';

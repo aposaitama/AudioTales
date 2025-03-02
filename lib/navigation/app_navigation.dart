@@ -25,7 +25,7 @@ class AppRouter {
   GoRouter createRouter(BuildContext context) {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return GoRouter(
-      initialLocation: '/bypass',
+      initialLocation: '/collection/add/choose',
       routes: <RouteBase>[
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) => RootScreen(
@@ -70,13 +70,13 @@ class AppRouter {
                         GoRoute(
                           path: '/chooseHome',
                           builder: (context, state) {
-                            return ChooseSeveralHomeScreen();
+                            return const ChooseSeveralHomeScreen();
                           },
                         ),
                         GoRoute(
                           path: '/chooseAudio',
                           builder: (context, state) {
-                            return ChooseSeveraAudioScreen();
+                            return const ChooseSeveraAudioScreen();
                           },
                         ),
                       ],

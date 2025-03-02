@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:memory_box_avada/screens/subscription_screen/widget/subscription_benefits_tile.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class SubscriptionBenefits extends StatelessWidget {
   const SubscriptionBenefits({super.key});

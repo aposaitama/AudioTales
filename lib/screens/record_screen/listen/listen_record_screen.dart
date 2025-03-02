@@ -5,20 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:memory_box_avada/di/service_locator.dart';
-import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/dialog_button.dart';
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/widgets/show_delete_dialog.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_status_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/bloc/record_status_event.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_bloc.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_event.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/bloc/listen_screen_state.dart';
-import 'package:memory_box_avada/screens/record_screen/listen/widgets/circle_painter.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/widgets/custom_back_diaog.dart';
 import 'package:memory_box_avada/screens/record_screen/listen/widgets/custom_listen_page_slider.dart';
-import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_bloc.dart';
-import 'package:memory_box_avada/screens/record_screen/record/bloc/record_screen_state.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class ListenRecordScreen extends StatefulWidget {
   const ListenRecordScreen({super.key});
@@ -232,7 +226,9 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         context.read<ListenRecordBloc>().add(
-                                            AdjustAudioPositionEvent(false));
+                                              const AdjustAudioPositionEvent(
+                                                  false),
+                                            );
                                       },
                                       child: SvgPicture.asset(
                                         'assets/icons/Minus15.svg',
@@ -307,7 +303,9 @@ class _ListenRecordScreenState extends State<ListenRecordScreen> {
                                     GestureDetector(
                                       onTap: () {
                                         context.read<ListenRecordBloc>().add(
-                                            AdjustAudioPositionEvent(true));
+                                              const AdjustAudioPositionEvent(
+                                                  true),
+                                            );
                                       },
                                       child: SvgPicture.asset(
                                         'assets/icons/Add15.svg',

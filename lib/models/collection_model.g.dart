@@ -7,7 +7,8 @@ part of 'collection_model.dart';
 // **************************************************************************
 
 _$CollectionModelImpl _$$CollectionModelImplFromJson(
-        Map<String, dynamic> json) =>
+  Map<String, dynamic> json,
+) =>
     _$CollectionModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
@@ -17,11 +18,14 @@ _$CollectionModelImpl _$$CollectionModelImplFromJson(
       imageUrl: json['imageUrl'] as String,
       collectionDescription: json['collectionDescription'] as String,
       creationTime: _$JsonConverterFromJson<Timestamp, DateTime>(
-          json['creationTime'], const TimestampConverter().fromJson),
+        json['creationTime'],
+        const TimestampConverter().fromJson,
+      ),
     );
 
 Map<String, dynamic> _$$CollectionModelImplToJson(
-        _$CollectionModelImpl instance) =>
+  _$CollectionModelImpl instance,
+) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
@@ -29,7 +33,9 @@ Map<String, dynamic> _$$CollectionModelImplToJson(
       'imageUrl': instance.imageUrl,
       'collectionDescription': instance.collectionDescription,
       'creationTime': _$JsonConverterToJson<Timestamp, DateTime>(
-          instance.creationTime, const TimestampConverter().toJson),
+        instance.creationTime,
+        const TimestampConverter().toJson,
+      ),
     };
 
 Value? _$JsonConverterFromJson<Json, Value>(

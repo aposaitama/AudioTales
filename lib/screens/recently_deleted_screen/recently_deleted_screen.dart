@@ -9,7 +9,7 @@ import 'package:memory_box_avada/screens/recently_deleted_screen/recently_delete
 import 'package:memory_box_avada/screens/recently_deleted_screen/widget/deleted_audio_item_tile.dart';
 import 'package:memory_box_avada/screens/recently_deleted_screen/widget/empty_deleted_audios_list.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 enum PopupMenuOption {
   choose,

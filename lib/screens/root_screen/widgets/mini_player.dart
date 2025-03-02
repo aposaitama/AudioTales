@@ -5,9 +5,8 @@ import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_playe
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_event.dart';
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/screens/root_screen/widgets/custom_slider.dart';
-import 'package:memory_box_avada/screens/root_screen/widgets/line_painter.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class MiniPlayer extends StatefulWidget {
   const MiniPlayer({super.key});

@@ -11,7 +11,7 @@ import 'package:memory_box_avada/screens/subscription_screen/widget/subscription
 import 'package:memory_box_avada/screens/subscription_screen/widget/subscription_plan_card.dart';
 import 'package:memory_box_avada/screens/welcome_screen/widgets/orange_gesture_detector.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;

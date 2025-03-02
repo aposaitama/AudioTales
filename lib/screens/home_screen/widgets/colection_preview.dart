@@ -9,7 +9,7 @@ import 'package:memory_box_avada/screens/collection_screen/info_collection_scree
 import 'package:memory_box_avada/screens/collection_screen/info_collection_screen/bloc/info_collection_bloc_event.dart';
 import 'package:memory_box_avada/screens/collection_screen/widgets/collection_item_tile.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 import 'package:memory_box_avada/widgets/access_denied_dialog.dart';
 
 class CollectionPreview extends StatelessWidget {

@@ -21,7 +21,7 @@ import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_playe
 import 'package:memory_box_avada/screens/root_screen/mini_player_bloc/mini_player_bloc_state.dart';
 import 'package:memory_box_avada/utils/duration_helper.dart';
 import 'package:memory_box_avada/style/colors/colors.dart';
-import 'package:memory_box_avada/style/textStyle/textStyle.dart';
+import 'package:memory_box_avada/style/textStyle/text_style.dart';
 
 class InfoCollectionScreen extends StatefulWidget {
   const InfoCollectionScreen({
